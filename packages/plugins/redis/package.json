@@ -17,12 +17,11 @@
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ioredis": "^5.3.1"
-  },
-  "peerDependencies": {
+    "ioredis": "^5.3.1",
     "@artus/core": "^1.0.3",
     "@artus/pipeline": "^0.2.2"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
     "@types/node": "^18.11.17",

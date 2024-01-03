@@ -53,6 +53,8 @@ importers:
 
   ../../packages/plugins/application-http:
     specifiers:
+      '@artus/core': ^1.0.3
+      '@artus/pipeline': ^0.2.2
       '@artus/tsconfig': ^1.0.1
       '@koa/cors': ^5.0.0
       '@koa/router': ^12.0.1
@@ -65,6 +67,8 @@ importers:
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
+      '@artus/core': 1.0.9
+      '@artus/pipeline': 0.2.3
       '@koa/cors': 5.0.0
       '@koa/router': 12.0.1
       koa: 2.15.0
@@ -80,6 +84,8 @@ importers:
 
   ../../packages/plugins/redis:
     specifiers:
+      '@artus/core': ^1.0.3
+      '@artus/pipeline': ^0.2.2
       '@artus/tsconfig': ^1.0.1
       '@types/node': ^18.11.17
       ioredis: ^5.3.1
@@ -87,6 +93,8 @@ importers:
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
+      '@artus/core': 1.0.9
+      '@artus/pipeline': 0.2.3
       ioredis: 5.3.2
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
@@ -97,6 +105,8 @@ importers:
 
   ../../packages/plugins/sequelize:
     specifiers:
+      '@artus/core': ^1.0.3
+      '@artus/pipeline': ^0.2.2
       '@artus/tsconfig': ^1.0.1
       '@types/node': ^18.11.17
       mysql2: ^3.1.2
@@ -106,6 +116,8 @@ importers:
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
+      '@artus/core': 1.0.9
+      '@artus/pipeline': 0.2.3
       mysql2: 3.6.5
       sequelize: 6.35.2_mysql2@3.6.5
       sequelize-typescript: 2.1.6_s4lnyqzfs7lb56nw6j3tbzubyi
@@ -117,6 +129,17 @@ importers:
       typescript: 4.9.5
 
 packages:
+
+  /@artus/core/1.0.9:
+    resolution: {integrity: sha512-6/jaSThVFhV9jLR98aJ4u4JSB3ObQ2wt54XGn4YfJsYt2OpPw2rD6/vQFeZtRoZ9CpTiLeKgNuz6Fe4EzYXbsQ==}
+    peerDependencies:
+      reflect-metadata: ^0.1.13
+    dependencies:
+      '@artus/injection': 0.5.2
+      '@artus/pipeline': 0.2.3
+      deepmerge: 4.3.1
+      minimatch: 5.1.6
+    dev: false
 
   /@artus/core/1.0.9_reflect-metadata@0.1.14:
     resolution: {integrity: sha512-6/jaSThVFhV9jLR98aJ4u4JSB3ObQ2wt54XGn4YfJsYt2OpPw2rD6/vQFeZtRoZ9CpTiLeKgNuz6Fe4EzYXbsQ==}
