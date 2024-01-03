@@ -231,6 +231,10 @@
      * not set or if a remote matching the provided remote URL is not found.
      */
     // "defaultRemote": "origin"
+
+    "url": "https://github.com/thonatos/artusx",
+    "defaultRemote": "origin",
+    "defaultBranch": "main"
   },
 
   /**
