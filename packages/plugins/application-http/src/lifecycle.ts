@@ -40,6 +40,10 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     return this.app.container;
   }
 
+  get logger() {
+    return this.app.logger;
+  }
+
   private registerRoute(
     controllerMetadata: ControllerMetadata,
     routeMetadataList: RouteMetadata[],
@@ -121,8 +125,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
     app.use(this.router.routes());
     app.listen(port, () => {
-      // this.logger.info(`Server listening on: http://localhost:${port}`);
-      console.log(`Server listening on: http://localhost:${port}`);
+      this.logger.info(`Server listening on: http://localhost:${port}`);
     });
   }
 }

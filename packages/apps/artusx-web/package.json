@@ -1,0 +1,28 @@
+{
+  "name": "artusx-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/bootstrap.ts",
+    "build": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "~3.0.2",
+    "@artus/core": "~2.2.0",
+    "@artusx/core": "workspace:*",
+    "@artusx/run": "workspace:*",
+    "@artusx/plugin-application-http": "workspace:*",
+    "tslib": "~2.6.2",
+    "typescript": "~5.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "~3.0.2",
+    "ts-node": "~10.9.2",
+    "@types/node": "~20.10.6",
+    "@artus/tsconfig": "~1.0.1"
+  }
+}

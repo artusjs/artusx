@@ -375,6 +375,11 @@
       "tags": ["artus-app"],
       "shouldPublish": true,
       "versionPolicyName": "public-library"
+    },
+    {
+      "packageName": "artusx-web",
+      "projectFolder": "packages/apps/artusx-web",
+      "tags": ["webapp"]
     }
     // {
     //   /**
