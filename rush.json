@@ -354,7 +354,8 @@
     {
       "packageName": "@artusx/plugin-application-http",
       "projectFolder": "packages/plugins/application-http",
-      "tags": ["artus-plugin"]
+      "tags": ["artus-plugin"],
+      "shouldPublish": true
     },
     {
       "packageName": "@artusx/core",
