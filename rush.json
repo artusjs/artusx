@@ -344,28 +344,37 @@
     {
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",
-      "tags": ["artus-plugin"]
+      "tags": ["artus-plugin"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
     },
     {
       "packageName": "@artusx/plugin-sequelize",
       "projectFolder": "packages/plugins/sequelize",
-      "tags": ["artus-plugin"]
+      "tags": ["artus-plugin"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
     },
     {
       "packageName": "@artusx/plugin-application-http",
       "projectFolder": "packages/plugins/application-http",
       "tags": ["artus-plugin"],
-      "shouldPublish": true
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
     },
     {
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/framework",
-      "tags": ["artus-framework"]
+      "tags": ["artus-framework"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
     },
     {
       "packageName": "@artusx/run",
       "projectFolder": "packages/libs/application",
-      "tags": ["artus-app"]
+      "tags": ["artus-app"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
     }
     // {
     //   /**
