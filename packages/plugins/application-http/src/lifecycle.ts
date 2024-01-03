@@ -5,8 +5,6 @@ import Router from '@koa/router';
 
 import {
   Inject,
-  // Logger,
-  // Container,
   ArtusInjectEnum,
   ArtusApplication,
   ApplicationLifecycle,
@@ -32,12 +30,6 @@ import type {
 export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   private readonly app: ArtusApplication;
-
-  // @Inject(ArtusInjectEnum.DefaultContainerName)
-  // private readonly container: Container;
-
-  // @Inject()
-  // private logger!: Logger;
 
   @Inject()
   trigger: HttpTrigger;
