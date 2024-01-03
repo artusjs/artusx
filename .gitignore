@@ -73,3 +73,6 @@ common/autoinstallers/*/.npmrc
 # Heft temporary files
 .cache
 .heft
+
+# dist
+dist

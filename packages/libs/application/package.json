@@ -1,0 +1,29 @@
+{
+  "name": "@artusx/run",
+  "version": "1.0.0",
+  "description": "core application for artusx",
+  "main": "dist/Application.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "tsc": "rm -rf dist && tsc"
+  },
+  "keywords": [
+    "Artus.js"
+  ],
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@artus/core": "^1.0.3",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@artus/tsconfig": "^1.0.1",
+    "@types/node": "^18.11.17",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  }
+}

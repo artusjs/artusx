@@ -1,0 +1,38 @@
+{
+  "name": "@artusx/core",
+  "version": "1.0.0",
+  "description": "core framework for artusx",
+  "main": "dist/app.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run tsc && npm run build:metadata",
+    "tsc": "rm -rf dist && tsc",
+    "build:metadata": "cp meta.json ./dist"
+  },
+  "keywords": [
+    "Artus.js"
+  ],
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@artusx/plugin-redis": "workspace:*",
+    "@artusx/plugin-sequelize": "workspace:*",
+    "@artusx/plugin-application-http": "workspace:*"
+  },
+  "peerDependencies": {
+    "@artus/core": "^1.0.3",
+    "@artus/pipeline": "^0.2.2"
+  },
+  "devDependencies": {
+    "@artus/tsconfig": "^1.0.1",
+    "@types/koa": "^2.13.12",
+    "@types/koa__cors": "^5.0.0",
+    "@types/koa__router": "^12.0.4",
+    "@types/node": "^18.11.17",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  }
+}
