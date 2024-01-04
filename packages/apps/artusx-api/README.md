@@ -1,6 +1,6 @@
-# pV-Artus
+# ArtusX-API
 
-> undefined project with http-server powered by artus.
+> undefined project with web-server powered by ArtusX.
 
 ## Usage
 

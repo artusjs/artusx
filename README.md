@@ -1,6 +1,25 @@
 # ArtusX
 
-> Monorepo for ArtusX.
+[![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)
+[![Continuous Integration](https://github.com/thonatos/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/thonatos/artusx/actions/workflows/ci.yml)
+
+> a undefined project.
+
+## Packages
+
+**ArtusX Framework**
+
+- @artusx/core
+
+**ArtusX Application**
+
+- @artusx/run
+
+**ArtusX ArtusX Plugins**
+
+- @artusx/plugin-redis
+- @artusx/plugin-sequelize
+- @artusx/plugin-application-http
 
 ## Usage
 
