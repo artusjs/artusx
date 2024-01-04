@@ -45,5 +45,5 @@ export NPM_AUTH_TOKEN={NPM_AUTH_TOKEN}
 rush version --bump
 
 # publish to npm.js
-rush publish --include-all --publish 
+rush publish --include-all --publish
 ```

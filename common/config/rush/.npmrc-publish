@@ -18,4 +18,5 @@
 #
 #   //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
 #
+strict-ssl = false
 //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}

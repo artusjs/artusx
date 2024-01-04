@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-application-http",
-  "version": "1.0.1-dev.11",
+  "version": "1.0.1-dev.12",
   "description": "application-http plugin for artusx",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
