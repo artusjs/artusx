@@ -1,0 +1,51 @@
+version: '3.4'
+services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - cnpm-redis:/data
+    networks:
+      - cnpm
+
+  mysql:
+    image: mariadb
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      # MYSQL_DATABASE: 'cnpmcore_unittest'
+      # MYSQL_USER: user
+      # MYSQL_PASSWORD: pass
+    volumes:
+      - cnpm-mysql:/var/lib/mysql
+      # - ./conf.d/mysql/:/etc/mysql/conf.d
+      # - ./init.d/mysql/:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - cnpm
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_DB_HOST: 'mysql'
+    depends_on:
+      - mysql
+    ports:
+      - 8080:8080
+    networks:
+      - cnpm
+
+volumes:
+  cnpm-redis:
+  cnpm-mysql:
+
+networks:
+  cnpm:
+    name: cnpm
+    driver: bridge

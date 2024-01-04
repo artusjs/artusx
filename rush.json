@@ -341,6 +341,7 @@
    * 3. It's useful to have a centralized inventory of all projects and their important metadata.
    */
   "projects": [
+    // plugin
     {
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",
@@ -362,6 +363,8 @@
       "shouldPublish": true,
       "versionPolicyName": "public-library"
     },
+
+    // lib
     {
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/framework",
@@ -376,9 +379,16 @@
       "shouldPublish": true,
       "versionPolicyName": "public-library"
     },
+
+    // app
     {
       "packageName": "artusx-web",
       "projectFolder": "packages/apps/artusx-web",
+      "tags": ["webapp"]
+    },
+    {
+      "packageName": "artusx-api",
+      "projectFolder": "packages/apps/artusx-api",
       "tags": ["webapp"]
     }
     // {

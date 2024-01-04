@@ -1,0 +1,35 @@
+{
+  "name": "artusx-api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": "dist/cli/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "npx nodemon src/index.ts",
+    "build": "",
+    "tsc": "rm -rf dist && tsc"
+  },
+  "devDependencies": {
+    "@artus/tsconfig": "^1.0.1",
+    "@types/cron": "^2.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.11.17",
+    "@types/validator": "^13.7.12",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@artus/core": "^1.0.3",
+    "@artus/pipeline": "^0.2.2",
+    "@artusx/core": "workspace:*",
+    "cron": "^2.2.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.0",
+    "nodemon": "^3.0.2",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.28.0",
+    "sequelize-typescript": "^2.1.5"
+  }
+}
