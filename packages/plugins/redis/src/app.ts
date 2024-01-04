@@ -14,7 +14,7 @@ export default class RedisLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const sequelize = this.app.container.get('ARTUS_REDIS') as Redis;
-    await sequelize.init(this.app.config.redis as RedisConfig);
+    const redis = this.app.container.get('ARTUS_REDIS') as Redis;
+    await redis.init(this.app.config.redis as RedisConfig);
   }
 }
