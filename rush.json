@@ -364,23 +364,23 @@
       "versionPolicyName": "public-library"
     },
 
-    // lib
+    // framework / utils
     {
       "packageName": "@artusx/core",
-      "projectFolder": "packages/libs/framework",
+      "projectFolder": "packages/libs/core",
       "tags": ["artus-framework"],
       "shouldPublish": true,
       "versionPolicyName": "public-library"
     },
     {
-      "packageName": "@artusx/run",
-      "projectFolder": "packages/libs/application",
+      "packageName": "@artusx/utils",
+      "projectFolder": "packages/libs/utils",
       "tags": ["artus-app"],
       "shouldPublish": true,
       "versionPolicyName": "public-library"
     },
 
-    // app
+    // application
     {
       "packageName": "artusx-web",
       "projectFolder": "packages/apps/artusx-web",

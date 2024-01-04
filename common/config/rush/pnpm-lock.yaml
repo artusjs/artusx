@@ -7,12 +7,13 @@ importers:
 
   ../../packages/apps/artusx-api:
     specifiers:
-      '@artus/core': ^1.0.3
-      '@artus/pipeline': ^0.2.2
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
       '@artusx/core': workspace:*
       '@artusx/plugin-redis': workspace:*
       '@artusx/plugin-sequelize': workspace:*
+      '@artusx/utils': workspace:*
       '@types/cron': ^2.0.0
       '@types/fs-extra': ^11.0.1
       '@types/node': ^18.11.17
@@ -29,11 +30,12 @@ importers:
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
-      '@artus/core': 1.0.9_reflect-metadata@0.1.14
+      '@artus/core': 2.2.0_reflect-metadata@0.1.14
       '@artus/pipeline': 0.2.3
-      '@artusx/core': link:../../libs/framework
+      '@artusx/core': link:../../libs/core
       '@artusx/plugin-redis': link:../../plugins/redis
       '@artusx/plugin-sequelize': link:../../plugins/sequelize
+      '@artusx/utils': link:../../libs/utils
       cron: 2.4.4
       dayjs: 1.11.10
       dotenv: 16.3.1
@@ -54,11 +56,10 @@ importers:
 
   ../../packages/apps/artusx-web:
     specifiers:
-      '@artus/core': ~2.2.0
+      '@artus/core': ^2.x
       '@artus/tsconfig': ~1.0.1
       '@artusx/core': workspace:*
-      '@artusx/plugin-application-http': workspace:*
-      '@artusx/run': workspace:*
+      '@artusx/utils': workspace:*
       '@types/node': ~20.10.6
       nodemon: ~3.0.2
       reflect-metadata: ^0.1.13
@@ -67,21 +68,37 @@ importers:
       typescript: ~5.3.3
     dependencies:
       '@artus/core': 2.2.0_reflect-metadata@0.1.14
-      '@artusx/core': link:../../libs/framework
-      '@artusx/plugin-application-http': link:../../plugins/application-http
-      '@artusx/run': link:../../libs/application
+      '@artusx/core': link:../../libs/core
+      '@artusx/utils': link:../../libs/utils
       nodemon: 3.0.2
       reflect-metadata: 0.1.14
-      tslib: 2.6.2
-      typescript: 5.3.3
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@20.10.6
       '@types/node': 20.10.6
       ts-node: 10.9.2_guidcuijextr5nuigknvoilupu
+      tslib: 2.6.2
+      typescript: 5.3.3
 
-  ../../packages/libs/application:
+  ../../packages/libs/core:
     specifiers:
-      '@artus/core': ^1.0.3
+      '@artus/tsconfig': ^1.0.1
+      '@artusx/plugin-application-http': workspace:*
+      '@types/node': ^18.11.17
+      ts-node: ^10.9.1
+      tslib: ^2.5.0
+      typescript: ^4.9.4
+    dependencies:
+      '@artusx/plugin-application-http': link:../../plugins/application-http
+    devDependencies:
+      '@artus/tsconfig': 1.0.1_@types+node@18.19.4
+      '@types/node': 18.19.4
+      ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
+      tslib: 2.6.2
+      typescript: 4.9.5
+
+  ../../packages/libs/utils:
+    specifiers:
+      '@artus/core': ^2.x
       '@artus/tsconfig': ^1.0.1
       '@types/node': ^18.11.17
       reflect-metadata: ^0.1.13
@@ -89,7 +106,7 @@ importers:
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
-      '@artus/core': 1.0.9_reflect-metadata@0.1.14
+      '@artus/core': 2.2.0_reflect-metadata@0.1.14
       reflect-metadata: 0.1.14
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
@@ -98,33 +115,10 @@ importers:
       tslib: 2.6.2
       typescript: 4.9.5
 
-  ../../packages/libs/framework:
-    specifiers:
-      '@artus/tsconfig': ^1.0.1
-      '@artusx/plugin-application-http': workspace:*
-      '@types/koa': ^2.13.12
-      '@types/koa__cors': ^5.0.0
-      '@types/koa__router': ^12.0.4
-      '@types/node': ^18.11.17
-      ts-node: ^10.9.1
-      tslib: ^2.5.0
-      typescript: ^4.9.4
-    dependencies:
-      '@artusx/plugin-application-http': link:../../plugins/application-http
-    devDependencies:
-      '@artus/tsconfig': 1.0.1_@types+node@18.19.4
-      '@types/koa': 2.13.12
-      '@types/koa__cors': 5.0.0
-      '@types/koa__router': 12.0.4
-      '@types/node': 18.19.4
-      ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
-      tslib: 2.6.2
-      typescript: 4.9.5
-
   ../../packages/plugins/application-http:
     specifiers:
-      '@artus/core': ^1.0.3
-      '@artus/pipeline': ^0.2.2
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
       '@koa/cors': ^5.0.0
       '@koa/router': ^12.0.1
@@ -133,11 +127,10 @@ importers:
       '@types/koa__router': ^12.0.4
       '@types/node': ^18.11.17
       koa: ^2.15.0
-      ts-node: ^10.9.1
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
-      '@artus/core': 1.0.9
+      '@artus/core': 2.2.0
       '@artus/pipeline': 0.2.3
       '@koa/cors': 5.0.0
       '@koa/router': 12.0.1
@@ -148,45 +141,41 @@ importers:
       '@types/koa__cors': 5.0.0
       '@types/koa__router': 12.0.4
       '@types/node': 18.19.4
-      ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
       tslib: 2.6.2
       typescript: 4.9.5
 
   ../../packages/plugins/redis:
     specifiers:
-      '@artus/core': ^1.0.3
-      '@artus/pipeline': ^0.2.2
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
       '@types/node': ^18.11.17
       ioredis: ^5.3.1
-      ts-node: ^10.9.1
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
-      '@artus/core': 1.0.9
+      '@artus/core': 2.2.0
       '@artus/pipeline': 0.2.3
       ioredis: 5.3.2
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
       '@types/node': 18.19.4
-      ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
       tslib: 2.6.2
       typescript: 4.9.5
 
   ../../packages/plugins/sequelize:
     specifiers:
-      '@artus/core': ^1.0.3
-      '@artus/pipeline': ^0.2.2
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
       '@types/node': ^18.11.17
       mysql2: ^3.1.2
       sequelize: ^6.35.2
       sequelize-typescript: ^2.1.6
-      ts-node: ^10.9.1
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
-      '@artus/core': 1.0.9
+      '@artus/core': 2.2.0
       '@artus/pipeline': 0.2.3
       mysql2: 3.6.5
       sequelize: 6.35.2_mysql2@3.6.5
@@ -194,33 +183,20 @@ importers:
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
       '@types/node': 18.19.4
-      ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
       tslib: 2.6.2
       typescript: 4.9.5
 
 packages:
 
-  /@artus/core/1.0.9:
-    resolution: {integrity: sha512-6/jaSThVFhV9jLR98aJ4u4JSB3ObQ2wt54XGn4YfJsYt2OpPw2rD6/vQFeZtRoZ9CpTiLeKgNuz6Fe4EzYXbsQ==}
+  /@artus/core/2.2.0:
+    resolution: {integrity: sha512-qWqNWBAfuhcrzIBMfpZ61/Tp9T4YfZ2m5jflS1dqc7b+QsgJGxsoJ89NrjZnkvCucl0BnbyNczuwV5mlUgwGsQ==}
     peerDependencies:
       reflect-metadata: ^0.1.13
     dependencies:
       '@artus/injection': 0.5.2
-      '@artus/pipeline': 0.2.3
       deepmerge: 4.3.1
       minimatch: 5.1.6
-    dev: false
-
-  /@artus/core/1.0.9_reflect-metadata@0.1.14:
-    resolution: {integrity: sha512-6/jaSThVFhV9jLR98aJ4u4JSB3ObQ2wt54XGn4YfJsYt2OpPw2rD6/vQFeZtRoZ9CpTiLeKgNuz6Fe4EzYXbsQ==}
-    peerDependencies:
-      reflect-metadata: ^0.1.13
-    dependencies:
-      '@artus/injection': 0.5.2
-      '@artus/pipeline': 0.2.3
-      deepmerge: 4.3.1
-      minimatch: 5.1.6
-      reflect-metadata: 0.1.14
+      tslib: 2.6.2
     dev: false
 
   /@artus/core/2.2.0_reflect-metadata@0.1.14:
@@ -1491,6 +1467,7 @@ packages:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
 
   /undefsafe/2.0.5:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}

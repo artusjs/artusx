@@ -12,11 +12,11 @@ import {
   LifecycleHookUnit
 } from '@artus/core';
 
-import { Input } from '@artus/pipeline';
+import { Input, Context } from '@artus/pipeline';
 
 import { CONTROLLER_METADATA, MIDDLEWARE_METADATA, ROUTER_METADATA, WEB_CONTROLLER_TAG } from './decorator';
 
-import HttpTrigger from './trigger';
+import HttpPipeline from './pipeline';
 
 import type {
   ControllerMetadata,
@@ -32,7 +32,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   private readonly app: ArtusApplication;
 
   @Inject()
-  trigger: HttpTrigger;
+  pipeline: HttpPipeline;
 
   private router = new Router();
 
@@ -60,8 +60,9 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
         input.params.req = ctx.req;
         input.params.res = ctx.res;
 
-        const context = await this.trigger.initContext(input);
-        await this.trigger.startPipeline(context);
+        // const context = await this.pipeline.initContext(input);
+        const context = new Context(input);
+        await this.pipeline.run(context);
         ctx.context = context;
 
         // handle request
@@ -104,7 +105,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   @LifecycleHook()
   async didLoad() {
     const middlewares = this.app.config.middlewares || [];
-    this.trigger.use(middlewares);
+    this.pipeline.use(middlewares);
   }
 
   @LifecycleHook()

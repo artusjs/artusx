@@ -6,10 +6,6 @@ import checkAuth from '../middleware/checkAuth';
 dotenv.config();
 
 export default {
-  framework: {
-    package: '@artusx/core'
-  },
-
   port: 7001,
   middlewares: [checkAuth],
 

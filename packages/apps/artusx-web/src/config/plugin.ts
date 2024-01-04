@@ -1,8 +1,6 @@
 export default {
-  redis: {
-    enable: false
-  },
-  sequelize: {
-    enable: false
+  artusx: {
+    enable: true,
+    package: '@artusx/core'
   }
 };

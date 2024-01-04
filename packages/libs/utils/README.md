@@ -1,3 +1,3 @@
-# ArtusX Application
+# ArtusX Utils
 
 > https://github.com/thonatos/artusx

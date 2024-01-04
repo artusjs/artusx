@@ -1,6 +1,5 @@
-import { GET, HTTPController } from '@artusx/plugin-application-http';
-
-import { HTTPContext } from '@artusx/plugin-application-http';
+import { GET, HTTPController } from '../types';
+import type { HTTPContext } from '../types';
 
 @HTTPController()
 export default class HomeController {

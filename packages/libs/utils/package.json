@@ -1,7 +1,7 @@
 {
-  "name": "@artusx/run",
+  "name": "@artusx/utils",
   "version": "1.0.1-dev.12",
-  "description": "core application for artusx",
+  "description": "core utils for artusx",
   "main": "lib/application.js",
   "files": [
     "lib"
@@ -16,7 +16,7 @@
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@artus/core": "^1.0.3",
+    "@artus/core": "^2.x",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

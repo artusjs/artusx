@@ -9,18 +9,17 @@
   },
   "dependencies": {
     "nodemon": "~3.0.2",
-    "@artus/core": "~2.2.0",
+    "@artus/core": "^2.x",
     "@artusx/core": "workspace:*",
-    "@artusx/run": "workspace:*",
-    "@artusx/plugin-application-http": "workspace:*",
-    "tslib": "~2.6.2",
-    "typescript": "~5.3.3",
+    "@artusx/utils": "workspace:*",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "@artus/tsconfig": "~1.0.1",
+    "@types/node": "~20.10.6",
     "nodemon": "~3.0.2",
     "ts-node": "~10.9.2",
-    "@types/node": "~20.10.6",
-    "@artus/tsconfig": "~1.0.1"
+    "tslib": "~2.6.2",
+    "typescript": "~5.3.3"
   }
 }

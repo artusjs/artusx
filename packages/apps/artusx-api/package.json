@@ -9,20 +9,11 @@
     "build": "",
     "tsc": "rm -rf dist && tsc"
   },
-  "devDependencies": {
-    "@artus/tsconfig": "^1.0.1",
-    "@types/cron": "^2.0.0",
-    "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.11.17",
-    "@types/validator": "^13.7.12",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.4"
-  },
   "dependencies": {
-    "@artus/core": "^1.0.3",
-    "@artus/pipeline": "^0.2.2",
+    "@artus/core": "^2.x",
+    "@artus/pipeline": "^0.2",
     "@artusx/core": "workspace:*",
+    "@artusx/utils": "workspace:*",
     "cron": "^2.2.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
@@ -33,5 +24,15 @@
     "sequelize-typescript": "^2.1.5",
     "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/plugin-redis": "workspace:*"
+  },
+  "devDependencies": {
+    "@artus/tsconfig": "^1.0.1",
+    "@types/cron": "^2.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.11.17",
+    "@types/validator": "^13.7.12",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
   }
 }
