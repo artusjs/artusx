@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)
 [![Continuous Integration](https://github.com/thonatos/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/thonatos/artusx/actions/workflows/ci.yml)
 
-> a undefined project.
+> toolchain powered by artus.js .
 
 ## Packages
 
