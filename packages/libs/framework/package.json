@@ -17,8 +17,6 @@
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@artusx/plugin-redis": "workspace:*",
-    "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/plugin-application-http": "workspace:*"
   },
   "peerDependencies": {

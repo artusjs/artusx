@@ -11,6 +11,8 @@ importers:
       '@artus/pipeline': ^0.2.2
       '@artus/tsconfig': ^1.0.1
       '@artusx/core': workspace:*
+      '@artusx/plugin-redis': workspace:*
+      '@artusx/plugin-sequelize': workspace:*
       '@types/cron': ^2.0.0
       '@types/fs-extra': ^11.0.1
       '@types/node': ^18.11.17
@@ -30,6 +32,8 @@ importers:
       '@artus/core': 1.0.9_reflect-metadata@0.1.14
       '@artus/pipeline': 0.2.3
       '@artusx/core': link:../../libs/framework
+      '@artusx/plugin-redis': link:../../plugins/redis
+      '@artusx/plugin-sequelize': link:../../plugins/sequelize
       cron: 2.4.4
       dayjs: 1.11.10
       dotenv: 16.3.1

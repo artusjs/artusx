@@ -30,6 +30,8 @@
     "nodemon": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
-    "sequelize-typescript": "^2.1.5"
+    "sequelize-typescript": "^2.1.5",
+    "@artusx/plugin-sequelize": "workspace:*",
+    "@artusx/plugin-redis": "workspace:*"
   }
 }
