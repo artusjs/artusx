@@ -2,14 +2,14 @@
   "name": "@artusx/core",
   "version": "1.0.1-dev.11",
   "description": "core framework for artusx",
-  "main": "dist/app.js",
+  "main": "lib/app.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build": "npm run tsc && npm run build:metadata",
-    "tsc": "rm -rf dist && tsc",
-    "build:metadata": "cp meta.json ./dist"
+    "tsc": "rm -rf lib && tsc",
+    "build:metadata": "cp meta.json ./lib/meta.json"
   },
   "keywords": [
     "Artus.js"

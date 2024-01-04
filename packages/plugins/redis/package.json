@@ -2,14 +2,14 @@
   "name": "@artusx/plugin-redis",
   "version": "1.0.1-dev.11",
   "description": "redis plugin for artusx",
-  "main": "dist/app.js",
+  "main": "lib/app.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build": "npm run tsc && npm run build:metadata",
-    "tsc": "rm -rf dist && tsc",
-    "build:metadata": "cp meta.json ./dist"
+    "tsc": "rm -rf lib && tsc",
+    "build:metadata": "cp meta.json ./lib/meta.json"
   },
   "keywords": [
     "Artus.js"
@@ -21,7 +21,9 @@
     "@artus/core": "^1.0.3",
     "@artus/pipeline": "^0.2.2"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
     "@types/node": "^18.11.17",

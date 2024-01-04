@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "outDir": "dist"
+    "outDir": "lib"
   },
   "include": ["src/**/*.ts", "src/**/*.json"]
 }

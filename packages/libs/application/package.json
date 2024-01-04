@@ -2,13 +2,13 @@
   "name": "@artusx/run",
   "version": "1.0.1-dev.11",
   "description": "core application for artusx",
-  "main": "dist/application.js",
+  "main": "lib/application.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "rm -rf dist && tsc"
+    "tsc": "rm -rf lib && tsc"
   },
   "keywords": [
     "Artus.js"

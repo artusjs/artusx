@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "outDir": "dist"
   },
   "include": ["src/**/*.ts", "src/**/*.json"]
