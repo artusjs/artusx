@@ -1,1 +1,1 @@
-export * from '@artusx/core/lib/types';
+export * from '@artusx/core/types';

@@ -2,37 +2,52 @@
   "name": "@artusx/core",
   "version": "1.0.1-dev.14",
   "description": "core framework for artusx",
-  "main": "lib/app.js",
+  "keywords": [
+    "artus.js"
+  ],
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./lifecycle": {
+      "types": "./lib/lifecycle.d.ts",
+      "default": "./lib/lifecycle.js"
+    },
+    "./types": {
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    }
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
   "files": [
     "lib"
   ],
   "scripts": {
     "build": "npm run tsc && npm run build:metadata",
-    "tsc": "rm -rf lib && tsc",
-    "build:metadata": "cp meta.json ./lib/meta.json"
+    "build:metadata": "cp meta.json ./lib/meta.json",
+    "tsc": "rm -rf lib && tsc"
   },
-  "keywords": [
-    "Artus.js"
-  ],
-  "author": "Suyi <thonatos.yang@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
     "@artusx/plugin-application-http": "workspace:*",
-    "@koa/cors": "~5.0.0",
-    "@koa/bodyparser": "~5.0.0"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "^0.1.13"
+    "@koa/bodyparser": "~5.0.0",
+    "@koa/cors": "~5.0.0"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
+    "@types/koa__cors": "~5.0.0",
     "@types/node": "^18.11.17",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^4.9.4",
-    "@types/koa__cors": "~5.0.0"
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
   },
   "publishConfig": {
     "access": "public"

@@ -2,6 +2,41 @@
   "name": "@artusx/plugin-application-http",
   "version": "1.0.1-dev.14",
   "description": "application-http plugin for artusx",
+  "keywords": [
+    "artus.js"
+  ],
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    },
+    "./decorator": {
+      "types": "./lib/decorator.d.ts",
+      "default": "./lib/decorator.js"
+    },
+    "./lifecycle": {
+      "types": "./lib/lifecycle.d.ts",
+      "default": "./lib/lifecycle.js"
+    },
+    "./pipeline": {
+      "types": "./lib/pipeline.d.ts",
+      "default": "./lib/pipeline.js"
+    },
+    "./types": {
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./koa/*": {
+      "types": "./lib/koa/*.d.ts",
+      "default": "./lib/koa/*.js"
+    }
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -9,22 +44,14 @@
   ],
   "scripts": {
     "build": "npm run tsc && npm run build:metadata",
-    "tsc": "rm -rf lib && tsc",
-    "build:metadata": "cp meta.json ./lib/meta.json"
+    "build:metadata": "cp meta.json ./lib/meta.json",
+    "tsc": "rm -rf lib && tsc"
   },
-  "keywords": [
-    "Artus.js"
-  ],
-  "author": "Suyi <thonatos.yang@gmail.com>",
-  "license": "MIT",
   "dependencies": {
-    "@koa/router": "^12.0.1",
-    "koa": "^2.15.0",
     "@artus/core": "^2.x",
-    "@artus/pipeline": "^0.2"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "^0.1.13"
+    "@artus/pipeline": "^0.2",
+    "@koa/router": "^12.0.1",
+    "koa": "^2.15.0"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
@@ -33,6 +60,9 @@
     "@types/node": "^18.11.17",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
   },
   "publishConfig": {
     "access": "public"

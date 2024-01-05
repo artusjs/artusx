@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "strictNullChecks": true,
     "resolveJsonModule": true,
+    "moduleResolution": "NodeNext",
     "outDir": "dist"
   },
   "include": ["src/**/*.ts", "src/**/*.json"]

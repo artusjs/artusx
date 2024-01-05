@@ -1,4 +1,4 @@
-export { default as IRedisClient } from '@artusx/plugin-redis/lib/client';
-export { default as ISequelizeClient } from '@artusx/plugin-sequelize/lib/client';
+export { default as IRedisClient } from '@artusx/plugin-redis/client';
+export { default as ISequelizeClient } from '@artusx/plugin-sequelize/client';
 
-export * from '@artusx/core/lib/types';
+export * from '@artusx/core/types';

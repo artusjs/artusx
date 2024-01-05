@@ -2,33 +2,52 @@
   "name": "@artusx/plugin-redis",
   "version": "1.0.1-dev.14",
   "description": "redis plugin for artusx",
-  "main": "lib/app.js",
+  "keywords": [
+    "artus.js"
+  ],
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    },
+    "./client": {
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./lifecycle": {
+      "types": "./lib/lifecycle.d.ts",
+      "default": "./lib/lifecycle.js"
+    }
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
   "files": [
     "lib"
   ],
   "scripts": {
     "build": "npm run tsc && npm run build:metadata",
-    "tsc": "rm -rf lib && tsc",
-    "build:metadata": "cp meta.json ./lib/meta.json"
+    "build:metadata": "cp meta.json ./lib/meta.json",
+    "tsc": "rm -rf lib && tsc"
   },
-  "keywords": [
-    "Artus.js"
-  ],
-  "author": "Suyi <thonatos.yang@gmail.com>",
-  "license": "MIT",
   "dependencies": {
-    "ioredis": "^5.3.1",
     "@artus/core": "^2.x",
-    "@artus/pipeline": "^0.2"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "^0.1.13"
+    "@artus/pipeline": "^0.2",
+    "ioredis": "^5.3.1"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
     "@types/node": "^18.11.17",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
   },
   "publishConfig": {
     "access": "public"

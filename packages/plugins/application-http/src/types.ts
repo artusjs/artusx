@@ -1,8 +1,4 @@
-import type {
-  Context as ArtusContext
-  // Next as ArtusNext,
-} from '@artus/pipeline';
-
+import type { Context as ArtusContext } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
 import KoaRouter from './koa/router';

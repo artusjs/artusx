@@ -2,7 +2,27 @@
   "name": "@artusx/utils",
   "version": "1.0.1-dev.14",
   "description": "core utils for artusx",
-  "main": "lib/application.js",
+  "keywords": [
+    "artus.js"
+  ],
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./application": {
+      "types": "./lib/application.d.ts",
+      "default": "./lib/application.js"
+    },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    }
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -10,11 +30,6 @@
     "build": "npm run tsc",
     "tsc": "rm -rf lib && tsc"
   },
-  "keywords": [
-    "Artus.js"
-  ],
-  "author": "Suyi <thonatos.yang@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@artus/core": "^2.x",
     "reflect-metadata": "^0.1.13"
