@@ -1,6 +1,6 @@
 {
   "name": "@artusx/utils",
-  "version": "1.0.1-dev.13",
+  "version": "1.0.1-dev.14",
   "description": "core utils for artusx",
   "main": "lib/application.js",
   "files": [
