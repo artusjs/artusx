@@ -1,3 +1,5 @@
+import { RedisConfig } from '../client';
+
 export default {
   redis: {
     host: 'localhost',
@@ -5,5 +7,5 @@ export default {
     username: '',
     password: '',
     db: 0
-  }
+  } as RedisConfig
 };

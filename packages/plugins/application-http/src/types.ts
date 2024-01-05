@@ -1,4 +1,4 @@
-import type { Context as ArtusContext } from '@artus/pipeline';
+import type { Context as ArtusContext, Middleware as ArtusMiddleware } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
 import KoaRouter from './koa/router';
@@ -33,8 +33,8 @@ type ArtusxHandler = (ctx: ArtusxContext, next: ArtusxNext) => Promise<void>;
 export {
   // koa
   KoaContext,
-  KoaMiddleware,
   KoaNext,
+  KoaMiddleware,
   KoaApplication,
   KoaRouter,
 
@@ -43,3 +43,14 @@ export {
   ArtusxNext,
   ArtusxHandler
 };
+
+export interface ArtusxConfig {
+  koa: {
+    port?: number;
+    middlewares?: KoaMiddleware[];
+  };
+
+  artusx: {
+    middlewares?: ArtusMiddleware[];
+  };
+}

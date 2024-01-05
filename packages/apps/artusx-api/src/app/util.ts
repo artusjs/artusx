@@ -28,3 +28,23 @@ export const getProxy = () => {
     proxyString
   };
 };
+
+export const getEnv = <T extends unknown>(key: string, type?: string): T => {
+  const _env = process.env[key] || '';
+
+  let target: unknown;
+
+  if (!_env) {
+    target = _env;
+  }
+
+  if (type === 'boolean') {
+    target = Boolean(_env);
+  }
+
+  if (type === 'number') {
+    target = parseInt(_env);
+  }
+
+  return target as T;
+};

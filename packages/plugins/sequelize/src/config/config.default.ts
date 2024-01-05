@@ -1,3 +1,5 @@
+import { SequelizeConfig } from '../client';
+
 export default {
   sequelize: {
     database: 'mysql',
@@ -5,5 +7,5 @@ export default {
     password: 'root',
     host: 'localhost',
     dialect: 'mysql'
-  }
+  } as SequelizeConfig
 };

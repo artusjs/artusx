@@ -2,7 +2,9 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
 import checkAuth from '../middleware/checkAuth';
-import { KoaContext, KoaNext } from '../types';
+import { KoaContext, KoaNext, RedisConfig, SequelizeConfig } from '../types';
+import { ArtusxConfig } from '@artusx/core';
+import { getEnv } from '../util';
 
 dotenv.config();
 
@@ -11,7 +13,7 @@ const rateLimiter = new RateLimiterMemory({
   duration: 1
 });
 
-export default {
+const basicConfig: ArtusxConfig = {
   koa: {
     port: 7001,
     middlewares: [
@@ -30,25 +32,31 @@ export default {
 
   artusx: {
     middlewares: [checkAuth]
-  },
-
-  redis: {
-    db: process.env.REDIS_DATABASE || 0,
-    port: process.env.REDIS_PORT || 6379,
-    host: process.env.REDIS_HOST || 'localhost',
-    username: process.env.REDIS_USERNAME || '',
-    password: process.env.REDIS_PASSWORD || ''
-  },
-
-  sequelize: {
-    port: process.env.MYSQL_PORT || 3306,
-    host: process.env.MYSQL_HOST || 'localhost',
-    database: process.env.MYSQL_DATABASE || 'mysql',
-    username: process.env.MYSQL_USERNAME || 'root',
-    password: process.env.MYSQL_PASSWORD || 'root',
-    dialect: 'mysql',
-    models: [path.join(__dirname, '../model')],
-    force: Boolean(process.env.MYSQL_FORCE) || false,
-    alter: Boolean(process.env.MYSQL_ALTER) || false
   }
 };
+
+const redisConfig: RedisConfig = {
+  db: getEnv('REDIS_DATABASE', 'number') || 0,
+  port: getEnv('REDIS_PORT', 'number') || 6379,
+  host: getEnv('REDIS_HOST', 'string') || 'localhost',
+  username: process.env.REDIS_USERNAME || '',
+  password: process.env.REDIS_PASSWORD || ''
+};
+
+const sequelizeConfig: SequelizeConfig = {
+  port: getEnv('MYSQL_PORT', 'number') || 3306,
+  host: getEnv('MYSQL_HOST', 'string') || 'localhost',
+  database: process.env.MYSQL_DATABASE || 'mysql',
+  username: process.env.MYSQL_USERNAME || 'root',
+  password: process.env.MYSQL_PASSWORD || 'root',
+  dialect: 'mysql',
+  models: [path.join(__dirname, '../model')],
+  force: getEnv('MYSQL_FORCE', 'boolean') || false,
+  alter: getEnv('MYSQL_ALTER', 'boolean') || false
+};
+
+export default {
+  ...basicConfig,
+  redis: redisConfig,
+  sequelize: sequelizeConfig
+} as Record<string, any>;
