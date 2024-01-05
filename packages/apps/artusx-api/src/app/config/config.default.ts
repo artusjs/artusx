@@ -8,10 +8,12 @@ import { getEnv } from '../util';
 
 dotenv.config();
 
-const rateLimiter = new RateLimiterMemory({
+const rateLimiterOptions = {
   points: 6,
   duration: 1
-});
+};
+
+const rateLimiter = new RateLimiterMemory(rateLimiterOptions);
 
 const basicConfig: ArtusxConfig = {
   koa: {
@@ -19,7 +21,11 @@ const basicConfig: ArtusxConfig = {
     middlewares: [
       async function LimitRate(ctx: KoaContext, next: KoaNext) {
         try {
-          await rateLimiter.consume(ctx.ip);
+          const rateLimiterRes = await rateLimiter.consume(ctx.ip);
+          ctx.set('Retry-After', `${rateLimiterRes.msBeforeNext / 1000}`);
+          ctx.set('X-RateLimit-Limit', `${rateLimiterOptions.points}`);
+          ctx.set('X-RateLimit-Remaining', `${rateLimiterRes.remainingPoints}`);
+          ctx.set('X-RateLimit-Reset', `${new Date(Date.now() + rateLimiterRes.msBeforeNext)}`);
         } catch (rejRes) {
           ctx.status = 429;
           ctx.body = 'Too Many Requests';
