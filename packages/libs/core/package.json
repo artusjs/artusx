@@ -20,7 +20,8 @@
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
     "@artusx/plugin-application-http": "workspace:*",
-    "@koa/cors": "~5.0.0"
+    "@koa/cors": "~5.0.0",
+    "@koa/bodyparser": "~5.0.0"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.13"
