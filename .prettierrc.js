@@ -11,6 +11,6 @@ module.exports = {
   printWidth: 110,
 
   // Use .gitattributes to manage newlines
-  endOfLine: 'lf'
-  // plugins: ['./common/autoinstallers/rush-prettier/node_modules/prettier-plugin-packagejson']
+  endOfLine: 'lf',
+  plugins: ['./common/autoinstallers/rush-prettier/node_modules/prettier-plugin-packagejson']
 };
