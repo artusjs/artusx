@@ -1,11 +1,8 @@
-import { Server } from 'http';
 import { LifecycleHookUnit, LifecycleHook } from '@artus/core';
 import { ApplicationLifecycle } from '@artus/core';
 import { ArtusApplication, Inject, ArtusInjectEnum } from '@artus/core';
-
+import { ArtusXInjectEnum } from './constants';
 import Redis, { RedisConfig } from './client';
-
-export let server: Server;
 
 @LifecycleHookUnit()
 export default class RedisLifecycle implements ApplicationLifecycle {
@@ -14,7 +11,7 @@ export default class RedisLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const redis = this.app.container.get('ARTUS_REDIS') as Redis;
+    const redis = this.app.container.get(ArtusXInjectEnum.Redis) as Redis;
     await redis.init(this.app.config.redis as RedisConfig);
   }
 }

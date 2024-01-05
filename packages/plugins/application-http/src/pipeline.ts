@@ -1,8 +1,12 @@
 import { Pipeline, Context, Next } from '@artus/pipeline';
 import { Injectable, ScopeEnum } from '@artus/core';
+import { ArtusXInjectEnum } from './constants';
 
-@Injectable({ scope: ScopeEnum.SINGLETON })
-export default class HttpPipeline extends Pipeline {
+@Injectable({
+  id: ArtusXInjectEnum.Pipeline,
+  scope: ScopeEnum.SINGLETON
+})
+export default class ArtusPipeline extends Pipeline {
   constructor() {
     super();
 

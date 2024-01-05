@@ -1,5 +1,6 @@
 import { Injectable, ScopeEnum } from '@artus/core';
 import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
+import { ArtusXInjectEnum } from './constants';
 
 export interface SequelizeConfig extends SequelizeOptions {
   database: string;
@@ -11,7 +12,7 @@ export interface SequelizeConfig extends SequelizeOptions {
 }
 
 @Injectable({
-  id: 'ARTUS_SEQUELIZE',
+  id: ArtusXInjectEnum.Sequelize,
   scope: ScopeEnum.SINGLETON
 })
 export default class Client {

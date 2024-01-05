@@ -1,5 +1,6 @@
 import { Injectable, ScopeEnum } from '@artus/core';
 import { Redis, RedisOptions } from 'ioredis';
+import { ArtusXInjectEnum } from './constants';
 
 export interface RedisConfig extends RedisOptions {
   host: string;
@@ -10,7 +11,7 @@ export interface RedisConfig extends RedisOptions {
 }
 
 @Injectable({
-  id: 'ARTUS_REDIS',
+  id: ArtusXInjectEnum.Redis,
   scope: ScopeEnum.SINGLETON
 })
 export default class Client {

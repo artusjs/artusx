@@ -1,7 +1,5 @@
 import path from 'path';
-import Koa from 'koa';
-import cors from '@koa/cors';
-import Router from '@koa/router';
+import { Server } from 'http';
 
 import {
   Inject,
@@ -16,7 +14,7 @@ import { Input, Context } from '@artus/pipeline';
 
 import { CONTROLLER_METADATA, MIDDLEWARE_METADATA, ROUTER_METADATA, WEB_CONTROLLER_TAG } from './decorator';
 
-import HttpPipeline from './pipeline';
+import Pipeline from './pipeline';
 
 import type {
   ControllerMetadata,
@@ -26,15 +24,20 @@ import type {
   RouteMetadata
 } from './types';
 
+import KoaRouter from './koa/router';
+import KoaApplication from './koa/application';
+
+import type { Middleware as KoaMiddleware } from 'koa';
+
+export let server: Server;
+
 @LifecycleHookUnit()
 export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   private readonly app: ArtusApplication;
 
   @Inject()
-  pipeline: HttpPipeline;
-
-  private router = new Router();
+  pipeline: Pipeline;
 
   get container() {
     return this.app.container;
@@ -42,6 +45,14 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   get logger() {
     return this.app.logger;
+  }
+
+  get router(): KoaRouter {
+    return this.app.container.get(KoaRouter);
+  }
+
+  get koa(): KoaApplication {
+    return this.app.container.get(KoaApplication);
   }
 
   private registerRoute(
@@ -104,29 +115,29 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async didLoad() {
-    const middlewares = this.app.config.middlewares || [];
-    this.pipeline.use(middlewares);
+    const ArtusXMiddlewares = this.app.config.artusx.middlewares || [];
+    this.pipeline.use(ArtusXMiddlewares);
+
+    const koaMiddlewares: KoaMiddleware[] = this.app.config.koa.middlewares || [];
+    koaMiddlewares.map((middleware) => {
+      this.koa.use(middleware);
+    });
   }
 
   @LifecycleHook()
   public async willReady() {
     this.loadController();
+    const port = this.app.config.koa.port || 7001;
 
-    const app = new Koa();
-    const port = this.app.config.port || 7001;
-
-    app.use(
-      cors({
-        credentials: true,
-        origin(ctx) {
-          return ctx.get('Origin') || 'localhost';
-        }
-      })
-    );
-
-    app.use(this.router.routes());
-    app.listen(port, () => {
+    this.koa.use(this.router.routes());
+    server = this.koa.listen(port, () => {
       this.logger.info(`Server listening on: http://localhost:${port}`);
     });
+  }
+
+  @LifecycleHook()
+  beforeClose() {
+    this.logger.info('Server closing...');
+    server?.close();
   }
 }

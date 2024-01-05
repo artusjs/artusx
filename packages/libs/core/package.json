@@ -17,18 +17,21 @@
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@artusx/plugin-application-http": "workspace:*"
+    "@artus/core": "^2.x",
+    "@artus/pipeline": "^0.2",
+    "@artusx/plugin-application-http": "workspace:*",
+    "@koa/cors": "~5.0.0"
   },
   "peerDependencies": {
-    "@artus/core": "^2.x",
-    "@artus/pipeline": "^0.2"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
     "@types/node": "^18.11.17",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "@types/koa__cors": "~5.0.0"
   },
   "publishConfig": {
     "access": "public"

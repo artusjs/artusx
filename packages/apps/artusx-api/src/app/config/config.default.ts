@@ -6,8 +6,14 @@ import checkAuth from '../middleware/checkAuth';
 dotenv.config();
 
 export default {
-  port: 7001,
-  middlewares: [checkAuth],
+  koa: {
+    port: 7001
+    // middlewares: []
+  },
+
+  artusx: {
+    middlewares: [checkAuth]
+  },
 
   redis: {
     db: process.env.REDIS_DATABASE || 0,

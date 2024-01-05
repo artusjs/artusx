@@ -81,16 +81,24 @@ importers:
 
   ../../packages/libs/core:
     specifiers:
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
       '@artusx/plugin-application-http': workspace:*
+      '@koa/cors': ~5.0.0
+      '@types/koa__cors': ~5.0.0
       '@types/node': ^18.11.17
       ts-node: ^10.9.1
       tslib: ^2.5.0
       typescript: ^4.9.4
     dependencies:
+      '@artus/core': 2.2.0
+      '@artus/pipeline': 0.2.3
       '@artusx/plugin-application-http': link:../../plugins/application-http
+      '@koa/cors': 5.0.0
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
+      '@types/koa__cors': 5.0.0
       '@types/node': 18.19.4
       ts-node: 10.9.2_rjts7x5ipcoasow4czzl2kffka
       tslib: 2.6.2
@@ -120,10 +128,8 @@ importers:
       '@artus/core': ^2.x
       '@artus/pipeline': ^0.2
       '@artus/tsconfig': ^1.0.1
-      '@koa/cors': ^5.0.0
       '@koa/router': ^12.0.1
       '@types/koa': ^2.13.12
-      '@types/koa__cors': ^5.0.0
       '@types/koa__router': ^12.0.4
       '@types/node': ^18.11.17
       koa: ^2.15.0
@@ -132,13 +138,11 @@ importers:
     dependencies:
       '@artus/core': 2.2.0
       '@artus/pipeline': 0.2.3
-      '@koa/cors': 5.0.0
       '@koa/router': 12.0.1
       koa: 2.15.0
     devDependencies:
       '@artus/tsconfig': 1.0.1_@types+node@18.19.4
       '@types/koa': 2.13.12
-      '@types/koa__cors': 5.0.0
       '@types/koa__router': 12.0.4
       '@types/node': 18.19.4
       tslib: 2.6.2

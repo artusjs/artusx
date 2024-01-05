@@ -1,4 +1,10 @@
 export default {
-  port: 7001,
-  middlewares: []
+  artusx: {
+    middlewares: []
+  },
+
+  koa: {
+    port: 7001,
+    middlewares: []
+  }
 };

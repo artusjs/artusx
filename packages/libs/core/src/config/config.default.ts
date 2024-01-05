@@ -1,4 +1,5 @@
 export default {
-  port: 7001,
-  middlewares: []
+  koa: {
+    port: 7001
+  }
 };
