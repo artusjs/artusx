@@ -23,6 +23,7 @@ importers:
       dotenv: ^16.0.3
       fs-extra: ^11.1.0
       nodemon: ^3.0.2
+      rate-limiter-flexible: ~4.0.0
       reflect-metadata: ^0.1.13
       sequelize: ^6.28.0
       sequelize-typescript: ^2.1.5
@@ -41,6 +42,7 @@ importers:
       dotenv: 16.3.1
       fs-extra: 11.2.0
       nodemon: 3.0.2
+      rate-limiter-flexible: 4.0.0
       reflect-metadata: 0.1.14
       sequelize: 6.35.2
       sequelize-typescript: 2.1.6_i6nq3kehpgfhmastixysql3d54
@@ -1238,6 +1240,10 @@ packages:
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.4
+    dev: false
+
+  /rate-limiter-flexible/4.0.0:
+    resolution: {integrity: sha512-SkA18LEPqJJKHixi6E7tzBKTXbj9gu5wPyfTykPVRZR5JGSw0dMCjtZsjlfuabVY940pu28Wu87NZN4FhztnyQ==}
     dev: false
 
   /raw-body/2.5.2:

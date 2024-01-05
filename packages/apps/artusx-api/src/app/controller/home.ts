@@ -1,6 +1,6 @@
 import { ArtusInjectEnum, Inject } from '@artus/core';
 import { GET, POST, HTTPController, Middleware } from '../types';
-import type { HTTPContext } from '../types';
+import type { ArtusxContext } from '../types';
 
 @HTTPController()
 export default class HomeController {
@@ -8,12 +8,12 @@ export default class HomeController {
   config: Record<string, any>;
 
   @GET('/')
-  async home(ctx: HTTPContext) {
+  async home(ctx: ArtusxContext) {
     ctx.body = 'home';
   }
 
   @GET('/get')
-  async getInfo(ctx: HTTPContext) {
+  async getInfo(ctx: ArtusxContext) {
     ctx.body = {
       msg: 'get.'
     };
@@ -22,7 +22,7 @@ export default class HomeController {
   @Middleware([])
   @GET('/can-be-get')
   @POST('/post')
-  async postInfo(ctx: HTTPContext) {
+  async postInfo(ctx: ArtusxContext) {
     ctx.body = {
       msg: 'post.'
     };

@@ -18,8 +18,8 @@ import Pipeline from './pipeline';
 
 import type {
   ControllerMetadata,
-  HTTPContext,
-  HttpHandler,
+  ArtusxContext,
+  ArtusxHandler,
   MiddlewareMetadata,
   RouteMetadata
 } from './types';
@@ -59,7 +59,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     controllerMetadata: ControllerMetadata,
     routeMetadataList: RouteMetadata[],
     _middlewareMetadataList: MiddlewareMetadata[],
-    handler: HttpHandler
+    handler: ArtusxHandler
   ) {
     for (const routeMetadata of routeMetadataList) {
       const routePath = path.normalize(controllerMetadata.prefix ?? '/' + routeMetadata.path);
@@ -71,13 +71,12 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
         input.params.req = ctx.req;
         input.params.res = ctx.res;
 
-        // const context = await this.pipeline.initContext(input);
         const context = new Context(input);
         await this.pipeline.run(context);
         ctx.context = context;
 
         // handle request
-        handler(ctx as unknown as HTTPContext, next);
+        handler(ctx as unknown as ArtusxContext, next);
       });
     }
   }
@@ -113,10 +112,22 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     }
   }
 
+  private startHttpServer() {
+    const { port = 7001 } = this.app.config.koa;
+
+    const koa = this.koa;
+    const router = this.router;
+
+    koa.use(router.routes());
+    server = koa.listen(port, () => {
+      this.logger.info(`Server listening on: http://localhost:${port}`);
+    });
+  }
+
   @LifecycleHook()
   async didLoad() {
-    const ArtusXMiddlewares = this.app.config.artusx.middlewares || [];
-    this.pipeline.use(ArtusXMiddlewares);
+    const artusXMiddlewares = this.app.config.artusx.middlewares || [];
+    this.pipeline.use(artusXMiddlewares);
 
     const koaMiddlewares: KoaMiddleware[] = this.app.config.koa.middlewares || [];
     koaMiddlewares.map((middleware) => {
@@ -127,12 +138,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   @LifecycleHook()
   public async willReady() {
     this.loadController();
-    const port = this.app.config.koa.port || 7001;
-
-    this.koa.use(this.router.routes());
-    server = this.koa.listen(port, () => {
-      this.logger.info(`Server listening on: http://localhost:${port}`);
-    });
+    this.startHttpServer();
   }
 
   @LifecycleHook()

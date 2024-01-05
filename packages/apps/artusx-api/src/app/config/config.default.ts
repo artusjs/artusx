@@ -1,14 +1,31 @@
 import path from 'path';
 import dotenv from 'dotenv';
-
+import { RateLimiterMemory } from 'rate-limiter-flexible';
 import checkAuth from '../middleware/checkAuth';
+import { KoaContext, KoaNext } from '../types';
 
 dotenv.config();
 
+const rateLimiter = new RateLimiterMemory({
+  points: 6,
+  duration: 1
+});
+
 export default {
   koa: {
-    port: 7001
-    // middlewares: []
+    port: 7001,
+    middlewares: [
+      async function LimitRate(ctx: KoaContext, next: KoaNext) {
+        try {
+          await rateLimiter.consume(ctx.ip);
+        } catch (rejRes) {
+          ctx.status = 429;
+          ctx.body = 'Too Many Requests';
+          return;
+        }
+        await next();
+      }
+    ]
   },
 
   artusx: {

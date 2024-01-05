@@ -9,7 +9,7 @@ import {
 
 import cors from '@koa/cors';
 import { bodyParser } from '@koa/bodyparser';
-import KoaApplication from '@artusx/plugin-application-http/lib/koa/application';
+import { KoaApplication } from '@artusx/plugin-application-http';
 
 @LifecycleHookUnit()
 export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
@@ -22,7 +22,9 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async didLoad() {
-    this.koa.use(
+    const koa = this.koa;
+
+    koa.use(
       bodyParser({
         encoding: 'utf-8',
         onError(_err, ctx) {
@@ -31,7 +33,7 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
       })
     );
 
-    this.koa.use(
+    koa.use(
       cors({
         credentials: true,
         origin(ctx) {

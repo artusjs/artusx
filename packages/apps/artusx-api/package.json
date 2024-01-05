@@ -23,7 +23,8 @@
     "sequelize": "^6.28.0",
     "sequelize-typescript": "^2.1.5",
     "@artusx/plugin-sequelize": "workspace:*",
-    "@artusx/plugin-redis": "workspace:*"
+    "@artusx/plugin-redis": "workspace:*",
+    "rate-limiter-flexible": "~4.0.0"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
