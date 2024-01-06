@@ -76,7 +76,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
         ctx.context = context;
 
         // handle request
-        handler(ctx as unknown as ArtusxContext, next);
+        await handler(ctx as unknown as ArtusxContext, next);
       });
     }
   }

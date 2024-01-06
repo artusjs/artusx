@@ -6,4 +6,10 @@ import { ArtusXInjectEnum } from '../constants';
   id: ArtusXInjectEnum.Koa,
   scope: ScopeEnum.SINGLETON
 })
-export default class KoaApplication extends Koa {}
+export default class KoaApplication extends Koa {
+  constructor() {
+    super({
+      keys: process.env.KOA_KEYS?.split(',') ?? ['artusx']
+    });
+  }
+}
