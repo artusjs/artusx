@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "strictNullChecks": true,
     "resolveJsonModule": true,
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "outDir": "lib"
   },

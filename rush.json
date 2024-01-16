@@ -357,6 +357,13 @@
       "versionPolicyName": "public-library"
     },
     {
+      "packageName": "@artusx/plugin-express",
+      "projectFolder": "packages/plugins/express",
+      "tags": ["artus-plugin"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
+    },
+    {
       "packageName": "@artusx/plugin-application-http",
       "projectFolder": "packages/plugins/application-http",
       "tags": ["artus-plugin"],
@@ -381,6 +388,11 @@
     },
 
     // application
+    {
+      "packageName": "artusx-legacy",
+      "projectFolder": "packages/apps/artusx-legacy",
+      "tags": ["webapp"]
+    },
     {
       "packageName": "artusx-web",
       "projectFolder": "packages/apps/artusx-web",
