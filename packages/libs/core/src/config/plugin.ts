@@ -1,6 +1,6 @@
 export default {
-  'application-http': {
+  koa: {
     enable: true,
-    package: '@artusx/plugin-application-http'
+    package: '@artusx/plugin-koa'
   }
 };

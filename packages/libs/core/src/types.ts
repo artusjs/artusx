@@ -1,1 +1,1 @@
-export * from '@artusx/plugin-application-http';
+export * from '@artusx/plugin-koa';

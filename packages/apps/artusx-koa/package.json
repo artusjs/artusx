@@ -1,17 +1,17 @@
 {
-  "name": "artusx-web",
+  "name": "artusx-koa",
   "version": "1.0.0",
-  "description": "web for artusx",
+  "description": "koa for artusx",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon src/bootstrap.ts",
-    "build": ""
+    "build": "",
+    "dev": "npx nodemon src/bootstrap.ts"
   },
   "dependencies": {
-    "nodemon": "~3.0.2",
     "@artus/core": "^2.x",
     "@artusx/core": "workspace:*",
     "@artusx/utils": "workspace:*",
+    "nodemon": "~3.0.2",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

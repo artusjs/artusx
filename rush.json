@@ -357,6 +357,13 @@
       "versionPolicyName": "public-library"
     },
     {
+      "packageName": "@artusx/plugin-nest",
+      "projectFolder": "packages/plugins/nest",
+      "tags": ["artus-plugin"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-library"
+    },
+    {
       "packageName": "@artusx/plugin-express",
       "projectFolder": "packages/plugins/express",
       "tags": ["artus-plugin"],
@@ -364,8 +371,8 @@
       "versionPolicyName": "public-library"
     },
     {
-      "packageName": "@artusx/plugin-application-http",
-      "projectFolder": "packages/plugins/application-http",
+      "packageName": "@artusx/plugin-koa",
+      "projectFolder": "packages/plugins/koa",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
       "versionPolicyName": "public-library"
@@ -389,13 +396,18 @@
 
     // application
     {
-      "packageName": "artusx-legacy",
-      "projectFolder": "packages/apps/artusx-legacy",
+      "packageName": "artusx-nest",
+      "projectFolder": "packages/apps/artusx-nest",
       "tags": ["webapp"]
     },
     {
-      "packageName": "artusx-web",
-      "projectFolder": "packages/apps/artusx-web",
+      "packageName": "artusx-express",
+      "projectFolder": "packages/apps/artusx-express",
+      "tags": ["webapp"]
+    },
+    {
+      "packageName": "artusx-koa",
+      "projectFolder": "packages/apps/artusx-koa",
       "tags": ["webapp"]
     },
     {

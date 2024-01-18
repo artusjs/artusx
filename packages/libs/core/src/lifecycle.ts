@@ -9,7 +9,7 @@ import {
 
 import cors from '@koa/cors';
 import { bodyParser } from '@koa/bodyparser';
-import { KoaApplication } from '@artusx/plugin-application-http';
+import { KoaApplication } from '@artusx/plugin-koa';
 
 @LifecycleHookUnit()
 export default class ArtusXCoreLifecycle implements ApplicationLifecycle {

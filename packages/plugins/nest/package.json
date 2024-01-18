@@ -1,7 +1,7 @@
 {
-  "name": "@artusx/core",
+  "name": "@artusx/plugin-nest",
   "version": "1.0.1-dev.16",
-  "description": "core framework for artusx",
+  "description": "nest plugin for artusx",
   "keywords": [
     "artus.js"
   ],
@@ -12,13 +12,17 @@
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    },
+    "./client": {
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
     "./lifecycle": {
       "types": "./lib/lifecycle.d.ts",
       "default": "./lib/lifecycle.js"
-    },
-    "./types": {
-      "types": "./lib/types.d.ts",
-      "default": "./lib/types.js"
     }
   },
   "main": "lib/index.js",
@@ -34,15 +38,12 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "@artusx/plugin-koa": "workspace:*",
-    "@koa/bodyparser": "~5.0.0",
-    "@koa/cors": "~5.0.0"
+    "@nestjs/common": "~10.3.0",
+    "@nestjs/core": "~10.3.0"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
-    "@types/koa__cors": "~5.0.0",
     "@types/node": "^18.11.17",
-    "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
   },
