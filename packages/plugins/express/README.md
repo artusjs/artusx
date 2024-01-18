@@ -1,3 +1,3 @@
-# ArtusX plugin redis
+# ArtusX plugin express
 
 > https://github.com/thonatos/artusx

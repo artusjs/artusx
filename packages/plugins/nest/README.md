@@ -1,3 +1,3 @@
-# ArtusX plugin redis
+# ArtusX plugin nest
 
 > https://github.com/thonatos/artusx

@@ -1,3 +1,3 @@
-# ArtusX plugin application-http
+# ArtusX plugin koa
 
 > https://github.com/thonatos/artusx

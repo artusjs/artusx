@@ -16,7 +16,7 @@ pnpm i @artusx/core
 
 **plugins**
 
-- @artusx/plugin-application-http
+- @artusx/plugin-koa
 
 ### ArtusX Utils
 
@@ -44,10 +44,26 @@ pnpm i @artusx/plugin-sequelize
 
 ---
 
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-application-http.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-application-http)
+[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-koa.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-koa)
 
 ```bash
-pnpm i @artusx/plugin-application-http
+pnpm i @artusx/plugin-koa
+```
+
+---
+
+[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-express.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-express)
+
+```bash
+pnpm i @artusx/plugin-express
+```
+
+---
+
+[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nest.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nest)
+
+```bash
+pnpm i @artusx/plugin-nest
 ```
 
 ## Example
