@@ -7,7 +7,6 @@ export class AppController {
 
   @Get()
   async getHome(): Promise<string> {
-    const message = await this.appService.getHome();
-    return message;
+    return this.appService.getHome();
   }
 }

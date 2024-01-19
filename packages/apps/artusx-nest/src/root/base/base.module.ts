@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule, Module, Global } from '@nestjs/common';
 import { BaseService } from './base.service';
 
 export const BASE_MODULE_OPTIONS = 'BASE_MODULE_OPTIONS';
@@ -7,6 +7,7 @@ export interface BaseModuleOptions {
   container?: any;
 }
 
+@Global()
 @Module({})
 export class BaseModule {
   static register(options: BaseModuleOptions): DynamicModule {

@@ -13,7 +13,6 @@ export class BaseService {
 
   async getWelcomeMessage(): Promise<string> {
     const infoService = this.container.get(InfoService) as InfoService;
-    const info = await infoService.getName();
-    return info;
+    return infoService.getName();
   }
 }
