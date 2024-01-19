@@ -5,8 +5,13 @@ import KoaRouter from './koa/router';
 import KoaApplication from './koa/application';
 
 export enum HTTPMethod {
+  PUT = 'PUT',
   GET = 'GET',
-  POST = 'POST'
+  POST = 'POST',
+  HEAD = 'HEAD',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
+  OPTIONS = 'OPTIONS'
 }
 
 export interface ControllerMetadata {

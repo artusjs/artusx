@@ -62,7 +62,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     handler: ArtusxHandler
   ) {
     for (const routeMetadata of routeMetadataList) {
-      const routePath = path.normalize(controllerMetadata.prefix ?? '/' + routeMetadata.path);
+      const routePath = path.normalize((controllerMetadata.prefix ?? '/') + routeMetadata.path);
 
       this.router.register(routePath, [routeMetadata.method], async (ctx, next) => {
         // run pipeline

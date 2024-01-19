@@ -52,6 +52,26 @@ export const GET = (path: string) => {
   return buildMethodFactory(HTTPMethod.GET, path);
 };
 
+export const PUT = (path: string) => {
+  return buildMethodFactory(HTTPMethod.PUT, path);
+};
+
 export const POST = (path: string) => {
   return buildMethodFactory(HTTPMethod.POST, path);
+};
+
+export const HEAD = (path: string) => {
+  return buildMethodFactory(HTTPMethod.HEAD, path);
+};
+
+export const PATCH = (path: string) => {
+  return buildMethodFactory(HTTPMethod.PATCH, path);
+};
+
+export const DELETE = (path: string) => {
+  return buildMethodFactory(HTTPMethod.DELETE, path);
+};
+
+export const OPTIONS = (path: string) => {
+  return buildMethodFactory(HTTPMethod.OPTIONS, path);
 };
