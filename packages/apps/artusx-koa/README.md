@@ -1,4 +1,4 @@
-# ArtusX-Koa
+# artusx-koa
 
 > undefined project with web-server powered by ArtusX.
 

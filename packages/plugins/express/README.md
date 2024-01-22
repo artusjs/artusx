@@ -1,3 +1,1 @@
-# ArtusX plugin express
-
-> https://github.com/thonatos/artusx
+# @artusx/plugin-express

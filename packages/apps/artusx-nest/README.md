@@ -1,4 +1,4 @@
-# ArtusX-Nest
+# artusx-nest
 
 > undefined project with web-server powered by ArtusX.
 

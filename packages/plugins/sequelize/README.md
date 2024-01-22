@@ -1,3 +1,1 @@
-# ArtusX plugin sequelize
-
-> https://github.com/thonatos/artusx
+# @artusx/plugin-sequelize

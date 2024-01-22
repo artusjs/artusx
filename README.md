@@ -6,65 +6,15 @@
 
 ## Packages
 
-### ArtusX Framework
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)
-
-```bash
-pnpm i @artusx/core
-```
-
-**plugins**
-
-- @artusx/plugin-koa
-
-### ArtusX Utils
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/utils)
-
-```bash
-pnpm i @artusx/utils
-```
-
-### ArtusX Plugins
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-redis.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-redis)
-
-```bash
-pnpm i @artusx/plugin-redis
-```
-
----
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-sequelize.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-sequelize)
-
-```bash
-pnpm i @artusx/plugin-sequelize
-```
-
----
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-koa.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-koa)
-
-```bash
-pnpm i @artusx/plugin-koa
-```
-
----
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-express.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-express)
-
-```bash
-pnpm i @artusx/plugin-express
-```
-
----
-
-[![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nest.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nest)
-
-```bash
-pnpm i @artusx/plugin-nest
-```
+| packages                 |  Version                                                                                                                                           |
+|:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
+| @artusx/core             | [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)                          |
+| @artusx/utils            | [![NPM version](https://img.shields.io/npm/v/@artusx/utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/utils)                        |
+| @artusx/plugin-koa       | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-koa.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-koa)              |
+| @artusx/plugin-nest      | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nest.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nest)            |
+| @artusx/plugin-express   | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-express.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-express)      |
+| @artusx/plugin-redis     | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-redis.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-redis)          |
+| @artusx/plugin-sequelize | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-sequelize.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-sequelize)  |
 
 ## Example
 

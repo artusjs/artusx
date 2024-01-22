@@ -1,3 +1,1 @@
-# ArtusX plugin nest
-
-> https://github.com/thonatos/artusx
+# @artusx/plugin-nest

@@ -1,4 +1,4 @@
-# ArtusX-Express
+# artusx-express
 
 > undefined project with web-server powered by ArtusX.
 
