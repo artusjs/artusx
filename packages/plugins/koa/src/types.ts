@@ -19,7 +19,7 @@ export interface ControllerMetadata {
 }
 
 export interface MiddlewareMetadata {
-  middlewares: string[];
+  middlewares: KoaMiddleware[];
 }
 
 export interface RouteMetadata {

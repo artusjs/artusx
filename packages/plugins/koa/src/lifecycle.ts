@@ -58,26 +58,31 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   private registerRoute(
     controllerMetadata: ControllerMetadata,
     routeMetadataList: RouteMetadata[],
-    _middlewareMetadataList: MiddlewareMetadata[],
+    middlewareMetadata: MiddlewareMetadata,
     handler: ArtusxHandler
   ) {
     for (const routeMetadata of routeMetadataList) {
       const routePath = path.normalize((controllerMetadata.prefix ?? '/') + routeMetadata.path);
+      const middlewares = middlewareMetadata.middlewares || [];
+      this.router.register(
+        routePath,
+        [routeMetadata.method],
+        [
+          ...middlewares,
 
-      this.router.register(routePath, [routeMetadata.method], async (ctx, next) => {
-        // run pipeline
-        const input = new Input();
-        input.params.ctx = ctx;
-        input.params.req = ctx.req;
-        input.params.res = ctx.res;
+          async (ctx, next) => {
+            // run pipeline
+            const input = new Input();
+            const context = new Context(input);
+            ctx.context = context;
 
-        const context = new Context(input);
-        await this.pipeline.run(context);
-        ctx.context = context;
+            await this.pipeline.run(ctx as any);
 
-        // handle request
-        await handler(ctx as unknown as ArtusxContext, next);
-      });
+            // handle request
+            await handler(ctx as unknown as ArtusxContext, next);
+          }
+        ]
+      );
     }
   }
 
@@ -97,7 +102,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
         const routeMetadataList: RouteMetadata[] =
           Reflect.getMetadata(ROUTER_METADATA, handlerDescriptor.value) ?? [];
 
-        const middlewareMetadataList: MiddlewareMetadata[] =
+        const middlewareMetadata: MiddlewareMetadata =
           Reflect.getMetadata(MIDDLEWARE_METADATA, handlerDescriptor.value) ?? [];
 
         if (routeMetadataList.length === 0) continue;
@@ -105,7 +110,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
         this.registerRoute(
           controllerMetadata,
           routeMetadataList,
-          middlewareMetadataList,
+          middlewareMetadata,
           controller[key].bind(controller)
         );
       }

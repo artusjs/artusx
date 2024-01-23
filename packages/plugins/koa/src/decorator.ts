@@ -1,5 +1,7 @@
 import { addTag, Injectable, ScopeEnum } from '@artus/core';
-import { ControllerMetadata, MiddlewareMetadata, RouteMetadata, HTTPMethod } from './types';
+
+import { ControllerMetadata, MiddlewareMetadata, RouteMetadata, HTTPMethod, KoaMiddleware } from './types';
+
 export const ROUTER_METADATA = Symbol.for('ROUTE_METADATA');
 export const MIDDLEWARE_METADATA = Symbol.for('MIDDLEWARE_METADATA');
 
@@ -18,16 +20,13 @@ export function HTTPController(prefix?: string) {
   };
 }
 
-export const Middleware = (middlewares: string[]) => {
+export const Middleware = (middlewares: KoaMiddleware[]) => {
   return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
-    const middlewareMetadataList: MiddlewareMetadata[] =
-      Reflect.getMetadata(MIDDLEWARE_METADATA, descriptor.value) ?? [];
-
-    middlewareMetadataList.push({
+    const middlewareMetadata: MiddlewareMetadata = {
       middlewares
-    });
+    };
 
-    Reflect.defineMetadata(MIDDLEWARE_METADATA, middlewareMetadataList, descriptor.value);
+    Reflect.defineMetadata(MIDDLEWARE_METADATA, middlewareMetadata, descriptor.value);
 
     return descriptor;
   };
