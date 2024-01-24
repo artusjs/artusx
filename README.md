@@ -4,8 +4,6 @@
 
 > toolchain powered by artus.js .
 
-## Packages
-
 | packages                 |  Version                                                                                                                                           |
 |:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
 | @artusx/core             | [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)                          |
@@ -16,7 +14,29 @@
 | @artusx/plugin-redis     | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-redis.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-redis)          |
 | @artusx/plugin-sequelize | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-sequelize.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-sequelize)  |
 
-## Example
+## Packages
+
+The monorepo is managed by rush.js
+
+```bash
+packages
+├── apps
+│   ├── artusx-api
+│   ├── artusx-express
+│   ├── artusx-koa
+│   └── artusx-nest
+├── libs
+│   ├── core
+│   └── utils
+└── plugins
+    ├── express
+    ├── koa
+    ├── nest
+    ├── redis
+    └── sequelize
+```
+
+## Quickstart
 
 The code show how to run a simple web server using `@artusx/core`.
 
@@ -93,6 +113,9 @@ export NPM_AUTH_TOKEN={NPM_AUTH_TOKEN}
 # update version
 rush version --bump
 
-# publish to npm.js
+# publish with actions
+git release {version}
+
+# publish with rush.js
 rush publish --include-all --publish
 ```
