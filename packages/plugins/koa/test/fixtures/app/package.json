@@ -1,0 +1,4 @@
+{
+  "name": "koa-app",
+  "main": "src/index.ts"
+}
