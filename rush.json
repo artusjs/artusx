@@ -232,7 +232,7 @@
      */
     // "defaultRemote": "origin"
 
-    "url": "https://github.com/thonatos/artusx",
+    "url": "https://github.com/artusjs/artusx",
     "defaultRemote": "origin",
     "defaultBranch": "main"
   },

@@ -21,6 +21,14 @@
 
       // This will invoke common/autoinstallers/rush-prettier/node_modules/.bin/pretty-quick
       "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "commitlint",
+      "commandKind": "global",
+      "summary": "Used by the commit-msg Git hook. This command invokes commitlint to validate commit message.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-commitlint",
+      "shellCommand": "commitlint --edit ''"
     }
     // {
     //   /**

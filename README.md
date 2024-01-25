@@ -1,6 +1,6 @@
 # ArtusX
 
-[![Continuous Integration](https://github.com/thonatos/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/thonatos/artusx/actions/workflows/ci.yml)
+[![Continuous Integration](https://github.com/artusjs/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/artusjs/artusx/actions/workflows/ci.yml)
 
 > toolchain powered by artus.js .
 
