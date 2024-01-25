@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "",
-    "dev": "npx nodemon src/bootstrap.ts"
+    "ci": "npm run lint",
+    "dev": "npx nodemon src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "@artus/core": "^2.x",
@@ -15,8 +18,12 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "@artus/eslint-config-artus": "~0.0.1",
     "@artus/tsconfig": "~1.0.1",
     "@types/node": "~20.10.6",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "eslint": "~8.56.0",
+    "eslint-plugin-import": "~2.29.1",
     "nodemon": "~3.0.2",
     "ts-node": "~10.9.2",
     "tslib": "~2.6.2",

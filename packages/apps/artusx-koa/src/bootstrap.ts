@@ -1,11 +1,11 @@
 import path from 'path';
 import { Application } from '@artusx/utils';
 
-(async () => {
+export const main = async () => {
   const app = await Application.start({
     root: path.resolve(__dirname),
     configDir: 'config'
   });
 
-  console.log(app.config);
-})();
+  return app;
+};
