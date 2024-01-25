@@ -25,11 +25,11 @@ export const getProxy = () => {
     ip: proxy_ip,
     port: parseInt(proxy_port),
     socksType: parseInt(proxy_socket_type),
-    proxyString
+    proxyString,
   };
 };
 
-export const getEnv = <T extends unknown>(key: string, type?: string): T => {
+export const getEnv = <T>(key: string, type?: string): T => {
   const _env = process.env[key] || '';
 
   let target: unknown;

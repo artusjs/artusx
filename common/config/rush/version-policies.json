@@ -10,7 +10,7 @@
  */
 [
   {
-    "policyName": "public-library",
+    "policyName": "public",
     "definitionName": "lockStepVersion",
     "version": "1.0.1-dev.17",
     "nextBump": "prerelease"

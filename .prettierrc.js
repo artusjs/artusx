@@ -1,7 +1,7 @@
 // Documentation for this file: https://prettier.io/en/configuration.html
 
 module.exports = {
-  trailingComma: 'none',
+  trailingComma: 'es5',
   tabWidth: 2,
   semi: true,
   singleQuote: true,
@@ -12,5 +12,5 @@ module.exports = {
 
   // Use .gitattributes to manage newlines
   endOfLine: 'lf',
-  plugins: ['./common/autoinstallers/rush-prettier/node_modules/prettier-plugin-packagejson']
+  plugins: ['./common/autoinstallers/rush-prettier/node_modules/prettier-plugin-packagejson'],
 };

@@ -25,8 +25,8 @@ export default class AdministratorService {
   async checkAdministrator(chatId: string) {
     const administrator = await this.administrator.findOne({
       where: {
-        user_id: chatId
-      }
+        user_id: chatId,
+      },
     });
 
     return administrator;

@@ -102,7 +102,7 @@
    * To remove these restrictions, you could set projectFolderMinDepth=1
    * and set projectFolderMaxDepth to a large number.
    */
-  "projectFolderMinDepth": 3,
+  "projectFolderMinDepth": 2,
   "projectFolderMaxDepth": 3,
 
   /**
@@ -331,6 +331,7 @@
    * ".", and "@" characters.
    */
   // "allowedProjectTags": [ "tools", "frontend-team", "1.0.0-release" ],
+  "allowedProjectTags": ["artus-plugin", "artus-framework", "artus-utils", "webapp", "tools"],
 
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
@@ -347,35 +348,35 @@
       "projectFolder": "packages/plugins/redis",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-sequelize",
       "projectFolder": "packages/plugins/sequelize",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-nest",
       "projectFolder": "packages/plugins/nest",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-express",
       "projectFolder": "packages/plugins/express",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-koa",
       "projectFolder": "packages/plugins/koa",
       "tags": ["artus-plugin"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
 
     // framework / utils
@@ -384,14 +385,14 @@
       "projectFolder": "packages/libs/core",
       "tags": ["artus-framework"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/utils",
       "projectFolder": "packages/libs/utils",
-      "tags": ["artus-app"],
+      "tags": ["artus-utils"],
       "shouldPublish": true,
-      "versionPolicyName": "public-library"
+      "versionPolicyName": "public"
     },
 
     // application
@@ -414,6 +415,18 @@
       "packageName": "artusx-api",
       "projectFolder": "packages/apps/artusx-api",
       "tags": ["webapp"]
+    },
+
+    // toolchain
+    {
+      "packageName": "@artusx/eslint-config",
+      "projectFolder": "toolchains/eslint-config",
+      "tags": ["tools"]
+    },
+    {
+      "packageName": "@artusx/tsconfig",
+      "projectFolder": "toolchains/tsconfig",
+      "tags": ["tools"]
     }
     // {
     //   /**

@@ -6,7 +6,7 @@ import APIService from './api.service';
 @HTTPController('/api')
 export default class APIController {
   @Inject(ArtusInjectEnum.Config)
-  config: Record<string, any>;
+  config: Record<string, string | number>;
 
   @Inject(APIService)
   apiService: APIService;

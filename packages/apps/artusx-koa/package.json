@@ -8,7 +8,9 @@
     "ci": "npm run lint",
     "dev": "npx nodemon src/index.ts",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "start": "node dist/index.js",
+    "tsc": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@artus/core": "^2.x",
@@ -18,8 +20,8 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@artus/eslint-config-artus": "~0.0.1",
-    "@artus/tsconfig": "~1.0.1",
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
     "@types/node": "~20.10.6",
     "@typescript-eslint/eslint-plugin": "~6.19.1",
     "eslint": "~8.56.0",

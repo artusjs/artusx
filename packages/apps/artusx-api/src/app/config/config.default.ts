@@ -10,7 +10,7 @@ dotenv.config();
 
 const rateLimiterOptions = {
   points: 6,
-  duration: 1
+  duration: 1,
 };
 
 const rateLimiter = new RateLimiterMemory(rateLimiterOptions);
@@ -32,13 +32,13 @@ const basicConfig: ArtusxConfig = {
           return;
         }
         await next();
-      }
-    ]
+      },
+    ],
   },
 
   artusx: {
-    middlewares: [checkAuth]
-  }
+    middlewares: [checkAuth],
+  },
 };
 
 const redisConfig: RedisConfig = {
@@ -46,7 +46,7 @@ const redisConfig: RedisConfig = {
   port: getEnv('REDIS_PORT', 'number') || 6379,
   host: getEnv('REDIS_HOST', 'string') || 'localhost',
   username: process.env.REDIS_USERNAME || '',
-  password: process.env.REDIS_PASSWORD || ''
+  password: process.env.REDIS_PASSWORD || '',
 };
 
 const sequelizeConfig: SequelizeConfig = {
@@ -58,11 +58,11 @@ const sequelizeConfig: SequelizeConfig = {
   dialect: 'mysql',
   models: [path.join(__dirname, '../model')],
   force: getEnv('MYSQL_FORCE', 'boolean') || false,
-  alter: getEnv('MYSQL_ALTER', 'boolean') || false
+  alter: getEnv('MYSQL_ALTER', 'boolean') || false,
 };
 
 export default {
   ...basicConfig,
   redis: redisConfig,
-  sequelize: sequelizeConfig
-} as Record<string, any>;
+  sequelize: sequelizeConfig,
+} as Record<string, object>;

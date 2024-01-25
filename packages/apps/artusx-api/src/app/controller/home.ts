@@ -7,7 +7,7 @@ import traceTime from '../middleware/traceTime';
 @HTTPController()
 export default class HomeController {
   @Inject(ArtusInjectEnum.Config)
-  config: Record<string, any>;
+  config: Record<string, string | number>;
 
   @Middleware([traceTime])
   @GET('/')
@@ -18,7 +18,7 @@ export default class HomeController {
   @GET('/get')
   async getInfo(ctx: ArtusxContext) {
     ctx.body = {
-      msg: 'get.'
+      msg: 'get.',
     };
   }
 
@@ -26,7 +26,7 @@ export default class HomeController {
   @POST('/post')
   async postInfo(ctx: ArtusxContext) {
     ctx.body = {
-      msg: 'post.'
+      msg: 'post.',
     };
   }
 }

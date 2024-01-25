@@ -4,36 +4,42 @@
   "main": "dist/index.js",
   "bin": "dist/cli/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "npx nodemon src/index.ts",
     "build": "",
+    "dev": "npx nodemon src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "start": "node dist/index.js",
     "tsc": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
     "@artusx/core": "workspace:*",
+    "@artusx/plugin-redis": "workspace:*",
+    "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/utils": "workspace:*",
     "cron": "^2.2.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "fs-extra": "^11.1.0",
-    "nodemon": "^3.0.2",
+    "rate-limiter-flexible": "~4.0.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
-    "sequelize-typescript": "^2.1.5",
-    "@artusx/plugin-sequelize": "workspace:*",
-    "@artusx/plugin-redis": "workspace:*",
-    "rate-limiter-flexible": "~4.0.0"
+    "sequelize-typescript": "^2.1.5"
   },
   "devDependencies": {
-    "@artus/tsconfig": "^1.0.1",
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
     "@types/cron": "^2.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.17",
     "@types/validator": "^13.7.12",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "eslint": "~8.56.0",
+    "eslint-plugin-import": "~2.29.1",
+    "nodemon": "^3.0.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^4.9.4"
+    "typescript": "~5.3.3"
   }
 }

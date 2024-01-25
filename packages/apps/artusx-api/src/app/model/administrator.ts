@@ -3,13 +3,13 @@ import { Model, Table, Column, DataType, CreatedAt, UpdatedAt } from 'sequelize-
 @Table({
   tableName: 'administrators',
   timestamps: true,
-  paranoid: false
+  paranoid: false,
 })
 export class AdministratorModel extends Model {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   })
   id: number;
 

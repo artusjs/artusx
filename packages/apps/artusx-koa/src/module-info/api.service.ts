@@ -8,8 +8,8 @@ export default class APIService {
   async mockApi() {
     return {
       data: {
-        name: 'artusx'
-      }
+        name: 'artusx',
+      },
     };
   }
 }

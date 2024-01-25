@@ -1,0 +1,24 @@
+{
+  "name": "@artusx/eslint-config",
+  "version": "1.0.0",
+  "description": "Shared eslint rules",
+  "main": "index.js",
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "@artus/eslint-config-artus": "~0.0.1",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "@typescript-eslint/parser": "~6.19.1",
+    "eslint-config-prettier": "^7.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "~8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
