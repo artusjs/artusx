@@ -1,7 +1,7 @@
 import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artus/core';
 import { Sequelize, Repository } from 'sequelize-typescript';
 
-import { ISequelizeClient } from '../types';
+import ISequelizeClient from '@artusx/plugin-sequelize/client';
 import { AdministratorModel } from '../model/administrator';
 
 @Injectable()

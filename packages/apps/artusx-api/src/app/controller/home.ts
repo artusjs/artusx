@@ -1,6 +1,6 @@
 import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, POST, HTTPController, Middleware } from '../types';
-import type { ArtusxContext } from '../types';
+import { GET, POST, HTTPController, Middleware } from '@artusx/core';
+import type { ArtusxContext } from '@artusx/core';
 
 import traceTime from '../middleware/traceTime';
 

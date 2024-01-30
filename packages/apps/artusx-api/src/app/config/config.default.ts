@@ -2,8 +2,9 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
 import checkAuth from '../middleware/checkAuth';
-import { KoaContext, KoaNext, RedisConfig, SequelizeConfig } from '../types';
-import { ArtusxConfig } from '@artusx/core';
+import { ArtusxConfig, KoaContext, KoaNext } from '@artusx/core';
+import type { RedisConfig } from '@artusx/plugin-redis';
+import type { SequelizeConfig } from '@artusx/plugin-sequelize';
 import { getEnv } from '../util';
 
 dotenv.config();

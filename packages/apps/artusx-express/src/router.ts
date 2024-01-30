@@ -4,9 +4,11 @@ import {
   ApplicationLifecycle,
   Inject,
   LifecycleHook,
-  LifecycleHookUnit
+  LifecycleHookUnit,
 } from '@artus/core';
-import { ArtusXInjectEnum, IExpressClient } from './types';
+
+import IExpressClient from '@artusx/plugin-express/client';
+import { ArtusXInjectEnum } from '@artusx/plugin-express';
 
 @LifecycleHookUnit()
 export default class ExpressLifecycle implements ApplicationLifecycle {

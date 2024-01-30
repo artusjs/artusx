@@ -1,5 +1,5 @@
-import { HTTPController, GET, POST } from '../types';
-import type { ArtusxContext } from '../types';
+import { HTTPController, GET, POST } from '@artusx/core';
+import type { ArtusxContext } from '@artusx/core';
 
 @HTTPController()
 export default class HomeController {

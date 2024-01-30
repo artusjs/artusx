@@ -1,6 +1,6 @@
 import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, HTTPController } from '../types';
-import type { ArtusxContext } from '../types';
+import { GET, HTTPController } from '@artusx/core';
+import type { ArtusxContext } from '@artusx/core';
 import APIService from './api.service';
 
 @HTTPController('/api')
