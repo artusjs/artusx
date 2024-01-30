@@ -29,6 +29,12 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-commitlint",
       "shellCommand": "commitlint --edit ''"
+    },
+    {
+      "name": "artusx",
+      "commandKind": "global",
+      "summary": "project manager for monorepo",       
+      "shellCommand": "node toolchains/cli/dist/bin/cli.js"
     }
     // {
     //   /**
@@ -200,7 +206,7 @@
    * Custom "parameters" introduce new parameters for specified Rush command-line commands.
    * For example, you might define a "--production" parameter for the "rush build" command.
    */
-  "parameters": [
+  "parameters": [       
     // {
     //   /**
     //    * (Required) Determines the type of custom parameter.
@@ -414,5 +420,13 @@
     //     }
     //   ]
     // }
+    {      
+      "parameterKind": "string",
+      "longName": "--name",      
+      "description": "name for artusx cli",
+      "associatedCommands": [ "artusx" ],
+      "argumentName": "ARTUSX_NAME",
+      "required": true
+    }
   ]
 }

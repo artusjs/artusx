@@ -1,10 +1,8 @@
 /**
  * This is the main configuration file for Rush.
  * For full documentation, please see https://rushjs.io
- */
-{
+ */ {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-
   /**
    * (Required) This specifies the version of the Rush engine to be used in this repo.
    * Rush's "version selector" feature ensures that the globally installed tool will
@@ -17,7 +15,6 @@
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
   "rushVersion": "5.112.2",
-
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -27,10 +24,8 @@
    * for details about these alternatives.
    */
   "pnpmVersion": "7.33.5",
-
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
-
   /**
    * Older releases of the Node.js engine may be missing features required by your system.
    * Other releases may have bugs.  In particular, the "latest" version will not be a
@@ -44,7 +39,6 @@
    */
   // "nodeSupportedVersionRange": ">=14.15.0 <15.0.0 || >=16.13.0 <17.0.0 || >=18.15.0 <19.0.0",
   "nodeSupportedVersionRange": ">=18.x",
-
   /**
    * If the version check above fails, Rush will display a message showing the current
    * node version and the supported version range. You can use this setting to provide
@@ -52,7 +46,6 @@
    * tool or script you'd like the user to use to get in line with the expected version.
    */
   // "nodeSupportedVersionInstructions": "Run 'nvs use' to switch to the expected node version.",
-
   /**
    * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
    * spend six months in a stabilization period before the first Long Term Support (LTS) version.
@@ -65,7 +58,6 @@
    * to disable Rush's warning.
    */
   // "suppressNodeLtsWarning": false,
-
   /**
    * If you would like the version specifiers for your dependencies to be consistent, then
    * uncomment this line. This is effectively similar to running "rush check" before any
@@ -78,7 +70,6 @@
    * section of the common-versions.json.
    */
   // "ensureConsistentVersions": true,
-
   /**
    * Large monorepos can become intimidating for newcomers if project folder paths don't follow
    * a consistent and recognizable pattern.  When the system allows nested folder trees,
@@ -104,7 +95,6 @@
    */
   "projectFolderMinDepth": 2,
   "projectFolderMaxDepth": 3,
-
   /**
    * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
    * days there was no standard and hardly any enforcement.  A few large legacy projects are still using
@@ -117,7 +107,6 @@
    * The default value is false.
    */
   // "allowMostlyStandardPackageNames": true,
-
   /**
    * This feature helps you to review and approve new packages before they are introduced
    * to your monorepo.  For example, you may be concerned about licensing, code quality,
@@ -153,7 +142,6 @@
   //    */
   //   // "ignoredNpmScopes": ["@types"]
   // },
-
   /**
    * If you use Git as your version control system, this section has some additional
    * optional features you can use.
@@ -203,7 +191,6 @@
      */
     // "changefilesCommitMessage": "Rush change"
   },
-
   "repository": {
     /**
      * The URL of this Git repository, used by "rush change" to determine the base branch for your PR.
@@ -231,12 +218,10 @@
      * not set or if a remote matching the provided remote URL is not found.
      */
     // "defaultRemote": "origin"
-
     "url": "https://github.com/artusjs/artusx",
     "defaultRemote": "origin",
     "defaultBranch": "main"
   },
-
   /**
    * Event hooks are customized script actions that Rush executes when specific events occur
    */
@@ -247,33 +232,27 @@
     "preRushInstall": [
       // "common/scripts/pre-rush-install.js"
     ],
-
     /**
      * A list of shell commands to run after "rush install" or "rush update" finishes installation
      */
     "postRushInstall": [],
-
     /**
      * A list of shell commands to run before "rush build" or "rush rebuild" starts building
      */
     "preRushBuild": [],
-
     /**
      * A list of shell commands to run after "rush build" or "rush rebuild" finishes building
      */
     "postRushBuild": [],
-
     /**
      * A list of shell commands to run before the "rushx" command starts
      */
     "preRushx": [],
-
     /**
      * A list of shell commands to run after the "rushx" command finishes
      */
     "postRushx": []
   },
-
   /**
    * Installation variants allow you to maintain a parallel set of configuration files that can be
    * used to build the entire monorepo with an alternate set of dependencies.  For example, suppose
@@ -304,7 +283,6 @@
     //   "description": "Build this repo using the previous release of the SDK"
     // }
   ],
-
   /**
    * Rush can collect anonymous telemetry about everyday developer activity such as
    * success/failure of installs, builds, and other operations.  You can use this to identify
@@ -314,14 +292,12 @@
    * in the "eventHooks" section.
    */
   // "telemetryEnabled": false,
-
   /**
    * Allows creation of hotfix changes. This feature is experimental so it is disabled by default.
    * If this is set, 'rush change' only allows a 'hotfix' change type to be specified. This change type
    * will be used when publishing subsequent changes from the monorepo.
    */
   // "hotfixChangeEnabled": false,
-
   /**
    * This is an optional, but recommended, list of allowed tags that can be applied to Rush projects
    * using the "tags" setting in this file.  This list is useful for preventing mistakes such as misspelling,
@@ -331,8 +307,7 @@
    * ".", and "@" characters.
    */
   // "allowedProjectTags": [ "tools", "frontend-team", "1.0.0-release" ],
-  "allowedProjectTags": ["artus-plugin", "artus-framework", "artus-utils", "webapp", "tools"],
-
+  "allowedProjectTags": ["artus-plugins", "artus-framework", "artus-utils", "webapp", "tools"],
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
    *
@@ -342,92 +317,6 @@
    * 3. It's useful to have a centralized inventory of all projects and their important metadata.
    */
   "projects": [
-    // plugin
-    {
-      "packageName": "@artusx/plugin-redis",
-      "projectFolder": "packages/plugins/redis",
-      "tags": ["artus-plugin"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/plugin-sequelize",
-      "projectFolder": "packages/plugins/sequelize",
-      "tags": ["artus-plugin"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/plugin-nest",
-      "projectFolder": "packages/plugins/nest",
-      "tags": ["artus-plugin"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/plugin-express",
-      "projectFolder": "packages/plugins/express",
-      "tags": ["artus-plugin"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/plugin-koa",
-      "projectFolder": "packages/plugins/koa",
-      "tags": ["artus-plugin"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-
-    // framework / utils
-    {
-      "packageName": "@artusx/core",
-      "projectFolder": "packages/libs/core",
-      "tags": ["artus-framework"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/utils",
-      "projectFolder": "packages/libs/utils",
-      "tags": ["artus-utils"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-
-    // application
-    {
-      "packageName": "artusx-nest",
-      "projectFolder": "packages/apps/artusx-nest",
-      "tags": ["webapp"]
-    },
-    {
-      "packageName": "artusx-express",
-      "projectFolder": "packages/apps/artusx-express",
-      "tags": ["webapp"]
-    },
-    {
-      "packageName": "artusx-koa",
-      "projectFolder": "packages/apps/artusx-koa",
-      "tags": ["webapp"]
-    },
-    {
-      "packageName": "artusx-api",
-      "projectFolder": "packages/apps/artusx-api",
-      "tags": ["webapp"]
-    },
-
-    // toolchain
-    {
-      "packageName": "@artusx/eslint-config",
-      "projectFolder": "toolchains/eslint-config",
-      "tags": ["tools"]
-    },
-    {
-      "packageName": "@artusx/tsconfig",
-      "projectFolder": "toolchains/tsconfig",
-      "tags": ["tools"]
-    }
     // {
     //   /**
     //    * The NPM package name of the project (must match package.json)
@@ -525,5 +414,93 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
+    // framework / utils
+    {
+      "packageName": "@artusx/core",
+      "projectFolder": "packages/libs/core",
+      "tags": ["artus-framework"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/utils",
+      "projectFolder": "packages/libs/utils",
+      "tags": ["artus-utils"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    // application
+    {
+      "packageName": "artusx-nest",
+      "projectFolder": "packages/apps/artusx-nest",
+      "tags": ["webapp"]
+    },
+    {
+      "packageName": "artusx-express",
+      "projectFolder": "packages/apps/artusx-express",
+      "tags": ["webapp"]
+    },
+    {
+      "packageName": "artusx-koa",
+      "projectFolder": "packages/apps/artusx-koa",
+      "tags": ["webapp"]
+    },
+    {
+      "packageName": "artusx-api",
+      "projectFolder": "packages/apps/artusx-api",
+      "tags": ["webapp"]
+    },
+    // toolchain
+    {
+      "packageName": "@artusx/eslint-config",
+      "projectFolder": "toolchains/eslint-config",
+      "tags": ["tools"]
+    },
+    {
+      "packageName": "@artusx/tsconfig",
+      "projectFolder": "toolchains/tsconfig",
+      "tags": ["tools"]
+    },
+    {
+      "packageName": "@artusx/cli",
+      "projectFolder": "toolchains/cli",
+      "tags": ["tools"]
+    },
+    // plugin
+    {
+      "packageName": "@artusx/plugin-redis",
+      "projectFolder": "packages/plugins/redis",
+      "tags": ["artus-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-sequelize",
+      "projectFolder": "packages/plugins/sequelize",
+      "tags": ["artus-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-nest",
+      "projectFolder": "packages/plugins/nest",
+      "tags": ["artus-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-express",
+      "projectFolder": "packages/plugins/express",
+      "tags": ["artus-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-koa",
+      "projectFolder": "packages/plugins/koa",
+      "tags": ["artus-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    }
   ]
 }

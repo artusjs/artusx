@@ -1,0 +1,31 @@
+{
+  "name": "@artusx/cli",
+  "version": "1.0.1-dev.1",
+  "description": "command line interface for artusx",
+  "keywords": [
+    "artus.js"
+  ],
+  "type": "commonjs",
+  "bin": "dist/bin/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "dev": "ts-node src/bin/cli.ts",
+    "tsc": "rm -rf dist && tsc"
+  },
+  "dependencies": {
+    "@artus-cli/artus-cli": "~0.2.10",
+    "comment-json": "~4.2.3",
+    "egg-init": "~3.0.2"
+  },
+  "devDependencies": {
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
+    "@types/node": "~20.11.7",
+    "ts-node": "~10.9.2",
+    "tslib": "~2.6.2",
+    "typescript": "^4.9.4"
+  }
+}
