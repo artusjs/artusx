@@ -28,7 +28,9 @@ export class MainCommand extends Command {
     const boilerplatePath = path.join(__dirname, '../../boilerplate/plugin-boilerplate');
 
     try {
-      await new Init().run(target, ['--template=' + boilerplatePath, '--silent']);
+      await new Init({
+        name: '@artusx/cli',
+      }).run(target, ['--template=' + boilerplatePath, '--silent']);
     } catch (error) {
       console.error(error.stack);
       process.exit(1);
