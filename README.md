@@ -70,24 +70,18 @@ export default {
 `controller/home.ts`
 
 ```typescript
-import { GET, POST, HTTPController } from '../types';
-import type { HTTPContext } from '../types';
+import { GET, POST, HTTPController } from '@artusx/core';
+import type { ArtusxContext } from '@artusx/core';
 
 @HTTPController()
 export default class HomeController {
 
   @GET('/can-be-get')
   @POST('/post')
-  async home(ctx: HTTPContext) {
+  async home(ctx: ArtusxContext) {
     ctx.body = 'Hello World';
   }
 }
-```
-
-`types.ts`
-
-```typescript
-export * from '@artusx/core/lib/types';
 ```
 
 ## Development
@@ -114,7 +108,7 @@ export NPM_AUTH_TOKEN={NPM_AUTH_TOKEN}
 rush version --bump
 
 # publish with actions
-git release {version}
+git release {version} -m "chore: release {version}"
 
 # publish with rush.js
 rush publish --include-all --publish
