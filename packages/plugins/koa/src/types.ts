@@ -11,7 +11,7 @@ export enum HTTPMethod {
   HEAD = 'HEAD',
   PATCH = 'PATCH',
   DELETE = 'DELETE',
-  OPTIONS = 'OPTIONS'
+  OPTIONS = 'OPTIONS',
 }
 
 export interface ControllerMetadata {
@@ -27,11 +27,11 @@ export interface RouteMetadata {
   method: HTTPMethod;
 }
 
-interface ArtusxContext extends KoaContext {
+type ArtusxContext = KoaContext & {
   context: ArtusContext;
-}
+};
 
-interface ArtusxNext extends KoaNext {}
+type ArtusxNext = KoaNext & {};
 
 type ArtusxHandler = (ctx: ArtusxContext, next: ArtusxNext) => Promise<void>;
 
@@ -46,7 +46,7 @@ export {
   // artusx
   ArtusxContext,
   ArtusxNext,
-  ArtusxHandler
+  ArtusxHandler,
 };
 
 export interface ArtusxConfig {
