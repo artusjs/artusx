@@ -4,6 +4,7 @@ import json from 'comment-json';
 import Init from 'egg-init';
 import { DefineCommand, Command, Option } from '@artus-cli/artus-cli';
 
+const SCOPE_NAME = '@artusx';
 const ROOT_DIR = path.resolve(__dirname, '../../../..');
 const RUSH_CONFIG = path.join(ROOT_DIR, 'rush.json');
 
@@ -29,8 +30,8 @@ export class MainCommand extends Command {
 
     try {
       await new Init({
-        name: '@artusx/cli',
-      }).run(target, ['--template=' + boilerplatePath, '--silent']);
+        name: `${SCOPE_NAME}`,
+      }).run(target, ['--template=' + boilerplatePath]);
     } catch (error) {
       console.error(error.stack);
       process.exit(1);
@@ -53,11 +54,12 @@ export class MainCommand extends Command {
   async run() {
     const name = this.name;
     const type = 'plugins';
+    const tag = `artus-${type}`;
 
     const project: RushProject = {
-      packageName: `@artusx/${name}`,
+      packageName: `${SCOPE_NAME}/${name}`,
       projectFolder: `packages/${type}/${name}`,
-      tags: [`artus-${type}`],
+      tags: [tag],
       shouldPublish: true,
       versionPolicyName: 'public',
     };

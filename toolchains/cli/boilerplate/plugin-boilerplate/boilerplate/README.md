@@ -1,1 +1,1 @@
-# @artusx/plugin-{{name}}
+# {{packageName}}

@@ -1,7 +1,7 @@
 {
-  "name": "{{name}}",
+  "name": "{{packageName}}",
   "version": "0.0.0-dev.0",
-  "description": "{{name}} plugin for artusx",
+  "description": "{{description}}",
   "keywords": [
     "artus.js"
   ],
@@ -31,8 +31,9 @@
     "lib"
   ],
   "scripts": {
-    "build": "npm run tsc && npm run build:metadata",
-    "build:metadata": "cp meta.json ./lib/meta.json",
+    "build": "npm run tsc",    
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix", 
     "tsc": "rm -rf lib && tsc"
   },
   "dependencies": {
@@ -42,6 +43,9 @@
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",
     "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "eslint": "~8.56.0",
+    "eslint-plugin-import": "~2.29.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
   },

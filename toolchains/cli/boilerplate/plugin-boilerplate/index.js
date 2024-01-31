@@ -1,9 +1,20 @@
-module.exports = {
+
+
+  module.exports = {
     name: {
-      desc: 'plugin name',
-    },    
+      desc: 'name',
+    },
+    packageName: {
+      desc: 'package name',
+    },
+    description: {
+      desc: 'package description'
+    },
+    tags: {
+      desc: 'package tags'
+    }, 
     author: {
-      desc: 'plugin author',
-      default: 'Suyi <thonatos.yang@gmail.com>',
+      desc: 'package author',
+      default: 'Suyi <thonatos.yang@gmail.com>',   
     },
   };
