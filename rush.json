@@ -462,8 +462,8 @@
       "tags": ["tools"]
     },
     {
-      "packageName": "@artusx/cli",
-      "projectFolder": "toolchains/cli",
+      "packageName": "@artusx/init",
+      "projectFolder": "toolchains/artusx-init",
       "tags": ["tools"]
     },
     // plugin

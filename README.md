@@ -98,12 +98,14 @@ install deps
 rush update
 ```
 
-create new plugin (with @artusx/cli)
+create new package
 
 ```bash
-# create plugin with name @artusx/postgres
-# will also update projects in rush.json
-rush artusx --name postgres
+# build generator tools
+rush rebuild -t @artusx/init
+
+# create new package and update projects in rush.json
+rush gen --name postgres
 ```
 
 publish to npm.js
