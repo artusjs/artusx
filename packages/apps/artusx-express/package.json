@@ -11,11 +11,10 @@
     "@artus/core": "^2.x",
     "@artusx/plugin-express": "workspace:*",
     "@artusx/utils": "workspace:*",
-    "nodemon": "~3.0.2",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@artus/tsconfig": "~1.0.1",
+    "@artusx/tsconfig": "workspace:*",
     "@types/node": "~20.10.6",
     "nodemon": "~3.0.2",
     "ts-node": "~10.9.2",

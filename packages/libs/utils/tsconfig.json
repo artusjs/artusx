@@ -1,11 +1,8 @@
 {
-  "extends": "@artus/tsconfig",
+  "extends": "@artusx/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "types": ["node", "reflect-metadata"],
     "outDir": "lib"
   },
   "include": ["src/**/*.ts", "src/**/*.json"]

@@ -5,7 +5,7 @@ export async function createApp(baseDir: string) {
   const scanner = new ArtusScanner({
     needWriteFile: false,
     configDir: 'config',
-    extensions: ['.ts']
+    extensions: ['.ts'],
   });
   const manifest = await scanner.scan(baseDir);
 

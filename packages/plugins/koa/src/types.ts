@@ -1,4 +1,4 @@
-import type { Context as ArtusContext, Middleware as ArtusMiddleware } from '@artus/pipeline';
+import type { Context as ArtusContext } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
 import KoaRouter from './koa/router';
@@ -19,12 +19,16 @@ export interface ControllerMetadata {
 }
 
 export interface MiddlewareMetadata {
-  middlewares: KoaMiddleware[];
+  enable?: boolean;
 }
 
-export interface RouteMetadata {
+export interface HTTPRouteMetadata {
   path: string;
   method: HTTPMethod;
+}
+
+export interface HTTPMiddlewareMetadata {
+  middlewares: KoaMiddleware[];
 }
 
 type ArtusxContext = KoaContext & {
@@ -34,6 +38,16 @@ type ArtusxContext = KoaContext & {
 type ArtusxNext = KoaNext & {};
 
 type ArtusxHandler = (ctx: ArtusxContext, next: ArtusxNext) => Promise<void>;
+
+export interface ArtusxMiddleware {
+  use: ArtusxHandler;
+}
+
+export interface ArtusxConfig {
+  koa: {
+    port?: number;
+  };
+}
 
 export {
   // koa
@@ -48,14 +62,3 @@ export {
   ArtusxNext,
   ArtusxHandler,
 };
-
-export interface ArtusxConfig {
-  koa: {
-    port?: number;
-    middlewares?: KoaMiddleware[];
-  };
-
-  artusx: {
-    middlewares?: ArtusMiddleware[];
-  };
-}

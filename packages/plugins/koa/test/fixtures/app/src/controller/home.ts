@@ -1,7 +1,7 @@
-import { GET, HTTPController } from '../types';
+import { GET, Controller } from '../types';
 import type { ArtusxContext } from '../types';
 
-@HTTPController()
+@Controller()
 export default class HomeController {
   @GET('/')
   async home(ctx: ArtusxContext) {

@@ -4,7 +4,7 @@ import { ArtusXInjectEnum } from './constants';
 
 @Injectable({
   id: ArtusXInjectEnum.Pipeline,
-  scope: ScopeEnum.SINGLETON
+  scope: ScopeEnum.SINGLETON,
 })
 export default class ArtusPipeline extends Pipeline {
   constructor() {

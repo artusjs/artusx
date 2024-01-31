@@ -1,7 +1,7 @@
-import { HTTPController, GET, POST } from '@artusx/core';
+import { Controller, GET, POST } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 
-@HTTPController()
+@Controller()
 export default class HomeController {
   @GET('/')
   @POST('/')

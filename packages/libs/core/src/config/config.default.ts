@@ -1,7 +1,7 @@
-import { ArtusxConfig } from '../types';
+import type { ArtusxConfig } from '@artusx/plugin-koa';
 
 export default {
   koa: {
-    port: 7001
-  }
+    port: 7001,
+  },
 } as ArtusxConfig;
