@@ -31,8 +31,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "npm run tsc && npm run build:metadata",
-    "build:metadata": "cp meta.json ./lib/meta.json",
+    "build": "npm run tsc",
     "tsc": "rm -rf lib && tsc"
   },
   "dependencies": {
