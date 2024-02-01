@@ -145,6 +145,7 @@ export NPM_AUTH_TOKEN={NPM_AUTH_TOKEN}
 rush version --bump
 
 # publish with actions
+# git release v1.0.1-dev.20 -m "chore: release 1.0.1-dev.20"
 git release {version} -m "chore: release {version}"
 
 # publish with rush.js
