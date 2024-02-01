@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@artusx/core",
+      "comment": "update @artusx/plugin-koa",
+      "type": "none"
+    }
+  ],
+  "packageName": "@artusx/core"
+}

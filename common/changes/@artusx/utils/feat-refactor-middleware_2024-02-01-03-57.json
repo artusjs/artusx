@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@artusx/utils",
+      "comment": "update deps",
+      "type": "none"
+    }
+  ],
+  "packageName": "@artusx/utils"
+}
