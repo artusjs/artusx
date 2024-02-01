@@ -1,15 +1,15 @@
 import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, POST, HTTPController, Middleware } from '@artusx/core';
+import { GET, POST, Controller, MW } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 
 import traceTime from '../middleware/traceTime';
 
-@HTTPController()
+@Controller()
 export default class HomeController {
   @Inject(ArtusInjectEnum.Config)
   config: Record<string, string | number>;
 
-  @Middleware([traceTime])
+  @MW([traceTime])
   @GET('/')
   async home(ctx: ArtusxContext) {
     ctx.body = 'home';

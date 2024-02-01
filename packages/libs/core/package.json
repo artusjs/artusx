@@ -38,10 +38,10 @@
     "@koa/cors": "~5.0.0"
   },
   "devDependencies": {
-    "@artus/tsconfig": "^1.0.1",
+    "@artusx/tsconfig": "workspace:*",
     "@types/koa__cors": "~5.0.0",
     "@types/node": "^18.11.17",
-    "ts-node": "^10.9.1",
+    "reflect-metadata": "~0.2.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
   },

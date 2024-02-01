@@ -1,9 +1,9 @@
 import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, HTTPController } from '@artusx/core';
+import { GET, Controller } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 import APIService from './api.service';
 
-@HTTPController('/api')
+@Controller('/api')
 export default class APIController {
   @Inject(ArtusInjectEnum.Config)
   config: Record<string, string | number>;

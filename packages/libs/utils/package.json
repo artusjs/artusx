@@ -31,15 +31,18 @@
     "tsc": "rm -rf lib && tsc"
   },
   "dependencies": {
-    "@artus/core": "^2.x",
-    "reflect-metadata": "^0.1.13"
+    "@artus/core": "^2.x"
   },
   "devDependencies": {
-    "@artus/tsconfig": "^1.0.1",
+    "@artusx/tsconfig": "workspace:*",
     "@types/node": "^18.11.17",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
   },
   "publishConfig": {
     "access": "public"

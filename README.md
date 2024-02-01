@@ -70,10 +70,10 @@ export default {
 `controller/home.ts`
 
 ```typescript
-import { GET, POST, HTTPController } from '@artusx/core';
+import { GET, POST, Controller } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 
-@HTTPController()
+@Controller()
 export default class HomeController {
 
   @GET('/can-be-get')
@@ -105,7 +105,9 @@ create new package
 rush rebuild -t @artusx/init
 
 # create new package and update projects in rush.json
-rush gen --name postgres
+rush gen --name web --type apps
+rush gen --name common --type libs
+rush gen --name postgres --type plugins
 ```
 
 publish to npm.js

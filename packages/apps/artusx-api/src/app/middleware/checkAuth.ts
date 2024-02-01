@@ -1,8 +1,17 @@
-import { ArtusxContext, ArtusxNext } from '@artusx/core';
+import { ArtusInjectEnum, Inject } from '@artus/core';
+import { ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
 
-export default async function checkAuth(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
-  const { data } = ctx.context.output;
-  data.authed = false;
-  console.log('middleware - checkAuth', ctx.context);
-  await next();
+@Middleware({
+  enable: true,
+})
+export default class CheckAuthMiddleware {
+  @Inject(ArtusInjectEnum.Config)
+  config: Record<string, string | number>;
+
+  async use(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
+    const { data } = ctx.context.output;
+    data.authed = false;
+    console.log('middleware - checkAuth', ctx.context);
+    await next();
+  }
 }

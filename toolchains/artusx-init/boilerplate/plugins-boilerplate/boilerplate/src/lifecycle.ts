@@ -1,6 +1,4 @@
-import { LifecycleHookUnit, LifecycleHook } from '@artus/core';
-import { ApplicationLifecycle } from '@artus/core';
-import { ArtusApplication, Inject, ArtusInjectEnum } from '@artus/core';
+import { ApplicationLifecycle, ArtusApplication, Inject, ArtusInjectEnum, LifecycleHookUnit, LifecycleHook } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
 import Client from './client';
 

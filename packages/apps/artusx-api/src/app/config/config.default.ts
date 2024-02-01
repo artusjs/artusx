@@ -1,44 +1,16 @@
 import path from 'path';
 import dotenv from 'dotenv';
-import { RateLimiterMemory } from 'rate-limiter-flexible';
-import checkAuth from '../middleware/checkAuth';
-import { ArtusxConfig, KoaContext, KoaNext } from '@artusx/core';
+
+import { ArtusxConfig } from '@artusx/core';
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
 import { getEnv } from '../util';
 
 dotenv.config();
 
-const rateLimiterOptions = {
-  points: 6,
-  duration: 1,
-};
-
-const rateLimiter = new RateLimiterMemory(rateLimiterOptions);
-
 const basicConfig: ArtusxConfig = {
   koa: {
     port: 7001,
-    middlewares: [
-      async function LimitRate(ctx: KoaContext, next: KoaNext) {
-        try {
-          const rateLimiterRes = await rateLimiter.consume(ctx.ip);
-          ctx.set('Retry-After', `${rateLimiterRes.msBeforeNext / 1000}`);
-          ctx.set('X-RateLimit-Limit', `${rateLimiterOptions.points}`);
-          ctx.set('X-RateLimit-Remaining', `${rateLimiterRes.remainingPoints}`);
-          ctx.set('X-RateLimit-Reset', `${new Date(Date.now() + rateLimiterRes.msBeforeNext)}`);
-        } catch (rejRes) {
-          ctx.status = 429;
-          ctx.body = 'Too Many Requests';
-          return;
-        }
-        await next();
-      },
-    ],
-  },
-
-  artusx: {
-    middlewares: [checkAuth],
   },
 };
 

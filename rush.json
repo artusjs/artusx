@@ -307,7 +307,7 @@
    * ".", and "@" characters.
    */
   // "allowedProjectTags": [ "tools", "frontend-team", "1.0.0-release" ],
-  "allowedProjectTags": ["artus-plugins", "artus-framework", "artus-utils", "webapp", "tools"],
+  "allowedProjectTags": ["artusx-apps", "artusx-plugins", "artusx-libs", "artusx-tools"],
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
    *
@@ -414,91 +414,87 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
-    // framework / utils
     {
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/core",
-      "tags": ["artus-framework"],
+      "tags": ["artusx-libs"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/utils",
       "projectFolder": "packages/libs/utils",
-      "tags": ["artus-utils"],
+      "tags": ["artusx-libs"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
-    // application
     {
       "packageName": "artusx-nest",
       "projectFolder": "packages/apps/artusx-nest",
-      "tags": ["webapp"]
+      "tags": ["artusx-apps"]
     },
     {
       "packageName": "artusx-express",
       "projectFolder": "packages/apps/artusx-express",
-      "tags": ["webapp"]
+      "tags": ["artusx-apps"]
     },
     {
       "packageName": "artusx-koa",
       "projectFolder": "packages/apps/artusx-koa",
-      "tags": ["webapp"]
+      "tags": ["artusx-apps"]
     },
     {
       "packageName": "artusx-api",
       "projectFolder": "packages/apps/artusx-api",
-      "tags": ["webapp"]
+      "tags": ["artusx-apps"]
     },
-    // toolchain
     {
       "packageName": "@artusx/eslint-config",
       "projectFolder": "toolchains/eslint-config",
-      "tags": ["tools"]
+      "tags": ["artusx-tools"]
     },
     {
       "packageName": "@artusx/tsconfig",
       "projectFolder": "toolchains/tsconfig",
-      "tags": ["tools"]
+      "tags": ["artusx-tools"]
     },
     {
       "packageName": "@artusx/init",
       "projectFolder": "toolchains/artusx-init",
-      "tags": ["tools"]
+      "tags": ["artusx-tools"]
     },
-    // plugin
     {
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",
-      "tags": ["artus-plugins"],
+      "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-sequelize",
       "projectFolder": "packages/plugins/sequelize",
-      "tags": ["artus-plugins"],
+      "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-nest",
       "projectFolder": "packages/plugins/nest",
-      "tags": ["artus-plugins"],
+      "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-express",
       "projectFolder": "packages/plugins/express",
-      "tags": ["artus-plugins"],
+      "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-koa",
       "projectFolder": "packages/plugins/koa",
-      "tags": ["artus-plugins"],
+      "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
     }

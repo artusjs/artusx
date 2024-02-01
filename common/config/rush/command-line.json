@@ -210,9 +210,30 @@
     {      
       "parameterKind": "string",
       "longName": "--name",      
-      "description": "new package name",
+      "description": "new package name, lower-case and no special characters",
       "associatedCommands": [ "gen" ],
-      "argumentName": "ARTUSX_NAME",
+      "argumentName": "ARTUSX_GEN_NAME",
+      "required": true
+    },
+    {
+      "parameterKind": "choice",
+      "longName": "--type",
+      "description": "package type",
+      "associatedCommands": [ "gen" ],      
+      "alternatives": [
+        {
+          "name": "apps",
+          "description": "apps"
+        },
+        {
+          "name": "libs",
+          "description": "libs"
+        },
+        {
+          "name": "plugins",
+          "description": "plugins"
+        }        
+      ],
       "required": true
     }    
     // {

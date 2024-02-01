@@ -7,27 +7,34 @@ import {
   ArtusApplication,
   ApplicationLifecycle,
   LifecycleHook,
-  LifecycleHookUnit
+  LifecycleHookUnit,
 } from '@artus/core';
 
 import { Input, Context } from '@artus/pipeline';
 
-import { CONTROLLER_METADATA, MIDDLEWARE_METADATA, ROUTER_METADATA, WEB_CONTROLLER_TAG } from './decorator';
+import {
+  CLASS_CONTROLLER_TAG,
+  CLASS_CONTROLLER_METADATA,
+  CLASS_MIDDLEWARE_TAG,
+  CLASS_MIDDLEWARE_METADATA,
+  HTTP_MIDDLEWARE_METADATA,
+  HTTP_ROUTER_METADATA,
+} from './decorator';
 
 import Pipeline from './pipeline';
 
 import type {
   ControllerMetadata,
-  ArtusxContext,
-  ArtusxHandler,
   MiddlewareMetadata,
-  RouteMetadata
+  ArtusxHandler,
+  ArtusxContext,
+  ArtusxMiddleware,
+  HTTPRouteMetadata,
+  HTTPMiddlewareMetadata,
 } from './types';
 
 import KoaRouter from './koa/router';
 import KoaApplication from './koa/application';
-
-import type { Middleware as KoaMiddleware } from 'koa';
 
 export let server: Server;
 
@@ -57,8 +64,8 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   private registerRoute(
     controllerMetadata: ControllerMetadata,
-    routeMetadataList: RouteMetadata[],
-    middlewareMetadata: MiddlewareMetadata,
+    routeMetadataList: HTTPRouteMetadata[],
+    middlewareMetadata: HTTPMiddlewareMetadata,
     handler: ArtusxHandler
   ) {
     for (const routeMetadata of routeMetadataList) {
@@ -80,18 +87,17 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
             // handle request
             await handler(ctx as unknown as ArtusxContext, next);
-          }
+          },
         ]
       );
     }
   }
 
   private loadController() {
-    const controllerClazzList = this.container.getInjectableByTag(WEB_CONTROLLER_TAG);
+    const controllerClazzList = this.container.getInjectableByTag(CLASS_CONTROLLER_TAG);
 
     for (const controllerClazz of controllerClazzList) {
-      const controllerMetadata = Reflect.getMetadata(CONTROLLER_METADATA, controllerClazz);
-
+      const controllerMetadata = Reflect.getMetadata(CLASS_CONTROLLER_METADATA, controllerClazz);
       const controller = this.container.get(controllerClazz) as any;
 
       const handlerDescriptorList = Object.getOwnPropertyDescriptors(controllerClazz.prototype);
@@ -99,11 +105,11 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
       for (const key of Object.keys(handlerDescriptorList)) {
         const handlerDescriptor = handlerDescriptorList[key];
 
-        const routeMetadataList: RouteMetadata[] =
-          Reflect.getMetadata(ROUTER_METADATA, handlerDescriptor.value) ?? [];
+        const routeMetadataList: HTTPRouteMetadata[] =
+          Reflect.getMetadata(HTTP_ROUTER_METADATA, handlerDescriptor.value) ?? [];
 
-        const middlewareMetadata: MiddlewareMetadata =
-          Reflect.getMetadata(MIDDLEWARE_METADATA, handlerDescriptor.value) ?? [];
+        const middlewareMetadata: HTTPMiddlewareMetadata =
+          Reflect.getMetadata(HTTP_MIDDLEWARE_METADATA, handlerDescriptor.value) ?? [];
 
         if (routeMetadataList.length === 0) continue;
 
@@ -114,6 +120,24 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
           controller[key].bind(controller)
         );
       }
+    }
+  }
+
+  private registerMiddleware(middlewareMetadata: MiddlewareMetadata, handler: ArtusxHandler) {
+    if (middlewareMetadata.enable === false) {
+      return;
+    }
+
+    this.pipeline.use(handler);
+  }
+
+  private loadMiddleware() {
+    const middlewareClazzList = this.container.getInjectableByTag(CLASS_MIDDLEWARE_TAG);
+    for (const middlewareClazz of middlewareClazzList) {
+      const middlewareMetadata = Reflect.getMetadata(CLASS_MIDDLEWARE_METADATA, middlewareClazz);
+      const middleware: ArtusxMiddleware = this.container.get(middlewareClazz) as any;
+
+      this.registerMiddleware(middlewareMetadata, middleware.use.bind(middleware));
     }
   }
 
@@ -130,19 +154,12 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   }
 
   @LifecycleHook()
-  async didLoad() {
-    const artusXMiddlewares = this.app.config.artusx.middlewares || [];
-    this.pipeline.use(artusXMiddlewares);
-
-    const koaMiddlewares: KoaMiddleware[] = this.app.config.koa.middlewares || [];
-    koaMiddlewares.map((middleware) => {
-      this.koa.use(middleware);
-    });
-  }
+  async didLoad() {}
 
   @LifecycleHook()
   public async willReady() {
     this.loadController();
+    this.loadMiddleware();
     this.startHttpServer();
   }
 
