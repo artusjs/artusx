@@ -4,7 +4,14 @@ import json from 'comment-json';
 import Init from 'egg-init';
 import { DefineCommand, Command, Option } from '@artus-cli/artus-cli';
 
-import { SCOPE_NAME, RUSH_ROOT_PATH, RUSH_CONFIG_PATH, BOILERPLATES } from '../constants';
+import {
+  PKG_SCOPE_NAME,
+  PKG_PREFIX_NAME,
+  RUSH_ROOT_PATH,
+  RUSH_CONFIG_PATH,
+  BOILERPLATES,
+  PKG_TYPE_ENUM,
+} from '../constants';
 
 @DefineCommand()
 export class MainCommand extends Command {
@@ -26,7 +33,7 @@ export class MainCommand extends Command {
     const target = path.join(RUSH_ROOT_PATH, project.projectFolder);
     try {
       await new Init({
-        name: `${SCOPE_NAME}`,
+        name: `${PKG_SCOPE_NAME}`,
       }).run(target, ['--template=' + boilerplatePath]);
     } catch (error) {
       console.error(error.stack);
@@ -51,8 +58,22 @@ export class MainCommand extends Command {
     const name = this.name;
     const type = this.type;
 
+    let packageName = name;
+
+    if (type == PKG_TYPE_ENUM.App) {
+      packageName = `${PKG_PREFIX_NAME}-${name}`;
+    }
+
+    if (type == PKG_TYPE_ENUM.Lib) {
+      packageName = `${PKG_SCOPE_NAME}/${name}`;
+    }
+
+    if (type == PKG_TYPE_ENUM.Plugin) {
+      packageName = `${PKG_SCOPE_NAME}/plugin-${name}`;
+    }
+
     const project: RushProject = {
-      packageName: `${SCOPE_NAME}/${name}`,
+      packageName: `${PKG_SCOPE_NAME}/${name}`,
       projectFolder: `packages/${type}/${name}`,
       tags: [`artusx-${type}`],
       shouldPublish: type !== 'apps' ? true : undefined,

@@ -1,6 +1,13 @@
 import path from 'path';
 
-export const SCOPE_NAME = '@artusx';
+export enum PKG_TYPE_ENUM {
+  App = 'apps',
+  Lib = 'libs',
+  Plugin = 'plugins',
+}
+
+export const PKG_SCOPE_NAME = '@artusx';
+export const PKG_PREFIX_NAME = 'artusx';
 
 export const RUSH_ROOT_PATH = path.resolve(__dirname, '../../../..');
 export const RUSH_CONFIG_PATH = path.join(RUSH_ROOT_PATH, 'rush.json');
@@ -8,7 +15,7 @@ export const RUSH_VERSION_PATH = path.join(RUSH_ROOT_PATH, 'common/config/rush/v
 
 export const BOILERPLATE_PATH = path.join(__dirname, '../../boilerplate');
 export const BOILERPLATES = {
-  apps: path.join(BOILERPLATE_PATH, 'apps-boilerplate'),
-  libs: path.join(BOILERPLATE_PATH, 'libs-boilerplate'),
-  plugins: path.join(BOILERPLATE_PATH, 'plugins-boilerplate'),
+  [PKG_TYPE_ENUM.App]: path.join(BOILERPLATE_PATH, 'apps-boilerplate'),
+  [PKG_TYPE_ENUM.Lib]: path.join(BOILERPLATE_PATH, 'libs-boilerplate'),
+  [PKG_TYPE_ENUM.Plugin]: path.join(BOILERPLATE_PATH, 'plugins-boilerplate'),
 };

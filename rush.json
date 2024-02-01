@@ -497,6 +497,13 @@
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-xtransit",
+      "projectFolder": "packages/plugins/xtransit",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
     }
   ]
 }
