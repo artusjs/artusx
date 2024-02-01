@@ -67,6 +67,31 @@ export default {
 };
 ```
 
+`middleware/traceTime.ts`
+
+```ts
+import { ArtusInjectEnum, Inject } from '@artus/core';
+import { ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
+
+@Middleware({
+  enable: true,
+})
+export default class TraceTimeMiddleware {
+  @Inject(ArtusInjectEnum.Config)
+  config: Record<string, string | number>;
+
+  async use(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
+    const { data } = ctx.context.output;
+    data.traced = true;
+    console.log('middleware - traceTime', ctx.context);
+
+    console.time('trace');
+    await next();    
+    console.timeEnd('trace');
+  }
+}
+```
+
 `controller/home.ts`
 
 ```typescript
