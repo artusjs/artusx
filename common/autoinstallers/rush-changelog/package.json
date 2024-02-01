@@ -1,0 +1,8 @@
+{
+  "name": "rush-changelog",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "conventional-changelog-cli": "^4.1.0"
+  }
+}

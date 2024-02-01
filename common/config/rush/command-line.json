@@ -31,6 +31,14 @@
       "shellCommand": "commitlint --edit ''"
     },
     {
+      "name": "changelog",
+      "commandKind": "global",
+      "summary": "Changelog for monorepo. This command invokes conventional-changelog-cli to generate changelog.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-changelog",
+      "shellCommand": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    },
+    {
       "name": "gen",
       "commandKind": "global",
       "summary": "Generator for monorepo, This command invokes toolchains to create a new package.",
