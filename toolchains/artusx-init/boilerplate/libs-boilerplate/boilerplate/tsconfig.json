@@ -1,0 +1,9 @@
+{
+  "extends": "@artusx/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",    
+    "types": ["node", "reflect-metadata"],
+    "outDir": "lib"
+  },
+  "include": ["src/**/*.ts", "src/**/*.json"]
+}

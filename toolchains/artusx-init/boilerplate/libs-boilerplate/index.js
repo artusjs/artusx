@@ -1,11 +1,10 @@
-
-
-  module.exports = {
+module.exports = {
     name: {
       desc: 'name',
     },
     packageName: {
       desc: 'package name',
+      default: '@artusx/default-lib'
     },
     description: {
       desc: 'package description'
@@ -15,6 +14,6 @@
     }, 
     author: {
       desc: 'package author',
-      default: 'Suyi <thonatos.yang@gmail.com>',   
+      default: 'Suyi <thonatos.yang@gmail.com>',      
     },
   };

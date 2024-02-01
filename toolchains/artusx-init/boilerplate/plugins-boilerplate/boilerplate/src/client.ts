@@ -3,7 +3,7 @@ import { ArtusXInjectEnum } from './constants';
 
 @Injectable({
   id: ArtusXInjectEnum.Client,
-  scope: ScopeEnum.SINGLETON
+  scope: ScopeEnum.SINGLETON,
 })
 export default class Client {
   async init(config) {

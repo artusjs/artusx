@@ -1,0 +1,7 @@
+{
+  "extends": "@artusx/tsconfig",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"]
+}
