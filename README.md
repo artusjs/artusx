@@ -35,6 +35,7 @@ packages
     ├── koa
     ├── nest
     ├── redis
+    ├── log4js
     ├── xtransit
     └── sequelize
 ```
