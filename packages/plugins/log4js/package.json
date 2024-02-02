@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-log4js",
-  "version": "0.0.0-dev.0",
+  "version": "1.0.1-dev.22",
   "description": "log4js plugin for artusx",
   "keywords": [
     "artus.js"
