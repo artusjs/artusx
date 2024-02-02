@@ -1,3 +1,3 @@
 export enum ArtusXInjectEnum {
-  Client = 'ARTUSX_xtransit',
+  Client = 'ARTUSX_XTRANSIT',
 }

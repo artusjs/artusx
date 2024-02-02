@@ -10,9 +10,9 @@ export interface NestConfig extends NestApplicationOptions {
 
 @Injectable({
   id: ArtusXInjectEnum.Nest,
-  scope: ScopeEnum.SINGLETON
+  scope: ScopeEnum.SINGLETON,
 })
-export default class Client {
+export default class NestClient {
   private _app: INestApplication;
 
   async init(module: any, options?: NestApplicationOptions) {

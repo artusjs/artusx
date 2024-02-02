@@ -162,6 +162,7 @@ importers:
       '@artus/core': ^2.x
       '@artus/pipeline': ^0.2
       '@artusx/plugin-koa': workspace:*
+      '@artusx/plugin-log4js': workspace:*
       '@artusx/plugin-xtransit': workspace:*
       '@artusx/tsconfig': workspace:*
       '@koa/bodyparser': ~5.0.0
@@ -175,6 +176,7 @@ importers:
       '@artus/core': 2.2.2_reflect-metadata@0.2.1
       '@artus/pipeline': 0.2.3
       '@artusx/plugin-koa': link:../../plugins/koa
+      '@artusx/plugin-log4js': link:../../plugins/log4js
       '@artusx/plugin-xtransit': link:../../plugins/xtransit
       '@koa/bodyparser': 5.0.0
       '@koa/cors': 5.0.0
@@ -257,6 +259,41 @@ importers:
       '@types/jest': 29.5.12
       '@types/koa': 2.14.0
       '@types/koa__router': 12.0.4
+      '@types/node': 18.19.14
+      '@typescript-eslint/eslint-plugin': 6.19.1_7sjm5uif3lrlodkmlzqsvrpzla
+      eslint: 8.56.0
+      eslint-plugin-import: 2.29.1_eslint@8.56.0
+      jest: 29.7.0_@types+node@18.19.14
+      reflect-metadata: 0.2.1
+      ts-jest: 29.1.2_67xnt3v64q2pgz6kguni4h37hu
+      tslib: 2.6.2
+      typescript: 4.9.5
+
+  ../../packages/plugins/log4js:
+    specifiers:
+      '@artus/core': ^2.x
+      '@artus/pipeline': ^0.2
+      '@artusx/eslint-config': workspace:*
+      '@artusx/tsconfig': workspace:*
+      '@types/jest': ~29.5.11
+      '@types/node': ^18.11.17
+      '@typescript-eslint/eslint-plugin': ~6.19.1
+      eslint: ~8.56.0
+      eslint-plugin-import: ~2.29.1
+      jest: ~29.7.0
+      log4js: ~6.9.1
+      reflect-metadata: ~0.2.1
+      ts-jest: ~29.1.2
+      tslib: ^2.5.0
+      typescript: ^4.9.4
+    dependencies:
+      '@artus/core': 2.2.2_reflect-metadata@0.2.1
+      '@artus/pipeline': 0.2.3
+      log4js: 6.9.1
+    devDependencies:
+      '@artusx/eslint-config': link:../../../toolchains/eslint-config
+      '@artusx/tsconfig': link:../../../toolchains/tsconfig
+      '@types/jest': 29.5.12
       '@types/node': 18.19.14
       '@typescript-eslint/eslint-plugin': 6.19.1_7sjm5uif3lrlodkmlzqsvrpzla
       eslint: 8.56.0
@@ -3179,6 +3216,11 @@ packages:
       which: 2.0.2
     dev: true
 
+  /date-format/4.0.14:
+    resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
+    engines: {node: '>=4.0'}
+    dev: false
+
   /dayjs/1.11.10:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
@@ -4027,7 +4069,6 @@ packages:
 
   /flatted/3.2.9:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
-    dev: true
 
   /flushwritable/1.0.0:
     resolution: {integrity: sha512-3VELfuWCLVzt5d2Gblk8qcqFro6nuwvxwMzHaENVDHI7rxcBRtMCwTk/E9FXcgh+82DSpavPNDueA9+RxXJoFg==}
@@ -4101,6 +4142,15 @@ packages:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.1
+    dev: false
+
+  /fs-extra/8.1.0:
+    resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
+    engines: {node: '>=6 <7 || >=8'}
+    dependencies:
+      graceful-fs: 4.2.11
+      jsonfile: 4.0.0
+      universalify: 0.1.2
     dev: false
 
   /fs-minipass/2.1.0:
@@ -5488,6 +5538,12 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  /jsonfile/4.0.0:
+    resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
+    optionalDependencies:
+      graceful-fs: 4.2.11
+    dev: false
+
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
     dependencies:
@@ -5661,6 +5717,19 @@ packages:
     dependencies:
       chalk: 4.1.2
       is-unicode-supported: 0.1.0
+    dev: false
+
+  /log4js/6.9.1:
+    resolution: {integrity: sha512-1somDdy9sChrr9/f4UlzhdaGfDR2c/SaD2a4T7qEkG4jTS57/B3qmnjLYePwQ8cqWnUHZI0iAKxMBpCZICiZ2g==}
+    engines: {node: '>=8.0'}
+    dependencies:
+      date-format: 4.0.14
+      debug: 4.3.4
+      flatted: 3.2.9
+      rfdc: 1.3.1
+      streamroller: 3.1.5
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /long/5.2.3:
@@ -6846,6 +6915,10 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
+  /rfdc/1.3.1:
+    resolution: {integrity: sha512-r5a3l5HzYlIC68TpmYKlxWjmOP6wiPJ1vWv2HeLhNsRZMrCkxeqxiHlQ21oXmQ4F3SiryXBHhAD7JZqvOJjFmg==}
+    dev: false
+
   /rimraf/2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
     hasBin: true
@@ -7345,6 +7418,17 @@ packages:
   /streamifier/0.1.1:
     resolution: {integrity: sha512-zDgl+muIlWzXNsXeyUfOk9dChMjlpkq0DRsxujtYPgyJ676yQ8jEm6zzaaWHFDg5BNcLuif0eD2MTyJdZqXpdg==}
     engines: {node: '>=0.10'}
+    dev: false
+
+  /streamroller/3.1.5:
+    resolution: {integrity: sha512-KFxaM7XT+irxvdqSP1LGLgNWbYN7ay5owZ3r/8t77p+EtSUAfUgtl7be3xtqtOmGUl9K9YPO2ca8133RlTjvKw==}
+    engines: {node: '>=8.0'}
+    dependencies:
+      date-format: 4.0.14
+      debug: 4.3.4
+      fs-extra: 8.1.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /streamsearch/1.1.0:
@@ -8021,6 +8105,11 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       imurmurhash: 0.1.4
+    dev: false
+
+  /universalify/0.1.2:
+    resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
+    engines: {node: '>= 4.0.0'}
     dev: false
 
   /universalify/2.0.1:

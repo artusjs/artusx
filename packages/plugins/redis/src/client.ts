@@ -12,9 +12,9 @@ export interface RedisConfig extends RedisOptions {
 
 @Injectable({
   id: ArtusXInjectEnum.Redis,
-  scope: ScopeEnum.SINGLETON
+  scope: ScopeEnum.SINGLETON,
 })
-export default class Client {
+export default class RedistClient {
   private redis: Redis;
 
   async init(config: RedisConfig) {

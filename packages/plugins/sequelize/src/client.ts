@@ -13,9 +13,9 @@ export interface SequelizeConfig extends SequelizeOptions {
 
 @Injectable({
   id: ArtusXInjectEnum.Sequelize,
-  scope: ScopeEnum.SINGLETON
+  scope: ScopeEnum.SINGLETON,
 })
-export default class Client {
+export default class SequelizeClient {
   private sequelize: Sequelize;
 
   async init(config: SequelizeConfig) {
@@ -28,12 +28,12 @@ export default class Client {
     this.sequelize = new Sequelize({
       ...restConfig,
       logging: false,
-      repositoryMode: true
+      repositoryMode: true,
     });
 
     await this.sequelize.sync({
       force,
-      alter
+      alter,
     });
   }
 
