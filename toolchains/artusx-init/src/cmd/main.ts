@@ -73,7 +73,7 @@ export class MainCommand extends Command {
     }
 
     const project: RushProject = {
-      packageName: `${PKG_SCOPE_NAME}/${name}`,
+      packageName,
       projectFolder: `packages/${type}/${name}`,
       tags: [`artusx-${type}`],
       shouldPublish: type !== 'apps' ? true : undefined,
