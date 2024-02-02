@@ -1,5 +1,10 @@
 export default () => {
   return {
+    xprofiler: {
+      log_level: 1,
+      enable_http_profiling: false,
+    },
+
     xtransit: {
       server: '',
       appId: '',

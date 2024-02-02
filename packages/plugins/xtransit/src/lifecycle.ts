@@ -1,6 +1,7 @@
 import assert from 'assert';
 import xtransit from 'xtransit';
 import xprofiler from 'xprofiler';
+
 import {
   ApplicationLifecycle,
   ArtusApplication,
@@ -9,6 +10,9 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
+
+import type { XtransitConfig } from 'xtransit';
+import type { XprofilerConfig } from 'xprofiler';
 
 @LifecycleHookUnit()
 export default class XtransitLifecycle implements ApplicationLifecycle {
@@ -21,17 +25,19 @@ export default class XtransitLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async didLoad() {
-    const config = this.app.config.xtransit;
+    const xtransitConfig = this.app.config.xtransit;
+    const xprofilerConfig: XprofilerConfig = this.app.config.xprofiler;
     xprofiler.start({
-      log_dir: config.logDir,
-      log_interval: config.logInterval || 120,
-      check_throw: config.checkThrow || false,
+      ...xprofilerConfig,
+      log_dir: xtransitConfig.logDir,
+      log_interval: xtransitConfig.logInterval || 120,
+      check_throw: xtransitConfig.checkThrow || false,
     });
   }
 
   @LifecycleHook()
   async didReady() {
-    const config = this.app.config.xtransit;
+    const config: XtransitConfig = this.app.config.xtransit;
     const { server, appId, appSecret } = config;
 
     assert(
