@@ -12,7 +12,8 @@
 | @artusx/plugin-nest      | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nest.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nest)            |
 | @artusx/plugin-express   | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-express.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-express)      |
 | @artusx/plugin-redis     | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-redis.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-redis)          |
-| @artusx/plugin-xtransit  | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-xtransit.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-xtransit)  |
+| @artusx/plugin-log4js  | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-log4js.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-log4js)          |
+| @artusx/plugin-xtransit  | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-xtransit.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-xtransit)    |
 | @artusx/plugin-sequelize | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-sequelize.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-sequelize)  |
 
 ## Packages

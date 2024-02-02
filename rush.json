@@ -504,6 +504,13 @@
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-log4js",
+      "projectFolder": "packages/plugins/log4js",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
     }
   ]
 }
