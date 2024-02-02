@@ -1,3 +1,39 @@
+# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.22...v) (2024-02-02)
+
+
+
+## [1.0.1-dev.22](https://github.com/artusjs/artusx/compare/v1.0.1-dev.21...v1.0.1-dev.22) (2024-02-02)
+
+
+### Bug Fixes
+
+* fix client name ([36285b9](https://github.com/artusjs/artusx/commit/36285b9d328dffb1c45170f4fba1f25a2b2e61cb))
+
+
+### Features
+
+* **artusx-koa:** update config for xprofiler and xtransit ([163888a](https://github.com/artusjs/artusx/commit/163888a66e0f95749f4793dec48f3883a72397e1))
+* **log4js:** add plugin log4js ([ca0bd32](https://github.com/artusjs/artusx/commit/ca0bd320f668af8d330593104fd5b9e4e7cf00ca))
+* **xtransit:** add xprofiler config ([c89378c](https://github.com/artusjs/artusx/commit/c89378cf9a1cc26863c46a8c017fb310b4d4629d))
+
+
+
+## [1.0.1-dev.21](https://github.com/artusjs/artusx/compare/v1.0.1-dev.20...v1.0.1-dev.21) (2024-02-02)
+
+
+### Bug Fixes
+
+* **toolchains:** fix package name error ([2f1df1b](https://github.com/artusjs/artusx/commit/2f1df1b53587078647830f25f055bc2a790585d1))
+
+
+### Features
+
+* **artusx-koa:** update demo to use xtransit ([a16a744](https://github.com/artusjs/artusx/commit/a16a7449e08b1acca032b513024f2c45868a3c52))
+* **core:** add xtransit to core ([05e9ab4](https://github.com/artusjs/artusx/commit/05e9ab48ac7e531790996a9825d72e4c0bef27c8))
+* **xtransit:** add plugin xtransit ([b67328a](https://github.com/artusjs/artusx/commit/b67328a3eba0f06dd76b143c793e3af1ce2a23f8))
+
+
+
 # [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.20...v) (2024-02-01)
 
 
