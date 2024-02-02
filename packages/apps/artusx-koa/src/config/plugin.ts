@@ -3,4 +3,7 @@ export default {
     enable: true,
     package: '@artusx/core',
   },
+  xtransit: {
+    enable: false,
+  },
 };

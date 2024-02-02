@@ -16,11 +16,13 @@
     "@artus/core": "^2.x",
     "@artusx/core": "workspace:*",
     "@artusx/utils": "workspace:*",
+    "fs-extra": "~11.2.0",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
     "@artusx/tsconfig": "workspace:*",
+    "@types/fs-extra": "~11.0.4",
     "@types/node": "~20.10.6",
     "@typescript-eslint/eslint-plugin": "~6.19.1",
     "eslint": "~8.56.0",
