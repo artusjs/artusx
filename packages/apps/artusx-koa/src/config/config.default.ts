@@ -17,7 +17,31 @@ export default () => {
   };
 
   return {
+    // default logger
     logger,
+
+    // log4js
+    log4js: {
+      appenders: {
+        console: { type: 'console' },
+        info: { type: 'file', filename: `${logsDir}/info.log` },
+        error: { type: 'file', filename: `${logsDir}/error.log` },
+      },
+      categories: {
+        console: {
+          appenders: ['console'],
+          level: 'info',
+        },
+        error: {
+          appenders: ['error'],
+          level: 'error',
+        },
+        default: {
+          appenders: ['info'],
+          level: 'info',
+        },
+      },
+    },
 
     xprofiler: {
       log_level: 0,
@@ -32,7 +56,7 @@ export default () => {
       logDir: xprofilerLogDir,
       logInterval: 60,
 
-      errors: [`${logsDir}/logs/common-error.log`, `${logsDir}/logs/stderr.log`],
+      errors: [`${logsDir}/info.log`, `${logsDir}/error.log`],
       packages: [`${rootDir}/package.json`],
     },
   };

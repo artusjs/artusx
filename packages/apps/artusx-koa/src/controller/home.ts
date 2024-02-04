@@ -11,8 +11,11 @@ export default class HomeController {
   @GET('/')
   @POST('/')
   async home(ctx: ArtusxContext) {
-    const logger = this.log4js.logger;
+    const logger = this.log4js.getLogger('default');
+    const errorLogger = this.log4js.getLogger('error');
+
     logger.info(`path: /, method: GET`);
+    errorLogger.error(new Error('error'));
 
     ctx.body = 'Hello World';
   }

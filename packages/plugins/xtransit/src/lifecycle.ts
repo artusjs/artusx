@@ -19,10 +19,6 @@ export default class XtransitLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
-  get logger() {
-    return this.app.logger;
-  }
-
   @LifecycleHook()
   async didLoad() {
     const xtransitConfig = this.app.config.xtransit;
@@ -37,8 +33,8 @@ export default class XtransitLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async didReady() {
-    const config: XtransitConfig = this.app.config.xtransit;
-    const { server, appId, appSecret } = config;
+    const xtransitConfig: XtransitConfig = this.app.config.xtransit;
+    const { server, appId, appSecret } = xtransitConfig;
 
     assert(
       server && appId && appSecret,
@@ -46,16 +42,26 @@ export default class XtransitLifecycle implements ApplicationLifecycle {
     );
 
     // logger
-    const logger = {};
+    let loggerInstance = this.app.logger;
+
+    const log4js: any = this.app.container.get('ARTUSX_LOG4JS', {
+      noThrow: true,
+    });
+
+    if (log4js) {
+      loggerInstance = log4js.getLogger();
+    }
+
+    const xtransitLogger = {};
     for (const method of ['info', 'warn', 'error', 'debug']) {
-      logger[method] = (message, ...args) => {
-        this.logger[method](`[xtransit] ${message}`, ...args);
+      xtransitLogger[method] = (message, ...args) => {
+        loggerInstance[method](`[xtransit] ${message}`, ...args);
       };
     }
 
     xtransit.start({
-      logger,
-      ...config,
+      logger: xtransitLogger,
+      ...xtransitConfig,
     });
   }
 }

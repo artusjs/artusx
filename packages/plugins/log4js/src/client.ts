@@ -21,11 +21,11 @@ export default class Log4jsClient {
     });
   }
 
-  getLogger(adapter: string): Logger {
+  getLogger(adapter?: string): Logger {
     return this.log4js.getLogger(adapter);
   }
 
   get logger(): Logger {
-    return this.log4js.getLogger('console');
+    return this.log4js.getLogger();
   }
 }
