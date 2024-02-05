@@ -65,3 +65,5 @@ export default class XtransitLifecycle implements ApplicationLifecycle {
     });
   }
 }
+
+export { XtransitConfig, XprofilerConfig };

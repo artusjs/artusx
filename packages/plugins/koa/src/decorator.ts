@@ -6,7 +6,7 @@ import {
   HTTPMethod,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
-  KoaMiddleware,
+  ArtusxHandler,
 } from './types';
 
 export const CLASS_CONTROLLER_TAG = 'CLASS_CONTROLLER_TAG';
@@ -60,7 +60,7 @@ function buildMethodFactory(method: HTTPMethod, path: string) {
 }
 
 // function decorator
-export const MW = (middlewares: KoaMiddleware[]) => {
+export const MW = (middlewares: ArtusxHandler[]) => {
   return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const httpMiddlewareMetadata: HTTPMiddlewareMetadata = {
       middlewares,

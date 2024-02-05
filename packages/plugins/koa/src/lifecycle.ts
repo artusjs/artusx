@@ -160,6 +160,10 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   public async willReady() {
     this.loadController();
     this.loadMiddleware();
+  }
+
+  @LifecycleHook()
+  public async didReady() {
     this.startHttpServer();
   }
 
