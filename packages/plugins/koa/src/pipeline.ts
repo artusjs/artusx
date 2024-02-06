@@ -9,9 +9,10 @@ import { ArtusXInjectEnum } from './constants';
 export default class ArtusPipeline extends Pipeline {
   constructor() {
     super();
+    // this.use(this.trace);
+  }
 
-    this.use(async (_ctx: Context, next: Next) => {
-      await next();
-    });
+  async trace(_ctx: Context, next: Next) {
+    await next();
   }
 }

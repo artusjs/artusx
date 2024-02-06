@@ -4,7 +4,7 @@ import {
   ApplicationLifecycle,
   Inject,
   LifecycleHook,
-  LifecycleHookUnit
+  LifecycleHookUnit,
 } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
 import Express, { ExpressConfig } from './client';
@@ -20,10 +20,8 @@ export default class ExpressLifecycle implements ApplicationLifecycle {
     const { port = 7001 } = this.app.config.express as ExpressConfig;
     const app = express.app;
 
-    console.log('1');
     app.listen(port, () => {
       console.log(`Server listening on: http://localhost:${port}`);
     });
-    console.log('3');
   }
 }

@@ -123,8 +123,8 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     }
   }
 
-  private registerMiddleware(middlewareMetadata: MiddlewareMetadata, handler: ArtusxHandler) {
-    if (middlewareMetadata.enable === false) {
+  private registerMiddleware({ metadata, handler }: IMiddleware) {
+    if (metadata.enable === false) {
       return;
     }
 
@@ -133,12 +133,44 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   private loadMiddleware() {
     const middlewareClazzList = this.container.getInjectableByTag(CLASS_MIDDLEWARE_TAG);
-    for (const middlewareClazz of middlewareClazzList) {
-      const middlewareMetadata = Reflect.getMetadata(CLASS_MIDDLEWARE_METADATA, middlewareClazz);
-      const middleware: ArtusxMiddleware = this.container.get(middlewareClazz) as any;
+    const { middlewares = [] } = this.app.config.artusx as {
+      middlewares: any[];
+    };
 
-      this.registerMiddleware(middlewareMetadata, middleware.use.bind(middleware));
+    const unorderedMiddlewares: IMiddleware[] = [];
+    const orderedMiddlewares: IMiddlewareWithIndex[] = [];
+
+    for (const middlewareClazz of middlewareClazzList) {
+      const middleware: ArtusxMiddleware = this.container.get(middlewareClazz) as any;
+      const middlewareIndex = middlewares.findIndex((item) => item === middleware.constructor);
+      const middlewareMetadata = Reflect.getMetadata(CLASS_MIDDLEWARE_METADATA, middlewareClazz);
+
+      if (middlewareIndex === -1) {
+        unorderedMiddlewares.push({
+          middleware,
+          metadata: middlewareMetadata,
+          handler: middleware.use.bind(middleware),
+        });
+        continue;
+      }
+
+      orderedMiddlewares.push({
+        middleware,
+        index: middlewareIndex,
+        metadata: middlewareMetadata,
+        handler: middleware.use.bind(middleware),
+      });
     }
+
+    // sort middleware
+    const sortedMiddlewares = orderedMiddlewares.sort(
+      (middlewareA, middlewareB) => middlewareA?.index - middlewareB?.index
+    );
+
+    // register middleware
+    [...sortedMiddlewares, ...unorderedMiddlewares].forEach((item) => {
+      this.registerMiddleware(item);
+    });
   }
 
   private startHttpServer() {
@@ -172,4 +204,14 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     this.logger.info('Server closing...');
     server?.close();
   }
+}
+
+interface IMiddleware {
+  middleware: ArtusxMiddleware;
+  metadata: MiddlewareMetadata;
+  handler: ArtusxHandler;
+}
+
+interface IMiddlewareWithIndex extends IMiddleware {
+  index: number;
 }
