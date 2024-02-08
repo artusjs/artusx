@@ -36,7 +36,7 @@
       "summary": "Changelog for monorepo. This command invokes conventional-changelog-cli to generate changelog.",
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-changelog",
-      "shellCommand": "conventional-changelog -p angular -i CHANGELOG.md -s"
+      "shellCommand": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
     },
     {
       "name": "gen",
