@@ -1,5 +1,4 @@
-import { ArtusInjectEnum, Inject } from '@artus/core';
-import { ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
+import { ArtusInjectEnum, Inject, ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
 
 @Middleware({
   enable: true,

@@ -1,3 +1,4 @@
+export * from '@artus/core';
 export * from '@artusx/plugin-koa';
 export * from '@artusx/plugin-xtransit';
 

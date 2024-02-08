@@ -1,4 +1,4 @@
-import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artus/core';
+import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artusx/core';
 
 @Injectable()
 export default class APIService {

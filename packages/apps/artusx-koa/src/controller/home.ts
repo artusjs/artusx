@@ -1,5 +1,4 @@
-import { Inject } from '@artus/core';
-import { Controller, GET, POST } from '@artusx/core';
+import { Inject, Controller, GET, POST } from '@artusx/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
 import type { ArtusxContext, Log4jsClient } from '@artusx/core';
 

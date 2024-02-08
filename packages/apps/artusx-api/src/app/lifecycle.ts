@@ -5,9 +5,8 @@ import {
   ApplicationLifecycle,
   LifecycleHook,
   LifecycleHookUnit,
-} from '@artus/core';
-
-import { KoaApplication } from '@artusx/core';
+  KoaApplication,
+} from '@artusx/core';
 
 @LifecycleHookUnit()
 export default class CustomLifecycle implements ApplicationLifecycle {
@@ -24,7 +23,6 @@ export default class CustomLifecycle implements ApplicationLifecycle {
   @LifecycleHook()
   public async willReady() {
     this.koa.use(async (_ctx, next) => {
-      console.log('ctx');
       await next();
     });
   }

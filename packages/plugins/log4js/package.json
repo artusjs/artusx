@@ -40,7 +40,7 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "log4js": "~6.9.1"
+    "log4js": "^6.9.1"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",

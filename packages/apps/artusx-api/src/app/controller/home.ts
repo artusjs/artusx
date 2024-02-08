@@ -1,7 +1,5 @@
-import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, POST, Controller, MW } from '@artusx/core';
+import { ArtusInjectEnum, Inject, GET, POST, Controller, MW } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
-
 import traceTime from '../middleware/traceTime';
 
 @Controller()

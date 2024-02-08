@@ -1,5 +1,4 @@
-import { ArtusInjectEnum, Inject } from '@artus/core';
-import { GET, Controller } from '@artusx/core';
+import { ArtusInjectEnum, Inject, GET, Controller } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 import APIService from './api.service';
 
