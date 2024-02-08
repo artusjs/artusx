@@ -1,4 +1,22 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.22...v) (2024-02-02)
+# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.24...v) (2024-02-08)
+
+
+
+## [1.0.1-dev.24](https://github.com/artusjs/artusx/compare/v1.0.1-dev.23...v1.0.1-dev.24) (2024-02-06)
+
+
+### Features
+
+* **@artusx/plugin-koa:** support config middleware order ([4259319](https://github.com/artusjs/artusx/commit/425931972f4e34deeea911fd6d5b51ffb16798cb))
+
+
+
+## [1.0.1-dev.23](https://github.com/artusjs/artusx/compare/v1.0.1-dev.22...v1.0.1-dev.23) (2024-02-05)
+
+
+### Features
+
+* **log4js:** use deafult logger ([07e6f69](https://github.com/artusjs/artusx/commit/07e6f694803ef2c6089c3baf8c8e534ca07fe832))
 
 
 
@@ -31,10 +49,6 @@
 * **artusx-koa:** update demo to use xtransit ([a16a744](https://github.com/artusjs/artusx/commit/a16a7449e08b1acca032b513024f2c45868a3c52))
 * **core:** add xtransit to core ([05e9ab4](https://github.com/artusjs/artusx/commit/05e9ab48ac7e531790996a9825d72e4c0bef27c8))
 * **xtransit:** add plugin xtransit ([b67328a](https://github.com/artusjs/artusx/commit/b67328a3eba0f06dd76b143c793e3af1ce2a23f8))
-
-
-
-# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.20...v) (2024-02-01)
 
 
 
@@ -130,3 +144,6 @@
 * change dist dir to lib for libs ([9bbae35](https://github.com/artusjs/artusx/commit/9bbae35bcad239d7ed62ea6a934e7833de5b58d1))
 * move redis/sequelize out from framework ([eab683a](https://github.com/artusjs/artusx/commit/eab683a4ceda7d130f41a0fce35368d3b2a7298b))
 * update @artus/core to 2.x ([3ae0ad2](https://github.com/artusjs/artusx/commit/3ae0ad2286a378d7041c00ca0ab9f0213cf09917))
+
+
+
