@@ -1,0 +1,28 @@
+{
+  "name": "Node.js 20.x",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": [
+    "rush install"
+  ],
+  "customizations": {    
+    "vscode": {     
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"    
+      }, 
+      "extensions": [
+        "christian-kohler.path-intellisense",
+        "davidanson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "mikestead.dotenv",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "forwardPorts": [
+    7001
+  ],
+  "remoteUser": "root"
+}
