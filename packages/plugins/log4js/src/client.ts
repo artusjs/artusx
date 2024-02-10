@@ -30,4 +30,4 @@ export default class Log4jsClient {
   }
 }
 
-export { Log4js, Log4jsLogger, Log4jsConfiguration };
+export { Log4js, Log4jsClient, Log4jsLogger, Log4jsConfiguration };

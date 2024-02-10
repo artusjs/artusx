@@ -7,6 +7,10 @@ export default {
     enable: true,
     package: '@artusx/plugin-log4js',
   },
+  nunjucks: {
+    enable: true,
+    package: '@artusx/plugin-nunjucks',
+  },
   xtransit: {
     enable: false,
     package: '@artusx/plugin-xtransit',

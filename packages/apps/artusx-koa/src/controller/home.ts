@@ -1,11 +1,14 @@
 import { Inject, Controller, GET, POST } from '@artusx/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
-import type { ArtusxContext, Log4jsClient } from '@artusx/core';
+import type { ArtusxContext, Log4jsClient, NunjucksClient } from '@artusx/core';
 
 @Controller()
 export default class HomeController {
   @Inject(ArtusXInjectEnum.Log4js)
   log4js: Log4jsClient;
+
+  @Inject(ArtusXInjectEnum.Nunjucks)
+  nunjucks: NunjucksClient;
 
   @GET('/')
   @POST('/')
@@ -16,6 +19,6 @@ export default class HomeController {
     logger.info(`path: /, method: GET`);
     errorLogger.error(new Error('error'));
 
-    ctx.body = 'Hello World';
+    ctx.body = this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
   }
 }

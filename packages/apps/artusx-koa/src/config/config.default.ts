@@ -5,12 +5,14 @@ import {
   LoggerOptions,
   LoggerLevel,
   Log4jsConfiguration,
+  NunjucksConfigureOptions,
   XprofilerConfig,
   XtransitConfig,
 } from '@artusx/core';
 
 const tmpDir = os.tmpdir();
 const rootDir = path.resolve(__dirname, '../..');
+const viewDir = path.resolve(__dirname, '../view');
 const logsDir = path.join(tmpDir, 'artusx/logs');
 const xprofilerLogDir = path.join(logsDir, 'xprofiler');
 
@@ -20,6 +22,14 @@ export default () => {
 
   const logger: LoggerOptions = {
     level: LoggerLevel.DEBUG,
+  };
+
+  const nunjucks: NunjucksConfigureOptions = {
+    path: viewDir,
+    options: {
+      autoescape: true,
+      noCache: true,
+    },
   };
 
   const log4js: Log4jsConfiguration = {
@@ -66,6 +76,9 @@ export default () => {
 
     // log4js
     log4js,
+
+    // nunjucks
+    nunjucks,
 
     // xtransit
     xprofiler,
