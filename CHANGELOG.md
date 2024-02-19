@@ -1,4 +1,22 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.24...v) (2024-02-08)
+# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.26...v) (2024-02-19)
+
+
+
+## [1.0.1-dev.26](https://github.com/artusjs/artusx/compare/v1.0.1-dev.25...v1.0.1-dev.26) (2024-02-19)
+
+
+### Features
+
+* **core:** add @Headers / @StatusCode decorator and support std exception ([883ca46](https://github.com/artusjs/artusx/commit/883ca46c58d7cc736c23f8383afcef9dc2bba937))
+
+
+
+## [1.0.1-dev.25](https://github.com/artusjs/artusx/compare/v1.0.1-dev.24...v1.0.1-dev.25) (2024-02-10)
+
+
+### Features
+
+* **@artusx/plugin-nunjucks:** add nunjucks plugins ([21b63f6](https://github.com/artusjs/artusx/commit/21b63f611e1b9951086c7679d7de0c78221ebde9))
 
 
 
