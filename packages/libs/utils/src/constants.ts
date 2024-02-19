@@ -10,3 +10,7 @@ export enum ArtusXInjectEnum {
   Redis = 'ARTUSX_REDIS',
   Sequelize = 'ARTUSX_SEQUELIZE',
 }
+
+export enum ArtusXErrorEnum {
+  UNKNOWN_ERROR = 'ARTUSX:UNKNOWN_ERROR',
+}
