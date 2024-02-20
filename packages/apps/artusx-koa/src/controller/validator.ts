@@ -6,6 +6,7 @@ interface QueryTypes {
   bar?: string;
 }
 
+// https://json-schema.org/specification
 const queryScheme: JSONSchemaType<QueryTypes> = {
   type: 'object',
   properties: {
@@ -20,6 +21,7 @@ interface ParamsTypes {
   id: string;
 }
 
+// https://json-schema.org/specification
 const paramsScheme: JSONSchemaType<ParamsTypes> = {
   type: 'object',
   properties: {
@@ -33,7 +35,10 @@ const paramsScheme: JSONSchemaType<ParamsTypes> = {
 export default class ValidatorController {
   @GET('/:id')
 
-  // validator
+  /*
+   * validator
+   * test path: /validator/111?foo=1&bar=bar
+   */
   @Query<QueryTypes>(queryScheme)
   @Params<ParamsTypes>(paramsScheme)
   @StatusCode(200)
