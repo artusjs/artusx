@@ -23,24 +23,38 @@ export default class HomeController {
   nunjucks: NunjucksClient;
 
   @GET('/')
-  @POST('/')
-  @Headers({
-    'x-method': 'home-controller',
-  })
-  @StatusCode(209)
   async home(ctx: ArtusxContext) {
     const infoLogger = this.log4js.getLogger('default');
-    const errorLogger = this.log4js.getLogger('error');
-
-    const mockError = ctx.query.error;
-
     infoLogger.info(`path: /, method: GET`);
+    ctx.body = this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
+  }
+
+  @POST('/post')
+  @StatusCode(200)
+  async post(_ctx: ArtusxContext) {
+    return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Post method' });
+  }
+
+  @GET('/html')
+  @Headers({
+    'x-handler': 'home-controller-html: html',
+  })
+  @StatusCode(200)
+  async html(_ctx: ArtusxContext) {
+    return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Render with nunjucks' });
+  }
+
+  @GET('/error')
+  @StatusCode(403)
+  async error(ctx: ArtusxContext) {
+    const errorLogger = this.log4js.getLogger('error');
+    const mockError = ctx.query.error;
     errorLogger.error('mockError', mockError);
 
     if (mockError) {
       this.app.throwException(ArtusXErrorEnum.UNKNOWN_ERROR);
     }
 
-    return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
+    return 'mockError: error.';
   }
 }
