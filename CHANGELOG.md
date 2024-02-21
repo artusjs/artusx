@@ -1,4 +1,13 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.26...v) (2024-02-19)
+# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.27...v) (2024-02-21)
+
+
+
+## [1.0.1-dev.27](https://github.com/artusjs/artusx/compare/v1.0.1-dev.26...v1.0.1-dev.27) (2024-02-20)
+
+
+### Features
+
+* **artusx/core:** support params validator with ajv ([3ed5924](https://github.com/artusjs/artusx/commit/3ed592440bb7de22eaa3e2773615eb4bc74c7ed0))
 
 
 

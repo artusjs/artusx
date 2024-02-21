@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-redis",
-  "version": "1.0.1-dev.27",
+  "version": "1.0.1-dev.28",
   "description": "redis plugin for artusx",
   "keywords": [
     "artus.js"
