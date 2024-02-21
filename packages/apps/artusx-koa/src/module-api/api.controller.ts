@@ -1,4 +1,4 @@
-import { ArtusInjectEnum, Inject, GET, Controller } from '@artusx/core';
+import { ArtusInjectEnum, Inject, GET, Controller, ContentType } from '@artusx/core';
 import type { ArtusxContext } from '@artusx/core';
 import APIService from './api.service';
 
@@ -12,10 +12,11 @@ export default class APIController {
 
   @GET('/')
   async home(ctx: ArtusxContext) {
-    ctx.body = 'home';
+    ctx.body = 'api';
   }
 
-  @GET('/info')
+  @GET('/mockApi')
+  @ContentType('application/json; charset=utf-8')
   async getInfo(ctx: ArtusxContext) {
     ctx.body = await this.apiService.mockApi();
   }
