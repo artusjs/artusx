@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-nunjucks",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "nunjucks plugins for artusx",
   "keywords": [
     "artusx"
