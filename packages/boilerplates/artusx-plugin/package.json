@@ -1,0 +1,18 @@
+{
+  "name": "@artusx/boilerplate-artusx-plugin",
+  "version": "1.0.11",
+  "description": "plugin boilerplate for artusx",
+  "keywords": [
+    "artusx"
+  ],
+  "main": "index.js",
+  "files": [
+    "boilerplate"
+  ],
+  "scripts": {
+    "build": ""
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
