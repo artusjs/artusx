@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-koa",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "koa plugin for artusx",
   "keywords": [
     "artusx"
