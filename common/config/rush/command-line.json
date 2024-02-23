@@ -39,9 +39,9 @@
       "shellCommand": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
     },
     {
-      "name": "gen",
+      "name": "create",
       "commandKind": "global",
-      "summary": "Generator for monorepo, This command invokes toolchains to create a new package.",
+      "summary": "creator for artusx, This command invokes @artusx/init to create a new package.",
       "shellCommand": "node packages/libs/init/dist/bin/cli.js"      
     }
     // {
@@ -219,15 +219,15 @@
       "parameterKind": "string",
       "longName": "--name",      
       "description": "new package name, lower-case and no special characters",
-      "associatedCommands": [ "gen" ],
-      "argumentName": "ARTUSX_GEN_NAME",
+      "associatedCommands": [ "create" ],
+      "argumentName": "ARTUSX_CREATE_NAME",
       "required": true
     },
     {
       "parameterKind": "choice",
       "longName": "--source",
       "description": "boilerplate source",
-      "associatedCommands": [ "gen" ],      
+      "associatedCommands": [ "create" ],      
       "alternatives": [
         {
           "name": "remote",
@@ -244,7 +244,7 @@
       "parameterKind": "choice",
       "longName": "--type",
       "description": "package type",
-      "associatedCommands": [ "gen" ],      
+      "associatedCommands": [ "create" ],      
       "alternatives": [
         {
           "name": "apps",

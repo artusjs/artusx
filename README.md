@@ -2,10 +2,13 @@
 
 [![Continuous Integration](https://github.com/artusjs/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/artusjs/artusx/actions/workflows/ci.yml)
 
-> toolchain powered by artus.js .
+Ecosystem based on Artus.js .
+
+## Packages
 
 | packages                            |  Version                                                                                                                                                          |
 |:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| libs                                |                                                                                                                                                                   |
 | @artusx/core                        | [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)                                         |
 | @artusx/utils                       | [![NPM version](https://img.shields.io/npm/v/@artusx/utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/utils)                                       |
 | @artusx/init                        | [![NPM version](https://img.shields.io/npm/v/@artusx/init.svg?style=flat-square)](https://npmjs.org/package/@artusx/init)                                         |
@@ -26,105 +29,31 @@
 | @artusx/boilerplate-artusx-lib      | [![NPM version](https://img.shields.io/npm/v/@artusx/boilerplate-artusx-lib?style=flat-square)](https://npmjs.org/package/@artusx/boilerplate-artusx-lib)         |
 | @artusx/boilerplate-artusx-plugin   | [![NPM version](https://img.shields.io/npm/v/@artusx/boilerplate-artusx-plugin?style=flat-square)](https://npmjs.org/package/@artusx/boilerplate-artusx-plugin)   |
 
-## Packages
-
-The monorepo is managed by rush.js
-
-```bash
-packages
-├── apps
-│   ├── artusx-api
-│   └── artusx-koa
-├── libs
-│   ├── core
-│   └── utils
-├── boilerplates
-│   ├── artusx-app
-│   ├── artusx-lib
-│   └── artusx-plugin
-└── plugins
-    ├── express
-    ├── koa
-    ├── redis
-    ├── log4js
-    ├── nunjucks
-    ├── xtransit
-    └── sequelize
-```
-
 ## Quickstart
 
-The code show how to run a simple web server using `@artusx/core`.
+install `@artusx/init`
 
-`bootstrap.ts`
-
-```typescript
-import path from 'path';
-import { Application } from '@artusx/utils';
-
-(async () => {
-  const app = await Application.start({
-    root: path.resolve(__dirname),
-    configDir: 'config'
-  });
-
-  console.log(app.config);
-})();
+```bash
+npm i -g @artusx/init
 ```
 
-`config/plugin.ts`
+create web app with app boilerplate
 
-```typescript
-export default {
-  artusx: {
-    enable: true,
-    package: '@artusx/core'
-  }
-};
+```bash
+artusx-init --name web --type apps
 ```
 
-`middleware/traceTime.ts`
+install deps and run the app
 
-```ts
-import { ArtusInjectEnum, Inject, ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
-
-@Middleware({
-  enable: true,
-})
-export default class TraceTimeMiddleware {
-  @Inject(ArtusInjectEnum.Config)
-  config: Record<string, string | number>;
-
-  async use(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
-    const { data } = ctx.context.output;
-    data.traced = true;
-    console.log('middleware - traceTime', ctx.context);
-
-    console.time('trace');
-    await next();    
-    console.timeEnd('trace');
-  }
-}
-```
-
-`controller/home.ts`
-
-```typescript
-import { GET, POST, Controller } from '@artusx/core';
-import type { ArtusxContext } from '@artusx/core';
-
-@Controller()
-export default class HomeController {
-
-  @GET('/can-be-get')
-  @POST('/post')
-  async home(ctx: ArtusxContext) {
-    ctx.body = 'Hello World';
-  }
-}
+```bash
+cd web
+pnpm i
+pnpm run dev
 ```
 
 ## Development
+
+### prepare
 
 install rush.js
 
@@ -145,10 +74,12 @@ create new package
 rush rebuild -t @artusx/init
 
 # create new package and update projects in rush.json
-rush gen --name web --type apps
-rush gen --name common --type libs
-rush gen --name postgres --type plugins
+rush create --name web --type apps --source local
+rush create --name common --type libs --source local
+rush create --name postgres --type plugins --source local
 ```
+
+### release
 
 publish to npm.js
 
@@ -163,9 +94,13 @@ rush version --bump
 rush changelog
 
 # publish with actions
-# git release v1.0.1-dev.20 -m "chore: release 1.0.1-dev.20"
+# git release v1.0.12 -m "chore: release 1.0.12"
 git release {version} -m "chore: release {version}"
 
 # publish with rush.js
 rush publish --include-all --publish
 ```
+
+## License
+
+[MIT](LICENSE)
