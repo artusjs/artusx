@@ -1,4 +1,41 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.1-dev.27...v) (2024-02-21)
+# [](https://github.com/artusjs/artusx/compare/v1.0.14...v) (2024-02-23)
+
+
+
+## [1.0.14](https://github.com/artusjs/artusx/compare/v1.0.13...v1.0.14) (2024-02-23)
+
+
+### Bug Fixes
+
+* **lib/init:** fix deps and cli name ([4a56b64](https://github.com/artusjs/artusx/commit/4a56b642e284d88c673f52a60a8f1ce542c042c4))
+
+
+
+## [1.0.13](https://github.com/artusjs/artusx/compare/v1.0.12...v1.0.13) (2024-02-23)
+
+
+### Bug Fixes
+
+* **lib/init:** fix publish config ([1dcd68b](https://github.com/artusjs/artusx/commit/1dcd68b964189d165b8ed790faf153311e879b53))
+
+
+
+## [1.0.12](https://github.com/artusjs/artusx/compare/v1.0.1-dev.28...v1.0.12) (2024-02-23)
+
+
+### Bug Fixes
+
+* **toolchains:** update publish config for eslint-config and tsconfig ([ef88fd9](https://github.com/artusjs/artusx/commit/ef88fd9d750c675a430d189d719a917c99959ebf))
+
+
+### Features
+
+* **boilerplates:** add boilerplate packages ([d95183b](https://github.com/artusjs/artusx/commit/d95183b0983512797746d63af9fd061557c5bed2))
+* **toolchains:** move init cli to libs ([62c31c2](https://github.com/artusjs/artusx/commit/62c31c2aa0259b39a1d3b8982c1e8612abeceb7b))
+
+
+
+## [1.0.1-dev.28](https://github.com/artusjs/artusx/compare/v1.0.1-dev.27...v1.0.1-dev.28) (2024-02-21)
 
 
 
