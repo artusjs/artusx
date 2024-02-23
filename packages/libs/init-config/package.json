@@ -1,0 +1,33 @@
+{
+  "name": "@artusx/init-config",
+  "version": "1.0.1-dev.28",
+  "description": "init config for artusx",
+  "keywords": [
+    "artusx"
+  ],
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "build": ""
+  },
+  "config": {
+    "boilerplate": {
+      "apps": {
+        "package": "@artusx/boilerplate-artusx-app",
+        "description": "app boilerplate for artusx"
+      },
+      "libs": {
+        "package": "@artusx/boilerplate-artusx-lib",
+        "description": "lib boilerplate for artusx"
+      },
+      "plugins": {
+        "package": "@artusx/boilerplate-artusx-plugin",
+        "description": "plugin boilerplate for artusx"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

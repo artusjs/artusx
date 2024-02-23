@@ -1,9 +1,9 @@
 {
   "name": "@artusx/init",
   "version": "1.0.1-dev.1",
-  "description": "artusx generator for artusx",
+  "description": "init cli for artusx",
   "keywords": [
-    "artus.js"
+    "artusx"
   ],
   "type": "commonjs",
   "bin": "dist/bin/cli.js",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@artus-cli/artus-cli": "~0.2.10",
     "comment-json": "~4.2.3",
-    "egg-init": "~3.0.2"
+    "egg-init": "^3.x"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
