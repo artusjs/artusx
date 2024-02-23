@@ -42,7 +42,7 @@
       "name": "gen",
       "commandKind": "global",
       "summary": "Generator for monorepo, This command invokes toolchains to create a new package.",
-      "shellCommand": "node toolchains/artusx-init/dist/bin/cli.js"
+      "shellCommand": "node packages/libs/init/dist/bin/cli.js"      
     }
     // {
     //   /**
@@ -221,6 +221,23 @@
       "description": "new package name, lower-case and no special characters",
       "associatedCommands": [ "gen" ],
       "argumentName": "ARTUSX_GEN_NAME",
+      "required": true
+    },
+    {
+      "parameterKind": "choice",
+      "longName": "--source",
+      "description": "boilerplate source",
+      "associatedCommands": [ "gen" ],      
+      "alternatives": [
+        {
+          "name": "remote",
+          "description": "remote boilerplate"
+        },        
+        {
+          "name": "local",
+          "description": "local boilerplate"
+        }        
+      ],
       "required": true
     },
     {

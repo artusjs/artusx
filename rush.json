@@ -307,7 +307,13 @@
    * ".", and "@" characters.
    */
   // "allowedProjectTags": [ "tools", "frontend-team", "1.0.0-release" ],
-  "allowedProjectTags": ["artusx-apps", "artusx-plugins", "artusx-libs", "artusx-tools"],
+  "allowedProjectTags": [
+    "artusx-apps",
+    "artusx-plugins",
+    "artusx-libs",
+    "artusx-tools",
+    "artusx-boilerplates"
+  ],
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
    *
@@ -414,6 +420,7 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
+    // libs
     {
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/core",
@@ -427,6 +434,57 @@
       "tags": ["artusx-libs"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/init",
+      "projectFolder": "packages/libs/init",
+      "tags": ["artusx-libs"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/init-config",
+      "projectFolder": "packages/libs/init-config",
+      "tags": ["artusx-libs"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    // boilerplates
+    {
+      "packageName": "@artusx/boilerplate-artusx-app",
+      "projectFolder": "packages/boilerplates/artusx-app",
+      "tags": ["artusx-boilerplates"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-utils"
+    },
+    {
+      "packageName": "@artusx/boilerplate-artusx-lib",
+      "projectFolder": "packages/boilerplates/artusx-lib",
+      "tags": ["artusx-boilerplates"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-utils"
+    },
+    {
+      "packageName": "@artusx/boilerplate-artusx-plugin",
+      "projectFolder": "packages/boilerplates/artusx-plugin",
+      "tags": ["artusx-boilerplates"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-utils"
+    },
+    // tools
+    {
+      "packageName": "@artusx/eslint-config",
+      "projectFolder": "toolchains/eslint-config",
+      "tags": ["artusx-tools"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-utils"
+    },
+    {
+      "packageName": "@artusx/tsconfig",
+      "projectFolder": "toolchains/tsconfig",
+      "tags": ["artusx-tools"],
+      "shouldPublish": true,
+      "versionPolicyName": "public-utils"
     },
     {
       "packageName": "artusx-nest",
@@ -448,21 +506,7 @@
       "projectFolder": "packages/apps/artusx-api",
       "tags": ["artusx-apps"]
     },
-    {
-      "packageName": "@artusx/eslint-config",
-      "projectFolder": "toolchains/eslint-config",
-      "tags": ["artusx-tools"]
-    },
-    {
-      "packageName": "@artusx/tsconfig",
-      "projectFolder": "toolchains/tsconfig",
-      "tags": ["artusx-tools"]
-    },
-    {
-      "packageName": "@artusx/init",
-      "projectFolder": "toolchains/artusx-init",
-      "tags": ["artusx-tools"]
-    },
+    // plugins
     {
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",

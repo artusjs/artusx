@@ -14,6 +14,12 @@
     "definitionName": "lockStepVersion",
     "version": "1.0.1-dev.28",
     "nextBump": "prerelease"
+  },
+  {
+    "policyName": "public-utils",
+    "definitionName": "lockStepVersion",
+    "version": "1.0.11",
+    "nextBump": "patch"
   }
   // {
   //   /**
