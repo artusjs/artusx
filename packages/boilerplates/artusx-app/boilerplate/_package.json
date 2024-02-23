@@ -17,7 +17,6 @@
     "tsc": "rm -rf dist && tsc"
   },
   "dependencies": {
-    "@artus/core": "^2.x",
     "@artusx/utils": "{{monorepo}}",
     "@artusx/core": "{{monorepo}}",
     "reflect-metadata": "^0.1.13"

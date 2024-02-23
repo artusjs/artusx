@@ -6,7 +6,9 @@
     "artusx"
   ],
   "type": "commonjs",
-  "bin": "dist/bin/cli.js",
+  "bin": {
+    "artusx-init": "dist/bin/cli.js"
+  },
   "files": [
     "dist"
   ],
