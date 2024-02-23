@@ -1,12 +1,9 @@
 {
   "name": "@artusx/tsconfig",
   "version": "1.0.0",
-  "description": "Shared tsconfig",
+  "description": "tsconfig for artusx",
   "main": "tsconfig.json",
   "scripts": {
     "build": ""
-  },
-  "dependencies": {
-    "@artus/tsconfig": "~1.0.1"
   }
 }

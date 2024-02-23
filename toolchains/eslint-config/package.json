@@ -1,7 +1,7 @@
 {
   "name": "@artusx/eslint-config",
   "version": "1.0.0",
-  "description": "Shared eslint rules",
+  "description": "eslint rules for artusx",
   "main": "index.js",
   "scripts": {
     "build": ""
@@ -14,7 +14,7 @@
   },
   "peerDependencies": {
     "eslint": "~8.56.0",
-    "typescript": "^5.3.3"
+    "typescript": "^4.9.4"
   },
   "peerDependenciesMeta": {
     "typescript": {

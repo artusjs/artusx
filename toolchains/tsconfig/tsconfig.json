@@ -1,10 +1,38 @@
 {
-  "extends": "@artus/tsconfig",
   "compilerOptions": {
+    // "rootDir": "src",
+    // Language and Environment
+    "target": "ES2017",
+    "lib": ["ESNext"],
+    "experimentalDecorators": true,
+    // Modules
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    // JavaScript support
+    "allowJs": false,
+    // Emit
+    "declaration": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "newLine": "LF",
+    "stripInternal": true,
+    "sourceMap": false,
+    // Completeness
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    // Type Checking
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "resolveJsonModule": true
   }
 }
