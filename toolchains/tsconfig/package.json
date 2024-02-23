@@ -2,8 +2,14 @@
   "name": "@artusx/tsconfig",
   "version": "1.0.0",
   "description": "tsconfig for artusx",
+  "keywords": [
+    "artusx"
+  ],
   "main": "tsconfig.json",
   "scripts": {
     "build": ""
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

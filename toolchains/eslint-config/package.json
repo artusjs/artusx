@@ -2,6 +2,9 @@
   "name": "@artusx/eslint-config",
   "version": "1.0.0",
   "description": "eslint rules for artusx",
+  "keywords": [
+    "artusx"
+  ],
   "main": "index.js",
   "scripts": {
     "build": ""
@@ -20,5 +23,8 @@
     "typescript": {
       "optional": true
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
