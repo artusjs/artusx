@@ -3,7 +3,7 @@
   "version": "1.0.1-dev.28",
   "description": "log4js plugin for artusx",
   "keywords": [
-    "artus.js"
+    "artusx"
   ],
   "author": "Suyi <thonatos.yang@gmail.com>",
   "exports": {
