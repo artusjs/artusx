@@ -1,9 +1,11 @@
 export default {
-  artusx: {
-    enable: true,
-    package: '@artusx/core',
+  redis: {
+    enable: false,
   },
-  xtransit: {
-    enable: true,
+  sequelize: {
+    enable: false,
   },
+  // xtransit: {
+  //   enable: true,
+  // },
 };

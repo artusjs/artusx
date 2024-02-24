@@ -1,10 +1,10 @@
-import { ArtusInjectEnum, Inject, ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
-
+import dayjs from 'dayjs';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
+import { ArtusInjectEnum, Inject, ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
 
 const rateLimiterOptions = {
   points: 6,
-  duration: 1,
+  duration: 2,
 };
 
 @Middleware({
@@ -23,10 +23,12 @@ export default class LimitRateMiddleware {
   async use(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
     try {
       const rateLimiterRes = await this.rateLimiter.consume(ctx.ip);
+      const reset = dayjs().add(rateLimiterRes.msBeforeNext, 'milliseconds');
+
       ctx.set('Retry-After', `${rateLimiterRes.msBeforeNext / 1000}`);
       ctx.set('X-RateLimit-Limit', `${rateLimiterOptions.points}`);
       ctx.set('X-RateLimit-Remaining', `${rateLimiterRes.remainingPoints}`);
-      ctx.set('X-RateLimit-Reset', `${new Date(Date.now() + rateLimiterRes.msBeforeNext)}`);
+      ctx.set('X-RateLimit-Reset', reset.toString());
     } catch (rejRes) {
       ctx.status = 429;
       ctx.body = 'Too Many Requests';

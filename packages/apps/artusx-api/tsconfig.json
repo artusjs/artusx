@@ -1,8 +1,0 @@
-{
-  "extends": "@artusx/tsconfig",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist"
-  },
-  "include": ["src/**/*.ts", "src/**/*.json"]
-}

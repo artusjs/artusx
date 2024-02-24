@@ -1,11 +1,11 @@
 import { Model, Table, Column, DataType, CreatedAt, UpdatedAt } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'administrators',
+  tableName: 'user',
   timestamps: true,
   paranoid: false,
 })
-export class AdministratorModel extends Model {
+export class UserModel extends Model {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -32,4 +32,4 @@ export class AdministratorModel extends Model {
   updated_at: Date;
 }
 
-export default AdministratorModel;
+export default UserModel;

@@ -2,7 +2,7 @@ import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artusx/c
 import { Sequelize, Repository } from 'sequelize-typescript';
 
 import ISequelizeClient from '@artusx/plugin-sequelize/client';
-import { AdministratorModel } from '../model/administrator';
+import { UserModel } from '../model/user';
 
 @Injectable()
 export default class AdministratorService {
@@ -17,18 +17,18 @@ export default class AdministratorService {
     return sequelize;
   }
 
-  get administrator(): Repository<AdministratorModel> {
-    const administratorRepository = this.sequelize.getRepository(AdministratorModel);
-    return administratorRepository;
+  get user(): Repository<UserModel> {
+    const userRepository = this.sequelize.getRepository(UserModel);
+    return userRepository;
   }
 
   async checkAdministrator(chatId: string) {
-    const administrator = await this.administrator.findOne({
+    const user = await this.user.findOne({
       where: {
         user_id: chatId,
       },
     });
 
-    return administrator;
+    return user;
   }
 }

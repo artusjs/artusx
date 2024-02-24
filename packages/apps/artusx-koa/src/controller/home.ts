@@ -6,10 +6,13 @@ import {
   Controller,
   GET,
   POST,
+  MW,
   Headers,
   StatusCode,
 } from '@artusx/core';
+
 import type { ArtusxContext, Log4jsClient, NunjucksClient } from '@artusx/core';
+import traceTime from '../middleware/traceTime';
 
 @Controller()
 export default class HomeController {
@@ -22,6 +25,7 @@ export default class HomeController {
   @Inject(ArtusXInjectEnum.Nunjucks)
   nunjucks: NunjucksClient;
 
+  @MW([traceTime])
   @GET('/')
   async home(ctx: ArtusxContext) {
     const infoLogger = this.log4js.getLogger('default');
