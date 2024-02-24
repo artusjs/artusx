@@ -1,7 +1,10 @@
 import type { ArtusxConfig } from '../types';
 
 const artusx: ArtusxConfig = {
-  port: 7001,
+  static: {
+    maxAge: 31536000,
+    buffer: true,
+  },
 };
 
 export default {
