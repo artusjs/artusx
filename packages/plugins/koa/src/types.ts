@@ -44,12 +44,8 @@ export interface ArtusxMiddleware {
 }
 
 export interface ArtusxConfig {
-  koa?: {
-    port?: number;
-  };
-  artusx?: {
-    middlewares?: any[];
-  };
+  port?: number;
+  middlewares?: any[];
 }
 
 export {

@@ -174,14 +174,14 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   }
 
   private startHttpServer() {
-    const { port = 7001 } = this.app.config.koa;
+    const { port = 7001 } = this.app.config.artusx;
 
     const koa = this.koa;
     const router = this.router;
 
     koa.use(router.routes());
     server = koa.listen(port, () => {
-      this.logger.info(`Server listening on: http://localhost:${port}`);
+      this.logger.info(`[koa] listening on: http://localhost:${port}`);
     });
   }
 
@@ -201,7 +201,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   beforeClose() {
-    this.logger.info('Server closing...');
+    this.logger.info('[server] closing...');
     server?.close();
   }
 }
