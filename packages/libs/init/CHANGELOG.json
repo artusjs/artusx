@@ -2,6 +2,12 @@
   "name": "@artusx/init",
   "entries": [
     {
+      "version": "1.0.15",
+      "tag": "@artusx/init_v1.0.15",
+      "date": "Sat, 24 Feb 2024 19:50:19 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.14",
       "tag": "@artusx/init_v1.0.14",
       "date": "Fri, 23 Feb 2024 08:59:41 GMT",

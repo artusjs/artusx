@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-nunjucks
 
-This log was last generated on Fri, 23 Feb 2024 08:59:41 GMT and should not be manually modified.
+This log was last generated on Sat, 24 Feb 2024 19:50:19 GMT and should not be manually modified.
+
+## 1.0.15
+Sat, 24 Feb 2024 19:50:19 GMT
+
+_Version update only_
 
 ## 1.0.14
 Fri, 23 Feb 2024 08:59:41 GMT
