@@ -9,8 +9,13 @@ export default class SequelizeLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
+  get logger() {
+    return this.app.logger;
+  }
+
   @LifecycleHook()
   async willReady() {
+    this.logger.info('[sequelize] staring sequelize with host: %s', this.app.config.sequelize.host);
     const sequelize = this.app.container.get(ArtusXInjectEnum.Sequelize) as Sequelize;
     await sequelize.init(this.app.config.sequelize as SequelizeConfig);
   }
