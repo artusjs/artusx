@@ -1,6 +1,7 @@
 # ArtusX
 
 [![Continuous Integration](https://github.com/artusjs/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/artusjs/artusx/actions/workflows/ci.yml)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fartusjs%2Fartusx.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fartusjs%2Fartusx?ref=badge_shield)
 
 Ecosystem based on Artus.js .
 
@@ -104,3 +105,6 @@ rush publish --include-all --publish
 ## License
 
 [MIT](LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fartusjs%2Fartusx.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fartusjs%2Fartusx?ref=badge_large)
