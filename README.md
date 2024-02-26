@@ -2,7 +2,7 @@
 
 [![Continuous Integration](https://github.com/artusjs/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/artusjs/artusx/actions/workflows/ci.yml)
 
-Ecosystem based on Artus.js .
+Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org).
 
 ## Packages
 
