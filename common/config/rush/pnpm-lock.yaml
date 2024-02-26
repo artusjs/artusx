@@ -164,32 +164,6 @@ importers:
       tslib: 2.6.2
       typescript: 4.9.5
 
-  ../../packages/libs/init:
-    specifiers:
-      '@artus-cli/artus-cli': ~0.2.10
-      '@artusx/eslint-config': workspace:*
-      '@artusx/tsconfig': workspace:*
-      '@types/node': ~20.11.7
-      comment-json: ~4.2.3
-      egg-init: ^3.x
-      ts-node: ~10.9.2
-      tslib: ~2.6.2
-      typescript: ^4.9.4
-    dependencies:
-      '@artus-cli/artus-cli': 0.2.10
-      comment-json: 4.2.3
-      egg-init: 3.1.0
-    devDependencies:
-      '@artusx/eslint-config': link:../../../toolchains/eslint-config
-      '@artusx/tsconfig': link:../../../toolchains/tsconfig
-      '@types/node': 20.11.20
-      ts-node: 10.9.2_llfe3vm42o2fhmdx7ctqjhqj24
-      tslib: 2.6.2
-      typescript: 4.9.5
-
-  ../../packages/libs/init-config:
-    specifiers: {}
-
   ../../packages/libs/utils:
     specifiers:
       '@artus/core': ^2.x
@@ -454,6 +428,32 @@ importers:
       '@typescript-eslint/eslint-plugin': 6.19.1_fwlpoexoz335cirtnefkapjv2y
       '@typescript-eslint/parser': 6.19.1
       eslint-config-prettier: 7.2.0
+
+  ../../toolchains/init:
+    specifiers:
+      '@artus-cli/artus-cli': ~0.2.10
+      '@artusx/eslint-config': workspace:*
+      '@artusx/tsconfig': workspace:*
+      '@types/node': ~20.11.7
+      comment-json: ~4.2.3
+      egg-init: ^3.x
+      ts-node: ~10.9.2
+      tslib: ~2.6.2
+      typescript: ^4.9.4
+    dependencies:
+      '@artus-cli/artus-cli': 0.2.10
+      comment-json: 4.2.3
+      egg-init: 3.1.0
+    devDependencies:
+      '@artusx/eslint-config': link:../eslint-config
+      '@artusx/tsconfig': link:../tsconfig
+      '@types/node': 20.11.20
+      ts-node: 10.9.2_llfe3vm42o2fhmdx7ctqjhqj24
+      tslib: 2.6.2
+      typescript: 4.9.5
+
+  ../../toolchains/init-config:
+    specifiers: {}
 
   ../../toolchains/tsconfig:
     specifiers: {}

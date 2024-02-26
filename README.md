@@ -11,6 +11,7 @@ Ecosystem based on Artus.js .
 | libs                                |                                                                                                                                                                   |
 | @artusx/core                        | [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)                                         |
 | @artusx/utils                       | [![NPM version](https://img.shields.io/npm/v/@artusx/utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/utils)                                       |
+| tools                               |                                                                                                                                                                   |
 | @artusx/init                        | [![NPM version](https://img.shields.io/npm/v/@artusx/init.svg?style=flat-square)](https://npmjs.org/package/@artusx/init)                                         |
 | @artusx/init-config                 | [![NPM version](https://img.shields.io/npm/v/@artusx/init-config.svg?style=flat-square)](https://npmjs.org/package/@artusx/init-config)                           |
 | @artusx/tsconfig                    | [![NPM version](https://img.shields.io/npm/v/@artusx/tsconfig.svg?style=flat-square)](https://npmjs.org/package/@artusx/tsconfig)                                 |

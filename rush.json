@@ -435,20 +435,6 @@
       "shouldPublish": true,
       "versionPolicyName": "public"
     },
-    {
-      "packageName": "@artusx/init",
-      "projectFolder": "packages/libs/init",
-      "tags": ["artusx-libs"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/init-config",
-      "projectFolder": "packages/libs/init-config",
-      "tags": ["artusx-libs"],
-      "shouldPublish": true,
-      "versionPolicyName": "public"
-    },
     // boilerplates
     {
       "packageName": "@artusx/boilerplate-artusx-app",
@@ -472,6 +458,20 @@
       "versionPolicyName": "public-utils"
     },
     // tools
+    {
+      "packageName": "@artusx/init",
+      "projectFolder": "toolchains/init",
+      "tags": ["artusx-libs"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/init-config",
+      "projectFolder": "toolchains/init-config",
+      "tags": ["artusx-libs"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
     {
       "packageName": "@artusx/eslint-config",
       "projectFolder": "toolchains/eslint-config",
