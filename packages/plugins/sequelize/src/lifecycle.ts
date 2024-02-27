@@ -15,8 +15,14 @@ export default class SequelizeLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    this.logger.info('[sequelize] staring sequelize with host: %s', this.app.config.sequelize.host);
+    const config: SequelizeConfig = this.app.config.sequelize;
+
+    if (!config || !config.host) {
+      return;
+    }
+
+    this.logger.info('[sequelize] staring sequelize with host: %s', config.host);
     const sequelize = this.app.container.get(ArtusXInjectEnum.Sequelize) as Sequelize;
-    await sequelize.init(this.app.config.sequelize as SequelizeConfig);
+    await sequelize.init(config);
   }
 }

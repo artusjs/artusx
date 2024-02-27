@@ -7,7 +7,7 @@ import {
   LifecycleHook,
 } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
-import Client from './client';
+import Client, { NunjucksConfigureOptions } from './client';
 
 @LifecycleHookUnit()
 export default class NunjucksLifecycle implements ApplicationLifecycle {
@@ -20,8 +20,14 @@ export default class NunjucksLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    this.logger.info('[nunjucks] serving view at: %s', this.app.config.nunjucks.path);
+    const config: NunjucksConfigureOptions = this.app.config.nunjucks;
+
+    if (!config || !config.path) {
+      return;
+    }
+
+    this.logger.info('[nunjucks] serving view at: %s', config.path);
     const client = this.app.container.get(ArtusXInjectEnum.Client) as Client;
-    await client.init(this.app.config.nunjucks);
+    await client.init(config);
   }
 }

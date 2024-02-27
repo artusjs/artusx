@@ -1,5 +1,5 @@
 import path from 'path';
-import { ArtusxConfig } from '@artusx/core';
+import { ArtusxConfig, NunjucksConfigureOptions } from '@artusx/core';
 
 export default () => {
     const artusx: ArtusxConfig = {
@@ -10,7 +10,16 @@ export default () => {
       },
     };
     
+    const nunjucks: NunjucksConfigureOptions = {
+      path: path.resolve(__dirname, '../view'),
+      options: {
+        autoescape: true,
+        noCache: true,
+      },
+    };
+
     return {
-      artusx,      
+      artusx,
+      nunjucks,    
     };
 };

@@ -15,8 +15,14 @@ export default class RedisLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    this.logger.info('[redis] staring redis with host: %s', this.app.config.redis.host);
+    const config: RedisConfig = this.app.config.redis;
+
+    if (!config || !config.path) {
+      return;
+    }
+
+    this.logger.info('[redis] staring redis with host: %s', config.host);
     const redis = this.app.container.get(ArtusXInjectEnum.Redis) as Redis;
-    await redis.init(this.app.config.redis as RedisConfig);
+    await redis.init(config);
   }
 }
