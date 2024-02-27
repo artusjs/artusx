@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-sequelize",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "sequelize plugin for artusx",
   "keywords": [
     "artusx"
