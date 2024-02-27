@@ -34,6 +34,10 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
     const prefixs: string[] = [];
     const { static: staticConfig } = this.app.config.artusx as ArtusxConfig;
 
+    if (!staticConfig || !staticConfig.dir || !staticConfig.prefix) {
+      return;
+    }
+
     let staticCacheOptions: any = { ...staticConfig } || {};
 
     if (staticCacheOptions.dynamic && !staticCacheOptions.files) {
