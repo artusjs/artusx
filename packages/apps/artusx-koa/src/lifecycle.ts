@@ -1,21 +1,10 @@
-import {
-  Inject,
-  ArtusInjectEnum,
-  ArtusApplication,
-  ApplicationLifecycle,
-  LifecycleHook,
-  LifecycleHookUnit,
-  KoaApplication,
-} from '@artusx/core';
+import { Inject, ApplicationLifecycle, LifecycleHook, LifecycleHookUnit, KoaApplication } from '@artusx/core';
+import { ArtusXInjectEnum } from '@artusx/utils';
 
 @LifecycleHookUnit()
 export default class CustomLifecycle implements ApplicationLifecycle {
-  @Inject(ArtusInjectEnum.Application)
-  private readonly app: ArtusApplication;
-
-  get koa(): KoaApplication {
-    return this.app.container.get(KoaApplication);
-  }
+  @Inject(ArtusXInjectEnum.Koa)
+  private readonly koa: KoaApplication;
 
   @LifecycleHook()
   async didLoad() {}

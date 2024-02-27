@@ -14,8 +14,9 @@ import range from 'koa-range';
 import staticCache from 'koa-static-cache';
 
 import { bodyParser } from '@koa/bodyparser';
-import { KoaApplication } from '@artusx/plugin-koa';
 import { ArtusxConfig } from './types';
+import { KoaApplicationClient } from '@artusx/plugin-koa';
+import type { KoaApplication } from '@artusx/plugin-koa';
 
 @LifecycleHookUnit()
 export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
@@ -27,7 +28,7 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
   }
 
   get koa(): KoaApplication {
-    return this.app.container.get(KoaApplication);
+    return this.app.container.get(KoaApplicationClient);
   }
 
   private registerStatic() {

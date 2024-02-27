@@ -31,10 +31,12 @@ import type {
   ArtusxMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
+  KoaRouter,
+  KoaApplication,
 } from './types';
 
-import KoaRouter from './koa/router';
-import KoaApplication from './koa/application';
+import KoaRouterClient from './koa/router';
+import KoaApplicationClient from './koa/application';
 
 export let server: Server;
 
@@ -55,11 +57,11 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   }
 
   get router(): KoaRouter {
-    return this.app.container.get(KoaRouter);
+    return this.app.container.get(KoaRouterClient);
   }
 
   get koa(): KoaApplication {
-    return this.app.container.get(KoaApplication);
+    return this.app.container.get(KoaApplicationClient);
   }
 
   private registerRoute(

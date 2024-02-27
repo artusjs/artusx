@@ -1,8 +1,8 @@
 import type { Context as ArtusContext } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
-import KoaRouter from './koa/router';
-import KoaApplication from './koa/application';
+import type KoaRouter from '@koa/router';
+import type KoaApplication from 'koa';
 
 export enum HTTPMethod {
   PUT = 'PUT',
