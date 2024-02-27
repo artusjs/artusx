@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-log4js",
   "entries": [
     {
+      "version": "1.0.18",
+      "tag": "@artusx/plugin-log4js_v1.0.18",
+      "date": "Tue, 27 Feb 2024 08:16:11 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.17",
       "tag": "@artusx/plugin-log4js_v1.0.17",
       "date": "Tue, 27 Feb 2024 03:53:09 GMT",
