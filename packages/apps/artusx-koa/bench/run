@@ -1,0 +1,37 @@
+#!/bin/env bash
+
+set -e
+set -o allexport; set +o allexport
+export FACTOR=$1
+
+host="http://localhost:7001"
+
+kill -9 $(lsof -ti:7001) &
+
+node "$(dirname $0)/gen.js"
+npm run tsc
+
+node "$(dirname $0)/../dist/index.js" &
+
+pid=$!
+
+sleep 1;
+
+curl \
+  --retry-connrefused \
+  --retry 5 \
+  --retry-delay 0 \
+  -s \
+  "$host/_health" \
+  > /dev/null
+
+# siege -c 50 -t 8 "$host/10/child/grandchild/%40"
+wrk "$host/10/child/grandchild/%40" \
+  -d 3 \
+  -c 50 \
+  -t 8 \
+  | grep 'Requests/sec' \
+  | awk '{ print "Requests/sec " $2 }'
+
+kill $pid
+exit

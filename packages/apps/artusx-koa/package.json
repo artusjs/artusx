@@ -4,6 +4,7 @@
   "description": "koa for artusx",
   "main": "index.js",
   "scripts": {
+    "bench:koa-router": "cd bench && BENCH_KOA_ROUTER=true make",
     "build": "",
     "ci": "npm run lint",
     "dev": "ARTUS_SERVER_ENV=development npx nodemon src/index.ts",
