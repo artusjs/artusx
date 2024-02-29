@@ -9,7 +9,7 @@ export enum PKG_TYPE_ENUM {
 export const PKG_SCOPE_NAME = '@artusx';
 export const PKG_PREFIX_NAME = 'artusx';
 
-export const RUSH_ROOT_PATH = path.resolve(__dirname, '../../../../..');
+export const RUSH_ROOT_PATH = path.resolve(__dirname, '../../../..');
 export const RUSH_CONFIG_PATH = path.join(RUSH_ROOT_PATH, 'rush.json');
 export const RUSH_VERSION_PATH = path.join(RUSH_ROOT_PATH, 'common/config/rush/version-policies.json');
 

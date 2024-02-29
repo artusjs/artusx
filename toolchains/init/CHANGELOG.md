@@ -1,4 +1,4 @@
-# Change Log - @artusx/plugin-nunjucks
+# Change Log - @artusx/init
 
 This log was last generated on Tue, 27 Feb 2024 08:16:11 GMT and should not be manually modified.
 

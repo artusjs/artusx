@@ -41,3 +41,5 @@ export default class SequelizeClient {
     return this.sequelize;
   }
 }
+
+export { Sequelize };

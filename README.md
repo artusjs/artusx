@@ -3,7 +3,7 @@
 [![Continuous Integration](https://github.com/artusjs/artusx/actions/workflows/ci.yml/badge.svg)](https://github.com/artusjs/artusx/actions/workflows/ci.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fartusjs%2Fartusx.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fartusjs%2Fartusx?ref=badge_shield)
 
-Ecosystem based on Artus.js .
+Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org).
 
 ## Packages
 
@@ -12,6 +12,7 @@ Ecosystem based on Artus.js .
 | libs                                |                                                                                                                                                                   |
 | @artusx/core                        | [![NPM version](https://img.shields.io/npm/v/@artusx/core.svg?style=flat-square)](https://npmjs.org/package/@artusx/core)                                         |
 | @artusx/utils                       | [![NPM version](https://img.shields.io/npm/v/@artusx/utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/utils)                                       |
+| tools                               |                                                                                                                                                                   |
 | @artusx/init                        | [![NPM version](https://img.shields.io/npm/v/@artusx/init.svg?style=flat-square)](https://npmjs.org/package/@artusx/init)                                         |
 | @artusx/init-config                 | [![NPM version](https://img.shields.io/npm/v/@artusx/init-config.svg?style=flat-square)](https://npmjs.org/package/@artusx/init-config)                           |
 | @artusx/tsconfig                    | [![NPM version](https://img.shields.io/npm/v/@artusx/tsconfig.svg?style=flat-square)](https://npmjs.org/package/@artusx/tsconfig)                                 |
@@ -105,6 +106,5 @@ rush publish --include-all --publish
 ## License
 
 [MIT](LICENSE)
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fartusjs%2Fartusx.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fartusjs%2Fartusx?ref=badge_large)

@@ -7,16 +7,27 @@ import {
   LifecycleHook,
 } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
-import Client from './client';
+import Client, { NunjucksConfigureOptions } from './client';
 
 @LifecycleHookUnit()
-export default class RedisLifecycle implements ApplicationLifecycle {
+export default class NunjucksLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
+  get logger() {
+    return this.app.logger;
+  }
+
   @LifecycleHook()
   async willReady() {
+    const config: NunjucksConfigureOptions = this.app.config.nunjucks;
+
+    if (!config || !config.path) {
+      return;
+    }
+
+    this.logger.info('[nunjucks] serving view at: %s', config.path);
     const client = this.app.container.get(ArtusXInjectEnum.Client) as Client;
-    await client.init(this.app.config.nunjucks);
+    await client.init(config);
   }
 }

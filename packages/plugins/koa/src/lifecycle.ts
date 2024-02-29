@@ -31,10 +31,12 @@ import type {
   ArtusxMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
+  KoaRouter,
+  KoaApplication,
 } from './types';
 
-import KoaRouter from './koa/router';
-import KoaApplication from './koa/application';
+import KoaRouterClient from './koa/router';
+import KoaApplicationClient from './koa/application';
 
 export let server: Server;
 
@@ -55,11 +57,11 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   }
 
   get router(): KoaRouter {
-    return this.app.container.get(KoaRouter);
+    return this.app.container.get(KoaRouterClient);
   }
 
   get koa(): KoaApplication {
-    return this.app.container.get(KoaApplication);
+    return this.app.container.get(KoaApplicationClient);
   }
 
   private registerRoute(
@@ -174,14 +176,14 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   }
 
   private startHttpServer() {
-    const { port = 7001 } = this.app.config.koa;
+    const { port = 7001 } = this.app.config.artusx;
 
     const koa = this.koa;
     const router = this.router;
 
     koa.use(router.routes());
     server = koa.listen(port, () => {
-      this.logger.info(`Server listening on: http://localhost:${port}`);
+      this.logger.info(`[koa] listening on: http://localhost:${port}`);
     });
   }
 
@@ -201,7 +203,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   beforeClose() {
-    this.logger.info('Server closing...');
+    this.logger.info('[server] closing...');
     server?.close();
   }
 }

@@ -1,4 +1,14 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.14...v) (2024-02-23)
+# [](https://github.com/artusjs/artusx/compare/v1.0.15...v) (2024-02-24)
+
+
+
+## [1.0.15](https://github.com/artusjs/artusx/compare/v1.0.14...v1.0.15) (2024-02-24)
+
+
+### Features
+
+* **@artusx/core:** add koa-static to core ([ed7795b](https://github.com/artusjs/artusx/commit/ed7795b687753bbf33e7b7006e5b7461d1722c55))
+* **@artusx/plugin-koa:** move config into config.artusx ([0521863](https://github.com/artusjs/artusx/commit/05218634b8ba61bb67adc1eff5faf0ebe38e2788))
 
 
 

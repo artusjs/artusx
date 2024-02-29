@@ -13,11 +13,17 @@
     "tsc": "rm -rf dist && tsc"
   },
   "dependencies": {
-    "@artus/core": "^2.x",
     "@artusx/core": "workspace:*",
+    "@artusx/plugin-redis": "workspace:*",
+    "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/utils": "workspace:*",
+    "cron": "^2.2.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
     "fs-extra": "~11.2.0",
-    "reflect-metadata": "^0.1.13"
+    "rate-limiter-flexible": "~4.0.0",
+    "sequelize": "^6.28.0",
+    "sequelize-typescript": "^2.1.5"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
@@ -28,6 +34,7 @@
     "eslint": "~8.56.0",
     "eslint-plugin-import": "~2.29.1",
     "nodemon": "~3.0.2",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "~10.9.2",
     "tslib": "~2.6.2",
     "typescript": "~5.3.3"

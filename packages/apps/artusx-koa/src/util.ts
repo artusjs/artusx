@@ -30,20 +30,16 @@ export const getProxy = () => {
 };
 
 export const getEnv = <T>(key: string, type?: string): T => {
-  const _env = process.env[key] || '';
+  const value = process.env[key] || '';
 
-  let target: unknown;
-
-  if (!_env) {
-    target = _env;
-  }
+  let target: unknown = value;
 
   if (type === 'boolean') {
-    target = Boolean(_env);
+    target = Boolean(value);
   }
 
   if (type === 'number') {
-    target = parseInt(_env);
+    target = parseInt(value);
   }
 
   return target as T;

@@ -2,6 +2,30 @@
   "name": "@artusx/plugin-nunjucks",
   "entries": [
     {
+      "version": "1.0.18",
+      "tag": "@artusx/plugin-nunjucks_v1.0.18",
+      "date": "Tue, 27 Feb 2024 08:16:11 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.0.17",
+      "tag": "@artusx/plugin-nunjucks_v1.0.17",
+      "date": "Tue, 27 Feb 2024 03:53:09 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.0.16",
+      "tag": "@artusx/plugin-nunjucks_v1.0.16",
+      "date": "Tue, 27 Feb 2024 03:33:45 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.0.15",
+      "tag": "@artusx/plugin-nunjucks_v1.0.15",
+      "date": "Sat, 24 Feb 2024 19:50:19 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.14",
       "tag": "@artusx/plugin-nunjucks_v1.0.14",
       "date": "Fri, 23 Feb 2024 08:59:41 GMT",

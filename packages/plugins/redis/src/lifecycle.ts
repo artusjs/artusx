@@ -9,9 +9,20 @@ export default class RedisLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
+  get logger() {
+    return this.app.logger;
+  }
+
   @LifecycleHook()
   async willReady() {
+    const config: RedisConfig = this.app.config.redis;
+
+    if (!config || !config.path) {
+      return;
+    }
+
+    this.logger.info('[redis] staring redis with host: %s', config.host);
     const redis = this.app.container.get(ArtusXInjectEnum.Redis) as Redis;
-    await redis.init(this.app.config.redis as RedisConfig);
+    await redis.init(config);
   }
 }

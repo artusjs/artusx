@@ -42,7 +42,7 @@
       "name": "create",
       "commandKind": "global",
       "summary": "creator for artusx, This command invokes @artusx/init to create a new package.",
-      "shellCommand": "node packages/libs/init/dist/bin/cli.js"      
+      "shellCommand": "node toolchains/init/dist/bin/cli.js"      
     }
     // {
     //   /**
