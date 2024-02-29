@@ -76,3 +76,5 @@ common/autoinstallers/*/.npmrc
 
 # dist
 dist
+
+**/*/controller/bench*
