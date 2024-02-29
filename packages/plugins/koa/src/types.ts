@@ -1,8 +1,12 @@
 import type { Context as ArtusContext } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
-import type KoaRouter from '@koa/router';
+import Router from 'find-my-way';
 import type KoaApplication from 'koa';
+
+type KoaRouter<V extends Router.HTTPVersion = Router.HTTPVersion.V1> = Router.Instance<V> & {
+  new (config?: Router.Config<V>): Router.Instance<V>;
+};
 
 export enum HTTPMethod {
   PUT = 'PUT',

@@ -1,9 +1,11 @@
 {
-  "name": "artusx-koa",
+  "name": "artusx-koa-bench",
   "version": "1.0.0",
   "description": "koa for artusx",
   "main": "index.js",
   "scripts": {
+    "bench:fmy": "cd bench && BENCH_FIND_MY_WAY=true make",
+    "bench:koa-router": "cd bench && BENCH_KOA_ROUTER=true make",
     "build": "",
     "ci": "npm run lint",
     "dev": "ARTUS_SERVER_ENV=development npx nodemon src/index.ts",
@@ -14,16 +16,11 @@
   },
   "dependencies": {
     "@artusx/core": "workspace:*",
-    "@artusx/plugin-redis": "workspace:*",
-    "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/utils": "workspace:*",
     "cron": "^2.2.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
-    "fs-extra": "~11.2.0",
-    "rate-limiter-flexible": "~4.0.0",
-    "sequelize": "^6.28.0",
-    "sequelize-typescript": "^2.1.5"
+    "fs-extra": "~11.2.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",

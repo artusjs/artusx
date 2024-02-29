@@ -501,6 +501,11 @@
       "projectFolder": "packages/apps/artusx-koa",
       "tags": ["artusx-apps"]
     },
+    {
+      "packageName": "artusx-koa-bench",
+      "projectFolder": "packages/apps/artusx-koa-bench",
+      "tags": ["artusx-apps"]
+    },
     // plugins
     {
       "packageName": "@artusx/plugin-redis",

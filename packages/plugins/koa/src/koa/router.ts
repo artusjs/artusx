@@ -1,14 +1,12 @@
-import Router from '@koa/router';
-import type IRouter from '@koa/router';
+import Router from 'find-my-way';
 import { Injectable, ScopeEnum } from '@artus/core';
 import { ArtusXInjectEnum } from '../constants';
-
-interface IKoaRouter extends IRouter {}
+import { KoaRouter } from '../types';
 
 @Injectable({
   id: ArtusXInjectEnum.KoaRouter,
   scope: ScopeEnum.SINGLETON,
 })
-export default class KoaRouterClient extends Router implements IKoaRouter {}
+export default class KoaRouterClient extends (Router as any as KoaRouter) {}
 
 export { KoaRouterClient };
