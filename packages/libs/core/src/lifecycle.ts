@@ -11,6 +11,7 @@ import { existsSync, mkdirSync } from 'fs';
 import LRU from 'ylru';
 import cors from '@koa/cors';
 import range from 'koa-range';
+import compression from 'koa-compress';
 import staticCache from 'koa-static-cache';
 
 import { bodyParser } from '@koa/bodyparser';
@@ -73,6 +74,8 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async didLoad() {
+    this.koa.use(compression());
+
     this.koa.use(
       bodyParser({
         encoding: 'utf-8',

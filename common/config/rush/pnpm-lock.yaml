@@ -137,6 +137,7 @@ importers:
       '@types/koa__cors': ~5.0.0
       '@types/node': ^18.11.17
       ajv: ~8.12.0
+      koa-compress: ~5.1.1
       koa-range: ~0.3.0
       koa-static-cache: ~5.1.4
       reflect-metadata: ~0.2.1
@@ -153,6 +154,7 @@ importers:
       '@koa/bodyparser': 5.0.0
       '@koa/cors': 5.0.0
       ajv: 8.12.0
+      koa-compress: 5.1.1
       koa-range: 0.3.0
       koa-static-cache: 5.1.4
       ylru: 1.3.2
@@ -5682,12 +5684,26 @@ packages:
     resolution: {integrity: sha512-8ODW8TrDuMYvXRwra/Kh7/rJo9BtOfPc6qO8eAfC80CnCvSjSl0bkRM24X6/XBBEyj0v1nRUQ1LyOy3dbqOWXw==}
     dev: false
 
+  /koa-compress/5.1.1:
+    resolution: {integrity: sha512-UgMIN7ZoEP2DuoSQmD6CYvFSLt0NReGlc2qSY4bO4Oq0L56OiD9pDG41Kj/zFmVY/A3Wvmn4BqKcfq5H30LGIg==}
+    engines: {node: '>= 12'}
+    dependencies:
+      bytes: 3.1.2
+      compressible: 2.0.18
+      http-errors: 1.8.1
+      koa-is-json: 1.0.0
+    dev: false
+
   /koa-convert/2.0.0:
     resolution: {integrity: sha512-asOvN6bFlSnxewce2e/DK3p4tltyfC4VM7ZwuTuepI7dEQVcvpyFuBcEARu1+Hxg8DIwytce2n7jrZtRlPrARA==}
     engines: {node: '>= 10'}
     dependencies:
       co: 4.6.0
       koa-compose: 4.1.0
+    dev: false
+
+  /koa-is-json/1.0.0:
+    resolution: {integrity: sha512-+97CtHAlWDx0ndt0J8y3P12EWLwTLMXIfMnYDev3wOTwH/RpBGMlfn4bDXlMEg1u73K6XRE9BbUp+5ZAYoRYWw==}
     dev: false
 
   /koa-range/0.3.0:
