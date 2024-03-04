@@ -1,4 +1,42 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.15...v) (2024-02-24)
+# [](https://github.com/artusjs/artusx/compare/v1.0.19...v) (2024-03-04)
+
+
+
+## [1.0.19](https://github.com/artusjs/artusx/compare/v1.0.18...v1.0.19) (2024-03-04)
+
+
+### Features
+
+* **@artusx/boilerplate-artusx-app:** add bulilScript filed ([4d313f0](https://github.com/artusjs/artusx/commit/4d313f0361f5009ced89acaeb700271a7e4fecc3))
+* **@artusx/core:** add koa-compress middleware ([9db70cd](https://github.com/artusjs/artusx/commit/9db70cd3b8d5884f48f14396d42ceff2b8ffbc87))
+* **artusx-koa:** benchmark ([#3](https://github.com/artusjs/artusx/issues/3)) ([1e3c163](https://github.com/artusjs/artusx/commit/1e3c163d089360d852910a13cf92a4df67764213))
+
+
+
+## [1.0.18](https://github.com/artusjs/artusx/compare/v1.0.17...v1.0.18) (2024-02-27)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-koa:** fix export type of KoaApplication ([a504c19](https://github.com/artusjs/artusx/commit/a504c19bf0d35939a4b7411a712ed8b9ed041afb))
+
+
+
+## [1.0.17](https://github.com/artusjs/artusx/compare/v1.0.16...v1.0.17) (2024-02-27)
+
+
+### Bug Fixes
+
+* **@artusx/core:** fix default config for plugins ([97ca228](https://github.com/artusjs/artusx/commit/97ca228c2e86c539b67ddcf69746ec47b2a9f9c8))
+
+
+
+## [1.0.16](https://github.com/artusjs/artusx/compare/v1.0.15...v1.0.16) (2024-02-27)
+
+
+### Bug Fixes
+
+* **@artusx/core:** fix koa-static config ([5743653](https://github.com/artusjs/artusx/commit/5743653505c33df0af3ad7eb52ed4c5eab68afa5))
 
 
 
