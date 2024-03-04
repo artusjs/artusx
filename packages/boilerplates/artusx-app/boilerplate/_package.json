@@ -8,7 +8,7 @@
   "author": "{{author}}",  
   "main": "dist/index.js",  
   "scripts": {
-    "build": "",
+    "build": "{{buildScript}}",
     "ci": "npm run lint",
     "dev": "npx nodemon src/index.ts",
     "lint": "eslint . --ext .ts",

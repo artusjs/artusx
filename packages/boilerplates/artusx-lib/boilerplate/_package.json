@@ -26,7 +26,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "npm run tsc",   
+    "build": "npm run tsc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix", 
     "tsc": "rm -rf lib && tsc"

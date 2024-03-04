@@ -19,13 +19,23 @@ module.exports = {
     default: 'Suyi <thonatos.yang@gmail.com>',
   },
   monorepo: {
-    desc: 'managed by monorepo, enter anything to confirm',
+    desc: 'update package dependencies? If it is a monorepo, enter to confirm',
     filter(v) {
       if (v) {
         return 'workspace:*';
       }
 
       return 'latest';
+    },
+  },
+  buildScript: {
+    desc: 'keep build script settings? If it is a monorepo, enter to confirm',
+    filter(v) {
+      if (v) {
+        return '';
+      }
+
+      return 'npm run tsc';
     },
   },
 };
