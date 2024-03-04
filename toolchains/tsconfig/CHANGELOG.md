@@ -1,6 +1,11 @@
 # Change Log - @artusx/tsconfig
 
-This log was last generated on Tue, 27 Feb 2024 08:16:11 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Mar 2024 06:19:32 GMT and should not be manually modified.
+
+## 1.0.19
+Mon, 04 Mar 2024 06:19:32 GMT
+
+_Version update only_
 
 ## 1.0.18
 Tue, 27 Feb 2024 08:16:11 GMT

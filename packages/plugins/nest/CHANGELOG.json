@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-nest",
   "entries": [
     {
+      "version": "1.0.19",
+      "tag": "@artusx/plugin-nest_v1.0.19",
+      "date": "Mon, 04 Mar 2024 06:19:32 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.18",
       "tag": "@artusx/plugin-nest_v1.0.18",
       "date": "Tue, 27 Feb 2024 08:16:11 GMT",
