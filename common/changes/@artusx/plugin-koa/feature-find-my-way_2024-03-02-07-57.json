@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@artusx/plugin-koa",
+      "comment": "feat: use find-my-way to improve perf",
+      "type": "none"
+    }
+  ],
+  "packageName": "@artusx/plugin-koa"
+}

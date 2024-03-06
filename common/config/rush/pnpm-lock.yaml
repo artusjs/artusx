@@ -81,6 +81,47 @@ importers:
       tslib: 2.6.2
       typescript: 5.3.3
 
+  ../../packages/apps/artusx-koa-bench:
+    specifiers:
+      '@artusx/core': workspace:*
+      '@artusx/eslint-config': workspace:*
+      '@artusx/tsconfig': workspace:*
+      '@artusx/utils': workspace:*
+      '@types/fs-extra': ~11.0.4
+      '@types/node': ~20.10.6
+      '@typescript-eslint/eslint-plugin': ~6.19.1
+      cron: ^2.2.0
+      dayjs: ^1.11.7
+      dotenv: ^16.0.3
+      eslint: ~8.56.0
+      eslint-plugin-import: ~2.29.1
+      fs-extra: ~11.2.0
+      nodemon: ~3.0.2
+      reflect-metadata: ^0.1.13
+      ts-node: ~10.9.2
+      tslib: ~2.6.2
+      typescript: ~5.3.3
+    dependencies:
+      '@artusx/core': link:../../libs/core
+      '@artusx/utils': link:../../libs/utils
+      cron: 2.4.4
+      dayjs: 1.11.10
+      dotenv: 16.4.5
+      fs-extra: 11.2.0
+    devDependencies:
+      '@artusx/eslint-config': link:../../../toolchains/eslint-config
+      '@artusx/tsconfig': link:../../../toolchains/tsconfig
+      '@types/fs-extra': 11.0.4
+      '@types/node': 20.10.8
+      '@typescript-eslint/eslint-plugin': 6.19.1_xdgzedli73k7lw4xlyzszm74om
+      eslint: 8.56.0
+      eslint-plugin-import: 2.29.1_eslint@8.56.0
+      nodemon: 3.0.3
+      reflect-metadata: 0.1.14
+      ts-node: 10.9.2_cn4friaqt4kegyh625i7tshlpe
+      tslib: 2.6.2
+      typescript: 5.3.3
+
   ../../packages/apps/artusx-nest:
     specifiers:
       '@artus/core': ^2.x
@@ -212,14 +253,13 @@ importers:
       '@artus/pipeline': ^0.2
       '@artusx/eslint-config': workspace:*
       '@artusx/tsconfig': workspace:*
-      '@koa/router': ^12.0.1
       '@types/jest': ~29.5.11
       '@types/koa': ^2.13.12
-      '@types/koa__router': ^12.0.4
       '@types/node': ^18.11.17
       '@typescript-eslint/eslint-plugin': ~6.19.1
       eslint: ~8.56.0
       eslint-plugin-import: ~2.29.1
+      find-my-way: ^8.1.0
       jest: ~29.7.0
       koa: ^2.15.0
       reflect-metadata: ~0.2.1
@@ -229,14 +269,13 @@ importers:
     dependencies:
       '@artus/core': 2.2.2_reflect-metadata@0.2.1
       '@artus/pipeline': 0.2.3
-      '@koa/router': 12.0.1
+      find-my-way: 8.1.0
       koa: 2.15.0
     devDependencies:
       '@artusx/eslint-config': link:../../../toolchains/eslint-config
       '@artusx/tsconfig': link:../../../toolchains/tsconfig
       '@types/jest': 29.5.12
       '@types/koa': 2.15.0
-      '@types/koa__router': 12.0.4
       '@types/node': 18.19.18
       '@typescript-eslint/eslint-plugin': 6.19.1_7sjm5uif3lrlodkmlzqsvrpzla
       eslint: 8.56.0
@@ -1276,19 +1315,6 @@ packages:
       vary: 1.1.2
     dev: false
 
-  /@koa/router/12.0.1:
-    resolution: {integrity: sha512-ribfPYfHb+Uw3b27Eiw6NPqjhIhTpVFzEWLwyc/1Xp+DCdwRRyIlAUODX+9bPARF6aQtUu1+/PHzdNvRzcs/+Q==}
-    engines: {node: '>= 12'}
-    dependencies:
-      debug: 4.3.4
-      http-errors: 2.0.0
-      koa-compose: 4.1.0
-      methods: 1.1.2
-      path-to-regexp: 6.2.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@lukeed/csprng/1.1.0:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
@@ -1685,12 +1711,6 @@ packages:
 
   /@types/koa__cors/5.0.0:
     resolution: {integrity: sha512-LCk/n25Obq5qlernGOK/2LUwa/2YJb2lxHUkkvYFDOpLXlVI6tKcdfCHRBQnOY4LwH6el5WOLs6PD/a8Uzau6g==}
-    dependencies:
-      '@types/koa': 2.15.0
-    dev: true
-
-  /@types/koa__router/12.0.4:
-    resolution: {integrity: sha512-Y7YBbSmfXZpa/m5UGGzb7XadJIRBRnwNY9cdAojZGp65Cpe5MAP3mOZE7e3bImt8dfKS4UFcR16SLH8L/z7PBw==}
     dependencies:
       '@types/koa': 2.15.0
     dev: true
@@ -3996,6 +4016,10 @@ packages:
       to-regex: 3.0.2
     dev: false
 
+  /fast-decode-uri-component/1.0.1:
+    resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
+    dev: false
+
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -4028,6 +4052,12 @@ packages:
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
+
+  /fast-querystring/1.1.2:
+    resolution: {integrity: sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==}
+    dependencies:
+      fast-decode-uri-component: 1.0.1
+    dev: false
 
   /fast-safe-stringify/2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
@@ -4091,6 +4121,15 @@ packages:
       parseurl: 1.3.3
       statuses: 2.0.1
       unpipe: 1.0.0
+    dev: false
+
+  /find-my-way/8.1.0:
+    resolution: {integrity: sha512-41QwjCGcVTODUmLLqTMeoHeiozbMXYMAE1CKFiDyi9zVZ2Vjh0yz3MF0WQZoIb+cmzP/XlbFjlF2NtJmvZHznA==}
+    engines: {node: '>=14'}
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-querystring: 1.1.2
+      safe-regex2: 2.0.0
     dev: false
 
   /find-up/2.1.0:
@@ -6711,10 +6750,6 @@ packages:
     resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==}
     dev: false
 
-  /path-to-regexp/6.2.1:
-    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
-    dev: false
-
   /path-type/3.0.0:
     resolution: {integrity: sha512-T2ZUsdZFHgA3u4e5PfPbjd7HDDpxPnQb5jN0SrDsjNSuVXHJqtwTnWqG0B1jZrgmJ/7lj1EmVIByWt1gxGkWvg==}
     engines: {node: '>=4'}
@@ -7046,6 +7081,11 @@ packages:
     engines: {node: '>=0.12'}
     dev: false
 
+  /ret/0.2.2:
+    resolution: {integrity: sha512-M0b3YWQs7R3Z917WRQy1HHA7Ba7D8hvZg6UE5mLykJxQVE2ju0IXbGlaHPPlkY+WN7wFP+wUMXmBFA0aV6vYGQ==}
+    engines: {node: '>=4'}
+    dev: false
+
   /retry-as-promised/7.0.4:
     resolution: {integrity: sha512-XgmCoxKWkDofwH8WddD0w85ZfqYz+ZHlr5yo+3YUCfycWawU56T5ckWXsScsj5B8tqUcIG67DxXByo3VUgiAdA==}
     dev: false
@@ -7123,6 +7163,12 @@ packages:
     resolution: {integrity: sha512-aJXcif4xnaNUzvUuC5gcb46oTS7zvg4jpMTnuqtrEPlR3vFr4pxtdTwaF1Qs3Enjn9HK+ZlwQui+a7z0SywIzg==}
     dependencies:
       ret: 0.1.15
+    dev: false
+
+  /safe-regex2/2.0.0:
+    resolution: {integrity: sha512-PaUSFsUaNNuKwkBijoAPHAK6/eM6VirvyPWlZ7BAQy4D+hCvh4B6lIG+nPdhbFfIbP+gTGBcrdsOaUs0F+ZBOQ==}
+    dependencies:
+      ret: 0.2.2
     dev: false
 
   /safer-buffer/2.1.2:

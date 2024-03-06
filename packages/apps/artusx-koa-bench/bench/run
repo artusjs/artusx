@@ -6,8 +6,6 @@ export FACTOR=$1
 
 host="http://localhost:7001"
 
-kill -9 $(lsof -ti:7001) &
-
 node "$(dirname $0)/gen.js"
 npm run tsc
 
@@ -26,12 +24,15 @@ curl \
   > /dev/null
 
 # siege -c 50 -t 8 "$host/10/child/grandchild/%40"
+echo '\n'
+echo '----------------------------'
 wrk "$host/10/child/grandchild/%40" \
   -d 3 \
   -c 50 \
-  -t 8 \
-  | grep 'Requests/sec' \
-  | awk '{ print "Requests/sec " $2 }'
+  -t 8
+
+echo '----------------------------'
+echo '\n'
 
 kill $pid
 exit

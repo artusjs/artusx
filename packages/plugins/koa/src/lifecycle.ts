@@ -31,12 +31,10 @@ import type {
   ArtusxMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
-  KoaRouter,
-  KoaApplication,
 } from './types';
 
-import KoaRouterClient from './koa/router';
-import KoaApplicationClient from './koa/application';
+import { KoaRouterClient } from './koa/router';
+import { KoaApplicationClient } from './koa/application';
 
 export let server: Server;
 
@@ -56,11 +54,11 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     return this.app.logger;
   }
 
-  get router(): KoaRouter {
+  get router(): KoaRouterClient {
     return this.app.container.get(KoaRouterClient);
   }
 
-  get koa(): KoaApplication {
+  get koa(): KoaApplicationClient {
     return this.app.container.get(KoaApplicationClient);
   }
 
@@ -73,24 +71,34 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     for (const routeMetadata of routeMetadataList) {
       const routePath = path.normalize((controllerMetadata.prefix ?? '/') + routeMetadata.path);
       const middlewares = middlewareMetadata.middlewares || [];
-      this.router.register(
-        routePath,
-        [routeMetadata.method],
-        [
-          ...middlewares,
+      const singlePipeline = this.pipeline;
 
-          async (ctx, next) => {
+      this.router.on(
+        routeMetadata.method,
+        routePath,
+        async function routerHandler(this, _req, _res, params, _store, _query) {
+          const executionHandler = async (ctx, next) => {
             // run pipeline
             const input = new Input();
             const context = new Context(input);
             ctx.context = context;
-
-            await this.pipeline.run(ctx as any);
+            await singlePipeline.run(ctx as any);
 
             // handle request
             await handler(ctx as unknown as ArtusxContext, next);
-          },
-        ]
+          };
+
+          const { ctx, next } = this;
+          ctx.params = params;
+          try {
+            const executionPipeline = new Pipeline();
+            executionPipeline.use([...middlewares, executionHandler]);
+            await executionPipeline.run(ctx as any);
+            next();
+          } catch (error) {
+            ctx.throw(error);
+          }
+        }
       );
     }
   }
@@ -181,7 +189,9 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     const koa = this.koa;
     const router = this.router;
 
-    koa.use(router.routes());
+    koa.use((ctx, next) => {
+      return router.lookup(ctx.req, ctx.res, { ctx, next });
+    });
     server = koa.listen(port, () => {
       this.logger.info(`[koa] listening on: http://localhost:${port}`);
     });
