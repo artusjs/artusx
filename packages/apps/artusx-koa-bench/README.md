@@ -2,13 +2,24 @@
 
 > benchmark for @artusx/core
 
+## Prepare
+
+install and build wrk
+
+```bash
+mkdir wrk && cd wrk
+git clone https://github.com/wg/wrk.git .
+make
+cp wrk  /usr/local/bin
+```
+
 ## Usage
 
+```bash
+rush install 
+rush build 
+pnpm run bench
 ```
-rush install && rush build && pnpm bench:fmy
-
-```
-
 
 ### Requirement
 

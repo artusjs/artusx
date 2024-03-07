@@ -6,6 +6,10 @@ import type { ArtusxContext } from '@artusx/core';
 export default class HomeController {
   @GET('/')
   async home(ctx: ArtusxContext) {
-    ctx.body = {};
+    ctx.body = {
+      data: {
+        msg: 'artusx',
+      },
+    };
   }
 }
