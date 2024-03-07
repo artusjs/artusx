@@ -35,7 +35,7 @@ module.exports = {
         return '';
       }
 
-      return 'npm run tsc';
+      return 'npm run tsc && npm run build:view';
     },
   },
 };

@@ -8,13 +8,15 @@
   "author": "{{author}}",  
   "main": "dist/index.js",  
   "scripts": {
-    "build": "{{buildScript}}",
+    "build": "{{buildScript}}",    
+    "build:view": "cp -r src/view dist/view",
+    "_build": "npm run tsc && npm run build:view",
+    "dev": "ARTUS_SERVER_ENV=development npx nodemon src/index.ts",
+    "start": "ARTUS_SERVER_ENV=production node dist/index.js",
     "ci": "npm run lint",
-    "dev": "npx nodemon src/index.ts",
+    "tsc": "rm -rf dist && tsc",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
-    "start": "node dist/index.js",
-    "tsc": "rm -rf dist && tsc"
+    "lint:fix": "eslint . --ext .ts --fix"    
   },
   "dependencies": {
     "@artusx/utils": "{{monorepo}}",
