@@ -7,11 +7,11 @@ export default {
     enable: false,
   },
   redis: {
-    enable: true,
+    enable: false,
     package: '@artusx/plugin-redis',
   },
   sequelize: {
-    enable: true,
+    enable: false,
     package: '@artusx/plugin-sequelize',
   },
 };
