@@ -11,6 +11,10 @@ export default {
     enable: true,
     package: '@artusx/plugin-nunjucks',
   },
+  schedule: {
+    enable: true,
+    package: '@artusx/plugin-schedule',
+  },
   xtransit: {
     enable: false,
     package: '@artusx/plugin-xtransit',

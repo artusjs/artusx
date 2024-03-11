@@ -3,7 +3,7 @@ import { ArtusXInjectEnum } from './constants';
 import Client from './client';
 
 @LifecycleHookUnit()
-export default class RedisLifecycle implements ApplicationLifecycle {
+export default class PluginLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 

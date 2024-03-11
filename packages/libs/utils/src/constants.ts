@@ -5,6 +5,7 @@ export enum ArtusXInjectEnum {
   Log4js = 'ARTUSX_LOG4JS',
   Nunjucks = 'ARTUSX_NUNJUCKS',
   XTransit = 'ARTUSX_XTRANSIT',
+  Schedule = 'ARTUSX_SCHEDULE',
   Nest = 'ARTUSX_NEST',
   Express = 'ARTUSX_EXPRESS',
   Redis = 'ARTUSX_REDIS',

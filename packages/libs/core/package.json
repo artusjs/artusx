@@ -36,6 +36,7 @@
     "@artusx/plugin-koa": "workspace:*",
     "@artusx/plugin-log4js": "workspace:*",
     "@artusx/plugin-nunjucks": "workspace:*",
+    "@artusx/plugin-schedule": "workspace:*",
     "@artusx/plugin-xtransit": "workspace:*",
     "@koa/bodyparser": "~5.0.0",
     "@koa/cors": "~5.0.0",
