@@ -2,6 +2,12 @@
   "name": "@artusx/boilerplate-artusx-app",
   "entries": [
     {
+      "version": "1.0.21",
+      "tag": "@artusx/boilerplate-artusx-app_v1.0.21",
+      "date": "Mon, 11 Mar 2024 12:59:11 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.20",
       "tag": "@artusx/boilerplate-artusx-app_v1.0.20",
       "date": "Thu, 07 Mar 2024 02:52:18 GMT",

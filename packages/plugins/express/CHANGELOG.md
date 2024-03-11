@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-express
 
-This log was last generated on Thu, 07 Mar 2024 02:52:18 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Mar 2024 12:59:11 GMT and should not be manually modified.
+
+## 1.0.21
+Mon, 11 Mar 2024 12:59:11 GMT
+
+_Version update only_
 
 ## 1.0.20
 Thu, 07 Mar 2024 02:52:18 GMT

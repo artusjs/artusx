@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-schedule",
-  "version": "0.0.0-dev.0",
+  "version": "1.0.21",
   "description": "schedule plugin for artusx",
   "keywords": [
     "artusx"
