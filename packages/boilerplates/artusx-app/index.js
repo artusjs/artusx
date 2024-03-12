@@ -11,7 +11,7 @@ module.exports = {
   description: {
     desc: 'package description',
     default(vars) {
-      return `${vars.name} app powered artusx`;
+      return `${vars.name} app powered by artusx`;
     },
   },
   author: {
