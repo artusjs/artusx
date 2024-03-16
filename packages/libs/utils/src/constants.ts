@@ -10,6 +10,7 @@ export enum ArtusXInjectEnum {
   Express = 'ARTUSX_EXPRESS',
   Redis = 'ARTUSX_REDIS',
   Sequelize = 'ARTUSX_SEQUELIZE',
+  OpenAI = 'ARTUS_OPENAI',
   Telegram = 'ARTUS_TELEGRAM',
 }
 
