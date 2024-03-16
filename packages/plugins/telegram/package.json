@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-telegram",
-  "version": "0.0.0-dev.0",
+  "version": "1.0.23",
   "description": "telegram plugin for artusx",
   "keywords": [
     "artusx"
