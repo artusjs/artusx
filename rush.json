@@ -583,6 +583,13 @@
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-proxy",
+      "projectFolder": "packages/plugins/proxy",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
     }
   ]
 }
