@@ -1,0 +1,6 @@
+{
+  "extends": ["@artusx/eslint-config"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}

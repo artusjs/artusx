@@ -569,6 +569,13 @@
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-telegram",
+      "projectFolder": "packages/plugins/telegram",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
     }
   ]
 }
