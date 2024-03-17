@@ -11,4 +11,5 @@ export default {
   // },
 
   session_string: '',
+  bot_auth_token: '',
 };

@@ -11,6 +11,7 @@ export interface TelegramConfig {
   app_title: string;
 
   session_string: string;
+  bot_auth_token?: string;
 
   proxy?: {
     ip: string;
