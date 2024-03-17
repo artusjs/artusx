@@ -590,6 +590,13 @@
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-pptr",
+      "projectFolder": "packages/plugins/pptr",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
     }
   ]
 }
