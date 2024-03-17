@@ -25,6 +25,7 @@ Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org)
 | @artusx/plugin-log4js               | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-log4js.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-log4js)                       |
 | @artusx/plugin-nunjucks             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nunjucks.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nunjucks)                   |
 | @artusx/plugin-schedule             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-schedule.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-schedule)                   |
+| @artusx/plugin-pptr                 | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-pptr.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-pptr)                           |
 | @artusx/plugin-proxy                | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-proxy.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-proxy)                         |
 | @artusx/plugin-openai               | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-openai.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-openai)                       |
 | @artusx/plugin-telegram             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-telegram.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-telegram)                   |
