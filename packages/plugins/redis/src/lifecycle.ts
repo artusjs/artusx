@@ -17,7 +17,7 @@ export default class RedisLifecycle implements ApplicationLifecycle {
   async willReady() {
     const config: RedisConfig = this.app.config.redis;
 
-    if (!config || !config.path) {
+    if (!config || !config.host) {
       return;
     }
 
