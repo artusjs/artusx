@@ -2,6 +2,12 @@
   "name": "@artusx/core",
   "entries": [
     {
+      "version": "1.0.24",
+      "tag": "@artusx/core_v1.0.24",
+      "date": "Sun, 17 Mar 2024 04:02:48 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.23",
       "tag": "@artusx/core_v1.0.23",
       "date": "Sat, 16 Mar 2024 15:45:39 GMT",
