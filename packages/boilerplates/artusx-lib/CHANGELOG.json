@@ -2,6 +2,12 @@
   "name": "@artusx/boilerplate-artusx-lib",
   "entries": [
     {
+      "version": "1.0.26",
+      "tag": "@artusx/boilerplate-artusx-lib_v1.0.26",
+      "date": "Sun, 17 Mar 2024 05:16:57 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.25",
       "tag": "@artusx/boilerplate-artusx-lib_v1.0.25",
       "date": "Sun, 17 Mar 2024 04:52:57 GMT",
