@@ -3,6 +3,7 @@ import { ArtusXInjectEnum } from './constants';
 
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import type { VanillaPuppeteer } from 'puppeteer-extra';
 import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer-core';
 
 export type PPTRConfig = {
@@ -27,11 +28,11 @@ export default class PPTRClient {
     puppeteer.use(StealthPlugin());
 
     if (config.connect) {
-      browser = await puppeteer.connect(config.connect);
+      browser = await puppeteer.connect(config.connect as Parameters<VanillaPuppeteer['connect']>[0]);
     }
 
     if (config.launch) {
-      browser = await puppeteer.launch(config.launch);
+      browser = await puppeteer.launch(config.launch as Parameters<VanillaPuppeteer['launch']>[0]);
     }
 
     this.browser = browser;
