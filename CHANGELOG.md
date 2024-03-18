@@ -1,4 +1,88 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.19...v) (2024-03-04)
+# [](https://github.com/artusjs/artusx/compare/v1.0.29...v) (2024-03-18)
+
+
+
+## [1.0.29](https://github.com/artusjs/artusx/compare/v1.0.27...v1.0.29) (2024-03-18)
+
+
+### Features
+
+* **@artusx/plugin-pptr:** replace puppeteer with puppeteer-extra ([bf1a008](https://github.com/artusjs/artusx/commit/bf1a00869fa8698ea4b8baad3cd628de4675d593))
+* **@artusx/plugin-pptr:** replace puppeteer-core with puppeteer ([6519982](https://github.com/artusjs/artusx/commit/6519982d412169117ba3d8cb49d6c2b9ef3255ce))
+
+
+
+## [1.0.27](https://github.com/artusjs/artusx/compare/v1.0.26...v1.0.27) (2024-03-17)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-redis:** fix init logic ([b9cda60](https://github.com/artusjs/artusx/commit/b9cda608b01eff18958de0965fa7b8a3d78e11b9))
+
+
+
+## [1.0.26](https://github.com/artusjs/artusx/compare/v1.0.25...v1.0.26) (2024-03-17)
+
+
+### Features
+
+* update types for plugins ([174d3aa](https://github.com/artusjs/artusx/commit/174d3aac1a7c5b2e7ccad583f69495c04068c09c))
+
+
+
+## [1.0.25](https://github.com/artusjs/artusx/compare/v1.0.24...v1.0.25) (2024-03-17)
+
+
+### Features
+
+* **@artusx/plugin-pptr:** add pptr plugin ([4b40e1d](https://github.com/artusjs/artusx/commit/4b40e1db34d86946357b889f2a261b5e8ecdb07f))
+
+
+
+## [1.0.24](https://github.com/artusjs/artusx/compare/v1.0.23...v1.0.24) (2024-03-17)
+
+
+### Features
+
+* **@artusx/plugin-telegram:** add bot-auth-token field ([c486d4f](https://github.com/artusjs/artusx/commit/c486d4f9ac0e2c8421f634d0ad820bd569888053))
+
+
+
+## [1.0.23](https://github.com/artusjs/artusx/compare/v1.0.22...v1.0.23) (2024-03-16)
+
+
+### Bug Fixes
+
+* **@artusx/boilerplate-artusx-app:** fix description field ([025f492](https://github.com/artusjs/artusx/commit/025f4921e4d4389eda1f691431ae83e231d15569))
+
+
+### Features
+
+* **@artusx/plugin-openai:** add openai plugin ([daa8ffc](https://github.com/artusjs/artusx/commit/daa8ffcd4deda064284b35072021399e2252a24b))
+* **@artusx/plugin-proxy:** add proxy plugin ([910b230](https://github.com/artusjs/artusx/commit/910b230afadb76b2864a07f270d38a3bbb3fe57e))
+* **@artusx/plugin-telegram:** add telegram plugin ([c952950](https://github.com/artusjs/artusx/commit/c9529506053f13d3fe03b7e683f9e89b9550c1e8))
+
+
+
+## [1.0.22](https://github.com/artusjs/artusx/compare/v1.0.21...v1.0.22) (2024-03-12)
+
+
+### Bug Fixes
+
+* **@artusx/boilerplate-artusx-app:** fix missing method ([490fa49](https://github.com/artusjs/artusx/commit/490fa49b5c8b2af0b476fa3258533d5cb728aed1))
+* **@artusx/plugin-schedule:** fix type of ArtusxSchedule ([edd27cb](https://github.com/artusjs/artusx/commit/edd27cb14f977ea1ae8b5087662d0a41b61283d5))
+
+
+
+## [1.0.21](https://github.com/artusjs/artusx/compare/v1.0.19...v1.0.21) (2024-03-11)
+
+
+### Features
+
+* **@artusx/boilerplate-artusx-app:** update start and build scripts ([c0239fe](https://github.com/artusjs/artusx/commit/c0239fe2bf8a767a984cc4232bc02ca12ec7e190))
+* **@artusx/plugin-koa:** use find-my-way instead of @koa/router to improve perf ([#4](https://github.com/artusjs/artusx/issues/4)) ([da78fc7](https://github.com/artusjs/artusx/commit/da78fc70e9928266b325e733a9d899c07304da21))
+* **@artusx/plugin-schedule:** add schedule plugin ([790af4c](https://github.com/artusjs/artusx/commit/790af4c4de49414c2184932b9e79112b3c7ae763))
+* **artusx-koa-bench:** update config and docs ([aaf14d7](https://github.com/artusjs/artusx/commit/aaf14d73c633f7eb4e9be36e77cab7481c854ac7))
 
 
 
