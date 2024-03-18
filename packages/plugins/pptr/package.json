@@ -44,7 +44,7 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "puppeteer-core": "~22.5.0"
+    "puppeteer": "~22.5.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",

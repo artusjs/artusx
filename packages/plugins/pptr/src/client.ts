@@ -1,8 +1,8 @@
 import { Injectable, ScopeEnum } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
 
-import puppeteer from 'puppeteer-core';
-import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer-core';
+import puppeteer from 'puppeteer';
+import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer';
 
 export type PPTRConfig = {
   launch?: PuppeteerLaunchOptions;

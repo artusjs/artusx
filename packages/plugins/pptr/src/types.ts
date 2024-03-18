@@ -1,1 +1,1 @@
-export type { Browser, KnownDevices, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer-core';
+export * from 'puppeteer';
