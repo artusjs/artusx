@@ -1,1 +1,1 @@
-export * from 'puppeteer';
+export * from 'puppeteer-core';

@@ -1,8 +1,9 @@
 import { Injectable, ScopeEnum } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
 
-import puppeteer from 'puppeteer';
-import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer-core';
 
 export type PPTRConfig = {
   launch?: PuppeteerLaunchOptions;
@@ -22,6 +23,8 @@ export default class PPTRClient {
     if (!config.connect && !config.launch) {
       return;
     }
+
+    puppeteer.use(StealthPlugin());
 
     if (config.connect) {
       browser = await puppeteer.connect(config.connect);
