@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-proxy
 
-This log was last generated on Mon, 18 Mar 2024 08:58:16 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Mar 2024 09:08:51 GMT and should not be manually modified.
+
+## 1.0.30
+Mon, 18 Mar 2024 09:08:51 GMT
+
+_Version update only_
 
 ## 1.0.29
 Mon, 18 Mar 2024 08:58:16 GMT

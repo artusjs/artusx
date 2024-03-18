@@ -2,6 +2,12 @@
   "name": "@artusx/tsconfig",
   "entries": [
     {
+      "version": "1.0.30",
+      "tag": "@artusx/tsconfig_v1.0.30",
+      "date": "Mon, 18 Mar 2024 09:08:51 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.29",
       "tag": "@artusx/tsconfig_v1.0.29",
       "date": "Mon, 18 Mar 2024 08:58:16 GMT",
