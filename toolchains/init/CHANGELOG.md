@@ -1,6 +1,11 @@
 # Change Log - @artusx/init
 
-This log was last generated on Sun, 17 Mar 2024 15:16:00 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Mar 2024 00:33:45 GMT and should not be manually modified.
+
+## 1.0.28
+Mon, 18 Mar 2024 00:33:45 GMT
+
+_Version update only_
 
 ## 1.0.27
 Sun, 17 Mar 2024 15:16:00 GMT
