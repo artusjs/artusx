@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-express",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "express plugin for artusx",
   "keywords": [
     "artusx"
