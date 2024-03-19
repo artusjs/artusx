@@ -3,7 +3,7 @@ import { ArtusXInjectEnum } from './constants';
 
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import type { VanillaPuppeteer } from 'puppeteer-extra';
+import { PuppeteerExtra, VanillaPuppeteer } from 'puppeteer-extra';
 import type { Browser, PuppeteerLaunchOptions, ConnectOptions } from 'puppeteer-core';
 
 export type PPTRConfig = {
@@ -11,38 +11,54 @@ export type PPTRConfig = {
   connect?: ConnectOptions;
 };
 
+export { KnownDevices } from 'puppeteer-core';
+
 @Injectable({
   id: ArtusXInjectEnum.PPTR,
   scope: ScopeEnum.SINGLETON,
 })
 export default class PPTRClient {
-  private browser: Browser;
+  config: PPTRConfig = {};
+  puppeteer: PuppeteerExtra;
+
+  constructor() {
+    puppeteer.use(StealthPlugin());
+    this.puppeteer = puppeteer;
+  }
 
   async init(config: PPTRConfig) {
-    let browser;
-
     if (!config.connect && !config.launch) {
       return;
     }
 
-    puppeteer.use(StealthPlugin());
-
-    if (config.connect) {
-      browser = await puppeteer.connect(config.connect as Parameters<VanillaPuppeteer['connect']>[0]);
-    }
-
-    if (config.launch) {
-      browser = await puppeteer.launch(config.launch as Parameters<VanillaPuppeteer['launch']>[0]);
-    }
-
-    this.browser = browser;
+    this.config = config;
   }
 
-  getClient(): Browser {
-    return this.browser;
+  async getClient() {
+    return this.puppeteer;
   }
 
-  async close() {
-    await this.browser.close();
+  async getBrowser(): Promise<Browser> {
+    let browser;
+
+    const { connect, launch } = this.config;
+
+    if (connect) {
+      browser = (await puppeteer.connect(
+        connect as Parameters<VanillaPuppeteer['connect']>[0]
+      )) as unknown as Browser;
+    }
+
+    if (launch) {
+      browser = (await puppeteer.launch(
+        launch as Parameters<VanillaPuppeteer['launch']>[0]
+      )) as unknown as Browser;
+    }
+
+    setTimeout(() => {
+      browser.close();
+    }, 30000);
+
+    return browser;
   }
 }
