@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-schedule",
   "entries": [
     {
+      "version": "1.0.32",
+      "tag": "@artusx/plugin-schedule_v1.0.32",
+      "date": "Tue, 19 Mar 2024 09:08:17 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.31",
       "tag": "@artusx/plugin-schedule_v1.0.31",
       "date": "Tue, 19 Mar 2024 07:40:06 GMT",
