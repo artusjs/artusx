@@ -1,4 +1,36 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.29...v) (2024-03-18)
+# [](https://github.com/artusjs/artusx/compare/v1.0.32...v) (2024-03-19)
+
+
+
+## [1.0.32](https://github.com/artusjs/artusx/compare/v1.0.31...v1.0.32) (2024-03-19)
+
+
+### Features
+
+* **@artusx/utils:** move utils to @artusx/utils ([5587846](https://github.com/artusjs/artusx/commit/5587846ebc076548e841e1cc19906e1ca2f8107b))
+
+
+
+## [1.0.31](https://github.com/artusjs/artusx/compare/v1.0.30...v1.0.31) (2024-03-19)
+
+
+### Bug Fixes
+
+* **@artusx/boilerplate-artusx-app:** should include tslib in deps ([ef565db](https://github.com/artusjs/artusx/commit/ef565db96a2500930d1b5fb4229e96331cc9bab5))
+
+
+### Features
+
+* **@artusx/plugin-pptr:** add getBrowser method ([298d6e6](https://github.com/artusjs/artusx/commit/298d6e68c4fb4d1c63fe89ceb732b94687b007db))
+
+
+
+## [1.0.30](https://github.com/artusjs/artusx/compare/v1.0.29...v1.0.30) (2024-03-18)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-pptr:** fix type for connect and launch ([eaa6557](https://github.com/artusjs/artusx/commit/eaa6557a82bbf7299d1098de4d48067a05441f33))
 
 
 
