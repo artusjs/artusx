@@ -1,14 +1,14 @@
 import path from 'path';
 import dotenv from 'dotenv';
-import { Application } from '@artusx/utils';
+import { Application } from './application';
 
 dotenv.config();
 
-export const main = async (options?: object) => {
+export const bootstrap = async (options?: object, configDir?: string) => {
   const app = await Application.start({
     ...options,
     root: path.resolve(__dirname),
-    configDir: 'config',
+    configDir: configDir || 'config',
   });
 
   return app;

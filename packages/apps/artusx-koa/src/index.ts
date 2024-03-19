@@ -1,3 +1,3 @@
-import { main } from './bootstrap';
+import { bootstrap } from '@artusx/utils/bootstrap';
 
-main();
+bootstrap();

@@ -15,7 +15,7 @@ import {
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
 
-import { getEnv } from '../util';
+import { getEnv } from '@artusx/utils';
 
 import LimitRate from '../middleware/LimitRate';
 import checkAuth from '../middleware/checkAuth';

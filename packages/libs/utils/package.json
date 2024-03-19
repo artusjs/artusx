@@ -16,6 +16,14 @@
       "types": "./lib/application.d.ts",
       "default": "./lib/application.js"
     },
+    "./bootstrap": {
+      "types": "./lib/bootstrap.d.ts",
+      "default": "./lib/bootstrap.js"
+    },
+    "./utils": {
+      "types": "./lib/utils.d.ts",
+      "default": "./lib/utils.js"
+    },
     "./constants": {
       "types": "./lib/constants.d.ts",
       "default": "./lib/constants.js"
@@ -31,7 +39,8 @@
     "tsc": "rm -rf lib && tsc"
   },
   "dependencies": {
-    "@artus/core": "^2.x"
+    "@artus/core": "^2.x",
+    "dotenv": "~16.4.5"
   },
   "devDependencies": {
     "@artusx/tsconfig": "workspace:*",
