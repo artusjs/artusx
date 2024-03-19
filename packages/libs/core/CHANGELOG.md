@@ -1,6 +1,11 @@
 # Change Log - @artusx/core
 
-This log was last generated on Mon, 18 Mar 2024 09:08:51 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2024 07:40:06 GMT and should not be manually modified.
+
+## 1.0.31
+Tue, 19 Mar 2024 07:40:06 GMT
+
+_Version update only_
 
 ## 1.0.30
 Mon, 18 Mar 2024 09:08:51 GMT
