@@ -56,7 +56,7 @@ export default class PPTRClient {
     }
 
     setTimeout(() => {
-      browser.close();
+      browser?.close();
     }, 30000);
 
     return browser;
