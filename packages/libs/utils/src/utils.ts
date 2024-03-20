@@ -1,34 +1,3 @@
-export const getApiId = () => {
-  const api_id = process.env.API_ID;
-
-  if (!api_id) {
-    return;
-  }
-
-  return parseInt(api_id);
-};
-
-export const getProxy = () => {
-  const proxy_ip = process.env.PROXY_IP;
-  const proxy_port = process.env.PROXY_PORT;
-  const proxy_socket_type = process.env.PROXY_SOCKET_TYPE;
-
-  if (!proxy_ip || !proxy_port || !proxy_socket_type) {
-    return;
-  }
-
-  const proxy_protocol = proxy_socket_type === '5' ? 'socks5' : 'socks4';
-
-  const proxyString = `${proxy_protocol}://${proxy_ip}:${proxy_port}`;
-
-  return {
-    ip: proxy_ip,
-    port: parseInt(proxy_port),
-    socksType: parseInt(proxy_socket_type),
-    proxyString,
-  };
-};
-
 export const getEnv = <T>(key: string, type?: string): T => {
   const value = process.env[key] || '';
 
@@ -43,4 +12,34 @@ export const getEnv = <T>(key: string, type?: string): T => {
   }
 
   return target as T;
+};
+
+export const getApiId = () => {
+  const apiID = getEnv<Number>('API_ID', 'number');
+
+  if (!apiID) {
+    return;
+  }
+
+  return apiID;
+};
+
+export const getProxy = () => {
+  const ip = getEnv<string>('PROXY_IP');
+  const port = getEnv<Number>('PROXY_PORT', 'number');
+  const socksType = getEnv<Number>('PROXY_SOCKET_TYPE', 'number');
+
+  if (!ip || !port || !socksType) {
+    return;
+  }
+
+  const protocol = socksType === 5 ? 'socks5' : 'socks4';
+  const proxyString = `${protocol}://${ip}:${port}`;
+
+  return {
+    ip,
+    port,
+    socksType,
+    proxyString,
+  };
 };

@@ -126,9 +126,6 @@ importers:
       dayjs:
         specifier: ^1.11.7
         version: 1.11.10
-      dotenv:
-        specifier: ^16.0.3
-        version: 16.4.5
       fs-extra:
         specifier: ~11.2.0
         version: 11.2.0

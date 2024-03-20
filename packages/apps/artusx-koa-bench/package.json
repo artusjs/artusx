@@ -18,7 +18,6 @@
     "@artusx/utils": "workspace:*",
     "cron": "^2.2.0",
     "dayjs": "^1.11.7",
-    "dotenv": "^16.0.3",
     "fs-extra": "~11.2.0"
   },
   "devDependencies": {
