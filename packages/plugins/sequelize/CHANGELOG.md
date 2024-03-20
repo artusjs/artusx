@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-sequelize
 
-This log was last generated on Wed, 20 Mar 2024 12:44:48 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2024 12:58:18 GMT and should not be manually modified.
+
+## 1.0.35
+Wed, 20 Mar 2024 12:58:18 GMT
+
+_Version update only_
 
 ## 1.0.34
 Wed, 20 Mar 2024 12:44:48 GMT
