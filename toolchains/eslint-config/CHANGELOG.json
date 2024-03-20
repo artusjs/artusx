@@ -2,6 +2,12 @@
   "name": "@artusx/eslint-config",
   "entries": [
     {
+      "version": "1.0.34",
+      "tag": "@artusx/eslint-config_v1.0.34",
+      "date": "Wed, 20 Mar 2024 12:44:48 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.33",
       "tag": "@artusx/eslint-config_v1.0.33",
       "date": "Tue, 19 Mar 2024 16:23:55 GMT",
