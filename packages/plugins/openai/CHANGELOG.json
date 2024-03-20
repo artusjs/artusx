@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-openai",
   "entries": [
     {
+      "version": "1.0.33",
+      "tag": "@artusx/plugin-openai_v1.0.33",
+      "date": "Wed, 20 Mar 2024 12:33:09 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.32",
       "tag": "@artusx/plugin-openai_v1.0.32",
       "date": "Tue, 19 Mar 2024 09:08:17 GMT",

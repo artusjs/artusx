@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-nest
 
-This log was last generated on Tue, 19 Mar 2024 09:08:17 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2024 12:33:09 GMT and should not be manually modified.
+
+## 1.0.33
+Wed, 20 Mar 2024 12:33:09 GMT
+
+_Version update only_
 
 ## 1.0.32
 Tue, 19 Mar 2024 09:08:17 GMT
