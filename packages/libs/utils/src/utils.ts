@@ -15,7 +15,7 @@ export const getEnv = <T>(key: string, type?: string): T => {
 };
 
 export const getApiId = () => {
-  const apiID = getEnv<Number>('API_ID', 'number');
+  const apiID = getEnv<number>('API_ID', 'number');
 
   if (!apiID) {
     return;
@@ -26,8 +26,8 @@ export const getApiId = () => {
 
 export const getProxy = () => {
   const ip = getEnv<string>('PROXY_IP');
-  const port = getEnv<Number>('PROXY_PORT', 'number');
-  const socksType = getEnv<Number>('PROXY_SOCKET_TYPE', 'number');
+  const port = getEnv<number>('PROXY_PORT', 'number');
+  const socksType = getEnv<number>('PROXY_SOCKET_TYPE', 'number');
 
   if (!ip || !port || !socksType) {
     return;
