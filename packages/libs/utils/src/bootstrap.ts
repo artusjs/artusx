@@ -1,15 +1,20 @@
-import path from 'path';
 import dotenv from 'dotenv';
 import { Application } from './application';
 
 dotenv.config();
 
-export const bootstrap = async (options?: object, configDir?: string) => {
+export const bootstrap = async (options: Options) => {
+  const { root, configDir = 'config', ...rest } = options || {};
   const app = await Application.start({
-    ...options,
-    root: path.resolve(__dirname),
-    configDir: configDir || 'config',
+    ...rest,
+    root,
+    configDir,
   });
 
   return app;
+};
+
+export type Options = Record<string, any> & {
+  root: string;
+  configDir?: string;
 };
