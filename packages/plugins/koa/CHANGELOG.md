@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-koa
 
-This log was last generated on Wed, 20 Mar 2024 12:58:18 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 06:34:51 GMT and should not be manually modified.
+
+## 1.0.36
+Fri, 22 Mar 2024 06:34:51 GMT
+
+_Version update only_
 
 ## 1.0.35
 Wed, 20 Mar 2024 12:58:18 GMT

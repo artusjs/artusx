@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-openai",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "openai plugin for artusx",
   "keywords": [
     "artusx"
