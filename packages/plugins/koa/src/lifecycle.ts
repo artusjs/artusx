@@ -115,6 +115,11 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
       for (const key of Object.keys(handlerDescriptorList)) {
         const handlerDescriptor = handlerDescriptorList[key];
 
+        // skip getter/setter
+        if (!handlerDescriptor.value) {
+          continue;
+        }
+
         const routeMetadataList: HTTPRouteMetadata[] =
           Reflect.getMetadata(HTTP_ROUTER_METADATA, handlerDescriptor.value) ?? [];
 
