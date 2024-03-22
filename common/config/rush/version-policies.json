@@ -12,13 +12,13 @@
   {
     "policyName": "public",
     "definitionName": "lockStepVersion",
-    "version": "1.0.36",
+    "version": "1.0.37",
     "nextBump": "patch"
   },
   {
     "policyName": "public-utils",
     "definitionName": "lockStepVersion",
-    "version": "1.0.36",
+    "version": "1.0.37",
     "nextBump": "patch"
   }
   // {
