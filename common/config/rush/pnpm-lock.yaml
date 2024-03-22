@@ -267,6 +267,15 @@ importers:
       '@artusx/tsconfig':
         specifier: workspace:*
         version: link:../../../toolchains/tsconfig
+      '@types/koa-compress':
+        specifier: ~4.0.6
+        version: 4.0.6
+      '@types/koa-range':
+        specifier: ~0.3.5
+        version: 0.3.5
+      '@types/koa-static-cache':
+        specifier: ~5.1.4
+        version: 5.1.4
       '@types/koa__cors':
         specifier: ~5.0.0
         version: 5.0.0
@@ -2089,6 +2098,25 @@ packages:
 
   /@types/koa-compose@3.2.8:
     resolution: {integrity: sha512-4Olc63RY+MKvxMwVknCUDhRQX1pFQoBZ/lXcRLP69PQkEpze/0cr8LNqJQe5NFb/b19DWi2a5bTi2VAlQzhJuA==}
+    dependencies:
+      '@types/koa': 2.15.0
+    dev: true
+
+  /@types/koa-compress@4.0.6:
+    resolution: {integrity: sha512-jJzlsQTeIXRfQzY7y2Dl/syqOxvEaNJzFTJ8ZGaDFWvqgMmCXplfCGjPfHQgU7xYNKq/mCdN3YWus1YOldfIwg==}
+    dependencies:
+      '@types/koa': 2.15.0
+      '@types/node': 20.11.28
+    dev: true
+
+  /@types/koa-range@0.3.5:
+    resolution: {integrity: sha512-DvbLgWVctu3k0dnuQsb2If7ROdYvUK+oGOJTxFviQjfrMjaewZYM1IPYoH1yZ2zhcpD+hKzBiGi5DMOj0kLAQg==}
+    dependencies:
+      '@types/koa': 2.15.0
+    dev: true
+
+  /@types/koa-static-cache@5.1.4:
+    resolution: {integrity: sha512-wEGOTKb1N9YcQDGxKEXcZ2+ar8MJJvbFqW/lznjtRJ+NG0mgm7qxR+w100yacJzS0mbeNw4hbwbUCp4b8Fru3Q==}
     dependencies:
       '@types/koa': 2.15.0
     dev: true

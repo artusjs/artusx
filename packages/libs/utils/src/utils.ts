@@ -1,3 +1,27 @@
+import * as crypto from 'crypto';
+
+// crypto
+export const md5 = (signature: string) => {
+  return crypto.createHash('md5').update(signature).digest('hex');
+};
+
+export const hmac = (password: string, salt: string) => {
+  return crypto.createHmac('sha256', salt).update(password).digest('hex');
+};
+
+export const slat = () => {
+  return crypto.randomBytes(16).toString('hex');
+};
+
+export const avatar = (email: string) => {
+  if (!email) {
+    return '';
+  }
+  const hash = md5(email);
+  return `https://s.gravatar.com/avatar/${hash}`;
+};
+
+// env utils
 export const getEnv = <T>(key: string, type?: string): T => {
   const value = process.env[key] || '';
 

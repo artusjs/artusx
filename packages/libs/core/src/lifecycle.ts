@@ -72,6 +72,17 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
     this.koa.use(staticCache(staticCacheOptions));
   }
 
+  private registerCors() {
+    const { cors: corsConfig } = this.app.config.artusx as ArtusxConfig;
+
+    if (!corsConfig) {
+      this.koa.use(cors());
+      return;
+    }
+
+    this.koa.use(cors(corsConfig));
+  }
+
   @LifecycleHook()
   async didLoad() {
     this.koa.use(compression());
@@ -85,15 +96,7 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
       })
     );
 
-    this.koa.use(
-      cors({
-        credentials: true,
-        origin(ctx) {
-          return ctx.get('Origin') || 'localhost';
-        },
-      })
-    );
-
+    this.registerCors();
     this.registerStatic();
   }
 }
