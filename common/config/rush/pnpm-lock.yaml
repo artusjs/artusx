@@ -251,6 +251,9 @@ importers:
       ajv:
         specifier: ~8.12.0
         version: 8.12.0
+      koa-compose:
+        specifier: ~4.1.0
+        version: 4.1.0
       koa-compress:
         specifier: ~5.1.1
         version: 5.1.1

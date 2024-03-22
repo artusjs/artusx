@@ -34,12 +34,21 @@ export default () => {
     port: 7001,
     middlewares: [LimitRate, checkAuth],
     static: {
-      prefix: '/public/',
-      dir: path.resolve(__dirname, '../public'),
+      dirs: [
+        {
+          prefix: '/public/',
+          dir: path.resolve(__dirname, '../public'),
+        },
+      ],
       dynamic: true,
       preload: false,
       buffer: false,
       maxFiles: 1000,
+    },
+    cors: {
+      origin: '*',
+      allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+      credentials: false,
     },
   };
 

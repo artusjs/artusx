@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import {
   Inject,
   ArtusInjectEnum,
@@ -11,6 +13,7 @@ import { existsSync, mkdirSync } from 'fs';
 import LRU from 'ylru';
 import cors from '@koa/cors';
 import range from 'koa-range';
+import compose from 'koa-compose';
 import compression from 'koa-compress';
 import staticCache from 'koa-static-cache';
 
@@ -33,43 +36,63 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
   }
 
   private registerStatic() {
-    const prefixs: string[] = [];
-    const { static: staticConfig } = this.app.config.artusx as ArtusxConfig;
+    const { static: options } = this.app.config.artusx as ArtusxConfig;
 
-    if (!staticConfig || !staticConfig.dir || !staticConfig.prefix) {
+    if (!options) {
       return;
     }
 
-    let staticCacheOptions: any = { ...staticConfig } || {};
-
-    if (staticCacheOptions.dynamic && !staticCacheOptions.files) {
-      staticCacheOptions.files = new LRU(staticCacheOptions.maxFiles || 31536000);
-    }
-
-    if (staticCacheOptions.prefix) {
-      prefixs.push(staticCacheOptions.prefix);
-    }
-
-    if (!existsSync(staticCacheOptions.dir)) {
-      mkdirSync(staticCacheOptions.dir, { recursive: true });
-    }
-
-    this.logger.info(
-      '[static] starting static serve %s -> %s',
-      staticCacheOptions.prefix,
-      staticCacheOptions.dir
-    );
-
-    this.koa.use((ctx, next) => {
+    const rangeMiddleware = (ctx, next) => {
       // if match static file, and use range middleware.
       const isMatch = prefixs.some((p) => ctx.path.startsWith(p));
       if (isMatch) {
         return range(ctx, next);
       }
       return next();
-    });
+    };
 
-    this.koa.use(staticCache(staticCacheOptions));
+    const dirs = (options?.dirs || []).concat(options?.dir || []);
+    const prefixs: string[] = [];
+    const middlewares = [rangeMiddleware];
+
+    for (const dirObj of dirs) {
+      let newOptions;
+
+      if (typeof dirObj === 'string') {
+        newOptions = {
+          ...options,
+          dir: dirObj,
+        };
+      } else {
+        assert(
+          typeof dirObj?.dir === 'string',
+          '`static.dir` should contains `[].dir` property when object style.'
+        );
+        newOptions = {
+          ...options,
+          ...dirObj,
+        };
+      }
+
+      if (newOptions.dynamic && !newOptions.files) {
+        newOptions.files = new LRU(newOptions.maxFiles);
+      }
+
+      if (newOptions.prefix) {
+        prefixs.push(newOptions.prefix);
+      }
+
+      // ensure directory exists
+      if (!existsSync(newOptions.dir)) {
+        mkdirSync(newOptions.dir, { recursive: true });
+      }
+
+      this.logger.info('[static] starting static serve %s -> %s', newOptions.prefix, newOptions.dir);
+
+      middlewares.push(staticCache(newOptions));
+    }
+
+    this.koa.use(compose(middlewares));
   }
 
   private registerCors() {

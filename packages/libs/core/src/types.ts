@@ -8,11 +8,19 @@ export * from '@artusx/plugin-log4js';
 export * from '@artusx/plugin-nunjucks';
 export * from '@artusx/plugin-schedule';
 
+export type DirObj = {
+  prefix?: string;
+  dir?: string;
+};
+
 export type ArtusxConfig = OrgArtusxConfig & {
   cors?: KoaCorsOptions;
   static?: {
-    dir?: string;
     prefix?: string;
+    dir?: string;
+
+    dirs?: Array<string | DirObj>;
+
     dynamic?: boolean;
     preload?: boolean;
     buffer?: boolean;
