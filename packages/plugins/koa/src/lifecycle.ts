@@ -96,7 +96,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
             await executionPipeline.run(ctx as any);
             next();
           } catch (error) {
-            ctx.throw(error);
+            ctx.throw(error?.status || 500, error);
           }
         }
       );

@@ -91,7 +91,7 @@ export function ContentType(contentType: string) {
   };
 }
 
-export function StatusCode(statusCode: number) {
+export function StatusCode(code: number) {
   return (_target: object, _key: string, descriptor: TypedPropertyDescriptor<any>) => {
     const originalDef = descriptor.value;
 
@@ -101,19 +101,19 @@ export function StatusCode(statusCode: number) {
       try {
         const response = await originalDef.apply(this, args);
         if (response) {
-          ctx.status = statusCode || 200;
+          ctx.status = code || 200;
           ctx.body = response;
         }
       } catch (error) {
-        let _statusCode = 500;
+        let status = 500;
 
         if (error.name === 'ArtusStdError') {
           const err = error as ArtusStdError;
           const desc = err.desc;
-          _statusCode = parseInt(desc) || 500;
+          status = parseInt(desc) || 500;
         }
 
-        ctx.status = _statusCode;
+        ctx.status = status;
         ctx.body = error;
       }
     };
