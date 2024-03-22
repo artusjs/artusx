@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-pptr
 
-This log was last generated on Fri, 22 Mar 2024 08:30:03 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 15:53:11 GMT and should not be manually modified.
+
+## 1.0.38
+Fri, 22 Mar 2024 15:53:11 GMT
+
+_Version update only_
 
 ## 1.0.37
 Fri, 22 Mar 2024 08:30:03 GMT
