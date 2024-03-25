@@ -42,6 +42,52 @@ importers:
         specifier: ~5.3.3
         version: 5.3.3
 
+  ../../packages/apps/artusx-grpc:
+    dependencies:
+      '@artus/core':
+        specifier: ~2.2.3
+        version: 2.2.3(reflect-metadata@0.1.14)
+      '@artusx/plugin-grpc':
+        specifier: workspace:*
+        version: link:../../plugins/grpc
+      '@artusx/utils':
+        specifier: workspace:*
+        version: link:../../libs/utils
+      reflect-metadata:
+        specifier: ^0.1.13
+        version: 0.1.14
+      tslib:
+        specifier: ^2.5.0
+        version: 2.6.2
+    devDependencies:
+      '@artusx/eslint-config':
+        specifier: workspace:*
+        version: link:../../../toolchains/eslint-config
+      '@artusx/tsconfig':
+        specifier: workspace:*
+        version: link:../../../toolchains/tsconfig
+      '@types/node':
+        specifier: ^18.11.17
+        version: 18.19.24
+      '@typescript-eslint/eslint-plugin':
+        specifier: ~6.19.1
+        version: 6.19.1(eslint@8.56.0)(typescript@4.9.5)
+      eslint:
+        specifier: ~8.56.0
+        version: 8.56.0
+      eslint-plugin-import:
+        specifier: ~2.29.1
+        version: 2.29.1(eslint@8.56.0)
+      nodemon:
+        specifier: ~3.0.2
+        version: 3.0.3
+      ts-node:
+        specifier: ^10.9.1
+        version: 10.9.2(@types/node@18.19.24)(typescript@4.9.5)
+      typescript:
+        specifier: ^4.9.4
+        version: 4.9.5
+
   ../../packages/apps/artusx-koa:
     dependencies:
       '@artusx/core':
@@ -344,6 +390,64 @@ importers:
       '@types/node':
         specifier: ^18.11.17
         version: 18.19.24
+      tslib:
+        specifier: ^2.5.0
+        version: 2.6.2
+      typescript:
+        specifier: ^4.9.4
+        version: 4.9.5
+
+  ../../packages/plugins/grpc:
+    dependencies:
+      '@artus/core':
+        specifier: ^2.x
+        version: 2.2.2(reflect-metadata@0.2.1)
+      '@artus/pipeline':
+        specifier: ^0.2
+        version: 0.2.3
+      '@grpc/grpc-js':
+        specifier: ~1.10.3
+        version: 1.10.3
+      '@grpc/proto-loader':
+        specifier: ~0.7.10
+        version: 0.7.10
+      lodash.get:
+        specifier: ~4.4.2
+        version: 4.4.2
+    devDependencies:
+      '@artusx/eslint-config':
+        specifier: workspace:*
+        version: link:../../../toolchains/eslint-config
+      '@artusx/tsconfig':
+        specifier: workspace:*
+        version: link:../../../toolchains/tsconfig
+      '@types/jest':
+        specifier: ~29.5.11
+        version: 29.5.12
+      '@types/lodash.get':
+        specifier: ~4.4.9
+        version: 4.4.9
+      '@types/node':
+        specifier: ^18.11.17
+        version: 18.19.24
+      '@typescript-eslint/eslint-plugin':
+        specifier: ~6.19.1
+        version: 6.19.1(eslint@8.56.0)(typescript@4.9.5)
+      eslint:
+        specifier: ~8.56.0
+        version: 8.56.0
+      eslint-plugin-import:
+        specifier: ~2.29.1
+        version: 2.29.1(eslint@8.56.0)
+      jest:
+        specifier: ~29.7.0
+        version: 29.7.0(@types/node@18.19.24)
+      reflect-metadata:
+        specifier: ~0.2.1
+        version: 0.2.1
+      ts-jest:
+        specifier: ~29.1.2
+        version: 29.1.2(jest@29.7.0)(typescript@4.9.5)
       tslib:
         specifier: ^2.5.0
         version: 2.6.2
@@ -1030,6 +1134,18 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@artus/core@2.2.3(reflect-metadata@0.1.14):
+    resolution: {integrity: sha512-o9PE9XftuYTuzV2mDoGeGNB/9kJGT6PxHNFxPE64HYl+oaXf8gh+YqH3+WBD3ZXc7XvE+IB/E7Y3s2K1GCtBpQ==}
+    peerDependencies:
+      reflect-metadata: ^0.1.13
+    dependencies:
+      '@artus/injection': 0.5.3
+      deepmerge: 4.3.1
+      minimatch: 5.1.6
+      reflect-metadata: 0.1.14
+      tslib: 2.6.2
+    dev: false
+
   /@artus/eslint-config-artus@0.0.1:
     resolution: {integrity: sha512-jIQQ27IF3erxD6hBV1wUOMNjK0vQnTAFot9BYGyFjNkcVqLhBoJ5X8oEai3azEcRAf+L7KGf/3wQv6Pe4gqomA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1446,6 +1562,25 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: false
 
+  /@grpc/grpc-js@1.10.3:
+    resolution: {integrity: sha512-qiO9MNgYnwbvZ8MK0YLWbnGrNX3zTcj6/Ef7UHu5ZofER3e2nF3Y35GaPo9qNJJ/UJQKa4KL+z/F4Q8Q+uCdUQ==}
+    engines: {node: '>=12.10.0'}
+    dependencies:
+      '@grpc/proto-loader': 0.7.10
+      '@js-sdsl/ordered-map': 4.4.2
+    dev: false
+
+  /@grpc/proto-loader@0.7.10:
+    resolution: {integrity: sha512-CAqDfoaQ8ykFd9zqBDn4k6iWT9loLAlc2ETmDFS9JCD70gDcnA4L3AFEo2iV7KyAtAAHFW9ftq1Fz+Vsgq80RQ==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dependencies:
+      lodash.camelcase: 4.3.0
+      long: 5.2.3
+      protobufjs: 7.2.6
+      yargs: 17.7.2
+    dev: false
+
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -1729,6 +1864,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
+  /@js-sdsl/ordered-map@4.4.2:
+    resolution: {integrity: sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==}
+    dev: false
+
   /@koa/bodyparser@5.0.0:
     resolution: {integrity: sha512-JEiZVe2e85qPOqA+Nw/SJC5fkFw3XSekh0RSoqz5F6lFYuhEspgqAb972rQRCJesv27QUsz96vU/Vb92wF1GUg==}
     engines: {node: '>= 16'}
@@ -1881,6 +2020,49 @@ packages:
       node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /@protobufjs/aspromise@1.1.2:
+    resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
+    dev: false
+
+  /@protobufjs/base64@1.1.2:
+    resolution: {integrity: sha512-AZkcAA5vnN/v4PDqKyMR5lx7hZttPDgClv83E//FMNhR2TMcLUhfRUBHCmSl0oi9zMgDDqRUJkSxO3wm85+XLg==}
+    dev: false
+
+  /@protobufjs/codegen@2.0.4:
+    resolution: {integrity: sha512-YyFaikqM5sH0ziFZCN3xDC7zeGaB/d0IUb9CATugHWbd1FRFwWwt4ld4OYMPWu5a3Xe01mGAULCdqhMlPl29Jg==}
+    dev: false
+
+  /@protobufjs/eventemitter@1.1.0:
+    resolution: {integrity: sha512-j9ednRT81vYJ9OfVuXG6ERSTdEL1xVsNgqpkxMsbIabzSo3goCjDIveeGv5d03om39ML71RdmrGNjG5SReBP/Q==}
+    dev: false
+
+  /@protobufjs/fetch@1.1.0:
+    resolution: {integrity: sha512-lljVXpqXebpsijW71PZaCYeIcE5on1w5DlQy5WH6GLbFryLUrBD4932W/E2BSpfRJWseIL4v/KPgBFxDOIdKpQ==}
+    dependencies:
+      '@protobufjs/aspromise': 1.1.2
+      '@protobufjs/inquire': 1.1.0
+    dev: false
+
+  /@protobufjs/float@1.0.2:
+    resolution: {integrity: sha512-Ddb+kVXlXst9d+R9PfTIxh1EdNkgoRe5tOX6t01f1lYWOvJnSPDBlG241QLzcyPdoNTsblLUdujGSE4RzrTZGQ==}
+    dev: false
+
+  /@protobufjs/inquire@1.1.0:
+    resolution: {integrity: sha512-kdSefcPdruJiFMVSbn801t4vFK7KB/5gd2fYvrxhuJYg8ILrmn9SKSX2tZdV6V+ksulWqS7aXjBcRXl3wHoD9Q==}
+    dev: false
+
+  /@protobufjs/path@1.1.2:
+    resolution: {integrity: sha512-6JOcJ5Tm08dOHAbdR3GrvP+yUUfkjG5ePsHYczMFLq3ZmMkAD98cDgcT2iA1lJ9NVwFd4tH/iSSoe44YWkltEA==}
+    dev: false
+
+  /@protobufjs/pool@1.1.0:
+    resolution: {integrity: sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw==}
+    dev: false
+
+  /@protobufjs/utf8@1.1.0:
+    resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
   /@puppeteer/browsers@2.2.0:
@@ -2141,6 +2323,16 @@ packages:
     resolution: {integrity: sha512-LCk/n25Obq5qlernGOK/2LUwa/2YJb2lxHUkkvYFDOpLXlVI6tKcdfCHRBQnOY4LwH6el5WOLs6PD/a8Uzau6g==}
     dependencies:
       '@types/koa': 2.15.0
+    dev: true
+
+  /@types/lodash.get@4.4.9:
+    resolution: {integrity: sha512-J5dvW98sxmGnamqf+/aLP87PYXyrha9xIgc2ZlHl6OHMFR2Ejdxep50QfU0abO1+CH6+ugx+8wEUN1toImAinA==}
+    dependencies:
+      '@types/lodash': 4.17.0
+    dev: true
+
+  /@types/lodash@4.17.0:
+    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
     dev: true
 
   /@types/luxon@3.3.8:
@@ -6620,8 +6812,16 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
+  /lodash.camelcase@4.3.0:
+    resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
+    dev: false
+
   /lodash.defaults@4.2.0:
     resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
+    dev: false
+
+  /lodash.get@4.4.2:
+    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
     dev: false
 
   /lodash.isarguments@3.1.0:
@@ -7730,6 +7930,25 @@ packages:
       kleur: 3.0.3
       sisteransi: 1.0.5
     dev: true
+
+  /protobufjs@7.2.6:
+    resolution: {integrity: sha512-dgJaEDDL6x8ASUZ1YqWciTRrdOuYNzoOf27oHNfdyvKqHr5i0FV7FSLU+aIeFjyFgVxrpTOtQUi0BLLBymZaBw==}
+    engines: {node: '>=12.0.0'}
+    requiresBuild: true
+    dependencies:
+      '@protobufjs/aspromise': 1.1.2
+      '@protobufjs/base64': 1.1.2
+      '@protobufjs/codegen': 2.0.4
+      '@protobufjs/eventemitter': 1.1.0
+      '@protobufjs/fetch': 1.1.0
+      '@protobufjs/float': 1.0.2
+      '@protobufjs/inquire': 1.1.0
+      '@protobufjs/path': 1.1.2
+      '@protobufjs/pool': 1.1.0
+      '@protobufjs/utf8': 1.1.0
+      '@types/node': 20.11.28
+      long: 5.2.3
+    dev: false
 
   /proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}

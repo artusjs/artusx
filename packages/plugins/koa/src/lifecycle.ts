@@ -109,22 +109,21 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     for (const controllerClazz of controllerClazzList) {
       const controllerMetadata = Reflect.getMetadata(CLASS_CONTROLLER_METADATA, controllerClazz);
       const controller = this.container.get(controllerClazz) as any;
+      const controllerDescriptorList = Object.getOwnPropertyDescriptors(controllerClazz.prototype);
 
-      const handlerDescriptorList = Object.getOwnPropertyDescriptors(controllerClazz.prototype);
-
-      for (const key of Object.keys(handlerDescriptorList)) {
-        const handlerDescriptor = handlerDescriptorList[key];
+      for (const key of Object.keys(controllerDescriptorList)) {
+        const controllerDescriptor = controllerDescriptorList[key];
 
         // skip getter/setter
-        if (!handlerDescriptor.value) {
+        if (!controllerDescriptor.value) {
           continue;
         }
 
         const routeMetadataList: HTTPRouteMetadata[] =
-          Reflect.getMetadata(HTTP_ROUTER_METADATA, handlerDescriptor.value) ?? [];
+          Reflect.getMetadata(HTTP_ROUTER_METADATA, controllerDescriptor.value) ?? [];
 
         const middlewareMetadata: HTTPMiddlewareMetadata =
-          Reflect.getMetadata(HTTP_MIDDLEWARE_METADATA, handlerDescriptor.value) ?? [];
+          Reflect.getMetadata(HTTP_MIDDLEWARE_METADATA, controllerDescriptor.value) ?? [];
 
         if (routeMetadataList.length === 0) continue;
 
