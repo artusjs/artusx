@@ -14,6 +14,7 @@ export enum ArtusXInjectEnum {
   Redis = 'ARTUSX_REDIS',
   Sequelize = 'ARTUSX_SEQUELIZE',
 
+  GRPC = 'ARTUSX_GRPC',
   PPTR = 'ARTUSX_PPTR',
   Proxy = 'ARTUSX_PROXY',
   OpenAI = 'ARTUS_OPENAI',

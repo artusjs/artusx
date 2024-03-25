@@ -506,6 +506,11 @@
       "projectFolder": "packages/apps/artusx-koa-bench",
       "tags": ["artusx-apps"]
     },
+    {
+      "packageName": "artusx-grpc",
+      "projectFolder": "packages/apps/artusx-grpc",
+      "tags": ["artusx-apps"]
+    },
     // plugins
     {
       "packageName": "@artusx/plugin-redis",
@@ -594,6 +599,13 @@
     {
       "packageName": "@artusx/plugin-pptr",
       "projectFolder": "packages/plugins/pptr",
+      "tags": ["artusx-plugins"],
+      "shouldPublish": true,
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-grpc",
+      "projectFolder": "packages/plugins/grpc",
       "tags": ["artusx-plugins"],
       "shouldPublish": true,
       "versionPolicyName": "public"
