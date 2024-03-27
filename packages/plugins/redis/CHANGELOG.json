@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-redis",
   "entries": [
     {
+      "version": "1.0.42",
+      "tag": "@artusx/plugin-redis_v1.0.42",
+      "date": "Wed, 27 Mar 2024 18:19:43 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.41",
       "tag": "@artusx/plugin-redis_v1.0.41",
       "date": "Wed, 27 Mar 2024 15:23:54 GMT",

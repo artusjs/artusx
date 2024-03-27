@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-grpc",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "grpc plugin for artusx",
   "keywords": [
     "artusx"
