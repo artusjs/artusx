@@ -5,6 +5,9 @@ export * from '@grpc/grpc-js';
 export interface ArtusxGrpcServiceMetadata {
   packageName: string;
   serviceName: string;
+
+  // UnimplementedService.definition
+  definition?: any;
 }
 
 export interface ArtusxGrpcHandlerMetadata {
@@ -13,3 +16,7 @@ export interface ArtusxGrpcHandlerMetadata {
 
 export type ArtusXGrpcHandleMap = UntypedServiceImplementation;
 export type ArtusXGrpcServiceMap = Record<string, ArtusXGrpcHandleMap>;
+export type ArtusXGrpcServiceList = Array<{
+  definition: any;
+  instance: ArtusXGrpcHandleMap;
+}>;

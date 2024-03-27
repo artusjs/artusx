@@ -1,14 +1,21 @@
 import path from 'path';
 
+// const PROTO_OUT_DIR = path.resolve(__dirname, '../proto-codegen');
+
 export default () => {
   const grpc = {
-    protoList: [
-      path.resolve(__dirname, '../protos/helloworld.proto'),
-      path.resolve(__dirname, '../protos/echo.proto'),
-    ],
     server: {
       host: '0.0.0.0',
       port: '50051',
+    },
+
+    static: {
+      proto: path.resolve(__dirname, '../proto'),
+      codegen: path.resolve(__dirname, '../proto-codegen'),
+    },
+
+    dynamic: {
+      proto: [path.resolve(__dirname, '../echo-module/proto/echo.proto')],
     },
   };
 

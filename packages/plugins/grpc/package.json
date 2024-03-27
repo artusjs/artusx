@@ -46,11 +46,17 @@
     "@artus/pipeline": "^0.2",
     "@grpc/grpc-js": "~1.10.3",
     "@grpc/proto-loader": "~0.7.10",
-    "lodash.get": "~4.4.2"
+    "fs-extra": "~11.2.0",
+    "google-protobuf": "~3.21.2",
+    "grpc-tools": "~1.12.4",
+    "lodash.get": "~4.4.2",
+    "protoc-gen-ts": "~0.8.7",
+    "runscript": "~1.6.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
     "@artusx/tsconfig": "workspace:*",
+    "@types/fs-extra": "~11.0.4",
     "@types/jest": "~29.5.11",
     "@types/lodash.get": "~4.4.9",
     "@types/node": "^18.11.17",

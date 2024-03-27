@@ -15,6 +15,7 @@ import {
   ArtusxGrpcServiceMetadata,
   ArtusXGrpcHandleMap,
   ArtusXGrpcServiceMap,
+  ArtusXGrpcServiceList,
 } from './types';
 
 @LifecycleHookUnit()
@@ -33,7 +34,8 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
   private async loadService() {
     const serviceClazzList = this.container.getInjectableByTag(GRPC_SERVICE_TAG);
 
-    let serviceMap: ArtusXGrpcServiceMap = {};
+    let dynamicService: ArtusXGrpcServiceMap = {};
+    let staticService: ArtusXGrpcServiceList = [];
 
     for (const serviceClazz of serviceClazzList) {
       const serviceMetadata: ArtusxGrpcServiceMetadata = Reflect.getMetadata(
@@ -43,8 +45,16 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
       const service = this.container.get(serviceClazz) as any;
       const serviceDescriptorList = Object.getOwnPropertyDescriptors(serviceClazz.prototype);
 
-      const { packageName, serviceName } = serviceMetadata;
+      const { packageName, serviceName, definition } = serviceMetadata;
       const serviceIndex = `${packageName}:${serviceName}`;
+
+      if (definition) {
+        staticService.push({
+          definition,
+          instance: service,
+        });
+        continue;
+      }
 
       let handlerMap: ArtusXGrpcHandleMap = {};
       for (const key of Object.keys(serviceDescriptorList)) {
@@ -63,13 +73,16 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
         handlerMap[key] = service[key].bind(service);
       }
 
-      serviceMap[serviceIndex] = {
-        ...serviceMap[serviceIndex],
+      dynamicService[serviceIndex] = {
+        ...dynamicService[serviceIndex],
         ...handlerMap,
       };
     }
 
-    return serviceMap;
+    return {
+      staticService,
+      dynamicService,
+    };
   }
 
   @LifecycleHook()
@@ -77,14 +90,22 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
     const config: GRPCConfig = this.app.config.grpc;
 
     assert(config, 'grpc config is required');
-    assert(config.protoList, 'grpc config.protoList is required');
+    assert(config.dynamic || config.static, 'dynamic or static config is required');
 
     const client = this.app.container.get(ArtusXInjectEnum.GRPC) as GRPCClient;
     await client.init(config);
 
+    if (config.dynamic) {
+      await client.dynamicCodegen(config.dynamic);
+    }
+
+    if (config.static) {
+      await client.staticCodegen(config.static);
+    }
+
     if (config.server) {
-      const serviceMap = await this.loadService();
-      await client.initServer(serviceMap, (err, port) => {
+      const services = await this.loadService();
+      await client.initServer(services, (err, port) => {
         if (err != null) {
           return console.error(err);
         }

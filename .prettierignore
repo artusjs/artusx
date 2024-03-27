@@ -28,3 +28,4 @@ lib
 *.md
 
 boilerplate
+proto-codegen

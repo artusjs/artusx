@@ -17,16 +17,25 @@
     "start": "ARTUS_SERVER_ENV=production node dist/index.js",
     "tsc": "rm -rf dist && tsc"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "**/proto-codegen/**"
+    ]
+  },
   "dependencies": {
     "@artus/core": "~2.2.3",
     "@artusx/plugin-grpc": "workspace:*",
+    "@artusx/plugin-schedule": "workspace:*",
     "@artusx/utils": "workspace:*",
+    "@grpc/grpc-js": "~1.10.4",
+    "google-protobuf": "~3.21.2",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
     "@artusx/tsconfig": "workspace:*",
+    "@types/google-protobuf": "~3.15.12",
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "~6.19.1",
     "eslint": "~8.56.0",
