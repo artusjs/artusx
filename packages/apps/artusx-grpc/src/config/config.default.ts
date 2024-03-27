@@ -1,12 +1,11 @@
 import path from 'path';
-
-// const PROTO_OUT_DIR = path.resolve(__dirname, '../proto-codegen');
+import type { GRPCConfig } from '@artusx/plugin-grpc';
 
 export default () => {
-  const grpc = {
+  const grpc: GRPCConfig = {
     server: {
       host: '0.0.0.0',
-      port: '50051',
+      port: 50051,
     },
 
     static: {

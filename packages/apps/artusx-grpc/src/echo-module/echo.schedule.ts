@@ -38,10 +38,6 @@ export default class NotifySchedule implements ArtusxSchedule {
   }
 
   async run() {
-    // if(process.env.xxx) {
-
-    // }
-
     await this.invokeDynamic();
   }
 }

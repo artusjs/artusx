@@ -14,125 +14,250 @@ export default {
 ## Config
 
 ```ts
-export interface GRPCConfig {
-  protoList: string[];
-  server?: {
-    host: string;
-    port: number;
+import path from 'path';
+import type { GRPCConfig } from '@artusx/plugin-grpc'
+
+export default () => {
+  const grpc: GRPCConfig = {
+    server: {
+      host: '0.0.0.0',
+      port: 50051,
+    },
+
+    static: {
+      proto: path.resolve(__dirname, '../proto'),
+      codegen: path.resolve(__dirname, '../proto-codegen'),
+    },
+
+    dynamic: {
+      proto: [path.resolve(__dirname, '../echo-module/proto/echo.proto')],
+    },
   };
-}
+
+  return {
+    grpc,
+  };
+};
 ```
 
-## Server
+## Static
 
-GRPC Proto
+Proto
 
 ```proto
-// Copyright 2015 gRPC authors.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.helloworld";
-option java_outer_classname = "HelloWorldProto";
-option objc_class_prefix = "HLW";
+package chat_package;
 
-package helloworld;
-
-// The greeting service definition.
-service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-
-  rpc SayHelloStreamReply (HelloRequest) returns (stream HelloReply) {}
+message ServerMessage {
+  string user = 1;
+  string text = 2;
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message ClientMessage {
+  string user = 1;
+  string text = 2;
 }
 
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
-  string from = 2;
+service Chat {
+  rpc join(ClientMessage) returns (ServerMessage) {}
+  rpc send(ClientMessage) returns (ServerMessage) {}  
 }
 ```
 
-GRPC Handler
+Server
 
 ```ts
+import * as grpc from '@grpc/grpc-js';
 import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+import { ClientMessage, ServerMessage, UnimplementedChatService } from '../proto-codegen/chat';
 
 @GRPC({
-  packageName: 'helloworld',
-  serviceName: 'Greeter',
+  packageName: 'chat_package',
+  serviceName: 'Chat',
+  definition: UnimplementedChatService.definition,
 })
-export default class GreeterService {
+export default class ChatService extends UnimplementedChatService {
   @GRPCHandler({
     enable: true,
   })
-  sayHello(call: any, callback: any) {
-    console.log('server:Greeting:sayHello', call.request);
+  join(
+    call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
+    callback: grpc.requestCallback<ServerMessage>
+  ): void {
+    callback(null, new ServerMessage({ user: call.request.user, text: 'method.join.callback' }));
+  }
+
+  @GRPCHandler({
+    enable: true,
+  })
+  send(
+    call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
+    callback: grpc.requestCallback<ServerMessage>
+  ): void {
+    callback(null, new ServerMessage({ user: call.request.user, text: 'method.join.callback' }));
+  }
+}
+```
+
+Client
+
+```ts
+import assert from 'assert';
+import * as grpc from '@grpc/grpc-js';
+
+import { Inject, ArtusInjectEnum } from '@artus/core';
+import { Schedule } from '@artusx/plugin-schedule';
+import type { ArtusxSchedule } from '@artusx/plugin-schedule';
+
+import { GRPCConfig } from '@artusx/plugin-grpc';
+import { ChatClient, ClientMessage } from '../proto-codegen/chat';
+
+@Schedule({
+  enable: true,
+  cron: '30 * * * * *',
+  runOnInit: true,
+})
+export default class NotifySchedule implements ArtusxSchedule {
+  @Inject(ArtusInjectEnum.Config)
+  config: Record<string, any>;
+
+  private async invokeStatic() {
+    const config: GRPCConfig = this.config.grpc;
+
+    assert(config?.server, 'config.server is required');
+    const { host, port } = config?.server;
+    const serverUrl = `${host || 'localhost'}:${port}`;
+
+    const chatClient = new ChatClient(serverUrl, grpc.credentials.createInsecure());
+    const message = new ClientMessage({
+      user: '@client',
+      text: 'hello',
+    });
+
+    try {
+      const response = await chatClient.join(message);
+      console.log('response', response.toObject());
+    } catch (error) {
+      console.error('error:', error.details);
+    }
+  }
+
+  async run() {
+    await this.invokeStatic();
+  }
+}
+```
+
+## Dynamic
+
+Proto
+
+```proto
+syntax = "proto3";
+
+option go_package = "google.golang.org/grpc/examples/features/proto/echo";
+
+package grpc.examples.echo;
+
+// EchoRequest is the request for echo.
+message EchoRequest {
+  string message = 1;
+}
+
+// EchoResponse is the response for echo.
+message EchoResponse {
+  string message = 1;
+}
+
+// Echo is the echo service.
+service Echo {
+  // UnaryEcho is unary echo.
+  rpc UnaryEcho(EchoRequest) returns (EchoResponse) {}
+  // ServerStreamingEcho is server side streaming.
+  rpc ServerStreamingEcho(EchoRequest) returns (stream EchoResponse) {}
+  // ClientStreamingEcho is client side streaming.
+  rpc ClientStreamingEcho(stream EchoRequest) returns (EchoResponse) {}
+  // BidirectionalStreamingEcho is bidi streaming.
+  rpc BidirectionalStreamingEcho(stream EchoRequest) returns (stream EchoResponse) {}
+}
+```
+
+Server
+
+```ts
+import * as grpc from '@grpc/grpc-js';
+import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+
+interface EchoRequest {
+  message : string;
+}
+
+interface EchoResponse {
+  message: string;
+}
+
+@GRPC({
+  packageName: 'grpc.examples.echo',
+  serviceName: 'Echo',
+})
+export default class EchoService {
+  @GRPCHandler({
+    enable: true,
+  })
+  UnaryEcho(call: grpc.ServerUnaryCall<EchoRequest, EchoResponse>, callback: grpc.requestCallback<EchoResponse>) {
+    console.log('server:Echo:UnaryEcho', call.request);
     callback(null, {
-      message: 'Hello ' + call.request.name,
-      from: 'handler 222',
+      message: 'getMessage: ' + call.request.message,
     });
   }
 }
 ```
 
-## Client
+Client
 
 ```ts
 import assert from 'assert';
-import { Inject, ApplicationLifecycle, LifecycleHook, LifecycleHookUnit, ArtusInjectEnum } from '@artus/core';
-import { GRPCClient, GRPCConfig } from '@artusx/plugin-grpc';
-import { credentials } from '@artusx/plugin-grpc/types';
+
+import { Inject, ArtusInjectEnum } from '@artus/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
 
-@LifecycleHookUnit()
-export default class CustomLifecycle implements ApplicationLifecycle {
+import { Schedule } from '@artusx/plugin-schedule';
+import type { ArtusxSchedule } from '@artusx/plugin-schedule';
+
+import { GRPCClient, GRPCConfig } from '@artusx/plugin-grpc';
+import { credentials } from '@artusx/plugin-grpc/types';
+
+@Schedule({
+  enable: true,
+  cron: '30 * * * * *',
+  runOnInit: true,
+})
+export default class NotifySchedule implements ArtusxSchedule {
   @Inject(ArtusInjectEnum.Config)
   config: Record<string, any>;
 
   @Inject(ArtusXInjectEnum.GRPC)
   grpcClient: GRPCClient;
 
-  @LifecycleHook()
-  async didReady() {}
-  
-  private async invoke() {
+  private async invokeDynamic() {
     const config: GRPCConfig = this.config.grpc;
 
     assert(config?.server, 'config.server is required');
     const { host, port } = config?.server;
-    const serverUrl = `${host || 'localhost'}:${port}`;    
+    const serverUrl = `${host || 'localhost'}:${port}`;
 
-    // greeter
-    const GreeterService = this.grpcClient.getService('helloworld', 'Greeter');
-    assert(GreeterService, 'GreeterService is required');
-    const GreeterClient = new GreeterService(serverUrl, credentials.createInsecure());
-    GreeterClient.sayHello({ name: 'you' }, function (_err: Error, response: any) {
-      console.log('client:Greeting:sayHello', response);
-    });    
+    const EchoService = this.grpcClient.getService('grpc.examples.echo', 'Echo');
+    assert(EchoService, 'Service is required');
+    const echoClient = new EchoService(serverUrl, credentials.createInsecure());
+
+    echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
+      console.log('client:Echo:UnaryEcho', response);
+    });
   }
 
-  @LifecycleHook()
-  public async willReady() {    
-    await this.invoke();
+  async run() {
+    await this.invokeDynamic();
   }
 }
 ```

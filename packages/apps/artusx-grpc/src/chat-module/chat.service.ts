@@ -15,9 +15,13 @@ export default class ChatService extends UnimplementedChatService {
     call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
     callback: grpc.requestCallback<ServerMessage>
   ): void {
+    console.log('server:Chat:join', call.request.toObject());
     callback(null, new ServerMessage({ user: call.request.user, text: 'method.join.callback' }));
   }
 
+  @GRPCHandler({
+    enable: true,
+  })
   send(
     call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
     callback: grpc.requestCallback<ServerMessage>

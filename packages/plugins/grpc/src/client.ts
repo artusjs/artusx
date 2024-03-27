@@ -91,7 +91,7 @@ export default class GRPCClient {
     this._config = config;
   }
 
-  async dynamicCodegen(options: GRPCConfig['dynamic']) {
+  async genDynamicCode(options: GRPCConfig['dynamic']) {
     const { proto: protoPath } = options;
 
     const packageDefinition = protoLoader.loadSync(protoPath, {
@@ -108,7 +108,7 @@ export default class GRPCClient {
     this._packageDefinition = packageDefinition;
   }
 
-  async staticCodegen(options: GRPCConfig['static']) {
+  async genStaticCode(options: GRPCConfig['static']) {
     const { proto: protoPath, codegen } = options;
 
     const protoc = getBinPath('grpc_tools_node_protoc');

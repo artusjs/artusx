@@ -32,7 +32,7 @@ export default class NotifySchedule implements ArtusxSchedule {
 
     try {
       const response = await chatClient.join(message);
-      console.log('response', response.toObject());
+      console.log('client:Chat:join', response.toObject());
     } catch (error) {
       console.error('error:', error.details);
     }

@@ -1,10 +1,13 @@
+import * as grpc from '@grpc/grpc-js';
 import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
 
-type GRPCRequest<T> = {
-  request: T;
-};
+interface EchoRequest {
+  message: string;
+}
 
-type GRPCCallback<T> = (err: Error | null, data: T) => void;
+interface EchoResponse {
+  message: string;
+}
 
 @GRPC({
   packageName: 'grpc.examples.echo',
@@ -14,7 +17,10 @@ export default class EchoService {
   @GRPCHandler({
     enable: true,
   })
-  UnaryEcho(call: GRPCRequest<{ message: string }>, callback: GRPCCallback<{ message: string }>) {
+  UnaryEcho(
+    call: grpc.ServerUnaryCall<EchoRequest, EchoResponse>,
+    callback: grpc.requestCallback<EchoResponse>
+  ) {
     console.log('server:Echo:UnaryEcho', call.request);
     callback(null, {
       message: 'getMessage: ' + call.request.message,

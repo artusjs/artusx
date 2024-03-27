@@ -96,11 +96,11 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
     await client.init(config);
 
     if (config.dynamic) {
-      await client.dynamicCodegen(config.dynamic);
+      await client.genDynamicCode(config.dynamic);
     }
 
     if (config.static) {
-      await client.staticCodegen(config.static);
+      await client.genStaticCode(config.static);
     }
 
     if (config.server) {
