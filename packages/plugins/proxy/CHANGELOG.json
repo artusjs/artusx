@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-proxy",
   "entries": [
     {
+      "version": "1.0.41",
+      "tag": "@artusx/plugin-proxy_v1.0.41",
+      "date": "Wed, 27 Mar 2024 15:23:54 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.40",
       "tag": "@artusx/plugin-proxy_v1.0.40",
       "date": "Tue, 26 Mar 2024 15:11:44 GMT",
