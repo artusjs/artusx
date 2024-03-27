@@ -15,10 +15,10 @@ export default {
 
 ```ts
 import path from 'path';
-import type { GRPCConfig } from '@artusx/plugin-grpc'
+import type { ArtusxGrpcConfig } from '@artusx/plugin-grpc';
 
 export default () => {
-  const grpc: GRPCConfig = {
+  const grpc: ArtusxGrpcConfig = {
     client: {
       host: '0.0.0.0',
       port: 50051,
