@@ -1,5 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
-import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+import { GrpcService, GrpcMethod } from '@artusx/plugin-grpc';
 
 interface EchoRequest {
   message: string;
@@ -9,12 +9,12 @@ interface EchoResponse {
   message: string;
 }
 
-@GRPC({
+@GrpcService({
   packageName: 'grpc.examples.echo',
   serviceName: 'Echo',
 })
 export default class EchoService {
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
   UnaryEcho(

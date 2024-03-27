@@ -10,13 +10,29 @@ export interface ArtusxGrpcServiceMetadata {
   definition?: any;
 }
 
-export interface ArtusxGrpcHandlerMetadata {
+export interface ArtusxGrpcClientMetadata {
+  load: boolean;
+}
+
+export interface ArtusxGrpcMethodMetadata {
   enable: boolean;
 }
 
-export type ArtusXGrpcHandleMap = UntypedServiceImplementation;
-export type ArtusXGrpcServiceMap = Record<string, ArtusXGrpcHandleMap>;
+export type ArtusXGrpcMethodMap = UntypedServiceImplementation;
+export type ArtusXGrpcServiceMap = Record<string, ArtusXGrpcMethodMap>;
 export type ArtusXGrpcServiceList = Array<{
   definition: any;
-  instance: ArtusXGrpcHandleMap;
+  instance: ArtusXGrpcMethodMap;
 }>;
+
+export class ArtusXGrpcClientClass<T> {
+  private _client: T;
+
+  setClient(instance: T) {
+    this._client = instance;
+  }
+
+  getClient() {
+    return this._client;
+  }
+}

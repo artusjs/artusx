@@ -1,14 +1,14 @@
 import * as grpc from '@grpc/grpc-js';
-import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+import { GrpcService, GrpcMethod } from '@artusx/plugin-grpc';
 import { ClientMessage, ServerMessage, UnimplementedChatService } from '../proto-codegen/chat';
 
-@GRPC({
+@GrpcService({
   packageName: 'chat_package',
   serviceName: 'Chat',
   definition: UnimplementedChatService.definition,
 })
 export default class ChatService extends UnimplementedChatService {
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
   join(
@@ -19,7 +19,7 @@ export default class ChatService extends UnimplementedChatService {
     callback(null, new ServerMessage({ user: call.request.user, text: 'method.join.callback' }));
   }
 
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
   send(

@@ -19,6 +19,11 @@ import type { GRPCConfig } from '@artusx/plugin-grpc'
 
 export default () => {
   const grpc: GRPCConfig = {
+    client: {
+      host: '0.0.0.0',
+      port: 50051,
+    },
+
     server: {
       host: '0.0.0.0',
       port: 50051,
@@ -69,26 +74,27 @@ Server
 
 ```ts
 import * as grpc from '@grpc/grpc-js';
-import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+import { GrpcService, GrpcMethod } from '@artusx/plugin-grpc';
 import { ClientMessage, ServerMessage, UnimplementedChatService } from '../proto-codegen/chat';
 
-@GRPC({
+@GrpcService({
   packageName: 'chat_package',
   serviceName: 'Chat',
   definition: UnimplementedChatService.definition,
 })
 export default class ChatService extends UnimplementedChatService {
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
   join(
     call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
     callback: grpc.requestCallback<ServerMessage>
   ): void {
+    console.log('server:Chat:join', call.request.toObject());
     callback(null, new ServerMessage({ user: call.request.user, text: 'method.join.callback' }));
   }
 
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
   send(
@@ -103,15 +109,29 @@ export default class ChatService extends UnimplementedChatService {
 Client
 
 ```ts
-import assert from 'assert';
 import * as grpc from '@grpc/grpc-js';
+import { GrpcClient } from '@artusx/plugin-grpc';
+import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
+import { ChatClient } from '../proto-codegen/chat';
 
-import { Inject, ArtusInjectEnum } from '@artus/core';
+@GrpcClient({
+  load: true,
+})
+export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
+  init(addr: string) {
+    return new ChatClient(addr, grpc.credentials.createInsecure());
+  }
+}
+```
+
+Invoke
+
+```ts
+import { Inject } from '@artus/core';
 import { Schedule } from '@artusx/plugin-schedule';
 import type { ArtusxSchedule } from '@artusx/plugin-schedule';
-
-import { GRPCConfig } from '@artusx/plugin-grpc';
-import { ChatClient, ClientMessage } from '../proto-codegen/chat';
+import { ClientMessage } from '../proto-codegen/chat';
+import ChatClient from './chat.client';
 
 @Schedule({
   enable: true,
@@ -119,17 +139,12 @@ import { ChatClient, ClientMessage } from '../proto-codegen/chat';
   runOnInit: true,
 })
 export default class NotifySchedule implements ArtusxSchedule {
-  @Inject(ArtusInjectEnum.Config)
-  config: Record<string, any>;
+  @Inject(ChatClient)
+  chat: ChatClient;
 
   private async invokeStatic() {
-    const config: GRPCConfig = this.config.grpc;
+    const chatClient = this.chat.getClient();
 
-    assert(config?.server, 'config.server is required');
-    const { host, port } = config?.server;
-    const serverUrl = `${host || 'localhost'}:${port}`;
-
-    const chatClient = new ChatClient(serverUrl, grpc.credentials.createInsecure());
     const message = new ClientMessage({
       user: '@client',
       text: 'hello',
@@ -137,7 +152,7 @@ export default class NotifySchedule implements ArtusxSchedule {
 
     try {
       const response = await chatClient.join(message);
-      console.log('response', response.toObject());
+      console.log('client:Chat:join', response.toObject());
     } catch (error) {
       console.error('error:', error.details);
     }
@@ -187,25 +202,28 @@ Server
 
 ```ts
 import * as grpc from '@grpc/grpc-js';
-import { GRPC, GRPCHandler } from '@artusx/plugin-grpc';
+import { GrpcService, GrpcMethod } from '@artusx/plugin-grpc';
 
 interface EchoRequest {
-  message : string;
+  message: string;
 }
 
 interface EchoResponse {
   message: string;
 }
 
-@GRPC({
+@GrpcService({
   packageName: 'grpc.examples.echo',
   serviceName: 'Echo',
 })
 export default class EchoService {
-  @GRPCHandler({
+  @GrpcMethod({
     enable: true,
   })
-  UnaryEcho(call: grpc.ServerUnaryCall<EchoRequest, EchoResponse>, callback: grpc.requestCallback<EchoResponse>) {
+  UnaryEcho(
+    call: grpc.ServerUnaryCall<EchoRequest, EchoResponse>,
+    callback: grpc.requestCallback<EchoResponse>
+  ) {
     console.log('server:Echo:UnaryEcho', call.request);
     callback(null, {
       message: 'getMessage: ' + call.request.message,
@@ -217,16 +235,35 @@ export default class EchoService {
 Client
 
 ```ts
-import assert from 'assert';
-
-import { Inject, ArtusInjectEnum } from '@artus/core';
+import { credentials } from '@artusx/plugin-grpc/types';
+import { Inject } from '@artus/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
+import { ArtusXGrpcClient, GrpcClient } from '@artusx/plugin-grpc';
+import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
+import { ChatClient } from '../proto-codegen/chat';
 
+@GrpcClient({
+  load: true,
+})
+export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
+  @Inject(ArtusXInjectEnum.GRPC)
+  grpcClient: ArtusXGrpcClient;
+
+  init(addr: string) {
+    const EchoService = this.grpcClient.getService('grpc.examples.echo', 'Echo');
+    return new EchoService(addr, credentials.createInsecure());
+  }
+}
+```
+
+Invoke
+
+```ts
+import { Inject } from '@artus/core';
 import { Schedule } from '@artusx/plugin-schedule';
 import type { ArtusxSchedule } from '@artusx/plugin-schedule';
 
-import { GRPCClient, GRPCConfig } from '@artusx/plugin-grpc';
-import { credentials } from '@artusx/plugin-grpc/types';
+import EchoClient from './echo.client';
 
 @Schedule({
   enable: true,
@@ -234,22 +271,11 @@ import { credentials } from '@artusx/plugin-grpc/types';
   runOnInit: true,
 })
 export default class NotifySchedule implements ArtusxSchedule {
-  @Inject(ArtusInjectEnum.Config)
-  config: Record<string, any>;
-
-  @Inject(ArtusXInjectEnum.GRPC)
-  grpcClient: GRPCClient;
+  @Inject(EchoClient)
+  echo: EchoClient;
 
   private async invokeDynamic() {
-    const config: GRPCConfig = this.config.grpc;
-
-    assert(config?.server, 'config.server is required');
-    const { host, port } = config?.server;
-    const serverUrl = `${host || 'localhost'}:${port}`;
-
-    const EchoService = this.grpcClient.getService('grpc.examples.echo', 'Echo');
-    assert(EchoService, 'Service is required');
-    const echoClient = new EchoService(serverUrl, credentials.createInsecure());
+    const echoClient = this.echo.getClient();
 
     echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
       console.log('client:Echo:UnaryEcho', response);
