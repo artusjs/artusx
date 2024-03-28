@@ -1,13 +1,15 @@
+import assert from 'assert';
 import * as grpc from '@grpc/grpc-js';
-import { GrpcClient } from '@artusx/plugin-grpc';
-import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
-import { ChatClient } from '../proto-codegen/chat';
+import { Inject, ArtusInjectEnum, Injectable, ScopeEnum } from '@artus/core';
+import { ChatClient as Client } from '../proto-codegen/chat';
 
-@GrpcClient({
-  load: true,
+@Injectable({
+  scope: ScopeEnum.EXECUTION,
 })
-export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
-  init(addr: string) {
-    return new ChatClient(addr, grpc.credentials.createInsecure());
+export default class ChatClient extends Client {
+  constructor(@Inject(ArtusInjectEnum.Config) public config: any) {
+    const { addr } = config.grpc?.client || {};
+    assert(addr, 'addr is required');
+    super(addr, grpc.credentials.createInsecure());
   }
 }

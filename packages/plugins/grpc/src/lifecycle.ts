@@ -9,15 +9,8 @@ import {
 } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
 import ArtusXGrpcClient, { ArtusxGrpcConfig } from './client';
+import { GRPC_SERVICE_TAG, GRPC_SERVICE_METADATA, GRPC_METHOD_METADATA } from './decorator';
 import {
-  GRPC_CLIENT_TAG,
-  GRPC_CLIENT_METADATA,
-  GRPC_SERVICE_TAG,
-  GRPC_SERVICE_METADATA,
-  GRPC_METHOD_METADATA,
-} from './decorator';
-import {
-  ArtusxGrpcClientMetadata,
   ArtusxGrpcServiceMetadata,
   ArtusxGrpcMethodMetadata,
   ArtusXGrpcMethodMap,
@@ -36,30 +29,6 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
 
   get container() {
     return this.app.container;
-  }
-
-  private async loadClient(options: ArtusxGrpcConfig['client']) {
-    if (!options) {
-      return;
-    }
-
-    const { host, port } = options;
-
-    const serverUrl = `${host}:${port}`;
-
-    const clientClazzList = this.container.getInjectableByTag(GRPC_CLIENT_TAG);
-
-    for (const clientClazz of clientClazzList) {
-      const clientMetadata: ArtusxGrpcClientMetadata = Reflect.getMetadata(GRPC_CLIENT_METADATA, clientClazz);
-
-      if (!clientMetadata.load) {
-        continue;
-      }
-
-      const client = this.container.get(clientClazz) as any;
-      const instance = client.init(serverUrl);
-      client.setClient(instance);
-    }
   }
 
   private async loadService() {
@@ -132,10 +101,6 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
 
     if (config.static) {
       await client.genStaticCode(config.static);
-    }
-
-    if (config.client) {
-      await this.loadClient(config.client);
     }
 
     if (config.server) {

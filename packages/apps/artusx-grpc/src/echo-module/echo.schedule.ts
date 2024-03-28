@@ -11,12 +11,10 @@ import EchoClient from './echo.client';
 })
 export default class NotifySchedule implements ArtusxSchedule {
   @Inject(EchoClient)
-  echo: EchoClient;
+  echoClient: EchoClient;
 
   private async invokeDynamic() {
-    const echoClient = this.echo.getClient();
-
-    echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
+    this.echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
       console.log('client:Echo:UnaryEcho', response);
     });
   }

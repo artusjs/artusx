@@ -16,12 +16,14 @@ import type { ArtusXGrpcServiceList, ArtusXGrpcServiceMap } from './types';
 
 export interface ArtusxGrpcConfig {
   client?: {
-    host: string;
-    port: number;
+    // host: string;
+    // port: number;
+    addr: string;
   };
   server?: {
-    host: string;
-    port: number;
+    // host: string;
+    // port: number;
+    addr: string;
   };
 
   // static
@@ -179,10 +181,9 @@ export default class ArtusXGrpcClient {
   ) {
     assert(this._config?.server, 'server config is required');
 
-    const { host = '0.0.0.0', port = '50051' } = this._config?.server;
+    const { addr } = this._config?.server;
 
     const server = new grpc.Server();
-    const serverUrl = `${host}:${port}`;
 
     const { dynamicService, staticService } = services;
 
@@ -210,7 +211,7 @@ export default class ArtusXGrpcClient {
       server.addService(definition, instance);
     }
 
-    server.bindAsync(serverUrl, grpc.ServerCredentials.createInsecure(), callback);
+    server.bindAsync(addr, grpc.ServerCredentials.createInsecure(), callback);
 
     this._server = server;
   }

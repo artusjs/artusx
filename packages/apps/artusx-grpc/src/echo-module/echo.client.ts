@@ -1,19 +1,27 @@
+import assert from 'assert';
 import { credentials } from '@artusx/plugin-grpc/types';
-import { Inject } from '@artus/core';
+import { ArtusInjectEnum, Inject, Injectable, ScopeEnum } from '@artus/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
-import { ArtusXGrpcClient, GrpcClient } from '@artusx/plugin-grpc';
-import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
-import { ChatClient } from '../proto-codegen/chat';
+import { ArtusXGrpcClient } from '@artusx/plugin-grpc';
 
-@GrpcClient({
-  load: true,
+@Injectable({
+  scope: ScopeEnum.EXECUTION,
 })
-export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
-  @Inject(ArtusXInjectEnum.GRPC)
-  grpcClient: ArtusXGrpcClient;
+export default class EchoClient {
+  private echoService: any;
 
-  init(addr: string) {
-    const EchoService = this.grpcClient.getService('grpc.examples.echo', 'Echo');
-    return new EchoService(addr, credentials.createInsecure());
+  constructor(
+    @Inject(ArtusInjectEnum.Config) public config: any,
+    @Inject(ArtusXInjectEnum.GRPC) public grpcClient: ArtusXGrpcClient
+  ) {
+    const { addr } = config.grpc?.client || {};
+    assert(addr, 'addr is required');
+
+    const EchoService = grpcClient.getService('grpc.examples.echo', 'Echo');
+    this.echoService = new EchoService(addr, credentials.createInsecure());
+  }
+
+  UnaryEcho(call: any, callback: any) {
+    this.echoService.UnaryEcho(call, callback);
   }
 }

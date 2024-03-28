@@ -4,13 +4,11 @@ import type { ArtusxGrpcConfig } from '@artusx/plugin-grpc';
 export default () => {
   const grpc: ArtusxGrpcConfig = {
     client: {
-      host: '0.0.0.0',
-      port: 50051,
+      addr: '0.0.0.0:50051',
     },
 
     server: {
-      host: '0.0.0.0',
-      port: 50051,
+      addr: '0.0.0.0:50051',
     },
 
     static: {

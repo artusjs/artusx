@@ -10,10 +10,6 @@ export interface ArtusxGrpcServiceMetadata {
   definition?: any;
 }
 
-export interface ArtusxGrpcClientMetadata {
-  load: boolean;
-}
-
 export interface ArtusxGrpcMethodMetadata {
   enable: boolean;
 }
@@ -24,15 +20,3 @@ export type ArtusXGrpcServiceList = Array<{
   definition: any;
   instance: ArtusXGrpcMethodMap;
 }>;
-
-export class ArtusXGrpcClientClass<T> {
-  private _client: T;
-
-  setClient(instance: T) {
-    this._client = instance;
-  }
-
-  getClient() {
-    return this._client;
-  }
-}

@@ -19,14 +19,12 @@ import type { ArtusxGrpcConfig } from '@artusx/plugin-grpc';
 
 export default () => {
   const grpc: ArtusxGrpcConfig = {
-    client: {
-      host: '0.0.0.0',
-      port: 50051,
+    client: {      
+      addr: "0.0.0.0:50051",
     },
 
-    server: {
-      host: '0.0.0.0',
-      port: 50051,
+    server: {      
+      addr: "0.0.0.0:50051",
     },
 
     static: {
@@ -109,18 +107,20 @@ export default class ChatService extends UnimplementedChatService {
 Client
 
 ```ts
+import assert from 'assert';
 import * as grpc from '@grpc/grpc-js';
-import { GrpcClient } from '@artusx/plugin-grpc';
-import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
-import { ChatClient } from '../proto-codegen/chat';
+import { Inject, ArtusInjectEnum, Injectable, ScopeEnum } from '@artus/core';
+import { ChatClient as Client } from '../proto-codegen/chat';
 
-@GrpcClient({
-  load: true,
+@Injectable({
+  scope: ScopeEnum.EXECUTION,
 })
-export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
-  init(addr: string) {
-    return new ChatClient(addr, grpc.credentials.createInsecure());
-  }
+export default class ChatClient extends Client {
+  constructor(@Inject(ArtusInjectEnum.Config) public config: any) {
+    const { addr } = config.grpc?.client || {};
+    assert(addr, 'addr is required');
+    super(addr,  grpc.credentials.createInsecure());
+  }  
 }
 ```
 
@@ -140,18 +140,16 @@ import ChatClient from './chat.client';
 })
 export default class NotifySchedule implements ArtusxSchedule {
   @Inject(ChatClient)
-  chat: ChatClient;
+  chatClient: ChatClient;
 
-  private async invokeStatic() {
-    const chatClient = this.chat.getClient();
-
+  private async invokeStatic() {    
     const message = new ClientMessage({
       user: '@client',
       text: 'hello',
     });
 
     try {
-      const response = await chatClient.join(message);
+      const response = await this.chatClient.join(message);
       console.log('client:Chat:join', response.toObject());
     } catch (error) {
       console.error('error:', error.details);
@@ -235,23 +233,31 @@ export default class EchoService {
 Client
 
 ```ts
+import assert from 'assert';
 import { credentials } from '@artusx/plugin-grpc/types';
-import { Inject } from '@artus/core';
+import { ArtusInjectEnum, Inject, Injectable, ScopeEnum } from '@artus/core';
 import { ArtusXInjectEnum } from '@artusx/utils';
-import { ArtusXGrpcClient, GrpcClient } from '@artusx/plugin-grpc';
-import { ArtusXGrpcClientClass } from '@artusx/plugin-grpc/types';
-import { ChatClient } from '../proto-codegen/chat';
+import { ArtusXGrpcClient } from '@artusx/plugin-grpc';
 
-@GrpcClient({
-  load: true,
+@Injectable({
+  scope: ScopeEnum.EXECUTION,
 })
-export default class Chat extends ArtusXGrpcClientClass<ChatClient> {
-  @Inject(ArtusXInjectEnum.GRPC)
-  grpcClient: ArtusXGrpcClient;
+export default class EchoClient {
+  private echoService: any;
 
-  init(addr: string) {
-    const EchoService = this.grpcClient.getService('grpc.examples.echo', 'Echo');
-    return new EchoService(addr, credentials.createInsecure());
+  constructor(
+    @Inject(ArtusInjectEnum.Config) public config: any,
+    @Inject(ArtusXInjectEnum.GRPC) public grpcClient: ArtusXGrpcClient,
+  ) {
+    const { addr } = config.grpc?.client || {};
+    assert(addr, 'addr is required');
+
+    const EchoService = grpcClient.getService('grpc.examples.echo', 'Echo');    
+    this.echoService = new EchoService(addr, credentials.createInsecure());
+  }
+
+  UnaryEcho(call: any, callback: any) {
+    this.echoService.UnaryEcho(call, callback)
   }
 }
 ```
@@ -272,12 +278,10 @@ import EchoClient from './echo.client';
 })
 export default class NotifySchedule implements ArtusxSchedule {
   @Inject(EchoClient)
-  echo: EchoClient;
+  echoClient: EchoClient;
 
-  private async invokeDynamic() {
-    const echoClient = this.echo.getClient();
-
-    echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
+  private async invokeDynamic() {    
+    this.echoClient.UnaryEcho({ message: 'ping' }, function (_err: Error, response: any) {
       console.log('client:Echo:UnaryEcho', response);
     });
   }

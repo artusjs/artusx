@@ -11,18 +11,16 @@ import ChatClient from './chat.client';
 })
 export default class NotifySchedule implements ArtusxSchedule {
   @Inject(ChatClient)
-  chat: ChatClient;
+  chatClient: ChatClient;
 
   private async invokeStatic() {
-    const chatClient = this.chat.getClient();
-
     const message = new ClientMessage({
       user: '@client',
       text: 'hello',
     });
 
     try {
-      const response = await chatClient.join(message);
+      const response = await this.chatClient.join(message);
       console.log('client:Chat:join', response.toObject());
     } catch (error) {
       console.error('error:', error.details);
