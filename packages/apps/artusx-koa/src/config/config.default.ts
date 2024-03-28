@@ -31,6 +31,7 @@ export default () => {
   fs.ensureDirSync(xprofilerLogDir);
 
   const artusx: ArtusxConfig = {
+    keys: 'artusx-koa',
     port: 7001,
     middlewares: [LimitRate, checkAuth],
     static: {

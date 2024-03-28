@@ -48,8 +48,14 @@ export interface ArtusxMiddleware {
 }
 
 export interface ArtusxConfig {
+  keys?: string;
   port?: number;
   middlewares?: any[];
+  router?: {
+    caseSensitive?: boolean;
+    ignoreTrailingSlash?: boolean;
+    ignoreDuplicateSlashes?: boolean;
+  };
 }
 
 export {
