@@ -1,24 +1,28 @@
 export enum ArtusXInjectEnum {
-  Koa = 'ARTUSX_KOA',
-  KoaRouter = 'ARTUSX_KOA_ROUTER',
   Pipeline = 'ARTUSX_PIPELINE',
-
-  Log4js = 'ARTUSX_LOG4JS',
-  Nunjucks = 'ARTUSX_NUNJUCKS',
-  XTransit = 'ARTUSX_XTRANSIT',
   Schedule = 'ARTUSX_SCHEDULE',
 
+  // view engines
+  EJS = 'ARTUSX_EJS',
+  Nunjucks = 'ARTUSX_NUNJUCKS',
+
+  // web framework
+  Koa = 'ARTUSX_KOA',
+  KoaRouter = 'ARTUSX_KOA_ROUTER',
   Nest = 'ARTUSX_NEST',
   Express = 'ARTUSX_EXPRESS',
 
+  // database
   Redis = 'ARTUSX_REDIS',
   Sequelize = 'ARTUSX_SEQUELIZE',
 
   GRPC = 'ARTUSX_GRPC',
-  PPTR = 'ARTUSX_PPTR',
   Proxy = 'ARTUSX_PROXY',
+  PPTR = 'ARTUSX_PPTR',
+  Log4js = 'ARTUSX_LOG4JS',
   OpenAI = 'ARTUS_OPENAI',
   Telegram = 'ARTUS_TELEGRAM',
+  XTransit = 'ARTUSX_XTRANSIT',
 }
 
 export enum ArtusXErrorEnum {

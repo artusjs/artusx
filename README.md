@@ -23,6 +23,7 @@ Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org)
 | @artusx/plugin-express              | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-express.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-express)                     |
 | @artusx/plugin-redis                | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-redis.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-redis)                         |
 | @artusx/plugin-log4js               | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-log4js.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-log4js)                       |
+| @artusx/plugin-ejs                  | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-ejs.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-ejs)                             |
 | @artusx/plugin-nunjucks             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nunjucks.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nunjucks)                   |
 | @artusx/plugin-schedule             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-schedule.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-schedule)                   |
 | @artusx/plugin-grpc                 | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-grpc.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-grpc)                           |

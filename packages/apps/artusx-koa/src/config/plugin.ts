@@ -3,6 +3,10 @@ export default {
     enable: true,
     package: '@artusx/core',
   },
+  ejs: {
+    enable: true,
+    package: '@artusx/plugin-ejs',
+  },
   xtransit: {
     enable: false,
   },

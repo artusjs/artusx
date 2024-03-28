@@ -27,7 +27,7 @@ export default class NunjucksLifecycle implements ApplicationLifecycle {
     }
 
     this.logger.info('[nunjucks] serving view at: %s', config.path);
-    const client = this.app.container.get(ArtusXInjectEnum.Client) as Client;
+    const client = this.app.container.get(ArtusXInjectEnum.Nunjucks) as Client;
     await client.init(config);
   }
 }

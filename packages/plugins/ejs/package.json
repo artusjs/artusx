@@ -1,0 +1,67 @@
+{
+  "name": "@artusx/plugin-ejs",
+  "version": "0.0.0-dev.0",
+  "description": "ejs plugin for artusx",
+  "keywords": [
+    "artusx"
+  ],
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    },
+    "./client": {
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./lifecycle": {
+      "types": "./lib/lifecycle.d.ts",
+      "default": "./lib/lifecycle.js"
+    }
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "cov": "jest --coverage --detectOpenHandles --testTimeout=15000",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test": "jest --detectOpenHandles --testTimeout=15000",
+    "tsc": "rm -rf lib && tsc -p ./tsconfig.build.json"
+  },
+  "dependencies": {
+    "@artus/core": "^2.x",
+    "@artus/pipeline": "^0.2",
+    "ejs": "~3.1.9",
+    "ylru": "~1.4.0"
+  },
+  "devDependencies": {
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
+    "@types/ejs": "~3.1.5",
+    "@types/jest": "~29.5.11",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "eslint": "~8.56.0",
+    "eslint-plugin-import": "~2.29.1",
+    "jest": "~29.7.0",
+    "reflect-metadata": "~0.2.1",
+    "ts-jest": "~29.1.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

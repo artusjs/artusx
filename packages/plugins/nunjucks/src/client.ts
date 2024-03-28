@@ -8,7 +8,7 @@ import nunjucks, {
 } from 'nunjucks';
 
 @Injectable({
-  id: ArtusXInjectEnum.Client,
+  id: ArtusXInjectEnum.Nunjucks,
   scope: ScopeEnum.SINGLETON,
 })
 export default class NunjucksClient {

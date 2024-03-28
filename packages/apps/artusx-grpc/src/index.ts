@@ -1,3 +1,6 @@
-import { main } from './bootstrap';
+import path from 'path';
+import { bootstrap } from '@artusx/utils';
 
-main();
+const ROOT_DIR = path.resolve(__dirname);
+
+bootstrap({ root: ROOT_DIR });

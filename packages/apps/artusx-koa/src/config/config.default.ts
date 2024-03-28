@@ -12,6 +12,7 @@ import {
   XtransitConfig,
 } from '@artusx/core';
 
+import type { EjsConfig } from '@artusx/plugin-ejs';
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
 
@@ -22,7 +23,6 @@ import checkAuth from '../middleware/checkAuth';
 
 const tmpDir = os.tmpdir();
 const rootDir = path.resolve(__dirname, '../..');
-const viewDir = path.resolve(__dirname, '../view');
 const logsDir = path.join(tmpDir, 'artusx/logs');
 const xprofilerLogDir = path.join(logsDir, 'xprofiler');
 
@@ -81,10 +81,20 @@ export default () => {
   };
 
   const nunjucks: NunjucksConfigureOptions = {
-    path: viewDir,
+    path: path.resolve(__dirname, '../view'),
     options: {
       autoescape: true,
       noCache: true,
+    },
+  };
+
+  const ejs: EjsConfig = {
+    root: path.resolve(__dirname, '../view-ejs'),
+    async: true,
+    layout: {
+      'layout extractScripts': true,
+      'layout extractStyles': true,
+      // layout: false,
     },
   };
 
@@ -135,6 +145,9 @@ export default () => {
 
     // log4js
     log4js,
+
+    // ejs
+    ejs,
 
     // nunjucks
     nunjucks,
