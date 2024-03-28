@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-pptr",
   "entries": [
     {
+      "version": "1.0.43",
+      "tag": "@artusx/plugin-pptr_v1.0.43",
+      "date": "Thu, 28 Mar 2024 08:42:11 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.42",
       "tag": "@artusx/plugin-pptr_v1.0.42",
       "date": "Wed, 27 Mar 2024 18:19:43 GMT",

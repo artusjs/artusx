@@ -1,6 +1,6 @@
 {
   "name": "@artusx/plugin-ejs",
-  "version": "0.0.0-dev.0",
+  "version": "1.0.43",
   "description": "ejs plugin for artusx",
   "keywords": [
     "artusx"
