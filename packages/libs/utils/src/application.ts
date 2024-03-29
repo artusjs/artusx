@@ -19,7 +19,7 @@ export class Application extends ArtusApplication {
     options: ApplicationOptions = {
       root: path.resolve('.'),
       configDir: 'config',
-      exclude: []
+      exclude: [],
     }
   ) {
     super();
@@ -46,7 +46,7 @@ export class Application extends ArtusApplication {
         needWriteFile: false,
         useRelativePath: true,
         extensions: ['.js', '.json', '.node', '.ts'],
-        exclude: this.options.exclude || ['bin', 'test', 'coverage', 'src']
+        exclude: this.options.exclude || ['bin', 'test', 'coverage', 'src', 'view', 'public'],
       });
       manifest = await scanner.scan(this.options.root!);
     }
