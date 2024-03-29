@@ -2,6 +2,12 @@
   "name": "@artusx/utils",
   "entries": [
     {
+      "version": "1.0.44",
+      "tag": "@artusx/utils_v1.0.44",
+      "date": "Fri, 29 Mar 2024 08:57:27 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.0.43",
       "tag": "@artusx/utils_v1.0.43",
       "date": "Thu, 28 Mar 2024 08:42:11 GMT",
