@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-redis
 
-This log was last generated on Fri, 29 Mar 2024 08:57:27 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2024 16:11:29 GMT and should not be manually modified.
+
+## 1.1.0
+Fri, 29 Mar 2024 16:11:29 GMT
+
+_Version update only_
 
 ## 1.0.44
 Fri, 29 Mar 2024 08:57:27 GMT

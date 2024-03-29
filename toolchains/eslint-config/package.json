@@ -1,6 +1,6 @@
 {
   "name": "@artusx/eslint-config",
-  "version": "1.0.44",
+  "version": "1.1.0",
   "description": "eslint rules for artusx",
   "keywords": [
     "artusx"
