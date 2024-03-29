@@ -1,4 +1,121 @@
-# [](https://github.com/artusjs/artusx/compare/v1.0.32...v) (2024-03-19)
+# [](https://github.com/artusjs/artusx/compare/v1.1.0...v) (2024-03-29)
+
+
+
+# [1.1.0](https://github.com/artusjs/artusx/compare/v1.0.44...v1.1.0) (2024-03-29)
+
+
+### Features
+
+* fix spelling mistake, support exception filter ([1fee611](https://github.com/artusjs/artusx/commit/1fee61133eff25a8cbd32cae26aca08a7ab107d8))
+
+
+
+## [1.0.44](https://github.com/artusjs/artusx/compare/v1.0.43...v1.0.44) (2024-03-29)
+
+
+### Features
+
+* **@artusx/plugin-grpc:** remove @GrpcClient(), use @Injectable() ([2a610f6](https://github.com/artusjs/artusx/commit/2a610f6985c93b6e83529b4b99a32c53f061f041))
+* **@artusx/plugin-koa:** get config from constructor.args ([59f9022](https://github.com/artusjs/artusx/commit/59f90220a3e7a152b67d88d6d37b02ef9f2ba24e))
+* **@artusx/utils:** ignore view / public dirs ([639ad3d](https://github.com/artusjs/artusx/commit/639ad3df175bc4a2c4b3d32c8cc60b6f408e02bc))
+
+
+
+## [1.0.43](https://github.com/artusjs/artusx/compare/v1.0.42...v1.0.43) (2024-03-28)
+
+
+### Features
+
+* **@artusx/plugin-ejs:** add ejs plugin for artusx ([5a5d31f](https://github.com/artusjs/artusx/commit/5a5d31fb73264b26c5ade3ac18f68039dd8c181d))
+
+
+
+## [1.0.42](https://github.com/artusjs/artusx/compare/v1.0.41...v1.0.42) (2024-03-27)
+
+
+### Features
+
+* **@artusx/plugin-grpc:** add @GrpcClient() ([53d964a](https://github.com/artusjs/artusx/commit/53d964a1d2653a15517152ec09603fc6b6670057))
+
+
+
+## [1.0.41](https://github.com/artusjs/artusx/compare/v1.0.40...v1.0.41) (2024-03-27)
+
+
+### Features
+
+* **@artusx/plugin-grpc:** support grpc-tools and code gen ([64bb263](https://github.com/artusjs/artusx/commit/64bb2636527c7edd02d4bd5d82a071fed0ff069a))
+* **@artusx/plugin-grpc:** support static and dynamic codegen ([b174ac7](https://github.com/artusjs/artusx/commit/b174ac75332c3acfe9b74566060d1ffdfcd614e6))
+
+
+
+## [1.0.40](https://github.com/artusjs/artusx/compare/v1.0.39...v1.0.40) (2024-03-26)
+
+
+### Features
+
+* **@artusx/plugin-grpc:** add grpc support ([bac552c](https://github.com/artusjs/artusx/commit/bac552c4076a26da132a552cd8bad2d07920eeca))
+
+
+
+## [1.0.39](https://github.com/artusjs/artusx/compare/v1.0.38...v1.0.39) (2024-03-25)
+
+
+### Features
+
+* **@artusx/plugin-koa:** add default config for find-my-way ([ed283cd](https://github.com/artusjs/artusx/commit/ed283cd2d3773ceaec4ab37909683ce41256e782))
+
+
+
+## [1.0.38](https://github.com/artusjs/artusx/compare/v1.0.37...v1.0.38) (2024-03-22)
+
+
+### Features
+
+* **@artusx/core:** support dirs in static ([b55c872](https://github.com/artusjs/artusx/commit/b55c8724b2d198c9407b0d1b4255390b101fcb5e))
+* **@artusx/core:** update cors config ([053eac2](https://github.com/artusjs/artusx/commit/053eac2ecceb8828d9502a4852789baf501b521f))
+
+
+
+## [1.0.37](https://github.com/artusjs/artusx/compare/v1.0.36...v1.0.37) (2024-03-22)
+
+
+### Features
+
+* **@artusx/plugin-koa:** throw error with code ([ea376aa](https://github.com/artusjs/artusx/commit/ea376aadcc12871068daa02505775f6119292d38))
+
+
+
+## [1.0.36](https://github.com/artusjs/artusx/compare/v1.0.35...v1.0.36) (2024-03-22)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-koa:** skip getter/setter while loading routes ([6657366](https://github.com/artusjs/artusx/commit/66573669f58c1c655d5ac7f288fe0ba488b8803f))
+
+
+
+## [1.0.35](https://github.com/artusjs/artusx/compare/v1.0.34...v1.0.35) (2024-03-20)
+
+
+### Bug Fixes
+
+* **@artusx/utils:** replace Number with number ([39043c9](https://github.com/artusjs/artusx/commit/39043c97c508265d412177260e6628613deabb8f))
+
+
+
+## [1.0.34](https://github.com/artusjs/artusx/compare/v1.0.32...v1.0.34) (2024-03-20)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-pptr:** fix browser close method ([e16a3f0](https://github.com/artusjs/artusx/commit/e16a3f0a928127b728c51259c541ff9d88d15222))
+
+
+### Features
+
+* **@artusx/utils:** simplify bootstrap and utils ([3fb0423](https://github.com/artusjs/artusx/commit/3fb0423ed7ba9c4cb4e30155b80779ff8c538036))
 
 
 
@@ -102,7 +219,7 @@
 ### Bug Fixes
 
 * **@artusx/boilerplate-artusx-app:** fix missing method ([490fa49](https://github.com/artusjs/artusx/commit/490fa49b5c8b2af0b476fa3258533d5cb728aed1))
-* **@artusx/plugin-schedule:** fix type of ArtusXSchedule ([edd27cb](https://github.com/artusjs/artusx/commit/edd27cb14f977ea1ae8b5087662d0a41b61283d5))
+* **@artusx/plugin-schedule:** fix type of ArtusxSchedule ([edd27cb](https://github.com/artusjs/artusx/commit/edd27cb14f977ea1ae8b5087662d0a41b61283d5))
 
 
 
