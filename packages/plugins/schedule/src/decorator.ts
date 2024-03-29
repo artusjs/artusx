@@ -3,7 +3,7 @@ import { addTag, Injectable, ScopeEnum } from '@artus/core';
 export const CLASS_SCHEDULE_TAG = 'CLASS_SCHEDULE_TAG';
 export const CLASS_SCHEDULE_METADATA = Symbol.for('CLASS_SCHEDULE_METADATA');
 
-import { ArtusxScheduleOptions } from './types';
+import { ArtusXScheduleOptions } from './types';
 
 /**
  * Schedule decorator
@@ -11,7 +11,7 @@ import { ArtusxScheduleOptions } from './types';
  * @example @Schedule()
  * @returns void
  */
-export function Schedule(options: ArtusxScheduleOptions) {
+export function Schedule(options: ArtusXScheduleOptions) {
   return (target: any) => {
     const scheduleMetadata = options;
 

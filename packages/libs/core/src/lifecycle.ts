@@ -18,7 +18,7 @@ import compression from 'koa-compress';
 import staticCache from 'koa-static-cache';
 
 import { bodyParser } from '@koa/bodyparser';
-import { ArtusxConfig } from './types';
+import { ArtusXConfig } from './types';
 import { KoaApplicationClient } from '@artusx/plugin-koa';
 import type { KoaApplication } from '@artusx/plugin-koa';
 
@@ -36,7 +36,7 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
   }
 
   private registerStatic() {
-    const { static: options } = this.app.config.artusx as ArtusxConfig;
+    const { static: options } = this.app.config.artusx as ArtusXConfig;
 
     if (!options) {
       return;
@@ -96,7 +96,7 @@ export default class ArtusXCoreLifecycle implements ApplicationLifecycle {
   }
 
   private registerCors() {
-    const { cors: corsConfig } = this.app.config.artusx as ArtusxConfig;
+    const { cors: corsConfig } = this.app.config.artusx as ArtusXConfig;
 
     if (!corsConfig) {
       this.koa.use(cors());

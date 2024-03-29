@@ -1,7 +1,7 @@
-import { ArtusxConfig } from '@artusx/core';
+import { ArtusXConfig } from '@artusx/core';
 
 export default () => {
-  const artusx: ArtusxConfig = {
+  const artusx: ArtusXConfig = {
     port: 7001,
     middlewares: [],
   };

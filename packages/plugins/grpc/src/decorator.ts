@@ -4,7 +4,7 @@ export const GRPC_SERVICE_TAG = 'GRPC_SERVICE_TAG';
 export const GRPC_SERVICE_METADATA = Symbol.for('GRPC_SERVICE_METADATA');
 export const GRPC_METHOD_METADATA = Symbol.for('GRPC_METHOD_METADATA');
 
-import { ArtusxGrpcServiceMetadata, ArtusxGrpcMethodMetadata } from './types';
+import { ArtusXGrpcServiceMetadata, ArtusXGrpcMethodMetadata } from './types';
 
 /**
  * Grpc service decorator
@@ -12,7 +12,7 @@ import { ArtusxGrpcServiceMetadata, ArtusxGrpcMethodMetadata } from './types';
  * @example @GrpcService()
  * @returns void
  */
-export function GrpcService(options: ArtusxGrpcServiceMetadata) {
+export function GrpcService(options: ArtusXGrpcServiceMetadata) {
   return (target: any) => {
     const serviceMetadata = options;
 
@@ -28,7 +28,7 @@ export function GrpcService(options: ArtusxGrpcServiceMetadata) {
  * @example @GrpcMethod()
  * @returns void
  */
-export function GrpcMethod(options?: ArtusxGrpcMethodMetadata) {
+export function GrpcMethod(options?: ArtusXGrpcMethodMetadata) {
   return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const methodMetadata = options || {};
 

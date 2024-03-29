@@ -25,11 +25,11 @@ export default {
 
 ```ts
 import path from 'path';
-import type { ArtusxConfig } from '@artusx/core';
+import type { ArtusXConfig } from '@artusx/core';
 import type { EjsConfig } from '@artusx/plugin-ejs';
 
 export default () => {  
-  const artusx: ArtusxConfig = {
+  const artusx: ArtusXConfig = {
     port: 7001,
     middlewares: [LimitRate, checkAuth],
     static: {
@@ -161,7 +161,7 @@ import {
   ContentType 
 } from '@artusx/core';
 
-import type { ArtusxContext } from '@artusx/core';
+import type { ArtusXContext } from '@artusx/core';
 import { EjsClient } from '@artusx/plugin-ejs';
 
 @Controller('/ejs')
@@ -174,7 +174,7 @@ export default class EjsController {
     
   @GET('/')  
   @ContentType('html')
-  async view(ctx: ArtusxContext) {        
+  async view(ctx: ArtusXContext) {        
     const locals = {
       title: 'Example',
       message: 'This is a message'
@@ -186,7 +186,7 @@ export default class EjsController {
 
   @GET('/people')
   @ContentType('html')
-  async people(ctx: ArtusxContext) {    
+  async people(ctx: ArtusXContext) {    
     const people = ['geddy', 'neil', 'alex'];        
     ctx.body = await this.ejs.render('people.ejs', { 
       people,

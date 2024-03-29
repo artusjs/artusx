@@ -102,7 +102,7 @@
 ### Bug Fixes
 
 * **@artusx/boilerplate-artusx-app:** fix missing method ([490fa49](https://github.com/artusjs/artusx/commit/490fa49b5c8b2af0b476fa3258533d5cb728aed1))
-* **@artusx/plugin-schedule:** fix type of ArtusxSchedule ([edd27cb](https://github.com/artusjs/artusx/commit/edd27cb14f977ea1ae8b5087662d0a41b61283d5))
+* **@artusx/plugin-schedule:** fix type of ArtusXSchedule ([edd27cb](https://github.com/artusjs/artusx/commit/edd27cb14f977ea1ae8b5087662d0a41b61283d5))
 
 
 

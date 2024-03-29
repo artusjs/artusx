@@ -1,10 +1,10 @@
 import { GET, Controller } from '../types';
-import type { ArtusxContext } from '../types';
+import type { ArtusXContext } from '../types';
 
 @Controller()
 export default class HomeController {
   @GET('/')
-  async home(ctx: ArtusxContext) {
+  async home(ctx: ArtusXContext) {
     ctx.body = 'Hello World';
   }
 }

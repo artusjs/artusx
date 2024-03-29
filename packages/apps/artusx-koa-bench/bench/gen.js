@@ -3,12 +3,12 @@ const path = require('path');
 
 const koaRouterTemplate = `
 import { Controller, GET } from '@artusx/core';
-import type { ArtusxContext } from '@artusx/core';
+import type { ArtusXContext } from '@artusx/core';
 
 @Controller()
 export default class BenchKoaRouterController {
   @GET('/_health')
-  async koarouter_health(ctx: ArtusxContext) {
+  async koarouter_health(ctx: ArtusXContext) {
     ctx.body = {};
   }
 
@@ -18,7 +18,7 @@ export default class BenchKoaRouterController {
 
 const findMyWayTemplate = `
 import { Controller, GET } from '@artusx/core';
-import type { ArtusxContext } from '@artusx/core';
+import type { ArtusXContext } from '@artusx/core';
 
 @Controller()
 export default class BenchFindMyWayController {
@@ -33,7 +33,7 @@ export default class BenchFindMyWayController {
 function genKoaRouterController(i) {
   return `
   @GET('/${i}/one')
-  async koarouter_one${i}(ctx: ArtusxContext) {
+  async koarouter_one${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -42,7 +42,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/one/two')
-  async koarouter_oneTwo${i}(ctx: ArtusxContext) {
+  async koarouter_oneTwo${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -51,7 +51,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/one/two/:three')
-  async koarouter_oneTwoThree${i}(ctx: ArtusxContext) {
+  async koarouter_oneTwoThree${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -60,7 +60,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/one/two/:three/:four?')
-  async koarouter_oneTwoThreeFour${i}(ctx: ArtusxContext) {
+  async koarouter_oneTwoThreeFour${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -69,7 +69,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/one/two/:three/:four?/five')
-  async koarouter_oneTwoThreeFourFive${i}(ctx: ArtusxContext) {
+  async koarouter_oneTwoThreeFourFive${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -78,7 +78,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/one/two/:three/:four?/five/six')
-  async koarouter_oneTwoThreeFourFiveSix${i}(ctx: ArtusxContext) {
+  async koarouter_oneTwoThreeFourFiveSix${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -87,7 +87,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/child')
-  async koarouter_child${i}(ctx: ArtusxContext) {
+  async koarouter_child${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -96,7 +96,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/child/grandchild')
-  async koarouter_childGrandchild${i}(ctx: ArtusxContext) {
+  async koarouter_childGrandchild${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -105,7 +105,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id')
-  async koarouter_childGrandchildId${i}(ctx: ArtusxContext) {
+  async koarouter_childGrandchildId${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -114,7 +114,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id/seven')
-  async koarouter_childGrandchildIdSeven${i}(ctx: ArtusxContext) {
+  async koarouter_childGrandchildIdSeven${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -123,7 +123,7 @@ function genKoaRouterController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id/seven(/eight)?')
-  async koarouter_childGrandchildIdSevenEight${i}(ctx: ArtusxContext) {
+  async koarouter_childGrandchildIdSevenEight${i}(ctx: ArtusXContext) {
     ctx.body = {
       query: ctx.query,
       params: ctx.params,
@@ -140,7 +140,7 @@ function genKoaRouterController(i) {
 function genFindMyWayController(i) {
   return `
   @GET('/${i}/one/two/:three/:four/five/six')
-  async fmw_oneTwoThreeFourFiveSix${i}(ctx: ArtusxContext) {
+  async fmw_oneTwoThreeFourFiveSix${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -149,7 +149,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one/two/:three/:four/five')
-  async fmw_oneTwoThreeFourFive${i}(ctx: ArtusxContext) {
+  async fmw_oneTwoThreeFourFive${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -158,7 +158,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one/two/:three/:four')
-  async fmw_oneTwoThreeFour${i}(ctx: ArtusxContext) {
+  async fmw_oneTwoThreeFour${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -167,7 +167,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one/two1/:three?')
-  async fmw_oneTwo1Three${i}(ctx: ArtusxContext) {
+  async fmw_oneTwo1Three${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -176,7 +176,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one/two/:three')
-  async fmw_oneTwoThree${i}(ctx: ArtusxContext) {
+  async fmw_oneTwoThree${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -185,7 +185,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one/two')
-  async fmw_oneTwo${i}(ctx: ArtusxContext) {
+  async fmw_oneTwo${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -194,7 +194,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/one')
-  async fmw_one${i}(ctx: ArtusxContext) {
+  async fmw_one${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -203,7 +203,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id/seven/eight')
-  async fmw_childGrandchildIdSevenEight${i}(ctx: ArtusxContext) {
+  async fmw_childGrandchildIdSevenEight${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -212,7 +212,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id/seven')
-  async fmw_childGrandchildIdSeven${i}(ctx: ArtusxContext) {
+  async fmw_childGrandchildIdSeven${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -221,7 +221,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/child/grandchild/:id')
-  async fmw_childGrandchildId${i}(ctx: ArtusxContext) {
+  async fmw_childGrandchildId${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -230,7 +230,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/child/grandchild')
-  async fmw_childGrandchild${i}(ctx: ArtusxContext) {
+  async fmw_childGrandchild${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -239,7 +239,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}/child')
-  async fmw_child${i}(ctx: ArtusxContext) {
+  async fmw_child${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,
@@ -248,7 +248,7 @@ function genFindMyWayController(i) {
   }
 
   @GET('/${i}')
-  async fmw_index${i}(ctx: ArtusxContext) {
+  async fmw_index${i}(ctx: ArtusXContext) {
     ctx.body = {
       params: ctx.params,
       query: ctx.query,

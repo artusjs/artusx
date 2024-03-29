@@ -1,9 +1,9 @@
 import os from 'os';
-import fs from 'fs-extra';
 import path from 'path';
+import fs from 'fs-extra';
 
 import {
-  ArtusxConfig,
+  ArtusXConfig,
   LoggerOptions,
   LoggerLevel,
   Log4jsConfiguration,
@@ -12,6 +12,7 @@ import {
   XtransitConfig,
 } from '@artusx/core';
 
+import type { ArtusXContext, ArtusXStdError } from '@artusx/core';
 import type { EjsConfig } from '@artusx/plugin-ejs';
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
@@ -30,7 +31,7 @@ export default () => {
   fs.ensureDirSync(logsDir);
   fs.ensureDirSync(xprofilerLogDir);
 
-  const artusx: ArtusxConfig = {
+  const artusx: ArtusXConfig = {
     keys: 'artusx-koa',
     port: 7001,
     middlewares: [LimitRate, checkAuth],
@@ -50,6 +51,14 @@ export default () => {
       origin: '*',
       allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
       credentials: false,
+    },
+    onError: async (ctx: ArtusXContext, error: ArtusXStdError) => {
+      // ctx.throw(error?.status || 500, error);
+      ctx.body = {
+        code: error.status || 500,
+        message: error.message,
+      };
+      ctx.status = 200;
     },
   };
 

@@ -7,9 +7,9 @@ import {
   HTTPMethod,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
-  ArtusxHandler,
-  ArtusxContext,
-  ArtusxNext,
+  ArtusXHandler,
+  ArtusXContext,
+  ArtusXNext,
 } from './types';
 
 export const CLASS_CONTROLLER_TAG = 'CLASS_CONTROLLER_TAG';
@@ -57,7 +57,7 @@ export function Headers(params: Record<string, string | string[]>) {
     const originalDef = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
-      const [ctx, _next] = args as [ArtusxContext, ArtusxNext];
+      const [ctx, _next] = args as [ArtusXContext, ArtusXNext];
 
       Object.keys(params).forEach((header) => {
         ctx.set(header, params[header]);
@@ -81,7 +81,7 @@ export function ContentType(contentType: string) {
     const originalDef = descriptor.value;
 
     descriptor.value = async function (...args: any[]) {
-      const [ctx, _next] = args as [ArtusxContext, ArtusxNext];
+      const [ctx, _next] = args as [ArtusXContext, ArtusXNext];
 
       await originalDef.apply(this, args);
 
@@ -96,7 +96,7 @@ export function StatusCode(code: number) {
     const originalDef = descriptor.value;
 
     descriptor.value = async function (...args: any[]) {
-      const [ctx, _next] = args as [ArtusxContext, ArtusxNext];
+      const [ctx, _next] = args as [ArtusXContext, ArtusXNext];
 
       try {
         const response = await originalDef.apply(this, args);
@@ -122,7 +122,7 @@ export function StatusCode(code: number) {
 }
 
 // function middleware decorator
-export const MW = (middlewares: ArtusxHandler[]) => {
+export const MW = (middlewares: ArtusXHandler[]) => {
   return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const httpMiddlewareMetadata: HTTPMiddlewareMetadata = {
       middlewares,

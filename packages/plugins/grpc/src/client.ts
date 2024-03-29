@@ -14,15 +14,11 @@ import type { Server, GrpcObject } from '@grpc/grpc-js';
 import type { PackageDefinition } from '@grpc/proto-loader';
 import type { ArtusXGrpcServiceList, ArtusXGrpcServiceMap } from './types';
 
-export interface ArtusxGrpcConfig {
+export interface ArtusXGrpcConfig {
   client?: {
-    // host: string;
-    // port: number;
     addr: string;
   };
   server?: {
-    // host: string;
-    // port: number;
     addr: string;
   };
 
@@ -58,7 +54,7 @@ const getBinPath = (name: string) => {
 })
 export default class ArtusXGrpcClient {
   private _server: Server;
-  private _config: ArtusxGrpcConfig;
+  private _config: ArtusXGrpcConfig;
 
   private _packageObject: GrpcObject;
   private _packageDefinition: PackageDefinition;
@@ -89,7 +85,7 @@ export default class ArtusXGrpcClient {
     return get(grpcObject, serviceName);
   }
 
-  async init(config: ArtusxGrpcConfig) {
+  async init(config: ArtusXGrpcConfig) {
     if (!config) {
       return;
     }
@@ -97,7 +93,7 @@ export default class ArtusXGrpcClient {
     this._config = config;
   }
 
-  async genDynamicCode(options: ArtusxGrpcConfig['dynamic']) {
+  async genDynamicCode(options: ArtusXGrpcConfig['dynamic']) {
     const { proto: protoPath } = options;
 
     const packageDefinition = protoLoader.loadSync(protoPath, {
@@ -114,7 +110,7 @@ export default class ArtusXGrpcClient {
     this._packageDefinition = packageDefinition;
   }
 
-  async genStaticCode(options: ArtusxGrpcConfig['static']) {
+  async genStaticCode(options: ArtusXGrpcConfig['static']) {
     const { proto: protoPath, codegen } = options;
 
     const protoc = getBinPath('grpc_tools_node_protoc');

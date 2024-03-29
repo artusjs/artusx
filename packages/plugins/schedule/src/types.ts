@@ -1,16 +1,16 @@
 import type { CronJobParams, CronOnCompleteCommand } from 'cron';
 
-export interface ArtusxSchedule {
-  run: ArtusxScheduleHandler;
+export interface ArtusXSchedule {
+  run: ArtusXScheduleHandler;
 }
 
-export type ArtusxScheduleHandler = () => Promise<void>;
+export type ArtusXScheduleHandler = () => Promise<void>;
 
-export type ArtusxScheduleCronTime = CronJobParams<CronOnCompleteCommand | null, null>['cronTime'];
+export type ArtusXScheduleCronTime = CronJobParams<CronOnCompleteCommand | null, null>['cronTime'];
 
-export interface ArtusxScheduleOptions {
+export interface ArtusXScheduleOptions {
   enable: boolean;
-  cron: ArtusxScheduleCronTime;
+  cron: ArtusXScheduleCronTime;
   start?: boolean;
   timeZone?: string;
   runOnInit?: boolean;

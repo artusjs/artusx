@@ -11,8 +11,8 @@ export default class CustomLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   public async willReady() {
-    this.koa.use(async (_ctx, next) => {
-      await next();
+    this.koa.on('error', (err) => {
+      console.error('koa error', err);
     });
   }
 }

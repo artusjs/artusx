@@ -1,8 +1,8 @@
 import path from 'path';
-import { ArtusxConfig, NunjucksConfigureOptions } from '@artusx/core';
+import { ArtusXConfig, NunjucksConfigureOptions } from '@artusx/core';
 
 export default () => {
-    const artusx: ArtusxConfig = {
+    const artusx: ArtusXConfig = {
       port: 7001,    
       static: {
         prefix: '/public/',

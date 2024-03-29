@@ -11,7 +11,7 @@ import {
   StatusCode,
 } from '@artusx/core';
 
-import type { ArtusxContext, Log4jsClient, NunjucksClient } from '@artusx/core';
+import type { ArtusXContext, Log4jsClient, NunjucksClient } from '@artusx/core';
 import traceTime from '../middleware/traceTime';
 
 @Controller()
@@ -27,7 +27,7 @@ export default class HomeController {
 
   @MW([traceTime])
   @GET('/')
-  async home(ctx: ArtusxContext) {
+  async home(ctx: ArtusXContext) {
     const infoLogger = this.log4js.getLogger('default');
     infoLogger.info(`path: /, method: GET`);
     ctx.body = this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
@@ -35,7 +35,7 @@ export default class HomeController {
 
   @POST('/post')
   @StatusCode(200)
-  async post(_ctx: ArtusxContext) {
+  async post(_ctx: ArtusXContext) {
     return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Post method' });
   }
 
@@ -44,13 +44,13 @@ export default class HomeController {
     'x-handler': 'home-controller-html: html',
   })
   @StatusCode(200)
-  async html(_ctx: ArtusxContext) {
+  async html(_ctx: ArtusXContext) {
     return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Render with nunjucks' });
   }
 
   @GET('/error')
   @StatusCode(403)
-  async error(ctx: ArtusxContext) {
+  async error(ctx: ArtusXContext) {
     const errorLogger = this.log4js.getLogger('error');
     const mockError = ctx.query.error;
     errorLogger.error('mockError', mockError);

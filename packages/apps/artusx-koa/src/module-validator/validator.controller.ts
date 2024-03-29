@@ -1,5 +1,5 @@
 import { Controller, StatusCode, GET, Query, Params, Body, POST } from '@artusx/core';
-import type { ArtusxContext } from '@artusx/core';
+import type { ArtusXContext } from '@artusx/core';
 
 import {
   QueryTypes,
@@ -26,7 +26,7 @@ export default class ValidatorController {
   @Body<BodyTypes>(BodyScheme)
   @Params<ParamsTypes>(ParamsScheme)
   @StatusCode(200)
-  async index(ctx: ArtusxContext): Promise<Object> {
+  async index(ctx: ArtusXContext): Promise<Object> {
     const query = ctx.context.output.data.query;
     const params = ctx.context.output.data.params;
     const body = ctx.context.output.data.body;

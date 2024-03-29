@@ -35,19 +35,19 @@ export interface HTTPMiddlewareMetadata {
   middlewares: KoaMiddleware[];
 }
 
-type ArtusxContext = KoaContext & {
+type ArtusXContext = KoaContext & {
   context: ArtusContext;
 };
 
-type ArtusxNext = KoaNext & {};
+type ArtusXNext = KoaNext & {};
 
-type ArtusxHandler = (ctx: ArtusxContext, next: ArtusxNext) => Promise<void>;
+type ArtusXHandler = (ctx: ArtusXContext, next: ArtusXNext) => Promise<void>;
 
-export interface ArtusxMiddleware {
-  use: ArtusxHandler;
+export interface ArtusXMiddleware {
+  use: ArtusXHandler;
 }
 
-export interface ArtusxConfig {
+export interface ArtusXConfig {
   keys?: string;
   port?: number;
   middlewares?: any[];
@@ -56,6 +56,7 @@ export interface ArtusxConfig {
     ignoreTrailingSlash?: boolean;
     ignoreDuplicateSlashes?: boolean;
   };
+  onError?: (ctx: ArtusXContext, err: Error) => void;
 }
 
 export {
@@ -67,7 +68,7 @@ export {
   KoaRouter,
 
   // artusx
-  ArtusxContext,
-  ArtusxNext,
-  ArtusxHandler,
+  ArtusXContext,
+  ArtusXNext,
+  ArtusXHandler,
 };

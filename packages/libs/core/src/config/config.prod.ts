@@ -1,6 +1,6 @@
-import type { ArtusxConfig } from '../types';
+import type { ArtusXConfig } from '../types';
 
-const artusx: ArtusxConfig = {
+const artusx: ArtusXConfig = {
   static: {
     maxAge: 31536000,
     buffer: true,

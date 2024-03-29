@@ -8,11 +8,11 @@ import {
   LifecycleHook,
 } from '@artus/core';
 import { ArtusXInjectEnum } from './constants';
-import ArtusXGrpcClient, { ArtusxGrpcConfig } from './client';
+import ArtusXGrpcClient, { ArtusXGrpcConfig } from './client';
 import { GRPC_SERVICE_TAG, GRPC_SERVICE_METADATA, GRPC_METHOD_METADATA } from './decorator';
 import {
-  ArtusxGrpcServiceMetadata,
-  ArtusxGrpcMethodMetadata,
+  ArtusXGrpcServiceMetadata,
+  ArtusXGrpcMethodMetadata,
   ArtusXGrpcMethodMap,
   ArtusXGrpcServiceMap,
   ArtusXGrpcServiceList,
@@ -38,7 +38,7 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
     let staticService: ArtusXGrpcServiceList = [];
 
     for (const serviceClazz of serviceClazzList) {
-      const serviceMetadata: ArtusxGrpcServiceMetadata = Reflect.getMetadata(
+      const serviceMetadata: ArtusXGrpcServiceMetadata = Reflect.getMetadata(
         GRPC_SERVICE_METADATA,
         serviceClazz
       );
@@ -63,7 +63,7 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
           continue;
         }
 
-        const handlerMetadata: ArtusxGrpcMethodMetadata =
+        const handlerMetadata: ArtusXGrpcMethodMetadata =
           Reflect.getMetadata(GRPC_METHOD_METADATA, serviceDescriptor.value) ?? undefined;
 
         if (!handlerMetadata || !handlerMetadata?.enable) {
@@ -87,7 +87,7 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const config: ArtusxGrpcConfig = this.app.config.grpc;
+    const config: ArtusXGrpcConfig = this.app.config.grpc;
 
     assert(config, 'grpc config is required');
     assert(config.dynamic || config.static, 'dynamic or static config is required');

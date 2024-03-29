@@ -2,7 +2,7 @@ import { UntypedServiceImplementation } from '@grpc/grpc-js';
 
 export * from '@grpc/grpc-js';
 
-export interface ArtusxGrpcServiceMetadata {
+export interface ArtusXGrpcServiceMetadata {
   packageName: string;
   serviceName: string;
 
@@ -10,7 +10,7 @@ export interface ArtusxGrpcServiceMetadata {
   definition?: any;
 }
 
-export interface ArtusxGrpcMethodMetadata {
+export interface ArtusXGrpcMethodMetadata {
   enable: boolean;
 }
 

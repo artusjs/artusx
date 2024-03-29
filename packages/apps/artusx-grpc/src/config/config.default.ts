@@ -1,8 +1,8 @@
 import path from 'path';
-import type { ArtusxGrpcConfig } from '@artusx/plugin-grpc';
+import type { ArtusXGrpcConfig } from '@artusx/plugin-grpc';
 
 export default () => {
-  const grpc: ArtusxGrpcConfig = {
+  const grpc: ArtusXGrpcConfig = {
     client: {
       addr: '0.0.0.0:50051',
     },

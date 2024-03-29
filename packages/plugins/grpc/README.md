@@ -15,10 +15,10 @@ export default {
 
 ```ts
 import path from 'path';
-import type { ArtusxGrpcConfig } from '@artusx/plugin-grpc';
+import type { ArtusXGrpcConfig } from '@artusx/plugin-grpc';
 
 export default () => {
-  const grpc: ArtusxGrpcConfig = {
+  const grpc: ArtusXGrpcConfig = {
     client: {      
       addr: "0.0.0.0:50051",
     },
@@ -129,7 +129,7 @@ Invoke
 ```ts
 import { Inject } from '@artus/core';
 import { Schedule } from '@artusx/plugin-schedule';
-import type { ArtusxSchedule } from '@artusx/plugin-schedule';
+import type { ArtusXSchedule } from '@artusx/plugin-schedule';
 import { ClientMessage } from '../proto-codegen/chat';
 import ChatClient from './chat.client';
 
@@ -138,7 +138,7 @@ import ChatClient from './chat.client';
   cron: '30 * * * * *',
   runOnInit: true,
 })
-export default class NotifySchedule implements ArtusxSchedule {
+export default class NotifySchedule implements ArtusXSchedule {
   @Inject(ChatClient)
   chatClient: ChatClient;
 
@@ -267,7 +267,7 @@ Invoke
 ```ts
 import { Inject } from '@artus/core';
 import { Schedule } from '@artusx/plugin-schedule';
-import type { ArtusxSchedule } from '@artusx/plugin-schedule';
+import type { ArtusXSchedule } from '@artusx/plugin-schedule';
 
 import EchoClient from './echo.client';
 
@@ -276,7 +276,7 @@ import EchoClient from './echo.client';
   cron: '30 * * * * *',
   runOnInit: true,
 })
-export default class NotifySchedule implements ArtusxSchedule {
+export default class NotifySchedule implements ArtusXSchedule {
   @Inject(EchoClient)
   echoClient: EchoClient;
 

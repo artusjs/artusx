@@ -28,6 +28,10 @@
       "types": "./lib/pipeline.d.ts",
       "default": "./lib/pipeline.js"
     },
+    "./error": {
+      "types": "./lib/error.d.ts",
+      "default": "./lib/error.js"
+    },
     "./types": {
       "types": "./lib/types.d.ts",
       "default": "./lib/types.js"

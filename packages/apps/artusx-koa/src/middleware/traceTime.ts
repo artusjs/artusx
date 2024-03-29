@@ -1,6 +1,6 @@
-import { ArtusxContext, ArtusxNext } from '@artusx/core';
+import { ArtusXContext, ArtusXNext } from '@artusx/core';
 
-export default async function traceTime(_ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
+export default async function traceTime(_ctx: ArtusXContext, next: ArtusXNext): Promise<void> {
   console.time('TraceTime');
   await next();
   console.timeEnd('TraceTime');

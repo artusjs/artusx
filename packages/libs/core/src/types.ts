@@ -1,4 +1,4 @@
-import type { ArtusxConfig as OrgArtusxConfig } from '@artusx/plugin-koa';
+import type { ArtusXConfig as _ArtusXConfig } from '@artusx/plugin-koa';
 import type { Options as KoaCorsOptions } from '@koa/cors';
 
 export * from '@artus/core';
@@ -13,7 +13,7 @@ export type DirObj = {
   dir?: string;
 };
 
-export type ArtusxConfig = OrgArtusxConfig & {
+export type ArtusXConfig = _ArtusXConfig & {
   cors?: KoaCorsOptions;
   static?: {
     prefix?: string;

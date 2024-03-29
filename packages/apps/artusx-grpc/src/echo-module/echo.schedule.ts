@@ -1,6 +1,6 @@
 import { Inject } from '@artus/core';
 import { Schedule } from '@artusx/plugin-schedule';
-import type { ArtusxSchedule } from '@artusx/plugin-schedule';
+import type { ArtusXSchedule } from '@artusx/plugin-schedule';
 
 import EchoClient from './echo.client';
 
@@ -9,7 +9,7 @@ import EchoClient from './echo.client';
   cron: '30 * * * * *',
   runOnInit: true,
 })
-export default class NotifySchedule implements ArtusxSchedule {
+export default class NotifySchedule implements ArtusXSchedule {
   @Inject(EchoClient)
   echoClient: EchoClient;
 

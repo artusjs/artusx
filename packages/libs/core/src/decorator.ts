@@ -1,5 +1,5 @@
 import Ajv, { JSONSchemaType } from 'ajv';
-import { ArtusxContext, ArtusxNext } from './types';
+import { ArtusXContext, ArtusXNext } from './types';
 export type { JSONSchemaType, JSONType } from 'ajv';
 
 const ajv = new Ajv();
@@ -11,7 +11,7 @@ function buildValidatorFactory<T>(key: 'query' | 'params' | 'body', schema: JSON
     const originalDef = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
-      const [ctx, _next] = args as [ArtusxContext, ArtusxNext];
+      const [ctx, _next] = args as [ArtusXContext, ArtusXNext];
 
       let data = ctx.query;
 

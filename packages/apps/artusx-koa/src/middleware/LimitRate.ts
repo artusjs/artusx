@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
-import { ArtusInjectEnum, Inject, ArtusxContext, ArtusxNext, Middleware } from '@artusx/core';
+import { ArtusInjectEnum, Inject, ArtusXContext, ArtusXNext, Middleware } from '@artusx/core';
 
 const rateLimiterOptions = {
   points: 6,
@@ -20,7 +20,7 @@ export default class LimitRateMiddleware {
     this.rateLimiter = new RateLimiterMemory(rateLimiterOptions);
   }
 
-  async use(ctx: ArtusxContext, next: ArtusxNext): Promise<void> {
+  async use(ctx: ArtusXContext, next: ArtusXNext): Promise<void> {
     try {
       const rateLimiterRes = await this.rateLimiter.consume(ctx.ip);
       const reset = dayjs().add(rateLimiterRes.msBeforeNext, 'milliseconds');

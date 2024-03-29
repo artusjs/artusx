@@ -8,6 +8,7 @@ import {
   ApplicationLifecycle,
   LifecycleHook,
   LifecycleHookUnit,
+  matchExceptionFilter,
 } from '@artus/core';
 
 import { Input, Context } from '@artus/pipeline';
@@ -26,9 +27,9 @@ import Pipeline from './pipeline';
 import type {
   ControllerMetadata,
   MiddlewareMetadata,
-  ArtusxHandler,
-  ArtusxContext,
-  ArtusxMiddleware,
+  ArtusXHandler,
+  ArtusXContext,
+  ArtusXMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
 } from './types';
@@ -62,12 +63,28 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     return this.app.container.get(KoaApplicationClient);
   }
 
+  private async handleError(ctx: ArtusXContext, error: any) {
+    const { onError } = this.app.config.artusx;
+    const filter = matchExceptionFilter(error, this.container);
+
+    if (filter) {
+      await filter?.catch(error);
+    }
+
+    if (onError) {
+      await onError(ctx, error);
+    } else {
+      ctx.throw(error?.status || 500, error);
+    }
+  }
+
   private registerRoute(
     controllerMetadata: ControllerMetadata,
     routeMetadataList: HTTPRouteMetadata[],
     middlewareMetadata: HTTPMiddlewareMetadata,
-    handler: ArtusxHandler
+    handler: ArtusXHandler
   ) {
+    const that = this;
     for (const routeMetadata of routeMetadataList) {
       const routePath = path.normalize((controllerMetadata.prefix ?? '/') + routeMetadata.path);
       const middlewares = middlewareMetadata.middlewares || [];
@@ -85,7 +102,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
             await singlePipeline.run(ctx as any);
 
             // handle request
-            await handler(ctx as unknown as ArtusxContext, next);
+            await handler(ctx as unknown as ArtusXContext, next);
           };
 
           const { ctx, next } = this;
@@ -96,7 +113,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
             await executionPipeline.run(ctx as any);
             next();
           } catch (error) {
-            ctx.throw(error?.status || 500, error);
+            await that.handleError(ctx as any, error);
           }
         }
       );
@@ -155,7 +172,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     const orderedMiddlewares: IMiddlewareWithIndex[] = [];
 
     for (const middlewareClazz of middlewareClazzList) {
-      const middleware: ArtusxMiddleware = this.container.get(middlewareClazz) as any;
+      const middleware: ArtusXMiddleware = this.container.get(middlewareClazz) as any;
       const middlewareIndex = middlewares.findIndex((item) => item === middleware.constructor);
       const middlewareMetadata = Reflect.getMetadata(CLASS_MIDDLEWARE_METADATA, middlewareClazz);
 
@@ -223,9 +240,9 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 }
 
 interface IMiddleware {
-  middleware: ArtusxMiddleware;
+  middleware: ArtusXMiddleware;
   metadata: MiddlewareMetadata;
-  handler: ArtusxHandler;
+  handler: ArtusXHandler;
 }
 
 interface IMiddlewareWithIndex extends IMiddleware {
