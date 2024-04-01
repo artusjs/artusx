@@ -29,6 +29,7 @@ export default class EjsController {
     const people = ['geddy', 'neil', 'alex'];
     ctx.body = await this.ejs.render('people.ejs', {
       people,
+      name: 'hello world',
       layout: false,
     });
   }
