@@ -2,6 +2,12 @@
   "name": "@artusx/plugin-nunjucks",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@artusx/plugin-nunjucks_v1.1.1",
+      "date": "Mon, 01 Apr 2024 07:32:47 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.1.0",
       "tag": "@artusx/plugin-nunjucks_v1.1.0",
       "date": "Fri, 29 Mar 2024 16:11:29 GMT",
