@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-grpc
 
-This log was last generated on Mon, 01 Apr 2024 07:32:47 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Apr 2024 09:32:11 GMT and should not be manually modified.
+
+## 1.1.2
+Mon, 01 Apr 2024 09:32:11 GMT
+
+_Version update only_
 
 ## 1.1.1
 Mon, 01 Apr 2024 07:32:47 GMT
