@@ -15,10 +15,6 @@ export default class APIController {
 
   @GET('/')
   async home(ctx: ArtusXContext) {
-    const err = this.app.createException('ARTUSX:UNKNOWN_ERROR');
-    if (err) {
-      throw err;
-    }
     ctx.body = 'api';
   }
 
