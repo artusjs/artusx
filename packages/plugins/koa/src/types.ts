@@ -1,3 +1,4 @@
+import type { ArtusStdError } from '@artus/core';
 import type { Context as ArtusContext } from '@artus/pipeline';
 import type { Context as KoaContext, Next as KoaNext, Middleware as KoaMiddleware } from 'koa';
 
@@ -72,3 +73,7 @@ export {
   ArtusXNext,
   ArtusXHandler,
 };
+
+export interface ArtusXExceptionFilterType {
+  catch(err: Error | ArtusStdError, ctx?: ArtusXContext): void | Promise<void>;
+}

@@ -1,4 +1,12 @@
-import { ArtusInjectEnum, Inject, GET, Controller, ArtusApplication, ArtusXStdError } from '@artusx/core';
+import {
+  ArtusApplication,
+  ArtusInjectEnum,
+  Inject,
+  GET,
+  Controller,
+  ArtusXStdError,
+  ArtusXBizError,
+} from '@artusx/core';
 import type { ArtusXContext } from '@artusx/core';
 import { ArtusXWrappedError, BizCustomError } from '../error';
 
@@ -41,6 +49,16 @@ export default class APIController {
     const err = new ArtusXStdError(400, 'artusx std error', {
       data: {},
     });
+
+    if (err) {
+      throw err;
+    }
+    ctx.body = 'biz_custom_error';
+  }
+
+  @GET('/biz_error')
+  async bizError(ctx: ArtusXContext) {
+    const err = new ArtusXBizError('artusx biz error', 400);
 
     if (err) {
       throw err;

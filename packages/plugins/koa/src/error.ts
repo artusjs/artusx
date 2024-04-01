@@ -3,7 +3,7 @@ export class ArtusXStdError extends Error {
   data: any;
   status: number;
 
-  constructor(status: number, message: string, data: any) {
+  constructor(status: number, message: string, data?: any) {
     super(message);
     this.data = data;
     this.status = status;
@@ -13,14 +13,15 @@ export class ArtusXStdError extends Error {
 export class ArtusXBizError extends Error {
   name = 'ARTUSX_BIZ_ERROR';
   data: any;
-  status: 200;
+  status: number; // 200
 
-  constructor(code: number, message: string, data: any) {
+  constructor(message: string, code: number, data?: any) {
     super(message);
     this.data = {
       code,
       data,
     };
+    this.status = 200;
   }
 }
 
@@ -29,13 +30,14 @@ export class ArtusXCustomError extends Error {
   data: any;
   status: number;
 
-  constructor(code: number, message: string, data: any, status: number) {
+  constructor(status: number, message: string, code: number, data?: any) {
     super(message);
 
     this.data = {
       code,
       data,
     };
+
     this.status = status;
   }
 }

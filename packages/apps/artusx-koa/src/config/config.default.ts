@@ -12,7 +12,7 @@ import {
   XtransitConfig,
 } from '@artusx/core';
 
-import type { ArtusXContext, ArtusXStdError } from '@artusx/core';
+import type { ArtusXContext } from '@artusx/core';
 import type { EjsConfig } from '@artusx/plugin-ejs';
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
@@ -52,10 +52,10 @@ export default () => {
       allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
       credentials: false,
     },
-    onError: async (ctx: ArtusXContext, error: ArtusXStdError) => {
+    onError: async (ctx: ArtusXContext, error: any) => {
       // ctx.throw(error?.status || 500, error);
       ctx.body = {
-        code: error.status || 500,
+        code: error?.data?.code || error?.status || 500,
         message: error.message,
       };
       ctx.status = 200;

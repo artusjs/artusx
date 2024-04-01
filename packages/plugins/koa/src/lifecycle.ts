@@ -32,6 +32,7 @@ import type {
   ArtusXMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
+  ArtusXExceptionFilterType,
 } from './types';
 
 import { KoaRouterClient } from './koa/router';
@@ -65,10 +66,14 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   private async handleError(ctx: ArtusXContext, error: any) {
     const { onError } = this.app.config.artusx;
-    const filter = matchExceptionFilter(error, this.container);
+    const filter = matchExceptionFilter(error, this.container) as ArtusXExceptionFilterType;
 
     if (filter) {
-      await filter?.catch(error);
+      await filter?.catch(error, ctx);
+    }
+
+    if (!!ctx.body) {
+      return;
     }
 
     if (onError) {
