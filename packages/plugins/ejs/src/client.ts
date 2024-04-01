@@ -67,10 +67,8 @@ export type EjsContext = Record<string, any>;
 
 export type EjsConfig = {
   root: string | string[];
-  async?: boolean | undefined;
-  client?: boolean | undefined;
-  options?: Options;
   layout?: Record<string, any>;
+  options?: Options;
 };
 
 @Injectable({
@@ -81,42 +79,43 @@ export default class EjsClient {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
-  private defaultConfig: EjsConfig;
-  private defaultOptions: Options | undefined;
-
-  private getOptions(options?: Options) {
-    const defaultConfig = this.defaultConfig;
-    const defaultOptions = this.defaultOptions;
-
-    return {
-      ...defaultConfig,
-      ...defaultOptions,
-      ...options,
-    };
-  }
+  private viewOptions: Options | undefined;
+  private layoutConfig: Record<string, any> | undefined;
 
   async init(config: EjsConfig) {
     if (!config) {
       return;
     }
 
-    const { options, ...defaultConfig } = config;
+    const { root, layout, options } = config;
+
+    let views: string[] = [];
+
+    // root dirs
+    if (typeof root === 'string') {
+      views.push(root);
+    } else {
+      views = views.concat(root);
+    }
+
+    // options views
+    if (options?.views) {
+      views = views.concat(options.views);
+    }
 
     ejs.cache = new LRU(100);
     ejs.fileLoader = (filePath: string) => {
-      const _root = defaultConfig.root;
-
       if (filePath.startsWith('/')) {
         return fs.readFileSync(filePath);
       }
 
-      if (typeof _root === 'string') {
-        const target = path.join(_root, filePath);
+      if (typeof root === 'string') {
+        const target = path.join(root, filePath);
         return fs.readFileSync(target);
       }
 
-      if (Array.isArray(_root)) {
-        const target = _root.find((root: string) => {
+      if (Array.isArray(root)) {
+        const target = root.find((root: string) => {
           const target = path.join(root, filePath);
           return fs.existsSync(target);
         });
@@ -129,24 +128,30 @@ export default class EjsClient {
       return fs.readFileSync(filePath);
     };
 
-    this.defaultOptions = options;
-    this.defaultConfig = defaultConfig;
+    this.layoutConfig = layout;
+    this.viewOptions = {
+      ...options,
+      views: Array.from(new Set(views)),
+    };
   }
 
   async compile(template: string, options?: Options) {
-    return ejs.compile(template, this.getOptions(options));
+    return ejs.compile(template, {
+      ...this.viewOptions,
+      ...options,
+    });
   }
 
   async renderFile(template: string, context?: EjsContext) {
-    return ejs.renderFile(template, context, this.getOptions());
+    return ejs.renderFile(template, context, this.viewOptions);
   }
 
   async renderString(template: string, context?: EjsContext) {
-    return ejs.render(template, context, this.getOptions());
+    return ejs.render(template, context, this.viewOptions);
   }
 
   async render(template: string, context?: EjsContext) {
-    const layoutConfig = this.defaultConfig?.layout || {};
+    const layoutConfig = this.layoutConfig?.layout || {};
 
     let options: Record<string, any> = {
       layout: context?.layout,

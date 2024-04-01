@@ -100,14 +100,10 @@ export default () => {
 
   const ejs: EjsConfig = {
     root: path.resolve(__dirname, '../view-ejs'),
-    async: false,
     layout: {
       'layout extractScripts': true,
       'layout extractStyles': true,
       // layout: false,
-    },
-    options: {
-      views: [path.resolve(__dirname, '../view-ejs')],
     },
   };
 
