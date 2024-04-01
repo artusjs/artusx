@@ -1,0 +1,37 @@
+{
+  "name": "@artusx/rush-utils",
+  "version": "0.0.4",
+  "description": "rush utils for artusx",
+  "keywords": [
+    "artusx"
+  ],
+  "type": "commonjs",
+  "bin": {
+    "artusx-rush-utils": "dist/bin/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "dev": "ts-node src/bin/cli.ts",
+    "tsc": "rm -rf dist && tsc"
+  },
+  "dependencies": {
+    "@artus-cli/artus-cli": "~0.2.10",
+    "@microsoft/rush-lib": "~5.119.0",
+    "runscript": "~1.6.0",
+    "urllib": "~3.23.0"
+  },
+  "devDependencies": {
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
+    "@types/node": "~20.11.7",
+    "ts-node": "~10.9.2",
+    "tslib": "~2.6.2",
+    "typescript": "^4.9.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

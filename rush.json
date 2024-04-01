@@ -425,14 +425,12 @@
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/core",
       "tags": ["artusx-libs"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/utils",
       "projectFolder": "packages/libs/utils",
       "tags": ["artusx-libs"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     // boilerplates
@@ -440,51 +438,50 @@
       "packageName": "@artusx/boilerplate-artusx-app",
       "projectFolder": "packages/boilerplates/artusx-app",
       "tags": ["artusx-boilerplates"],
-      "shouldPublish": true,
-      "versionPolicyName": "public-utils"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/boilerplate-artusx-lib",
       "projectFolder": "packages/boilerplates/artusx-lib",
       "tags": ["artusx-boilerplates"],
-      "shouldPublish": true,
-      "versionPolicyName": "public-utils"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/boilerplate-artusx-plugin",
       "projectFolder": "packages/boilerplates/artusx-plugin",
       "tags": ["artusx-boilerplates"],
-      "shouldPublish": true,
-      "versionPolicyName": "public-utils"
+      "versionPolicyName": "public"
     },
     // tools
     {
       "packageName": "@artusx/init",
       "projectFolder": "toolchains/init",
       "tags": ["artusx-libs"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/init-config",
       "projectFolder": "toolchains/init-config",
       "tags": ["artusx-libs"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/rush-utils",
+      "projectFolder": "toolchains/rush-utils",
+      "tags": ["artusx-tools"],
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/eslint-config",
       "projectFolder": "toolchains/eslint-config",
       "tags": ["artusx-tools"],
-      "shouldPublish": true,
-      "versionPolicyName": "public-utils"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/tsconfig",
       "projectFolder": "toolchains/tsconfig",
       "tags": ["artusx-tools"],
-      "shouldPublish": true,
-      "versionPolicyName": "public-utils"
+      "versionPolicyName": "public"
     },
     {
       "packageName": "artusx-nest",
@@ -516,105 +513,90 @@
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-sequelize",
       "projectFolder": "packages/plugins/sequelize",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-nest",
       "projectFolder": "packages/plugins/nest",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-express",
       "projectFolder": "packages/plugins/express",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-koa",
       "projectFolder": "packages/plugins/koa",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-xtransit",
       "projectFolder": "packages/plugins/xtransit",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-log4js",
       "projectFolder": "packages/plugins/log4js",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-nunjucks",
       "projectFolder": "packages/plugins/nunjucks",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-schedule",
       "projectFolder": "packages/plugins/schedule",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-telegram",
       "projectFolder": "packages/plugins/telegram",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-openai",
       "projectFolder": "packages/plugins/openai",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-proxy",
       "projectFolder": "packages/plugins/proxy",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-pptr",
       "projectFolder": "packages/plugins/pptr",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-grpc",
       "projectFolder": "packages/plugins/grpc",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     },
     {
       "packageName": "@artusx/plugin-ejs",
       "projectFolder": "packages/plugins/ejs",
       "tags": ["artusx-plugins"],
-      "shouldPublish": true,
       "versionPolicyName": "public"
     }
   ]

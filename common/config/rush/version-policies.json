@@ -16,10 +16,8 @@
     "nextBump": "patch"
   },
   {
-    "policyName": "public-utils",
-    "definitionName": "lockStepVersion",
-    "version": "1.1.2",
-    "nextBump": "patch"
+    "policyName": "individual-utils",
+    "definitionName": "individualVersion"    
   }
   // {
   //   /**
