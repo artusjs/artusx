@@ -93,7 +93,7 @@ export class MainCommand extends Command {
         packageName,
         projectFolder: `packages/${type}/${name}`,
         tags: [`artusx-${type}`],
-        shouldPublish: type !== 'apps' ? true : undefined,
+        shouldPublish: type === 'apps' ? false : undefined,
         versionPolicyName: type !== 'apps' ? 'public' : undefined,
       };
 
