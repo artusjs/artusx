@@ -104,10 +104,12 @@ rush changelog
 
 # publish with actions
 # git release v1.0.12 -m "chore: release 1.0.12"
-git release {version} -m "chore: release {version}"
+# git release {version} -m "chore: release {version}"
+rush release-package
 
 # publish with rush.js
-rush publish --include-all --publish
+# rush publish --include-all --publish
+rush publish-package
 ```
 
 ## License

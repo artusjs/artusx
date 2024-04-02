@@ -47,7 +47,7 @@
     {
       "name": "release-package",
       "commandKind": "global",
-      "summary": "custom publish for artusx, This command invokes @artusx/rush-utils to publish npm package.",
+      "summary": "custom release for artusx, This command invokes @artusx/rush-utils to releas tag.",
       "shellCommand": "node toolchains/rush-utils/dist/bin/cli.js release"
     },
     {
