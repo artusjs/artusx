@@ -50,8 +50,22 @@ export class PublishCommand extends Command {
     }
   }
 
+  async getEnv() {
+    const rushConfiguration = this.rushConfiguration;
+
+    const env: Record<string, any> = {
+      ...process.env,
+    };
+
+    const userHomeEnvVariable: string = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
+    const publishHomeDir = path.join(rushConfiguration.commonTempFolder, 'publish-home');
+
+    env[userHomeEnvVariable] = publishHomeDir;
+
+    return env;
+  }
+
   async publishPackage(
-    packageName: string,
     dir: string,
     _options?: {
       packageName: string;
@@ -61,32 +75,39 @@ export class PublishCommand extends Command {
     }
   ) {
     const tagName = this.tag;
+    const rushConfiguration = this.rushConfiguration;
 
     console.log('\n');
-    console.log(`[${packageName}]: publishing...`);
+    console.log(`publishing...`);
 
-    const rushConfiguration = this.rushConfiguration;
-    const commonRushConfigFolder = rushConfiguration.commonRushConfigFolder;
-    const npmrc = path.join(commonRushConfigFolder, '.npmrc-publish');
+    const bin = rushConfiguration.packageManagerToolFilename;
+    const env = await this.getEnv();
 
-    const cmd = ['npm publish', '--userconfig', npmrc, '--tag', _options?.tag || tagName];
+    const cmd = [bin, 'publish', '--no-git-checks', '--tag', _options?.tag || tagName];
 
     const str = cmd.join(' ');
+
+    console.log(`* exec: ${str}`);
 
     try {
       const { stdout } = await runScript(str, {
         stdio: 'pipe',
         shell: false,
         cwd: dir,
+        env,
       });
 
       console.log(stdout?.toString());
+
+      console.log('published.');
     } catch (error) {
       const output = error.stdio?.stdout || error.stdio?.stderr || '';
       if (!output) {
         console.error(error);
         return;
       }
+
+      console.log('failed to publish the package.');
       console.error(output.toString());
     }
   }
@@ -99,20 +120,19 @@ export class PublishCommand extends Command {
       const { packageName, versionPolicyName, shouldPublish, packageJson, publishFolder } = project;
 
       if (!versionPolicyName || !shouldPublish) {
-        console.log('\n');
-        console.log(`[${packageName}] skip, undefined version policy / should't publish`);
+        console.log(`\r\n[${packageName}] Skip, undefined version policy / should't publish`);
         continue;
       }
 
       const targetVersion = await this.getTargetVersion(project.packageName);
 
       if (packageJson.version === targetVersion) {
-        console.log('\n');
-        console.log(`[${packageName}@${targetVersion}] skip, same dist-tag / no update`);
+        console.log(`\r\n[${packageName}@${targetVersion}] Skip, Package exists.`);
         continue;
       }
 
-      await this.publishPackage(packageName, publishFolder);
+      console.log(`\r\n[${packageName}@${targetVersion}]`);
+      await this.publishPackage(publishFolder);
     }
   }
 }
