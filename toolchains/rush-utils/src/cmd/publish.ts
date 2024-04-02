@@ -24,7 +24,6 @@ export class PublishCommand extends Command {
     alias: 't',
     description: 'dist tag name',
     required: false,
-    default: 'latest',
   })
   tag: string;
 
@@ -32,7 +31,6 @@ export class PublishCommand extends Command {
     alias: 'a',
     description: 'access',
     required: false,
-    default: 'public',
   })
   access: string;
 
@@ -93,23 +91,25 @@ export class PublishCommand extends Command {
     const rushConfiguration = this.rushConfiguration;
 
     console.log('\n');
-    console.log(`publishing...`);
+    console.log(`[publish-utils] publishing...`);
 
     const bin = rushConfiguration.packageManagerToolFilename;
 
-    const cmd = [
-      bin,
-      'publish',
-      '--no-git-checks',
-      '--tag',
-      _options?.tag || tagName,
-      '--access',
-      _options?.access || packageAccess,
-    ];
+    const cmd = [bin, 'publish', '--no-git-checks'];
+
+    if (_options?.tag || tagName) {
+      cmd.push('--access');
+      cmd.push(_options?.tag || tagName);
+    }
+
+    if (_options?.access || packageAccess) {
+      cmd.push('--access');
+      cmd.push(_options?.access || packageAccess);
+    }
 
     const str = cmd.join(' ');
 
-    console.log(`* exec: ${str}`);
+    console.log(`[publish-utils] ${str}`);
 
     try {
       const { stdout } = await runScript(str, {
@@ -121,7 +121,7 @@ export class PublishCommand extends Command {
 
       console.log(stdout?.toString());
 
-      console.log('published.');
+      console.log('[publish-utils] published.');
     } catch (error) {
       const output = error.stdio?.stdout || error.stdio?.stderr || '';
       if (!output) {
@@ -129,7 +129,7 @@ export class PublishCommand extends Command {
         return;
       }
 
-      console.log('failed to publish the package.');
+      console.log('[publish-utils] failed to publish the package.');
       console.error(output.toString());
     }
   }

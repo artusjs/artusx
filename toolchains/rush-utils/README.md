@@ -107,13 +107,13 @@ jobs:
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
-        run: node common/scripts/install-run-rush.js rebuild
-      - name: Rush prepare
-        run: node common/scripts/install-run-rush.js publish        
+        run: node common/scripts/install-run-rush.js rebuild      
       - name: Rush publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: node common/scripts/install-run-rush.js publish-package
+        run: |
+          node common/scripts/install-run-rush.js publish        
+          node common/scripts/install-run-rush.js publish-package
 ```
 
 ```yml
