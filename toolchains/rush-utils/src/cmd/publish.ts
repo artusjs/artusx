@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import urllib from 'urllib';
 import runScript from 'runscript';
@@ -26,6 +27,14 @@ export class PublishCommand extends Command {
     default: 'latest',
   })
   tag: string;
+
+  @Option({
+    alias: 'a',
+    description: 'access',
+    required: false,
+    default: 'public',
+  })
+  access: string;
 
   private async initRush() {
     const baseDir = process.cwd();
@@ -59,8 +68,12 @@ export class PublishCommand extends Command {
 
     const userHomeEnvVariable: string = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
     const publishHomeDir = path.join(rushConfiguration.commonTempFolder, 'publish-home');
+    const npmConfigFile = path.join(rushConfiguration.commonTempFolder, 'publish-home', '.npmrc');
 
-    env[userHomeEnvVariable] = publishHomeDir;
+    if (fs.existsSync(npmConfigFile)) {
+      env[userHomeEnvVariable] = publishHomeDir;
+      console.log(`[npmrc: config env ${userHomeEnvVariable}]`, publishHomeDir);
+    }
 
     return env;
   }
@@ -68,22 +81,31 @@ export class PublishCommand extends Command {
   async publishPackage(
     dir: string,
     _options?: {
-      packageName: string;
-      registry: string;
-      tag: string;
-      access: string;
+      tag?: string;
+      access?: string;
+      registry?: string;
+      packageName?: string;
+      environment?: Record<string, any>;
     }
   ) {
     const tagName = this.tag;
+    const packageAccess = this.access;
     const rushConfiguration = this.rushConfiguration;
 
     console.log('\n');
     console.log(`publishing...`);
 
     const bin = rushConfiguration.packageManagerToolFilename;
-    const env = await this.getEnv();
 
-    const cmd = [bin, 'publish', '--no-git-checks', '--tag', _options?.tag || tagName];
+    const cmd = [
+      bin,
+      'publish',
+      '--no-git-checks',
+      '--tag',
+      _options?.tag || tagName,
+      '--access',
+      _options?.access || packageAccess,
+    ];
 
     const str = cmd.join(' ');
 
@@ -94,7 +116,7 @@ export class PublishCommand extends Command {
         stdio: 'pipe',
         shell: false,
         cwd: dir,
-        env,
+        env: _options?.environment,
       });
 
       console.log(stdout?.toString());
@@ -115,6 +137,7 @@ export class PublishCommand extends Command {
   async run() {
     await this.initRush();
     const rushConfiguration = this.rushConfiguration;
+    const environment = await this.getEnv();
 
     for (const project of rushConfiguration.projects) {
       const { packageName, versionPolicyName, shouldPublish, packageJson, publishFolder } = project;
@@ -132,7 +155,9 @@ export class PublishCommand extends Command {
       }
 
       console.log(`\r\n[${packageName}@${targetVersion}]`);
-      await this.publishPackage(publishFolder);
+      await this.publishPackage(publishFolder, {
+        environment,
+      });
     }
   }
 }
