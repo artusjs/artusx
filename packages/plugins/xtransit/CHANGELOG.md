@@ -1,6 +1,11 @@
 # Change Log - @artusx/plugin-xtransit
 
-This log was last generated on Mon, 01 Apr 2024 09:32:11 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2024 06:09:17 GMT and should not be manually modified.
+
+## 1.1.3
+Tue, 02 Apr 2024 06:09:17 GMT
+
+_Version update only_
 
 ## 1.1.2
 Mon, 01 Apr 2024 09:32:11 GMT
