@@ -41,6 +41,8 @@ export class ReleaseCommand extends Command {
 
     const str = cmd.join(' ');
 
+    console.log('[release:cmd]', str);
+
     try {
       const { stdout } = await runScript(str, {
         stdio: 'pipe',
@@ -79,7 +81,7 @@ export class ReleaseCommand extends Command {
     const tagName = name ? `${name}@${targetVersion}` : `v${targetVersion}`;
 
     console.log('\n');
-    console.log(`[release] ${tagName}`);
+    console.log(`[release:tag] ${tagName}`);
 
     await this.releaseTag(tagName);
   }
