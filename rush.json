@@ -420,50 +420,37 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
-    // libs
-    {
-      "packageName": "@artusx/core",
-      "projectFolder": "packages/libs/core",
-      "tags": ["artusx-libs"],
-      "versionPolicyName": "public"
-    },
-    {
-      "packageName": "@artusx/utils",
-      "projectFolder": "packages/libs/utils",
-      "tags": ["artusx-libs"],
-      "versionPolicyName": "public"
-    },
     // boilerplates
     {
       "packageName": "@artusx/boilerplate-artusx-app",
       "projectFolder": "packages/boilerplates/artusx-app",
       "tags": ["artusx-boilerplates"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/boilerplate-artusx-lib",
       "projectFolder": "packages/boilerplates/artusx-lib",
       "tags": ["artusx-boilerplates"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/boilerplate-artusx-plugin",
       "projectFolder": "packages/boilerplates/artusx-plugin",
       "tags": ["artusx-boilerplates"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     // tools
     {
       "packageName": "@artusx/init",
       "projectFolder": "toolchains/init",
       "tags": ["artusx-libs"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/init-config",
       "projectFolder": "toolchains/init-config",
       "tags": ["artusx-libs"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/rush-utils",
@@ -475,14 +462,15 @@
       "packageName": "@artusx/eslint-config",
       "projectFolder": "toolchains/eslint-config",
       "tags": ["artusx-tools"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
     {
       "packageName": "@artusx/tsconfig",
       "projectFolder": "toolchains/tsconfig",
       "tags": ["artusx-tools"],
-      "versionPolicyName": "public"
+      "versionPolicyName": "individual-utils"
     },
+    // apps
     {
       "packageName": "artusx-nest",
       "projectFolder": "packages/apps/artusx-nest",
@@ -507,6 +495,19 @@
       "packageName": "artusx-grpc",
       "projectFolder": "packages/apps/artusx-grpc",
       "tags": ["artusx-apps"]
+    },
+    // libs
+    {
+      "packageName": "@artusx/core",
+      "projectFolder": "packages/libs/core",
+      "tags": ["artusx-libs"],
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/utils",
+      "projectFolder": "packages/libs/utils",
+      "tags": ["artusx-libs"],
+      "versionPolicyName": "public"
     },
     // plugins
     {
