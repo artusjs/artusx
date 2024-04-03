@@ -1,11 +1,19 @@
 {
   "name": "@artusx/init",
-  "version": "1.2.0-beta.3",
+  "version": "1.2.0-rc.1",
   "description": "init cli for artusx",
   "keywords": [
     "artusx"
   ],
   "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "artusx-init": "dist/bin/cli.js"
   },
