@@ -235,23 +235,14 @@
       "argumentName": "ARTUSX_CREATE_NAME",
       "required": true
     },
-    {
-      "parameterKind": "choice",
-      "longName": "--source",
-      "description": "boilerplate source",
-      "associatedCommands": [ "create" ],      
-      "alternatives": [
-        {
-          "name": "remote",
-          "description": "remote boilerplate"
-        },        
-        {
-          "name": "local",
-          "description": "local boilerplate"
-        }        
-      ],
+    {      
+      "parameterKind": "string",
+      "longName": "--rush",      
+      "description": "rush project",
+      "associatedCommands": [ "create" ],
+      "argumentName": "ARTUSX_CREATE_RUSH",
       "required": true
-    },
+    },    
     {
       "parameterKind": "choice",
       "longName": "--type",

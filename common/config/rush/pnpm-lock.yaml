@@ -1112,6 +1112,9 @@ importers:
       '@artus-cli/artus-cli':
         specifier: ~0.2.10
         version: 0.2.10
+      '@microsoft/rush-lib':
+        specifier: ~5.119.0
+        version: 5.119.0(@types/node@20.11.30)
       comment-json:
         specifier: ~4.2.3
         version: 4.2.3

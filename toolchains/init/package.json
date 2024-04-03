@@ -1,6 +1,6 @@
 {
   "name": "@artusx/init",
-  "version": "1.1.4",
+  "version": "1.2.0-beta.1",
   "description": "init cli for artusx",
   "keywords": [
     "artusx"
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@artus-cli/artus-cli": "~0.2.10",
+    "@microsoft/rush-lib": "~5.119.0",
     "comment-json": "~4.2.3",
     "egg-init": "^3.x"
   },

@@ -83,9 +83,9 @@ create new package
 rush rebuild -t @artusx/init
 
 # create new package and update projects in rush.json
-rush create --name web --type apps --source local
-rush create --name common --type libs --source local
-rush create --name postgres --type plugins --source local
+rush create --name web --type apps --rush rush
+rush create --name common --type libs --rush rush
+rush create --name postgres --type plugins --rush rush
 ```
 
 ### release
