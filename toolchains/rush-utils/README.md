@@ -46,7 +46,7 @@ add custom commmands
     {
       "name": "release-package",
       "commandKind": "global",
-      "summary": "custom release for artusx, This command invokes @artusx/rush-utils to releas tag.",
+      "summary": "custom release for artusx, This command invokes @artusx/rush-utils to release tag.",
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-utils",
       "shellCommand": "artusx-rush-utils release -n ${name}"

@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@artus-cli/artus-cli": "~0.2.10",
+    "@artus-cli/plugin-help": "~1.1.0",
+    "@artusx/plugin-log4js": "workspace:*",
     "@microsoft/rush-lib": "~5.119.0",
     "runscript": "~1.6.0",
     "urllib": "~3.23.0"

@@ -1,16 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-import urllib from 'urllib';
-import runScript from 'runscript';
-import * as rushLib from '@microsoft/rush-lib';
-import { DefineCommand, Command, Option } from '@artus-cli/artus-cli';
-import type { RushConfiguration } from '@microsoft/rush-lib';
+import { DefineCommand, Command, Option, Inject } from '@artus-cli/artus-cli';
+import RushService from '../service/rush';
+import RegistryService from '../service/registry';
+import { Log4jsClient } from '@artusx/plugin-log4js';
 
 @DefineCommand({
   command: 'publish',
 })
 export class PublishCommand extends Command {
-  rushConfiguration: RushConfiguration;
+  @Inject(RushService)
+  rushService: RushService;
+
+  @Inject(RushService)
+  registryService: RegistryService;
+
+  @Inject(Log4jsClient)
+  log4jsClient: Log4jsClient;
 
   @Option({
     alias: 'r',
@@ -42,128 +46,34 @@ export class PublishCommand extends Command {
   })
   access: string;
 
-  private async initRush() {
-    const baseDir = process.cwd();
-    this.rushConfiguration = rushLib.RushConfiguration.loadFromDefaultLocation({
-      startingFolder: baseDir,
-    });
-  }
-
-  async getTargetVersion(packageName: string) {
-    try {
-      const tagName = this.dist_tag;
-      const { data } = await urllib.request(`${this.registry}/${packageName}`, {
-        dataType: 'json',
-        timeout: 30000,
-      });
-
-      const tags = data['dist-tags'] || {};
-      return tags[tagName];
-    } catch (error) {
-      console.error(error);
-      return '';
-    }
-  }
-
-  async getEnv() {
-    const rushConfiguration = this.rushConfiguration;
-
-    const env: Record<string, any> = {
-      ...process.env,
-    };
-
-    const userHomeEnvVariable: string = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
-    const publishHomeDir = path.join(rushConfiguration.commonTempFolder, 'publish-home');
-    const npmConfigFile = path.join(rushConfiguration.commonTempFolder, 'publish-home', '.npmrc');
-
-    if (fs.existsSync(npmConfigFile)) {
-      env[userHomeEnvVariable] = publishHomeDir;
-      console.log(`[npmrc: config env ${userHomeEnvVariable}]`, publishHomeDir);
-    }
-
-    return env;
-  }
-
-  async publishPackage(
-    dir: string,
-    _options?: {
-      tag?: string;
-      access?: string;
-      registry?: string;
-      packageName?: string;
-      environment?: Record<string, any>;
-    }
-  ) {
-    const tagName = this.tag;
-    const packageAccess = this.access;
-    const rushConfiguration = this.rushConfiguration;
-
-    console.log('\n');
-    console.log(`[publish-utils] publishing...`);
-
-    const bin = rushConfiguration.packageManagerToolFilename;
-
-    const cmd = [bin, 'publish', '--no-git-checks'];
-
-    if (_options?.tag || tagName) {
-      cmd.push('--tag');
-      cmd.push(_options?.tag || tagName);
-    }
-
-    if (_options?.access || packageAccess) {
-      cmd.push('--access');
-      cmd.push(_options?.access || packageAccess);
-    }
-
-    const str = cmd.join(' ');
-
-    console.log(`[publish-utils] ${str}`);
-
-    try {
-      const { stdout } = await runScript(str, {
-        stdio: 'pipe',
-        shell: false,
-        cwd: dir,
-        env: _options?.environment,
-      });
-
-      console.log(stdout?.toString());
-
-      console.log('[publish-utils] published.');
-    } catch (error) {
-      const output = error.stdio?.stdout || error.stdio?.stderr || '';
-      if (!output) {
-        console.error(error);
-        return;
-      }
-
-      console.log('[publish-utils] failed to publish the package.');
-      console.error(output.toString());
-    }
+  get logger() {
+    return this.log4jsClient.getLogger();
   }
 
   async run() {
-    await this.initRush();
-    const rushConfiguration = this.rushConfiguration;
-    const environment = await this.getEnv();
+    await this.rushService.init();
+    const projects = await this.rushService.getProjects();
+    const environment = await this.rushService.getEnvironment();
 
-    for (const project of rushConfiguration.projects) {
+    for (const project of projects) {
       const { packageName, versionPolicyName, shouldPublish, packageJson, publishFolder } = project;
 
       if (!versionPolicyName || !shouldPublish) {
-        console.log(`\r\n[${packageName}] Skip, undefined version policy / should't publish`);
+        this.logger.info(`\r\n[${packageName}] Skip, undefined version policy / should't publish`);
         continue;
       }
 
-      const targetVersion = await this.getTargetVersion(project.packageName);
+      const distTagVersion = await this.registryService.getDistTagVersion(project.packageName);
 
-      if (packageJson.version === targetVersion) {
-        console.log(`\r\n[${packageName}@${targetVersion}] Skip, Package exists.`);
+      if (packageJson.version === distTagVersion) {
+        this.logger.info(`\r\n[${packageName}@${distTagVersion}] Skip, Package exists.`);
         continue;
       }
 
-      console.log(`\r\n[${packageName}@${targetVersion}]`);
-      await this.publishPackage(publishFolder, {
+      this.logger.info(`\r\n[${packageName}@${distTagVersion}]`);
+      await this.rushService.publishPackage(publishFolder, {
+        tag: this.tag,
+        access: this.access,
         environment,
       });
     }

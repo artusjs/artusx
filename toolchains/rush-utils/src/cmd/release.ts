@@ -1,13 +1,20 @@
-import runScript from 'runscript';
-import * as rushLib from '@microsoft/rush-lib';
-import { DefineCommand, Command, Option } from '@artus-cli/artus-cli';
-import type { RushConfiguration } from '@microsoft/rush-lib';
+import { DefineCommand, Command, Option, Inject } from '@artus-cli/artus-cli';
+import { Log4jsClient } from '@artusx/plugin-log4js';
+import RushService from '../service/rush';
+import GitService from '../service/git';
 
 @DefineCommand({
   command: 'release',
 })
 export class ReleaseCommand extends Command {
-  rushConfiguration: RushConfiguration;
+  @Inject(RushService)
+  rushService: RushService;
+
+  @Inject(GitService)
+  gitService: GitService;
+
+  @Inject(Log4jsClient)
+  log4jsClient: Log4jsClient;
 
   @Option({
     alias: 'n',
@@ -24,65 +31,19 @@ export class ReleaseCommand extends Command {
   })
   policyName: string;
 
-  private async initRush() {
-    const baseDir = process.cwd();
-    this.rushConfiguration = rushLib.RushConfiguration.loadFromDefaultLocation({
-      startingFolder: baseDir,
-    });
-  }
-
-  async releaseTag(tagName: string, cwd?: string) {
-    // # git release v1.0.12 -m "chore: release 1.0.12"
-
-    const tagVersion = `${tagName}`;
-    const commitMessage = `"chore: release ${tagName}"`;
-
-    const cmd = ['git release', tagVersion, '-m', commitMessage];
-
-    const str = cmd.join(' ');
-
-    console.log('[release:cmd]', str);
-
-    try {
-      const { stdout } = await runScript(str, {
-        stdio: 'pipe',
-        shell: false,
-        cwd,
-      });
-
-      console.log(stdout?.toString());
-    } catch (error) {
-      const output = error.stdio?.stdout || error.stdio?.stderr || '';
-      if (!output) {
-        console.error(error);
-        return;
-      }
-      console.error(output.toString());
-    }
-  }
-
-  async getTargetVersion(policyName: string) {
-    const rushConfiguration = this.rushConfiguration;
-    const versionPolicy = rushConfiguration.versionPolicyConfiguration.getVersionPolicy(policyName);
-
-    if (!versionPolicy) {
-      return;
-    }
-
-    return versionPolicy?._json['version'];
+  get logger() {
+    return this.log4jsClient.getLogger();
   }
 
   async run() {
-    await this.initRush();
+    await this.rushService.init();
 
     const name = this.name;
-    const policyName = this.policyName;
-    const targetVersion = await this.getTargetVersion(policyName);
-    const tagName = name ? `${name}@${targetVersion}` : `v${targetVersion}`;
+    const version = await this.rushService.getPolicyVersion(this.policyName);
+    const tag = name ? `${name}@${version}` : `v${version}`;
 
-    console.log('\n');
-    console.log(`[release:tag] ${tagName}`);
+    this.logger.info(`[release:tag] ${tag}`);
 
-    await this.releaseTag(tagName);
+    await this.gitService.releaseTag(tag);
   }
 }
