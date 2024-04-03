@@ -102,12 +102,17 @@ rush version --bump
 # update changelog
 rush changelog
 
-# publish with actions
-# git release v1.0.12 -m "chore: release 1.0.12"
+# 1. publish with actions
 # git release {version} -m "chore: release {version}"
+
+# 1.1 release lockStepVersion
+# git release v1.0.12 -m "chore: release 1.0.12"
 rush release-package
 
-# publish with rush.js
+# 1.2 release individualVersion
+# git release v1.1.5-rc.12 -m "chore: release 1.1.5-rc.12"
+
+# 2. publish with rush.js
 # rush publish --include-all --publish
 rush publish-package
 ```
