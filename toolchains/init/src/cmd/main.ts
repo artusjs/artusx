@@ -2,15 +2,15 @@ import path from 'path';
 import { DefineCommand, Command, Option, Inject } from '@artus-cli/artus-cli';
 
 import RushService from '../service/rush';
-import GeneratorService from '../service/generator';
+import InitService from '../service/init';
 
 @DefineCommand()
 export class MainCommand extends Command {
   @Inject(RushService)
   rushService: RushService;
 
-  @Inject(GeneratorService)
-  generatorService: GeneratorService;
+  @Inject(InitService)
+  initService: InitService;
 
   @Option({
     alias: 'n',
@@ -28,10 +28,22 @@ export class MainCommand extends Command {
   type: string;
 
   @Option({
+    description: 'scope name',
+    required: false,
+  })
+  scopeName: string;
+
+  @Option({
+    description: 'config name',
+    required: false,
+  })
+  configName: string;
+
+  @Option({
     description: 'template path',
     required: false,
   })
-  template: boolean;
+  template: string;
 
   @Option({
     description: 'rush project',
@@ -44,16 +56,19 @@ export class MainCommand extends Command {
     const cwd = process.cwd();
     const name = this.name;
     const type = this.type;
-    const rush = this.rush;
     const template = this.template;
 
-    const args = template ? [`--template=${template}`] : [`--type=${type}`];
+    const params = template ? [`--template=${template}`] : [`--type=${type}`];
     let target = path.join(cwd, name);
 
-    if (rush) {
+    if (this.rush) {
       target = await this.rushService.create(name, type, { cwd });
     }
 
-    await this.generatorService.create(target, args);
+    await this.initService.create(target, {
+      params,
+      scopeName: this.scopeName,
+      configName: this.configName,
+    });
   }
 }

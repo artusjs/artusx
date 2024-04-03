@@ -26,7 +26,13 @@ export default class RushService {
     let packageName = name;
 
     assert(
-      [PKG_TYPE_ENUM.App, PKG_TYPE_ENUM.Plugin, PKG_TYPE_ENUM.Lib].includes(type as any),
+      [
+        PKG_TYPE_ENUM.App,
+        PKG_TYPE_ENUM.Plugin,
+        PKG_TYPE_ENUM.Lib,
+        PKG_TYPE_ENUM.Tool,
+        PKG_TYPE_ENUM.Component,
+      ].includes(type as any),
       'invalid type.'
     );
 
@@ -34,12 +40,20 @@ export default class RushService {
       packageName = `${prefixName}-${name}`;
     }
 
+    if (type == PKG_TYPE_ENUM.Plugin) {
+      packageName = `${scopeName}/plugin-${name}`;
+    }
+
     if (type == PKG_TYPE_ENUM.Lib) {
       packageName = `${scopeName}/${name}`;
     }
 
-    if (type == PKG_TYPE_ENUM.Plugin) {
-      packageName = `${scopeName}/plugin-${name}`;
+    if (type == PKG_TYPE_ENUM.Tool) {
+      packageName = `${scopeName}/${name}`;
+    }
+
+    if (type == PKG_TYPE_ENUM.Component) {
+      packageName = `${scopeName}/${name}`;
     }
 
     return {
