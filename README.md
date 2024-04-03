@@ -17,6 +17,7 @@ Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org)
 | @artusx/init-config                 | [![NPM version](https://img.shields.io/npm/v/@artusx/init-config.svg?style=flat-square)](https://npmjs.org/package/@artusx/init-config)                           |
 | @artusx/tsconfig                    | [![NPM version](https://img.shields.io/npm/v/@artusx/tsconfig.svg?style=flat-square)](https://npmjs.org/package/@artusx/tsconfig)                                 |
 | @artusx/eslint-config               | [![NPM version](https://img.shields.io/npm/v/@artusx/eslint-config.svg?style=flat-square)](https://npmjs.org/package/@artusx/eslint-config)                       |
+| @artusx/rush-utils                  | [![NPM version](https://img.shields.io/npm/v/@artusx/rush-utils.svg?style=flat-square)](https://npmjs.org/package/@artusx/rush-utils)                             |
 | plugins                             |                                                                                                                                                                   |
 | @artusx/plugin-koa                  | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-koa.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-koa)                             |
 | @artusx/plugin-nest                 | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-nest.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-nest)                           |
