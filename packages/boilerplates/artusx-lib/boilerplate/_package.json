@@ -4,8 +4,7 @@
   "description": "{{description}}",
   "keywords": [
     "artusx"
-  ],
-  "author": "{{author}}",
+  ],  
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
@@ -51,5 +50,12 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "license": "MIT",
+  "author": "{{author}}",
+  "homepage": "https://github.com/artusjs/artusx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artusjs/artusx.git"
   }
 }

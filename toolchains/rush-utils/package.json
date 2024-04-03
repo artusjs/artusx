@@ -5,6 +5,13 @@
   "keywords": [
     "artusx"
   ],
+  "homepage": "https://github.com/artusjs/artusx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artusjs/artusx.git"
+  },
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
   "type": "commonjs",
   "bin": {
     "artusx-rush-utils": "dist/bin/cli.js"
