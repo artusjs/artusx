@@ -21,8 +21,16 @@ export class PublishCommand extends Command {
   registry: string;
 
   @Option({
+    alias: 'dist_tag',
+    description: 'dist tag name (compare version)',
+    required: false,
+    default: 'latest',
+  })
+  dist_tag: string;
+
+  @Option({
     alias: 't',
-    description: 'dist tag name',
+    description: 'dist tag name (publish package)',
     required: false,
   })
   tag: string;
@@ -43,14 +51,14 @@ export class PublishCommand extends Command {
 
   async getTargetVersion(packageName: string) {
     try {
-      const tagName = this.tag;
+      const tagName = this.dist_tag;
       const { data } = await urllib.request(`${this.registry}/${packageName}`, {
         dataType: 'json',
         timeout: 30000,
       });
 
-      const distTags = data['dist-tags'] || {};
-      return distTags[tagName];
+      const tags = data['dist-tags'] || {};
+      return tags[tagName];
     } catch (error) {
       console.error(error);
       return '';
