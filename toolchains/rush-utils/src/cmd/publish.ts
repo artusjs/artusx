@@ -98,7 +98,7 @@ export class PublishCommand extends Command {
     const cmd = [bin, 'publish', '--no-git-checks'];
 
     if (_options?.tag || tagName) {
-      cmd.push('--access');
+      cmd.push('--tag');
       cmd.push(_options?.tag || tagName);
     }
 
