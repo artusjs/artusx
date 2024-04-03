@@ -10,7 +10,7 @@ export class PublishCommand extends Command {
   @Inject(RushService)
   rushService: RushService;
 
-  @Inject(RushService)
+  @Inject(RegistryService)
   registryService: RegistryService;
 
   @Inject(Log4jsClient)
@@ -59,18 +59,18 @@ export class PublishCommand extends Command {
       const { packageName, versionPolicyName, shouldPublish, packageJson, publishFolder } = project;
 
       if (!versionPolicyName || !shouldPublish) {
-        this.logger.info(`\r\n[${packageName}] Skip, undefined version policy / should't publish`);
+        this.logger.info(`[${packageName}] Skip, undefined version policy / should't publish`);
         continue;
       }
 
       const distTagVersion = await this.registryService.getDistTagVersion(project.packageName);
 
       if (packageJson.version === distTagVersion) {
-        this.logger.info(`\r\n[${packageName}@${distTagVersion}] Skip, Package exists.`);
+        this.logger.info(`[${packageName}@${distTagVersion}] Skip, Package exists.`);
         continue;
       }
 
-      this.logger.info(`\r\n[${packageName}@${distTagVersion}]`);
+      this.logger.info(`[${packageName}@${distTagVersion}]`);
       await this.rushService.publishPackage(publishFolder, {
         tag: this.tag,
         access: this.access,
