@@ -28,16 +28,11 @@ export class MainCommand extends Command {
   type: string;
 
   @Option({
-    description: 'scope name',
+    description: 'rush project',
+    default: false,
     required: false,
   })
-  scopeName: string;
-
-  @Option({
-    description: 'config name',
-    required: false,
-  })
-  configName: string;
+  rush: boolean;
 
   @Option({
     description: 'template path',
@@ -46,11 +41,16 @@ export class MainCommand extends Command {
   template: string;
 
   @Option({
-    description: 'rush project',
-    default: false,
+    description: 'scope name for package',
     required: false,
   })
-  rush: boolean;
+  scopeName: string;
+
+  @Option({
+    description: 'npm config package name',
+    required: false,
+  })
+  configName: string;
 
   async run() {
     const cwd = process.cwd();

@@ -1112,6 +1112,9 @@ importers:
       '@artus-cli/artus-cli':
         specifier: ~0.2.10
         version: 0.2.10
+      '@artus-cli/plugin-help':
+        specifier: ~1.1.0
+        version: 1.1.0
       '@microsoft/rush-lib':
         specifier: ~5.119.0
         version: 5.119.0(@types/node@20.11.30)
