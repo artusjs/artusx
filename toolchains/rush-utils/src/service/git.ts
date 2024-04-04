@@ -1,4 +1,5 @@
 import fs from 'fs';
+import semver from 'semver';
 import runScript from 'runscript';
 import { Injectable } from '@artus-cli/artus-cli';
 import BaseService from './base';
@@ -9,6 +10,7 @@ export default class GitService extends BaseService {
     const git = await import('isomorphic-git');
     try {
       const tags = await git.listTags({ fs, dir: _cwd });
+      tags.sort((a, b) => semver.compare(a, b));
       return tags[tags.length - 1];
     } catch (error) {
       this.logger.error(error);
