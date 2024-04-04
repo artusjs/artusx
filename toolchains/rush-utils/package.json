@@ -1,6 +1,6 @@
 {
   "name": "@artusx/rush-utils",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "rush utils for artusx",
   "keywords": [
     "artusx"
@@ -29,13 +29,16 @@
     "@artus-cli/plugin-help": "~1.1.0",
     "@artusx/plugin-log4js": "workspace:*",
     "@microsoft/rush-lib": "~5.119.0",
+    "isomorphic-git": "~1.25.6",
     "runscript": "~1.6.0",
+    "semver": "~7.6.0",
     "urllib": "~3.23.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
     "@artusx/tsconfig": "workspace:*",
     "@types/node": "~20.11.7",
+    "@types/semver": "~7.5.8",
     "ts-node": "~10.9.2",
     "tslib": "~2.6.2",
     "typescript": "^4.9.4"

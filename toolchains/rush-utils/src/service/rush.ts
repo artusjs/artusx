@@ -19,6 +19,10 @@ export default class RushService extends BaseService {
     });
   }
 
+  async getRoot() {
+    return this.rushConfiguration.rushJsonFolder;
+  }
+
   async getProjects() {
     return this.rushConfiguration.projects;
   }
