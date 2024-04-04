@@ -87,6 +87,6 @@ export class ReleaseCommand extends Command {
     const releaseTag = name ? `${name}@${releaseVersion}` : `v${releaseVersion}`;
     this.logger.info(`[release:tag] ${releaseTag}`);
 
-    // await this.gitService.releaseTag(releaseTag);
+    await this.gitService.releaseTag(releaseTag);
   }
 }
