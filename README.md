@@ -84,9 +84,9 @@ create new package
 rush rebuild -t @artusx/init
 
 # create new package and update projects in rush.json
-rush create --name web --type apps --rush rush
-rush create --name common --type libs --rush rush
-rush create --name postgres --type plugins --rush rush
+rush create --name web --type apps --rush
+rush create --name common --type libs --rush
+rush create --name postgres --type plugins --rush
 ```
 
 ### release
@@ -112,6 +112,7 @@ rush release-package
 
 # 1.2 release individualVersion
 # git release v1.1.5-rc.12 -m "chore: release 1.1.5-rc.12"
+rush release-package -r
 
 # 2. publish with rush.js
 # rush publish --include-all --publish

@@ -229,22 +229,24 @@
   "parameters": [
     {      
       "parameterKind": "string",
+      "shortName": "-n",
       "longName": "--name",      
       "description": "new package name, lower-case and no special characters",
       "associatedCommands": [ "create" ],
-      "argumentName": "ARTUSX_CREATE_NAME",
+      "argumentName": "CREATE_NAME",
       "required": true
     },
     {      
-      "parameterKind": "string",
+      "parameterKind": "flag",
+      "shortName": "-r",
       "longName": "--rush",      
       "description": "rush project",
-      "associatedCommands": [ "create" ],
-      "argumentName": "ARTUSX_CREATE_RUSH",
+      "associatedCommands": [ "create" ],      
       "required": true
-    },    
+    },
     {
       "parameterKind": "choice",
+      "shortName": "-t",
       "longName": "--type",
       "description": "package type",
       "associatedCommands": [ "create" ],      
@@ -263,7 +265,24 @@
         }        
       ],
       "required": true
-    }    
+    },
+    {      
+      "parameterKind": "string",
+      "shortName": "-p",
+      "longName": "--policy-name",
+      "description": "release prerelease version",
+      "associatedCommands": [ "release-package" ],
+      "argumentName": "RELEASE_PACKAGE_POLICY_NAME",
+      "required": false
+    },
+    {      
+      "parameterKind": "flag",
+      "shortName": "-r",
+      "longName": "--prerelease",      
+      "description": "release prerelease version",
+      "associatedCommands": [ "release-package" ],            
+      "required": false
+    }
     // {
     //   /**
     //    * (Required) Determines the type of custom parameter.
