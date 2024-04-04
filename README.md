@@ -97,22 +97,21 @@ publish to npm.js
 # export npm auth token
 export NPM_AUTH_TOKEN={NPM_AUTH_TOKEN}
 
-# update version
-rush version --bump
-
 # update changelog
 rush changelog
 
-# 1. publish with actions
-# git release {version} -m "chore: release {version}"
+# 1.1 publish with actions
+# 1.1.1 update version
+rush version --bump
 
-# 1.1 release lockStepVersion
+# 1.1.2 release lockStepVersion
+# git release {version} -m "chore: release {version}"
 # git release v1.0.12 -m "chore: release 1.0.12"
 rush release-package
 
 # 1.2 release individualVersion
 # git release v1.1.5-rc.12 -m "chore: release 1.1.5-rc.12"
-rush release-package -r
+rush release-package -r # rush release-package --prerelease
 
 # 2. publish with rush.js
 # rush publish --include-all --publish
