@@ -28,6 +28,7 @@ export class MainCommand extends Command {
   type: string;
 
   @Option({
+    alias: 'r',
     description: 'rush project',
     default: false,
     required: false,
