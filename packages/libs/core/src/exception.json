@@ -1,9 +1,45 @@
 {
-  "ARTUSX:UNKNOWN_ERROR": {
-    "desc": "500",
-    "detailUrl": "https://github.com/artusjs/artusx"
+  "HTTP:BAD_REQUEST": {
+    "desc": "400",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
   },
-  "ARTUSX:EJE_RENDER_ERROR": {
+  "HTTP:UNAUTHORIZED": {
+    "desc": "401",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:FORBIDDEN": {
+    "desc": "403",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:NOT_FODUND": {
+    "desc": "404",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:METHOD_NOT_ALLOWED": {
+    "desc": "405",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:INTERNAL_SERVER_ERROR": {
+    "desc": "500",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:NOT_IMPLEMENTED": {
+    "desc": "501",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:BAD_GATEWAY": {
+    "desc": "502",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:SERVICE_UNAVAILABLE": {
+    "desc": "503",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "HTTP:GATEWAY_TIMEOUT": {
+    "desc": "504",
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+  },
+  "ARTUSX:UNKNOWN_ERROR": {
     "desc": "500",
     "detailUrl": "https://github.com/artusjs/artusx"
   }
