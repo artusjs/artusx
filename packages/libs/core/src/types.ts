@@ -8,7 +8,7 @@ export * from '@artusx/plugin-log4js';
 export * from '@artusx/plugin-nunjucks';
 export * from '@artusx/plugin-schedule';
 
-export type DirObj = {
+export type StaticDirObj = {
   prefix?: string;
   dir?: string;
 };
@@ -19,7 +19,7 @@ export type ArtusXConfig = _ArtusXConfig & {
     prefix?: string;
     dir?: string;
 
-    dirs?: Array<string | DirObj>;
+    dirs?: Array<string | StaticDirObj>;
 
     dynamic?: boolean;
     preload?: boolean;

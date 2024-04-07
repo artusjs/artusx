@@ -1,46 +1,46 @@
 {
   "HTTP:BAD_REQUEST": {
     "desc": "400",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
   },
   "HTTP:UNAUTHORIZED": {
     "desc": "401",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401"
   },
   "HTTP:FORBIDDEN": {
     "desc": "403",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
   },
   "HTTP:NOT_FODUND": {
     "desc": "404",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
   },
   "HTTP:METHOD_NOT_ALLOWED": {
     "desc": "405",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405"
   },
   "HTTP:INTERNAL_SERVER_ERROR": {
     "desc": "500",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
   },
   "HTTP:NOT_IMPLEMENTED": {
     "desc": "501",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/501"
   },
   "HTTP:BAD_GATEWAY": {
     "desc": "502",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502"
   },
   "HTTP:SERVICE_UNAVAILABLE": {
     "desc": "503",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   "HTTP:GATEWAY_TIMEOUT": {
     "desc": "504",
-    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    "detailUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504"
   },
   "ARTUSX:UNKNOWN_ERROR": {
     "desc": "500",
-    "detailUrl": "https://github.com/artusjs/artusx"
+    "detailUrl": "https://www.artusjs.org/ecosystem/artusx/3.exception#unknown-error"
   }
 }

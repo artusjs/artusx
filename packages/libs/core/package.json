@@ -21,6 +21,10 @@
       "types": "./lib/lifecycle.d.ts",
       "default": "./lib/lifecycle.js"
     },
+    "./constants": {
+      "types": "./lib/constants.d.ts",
+      "default": "./lib/constants.js"
+    },
     "./types": {
       "types": "./lib/types.d.ts",
       "default": "./lib/types.js"
