@@ -1,0 +1,8 @@
+{
+  "name": "rush-typedoc",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "typedoc": "^0.25.13"
+  }
+}
