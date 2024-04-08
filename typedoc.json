@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["packages/libs/*", "packages/plugins/*"],
+  "name": "ArtusX",
+  "entryPointStrategy": "packages",
+  "includeVersion": false
+
+  // Potentially useful for debugging
+  // "logLevel": "Verbose"
+}

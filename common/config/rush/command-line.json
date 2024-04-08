@@ -29,7 +29,7 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-commitlint",
       "shellCommand": "commitlint --edit ''"
-    },
+    },    
     {
       "name": "changelog",
       "commandKind": "global",
@@ -37,6 +37,14 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-changelog",
       "shellCommand": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    },
+    {
+      "name": "typedoc",
+      "commandKind": "global",
+      "summary": "typedoc for monorepo. This command invokes typedoc to generate api docs.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-typedoc",
+      "shellCommand": "typedoc"
     },
     {
       "name": "create",

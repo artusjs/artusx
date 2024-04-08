@@ -29,3 +29,7 @@ lib
 
 boilerplate
 proto-codegen
+
+
+# typedocs
+docs/

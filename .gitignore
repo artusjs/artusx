@@ -77,4 +77,10 @@ common/autoinstallers/*/.npmrc
 # dist
 dist
 
+# temp
+temp
+
+# typedocs
+docs
+
 **/*/controller/bench*
