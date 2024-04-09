@@ -3,7 +3,6 @@
   "name": "ArtusX",
   "entryPointStrategy": "packages",
   "includeVersion": false
-
   // Potentially useful for debugging
   // "logLevel": "Verbose"
 }

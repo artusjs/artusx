@@ -44,7 +44,7 @@
       "summary": "typedoc for monorepo. This command invokes typedoc to generate api docs.",
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-typedoc",
-      "shellCommand": "typedoc"
+      "shellCommand": "typedoc --plugin typedoc-material-theme --themeColor '#fdfdfd'"
     },
     {
       "name": "create",
