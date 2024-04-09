@@ -1,6 +1,7 @@
-import { ArtusXInjectEnum, ArtusXErrorEnum } from '@artusx/utils';
+import { ArtusXInjectEnum } from '@artusx/utils';
 import {
   ArtusInjectEnum,
+  ArtusXErrorEnum,
   ArtusApplication,
   Inject,
   Controller,
@@ -56,7 +57,7 @@ export default class HomeController {
     errorLogger.error('mockError', mockError);
 
     if (mockError) {
-      this.app.throwException(ArtusXErrorEnum.UNKNOWN_ERROR);
+      this.app.throwException(ArtusXErrorEnum.ARTUSX_UNKNOWN_ERROR);
     }
 
     return 'mockError: error.';

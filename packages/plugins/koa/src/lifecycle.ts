@@ -29,6 +29,7 @@ import type {
   MiddlewareMetadata,
   ArtusXHandler,
   ArtusXContext,
+  ArtusXNext,
   ArtusXMiddleware,
   HTTPRouteMetadata,
   HTTPMiddlewareMetadata,
@@ -46,7 +47,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   private readonly app: ArtusApplication;
 
   @Inject()
-  pipeline: Pipeline;
+  singletonPipeline: Pipeline;
 
   get container() {
     return this.app.container;
@@ -90,31 +91,36 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     handler: ArtusXHandler
   ) {
     const that = this;
+    const singletonPipeline = this.singletonPipeline;
+    const funcMiddlewares = middlewareMetadata.middlewares || [];
+    const classMiddleware = singletonPipeline.middlewares || [];
+
+    const requestHandler = async (ctx: ArtusXContext, next: ArtusXNext) => {
+      await handler(ctx, next);
+      await next();
+    };
+
     for (const routeMetadata of routeMetadataList) {
       const routePath = path.normalize((controllerMetadata.prefix ?? '/') + routeMetadata.path);
-      const middlewares = middlewareMetadata.middlewares || [];
-      const singlePipeline = this.pipeline;
 
       this.router.on(
         routeMetadata.method,
         routePath,
         async function routerHandler(this, _req, _res, params, _store, _query) {
-          const executionHandler = async (ctx, next) => {
-            // run pipeline
-            const input = new Input();
-            const context = new Context(input);
-            ctx.context = context;
-            await singlePipeline.run(ctx as any);
-
-            // handle request
-            await handler(ctx as unknown as ArtusXContext, next);
-          };
-
           const { ctx, next } = this;
+          const input = new Input();
+          const context = new Context(input);
+
           ctx.params = params;
+          ctx.context = context;
+
           try {
             const executionPipeline = new Pipeline();
-            executionPipeline.use([...middlewares, executionHandler]);
+
+            executionPipeline.use([...funcMiddlewares]);
+            executionPipeline.use([...classMiddleware]);
+            executionPipeline.use(requestHandler);
+
             await executionPipeline.run(ctx as any);
             next();
           } catch (error) {
@@ -164,7 +170,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
       return;
     }
 
-    this.pipeline.use(handler);
+    this.singletonPipeline.use(handler);
   }
 
   private loadMiddleware() {
@@ -218,6 +224,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     koa.use((ctx, next) => {
       return router.lookup(ctx.req, ctx.res, { ctx, next });
     });
+
     server = koa.listen(port, () => {
       this.logger.info(`[koa] listening on: http://localhost:${port}`);
     });
