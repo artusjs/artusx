@@ -27,3 +27,24 @@ export enum ArtusXErrorEnum {
   // Status_Code = 500
   ARTUSX_UNKNOWN_ERROR = 'ARTUSX:UNKNOWN_ERROR',
 }
+
+export enum ArtusXInjectEnum {
+  // cotainers
+  Pipeline = 'ARTUSX_PIPELINE',
+
+  // nunjucks
+  Nunjucks = 'ARTUSX_NUNJUCKS',
+
+  // koa
+  Koa = 'ARTUSX_KOA',
+  KoaRouter = 'ARTUSX_KOA_ROUTER',
+
+  // log4js
+  Log4js = 'ARTUSX_LOG4JS',
+
+  // shedule
+  Schedule = 'ARTUSX_SCHEDULE',
+
+  // xtransit
+  XTransit = 'ARTUSX_XTRANSIT',
+}

@@ -1,7 +1,7 @@
-import { ArtusXInjectEnum } from '@artusx/utils';
 import {
   ArtusInjectEnum,
   ArtusXErrorEnum,
+  ArtusXInjectEnum,
   ArtusApplication,
   Inject,
   Controller,

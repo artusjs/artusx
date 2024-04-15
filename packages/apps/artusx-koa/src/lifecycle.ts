@@ -1,5 +1,11 @@
-import { Inject, ApplicationLifecycle, LifecycleHook, LifecycleHookUnit, KoaApplication } from '@artusx/core';
-import { ArtusXInjectEnum } from '@artusx/utils';
+import {
+  Inject,
+  ApplicationLifecycle,
+  LifecycleHook,
+  LifecycleHookUnit,
+  KoaApplication,
+  ArtusXInjectEnum,
+} from '@artusx/core';
 
 @LifecycleHookUnit()
 export default class CustomLifecycle implements ApplicationLifecycle {

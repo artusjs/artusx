@@ -1,5 +1,4 @@
-import { ArtusXInjectEnum } from '@artusx/utils';
-import { Controller, GET, POST, Inject } from '@artusx/core';
+import { ArtusXInjectEnum, Controller, GET, POST, Inject } from '@artusx/core';
 import type { ArtusXContext, NunjucksClient } from '@artusx/core';
 
 @Controller()
