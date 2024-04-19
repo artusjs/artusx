@@ -201,6 +201,12 @@
       "projectFolder": "packages/plugins/ejs",
       "tags": ["artusx-plugins"],
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "artusx-worker",
+      "projectFolder": "packages/apps/artusx-worker",
+      "tags": ["artusx-apps"],
+      "shouldPublish": false
     }
   ]
 }
