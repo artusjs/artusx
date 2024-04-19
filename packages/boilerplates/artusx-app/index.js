@@ -11,7 +11,7 @@ module.exports = {
   description: {
     desc: 'package description',
     default(vars) {
-      return `${vars.name} app powered by artusx`;
+      return `artusx-${vars.name} powered by artusx`;
     },
   },
   author: {
@@ -21,7 +21,7 @@ module.exports = {
   monorepo: {
     desc: 'update package dependencies? If it is a monorepo, enter to confirm',
     filter(v) {
-      if (v) {
+      if (!v) {
         return 'workspace:*';
       }
 
@@ -31,7 +31,7 @@ module.exports = {
   buildScript: {
     desc: 'keep build script settings? If it is a monorepo, enter to confirm',
     filter(v) {
-      if (v) {
+      if (!v) {
         return '';
       }
 
