@@ -1,6 +1,6 @@
 import { ArtusInjectEnum } from '@artus/core';
 
-enum InjectEnum {
+export enum InjectEnum {
   // cotainers
   Pipeline = 'ARTUSX_PIPELINE',
 
@@ -20,6 +20,13 @@ enum InjectEnum {
   // xtransit
   XTransit = 'ARTUSX_XTRANSIT',
 }
+
+export const ArtusXInjectEnum = {
+  ...ArtusInjectEnum,
+  ...InjectEnum,
+};
+
+export type ArtusXInjectEnum = ArtusInjectEnum | InjectEnum;
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 export enum HTTPErrorEnum {
@@ -49,10 +56,3 @@ export enum ArtusXErrorEnum {
   // Status_Code = 500
   ARTUSX_UNKNOWN_ERROR = 'ARTUSX:UNKNOWN_ERROR',
 }
-
-export const ArtusXInjectEnum = {
-  ...ArtusInjectEnum,
-  ...InjectEnum,
-};
-
-export type ArtusXInjectEnum = ArtusInjectEnum | InjectEnum;
