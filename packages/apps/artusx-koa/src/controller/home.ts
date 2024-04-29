@@ -1,5 +1,4 @@
 import {
-  ArtusInjectEnum,
   ArtusXErrorEnum,
   ArtusXInjectEnum,
   ArtusApplication,
@@ -17,7 +16,7 @@ import traceTime from '../middleware/traceTime';
 
 @Controller()
 export default class HomeController {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
   @Inject(ArtusXInjectEnum.Log4js)

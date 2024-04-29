@@ -1,7 +1,7 @@
 import { LifecycleHookUnit, LifecycleHook } from '@artus/core';
 import { ApplicationLifecycle } from '@artus/core';
 import { ArtusApplication, Inject, ArtusInjectEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Sequelize, { SequelizeConfig } from './client';
 
 @LifecycleHookUnit()
@@ -22,7 +22,7 @@ export default class SequelizeLifecycle implements ApplicationLifecycle {
     }
 
     this.logger.info('[sequelize] staring sequelize with host: %s', config.host);
-    const sequelize = this.app.container.get(ArtusXInjectEnum.Sequelize) as Sequelize;
+    const sequelize = this.app.container.get(InjectEnum.Sequelize) as Sequelize;
     await sequelize.init(config);
   }
 }

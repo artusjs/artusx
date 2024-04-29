@@ -1,4 +1,4 @@
-import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artusx/core';
+import { Inject, Injectable, ArtusXInjectEnum, ArtusApplication } from '@artusx/core';
 import { Sequelize, Repository } from 'sequelize-typescript';
 
 import ISequelizeClient from '@artusx/plugin-sequelize/client';
@@ -6,7 +6,7 @@ import { UserModel } from '../model/user';
 
 @Injectable()
 export default class AdministratorService {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
   @Inject('ARTUS_SEQUELIZE')

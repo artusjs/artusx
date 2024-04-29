@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import App, { Express, Router } from 'express';
 
 export interface ExpressConfig {
@@ -7,8 +7,8 @@ export interface ExpressConfig {
 }
 
 @Injectable({
-  id: ArtusXInjectEnum.Express,
-  scope: ScopeEnum.SINGLETON
+  id: InjectEnum.Express,
+  scope: ScopeEnum.SINGLETON,
 })
 export default class Client {
   private _app: Express;

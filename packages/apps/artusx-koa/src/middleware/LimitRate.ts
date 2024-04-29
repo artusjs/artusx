@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
-import { ArtusInjectEnum, Inject, ArtusXContext, ArtusXNext, Middleware } from '@artusx/core';
+import { ArtusXInjectEnum, Inject, ArtusXContext, ArtusXNext, Middleware } from '@artusx/core';
 
 const rateLimiterOptions = {
   points: 6,
@@ -11,7 +11,7 @@ const rateLimiterOptions = {
   enable: true,
 })
 export default class LimitRateMiddleware {
-  @Inject(ArtusInjectEnum.Config)
+  @Inject(ArtusXInjectEnum.Config)
   config: Record<string, string | number>;
 
   private rateLimiter: RateLimiterMemory;

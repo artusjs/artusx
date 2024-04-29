@@ -1,3 +1,3 @@
-export enum ArtusXInjectEnum {
+export enum InjectEnum {
   PPTR = 'ARTUSX_PPTR',
 }

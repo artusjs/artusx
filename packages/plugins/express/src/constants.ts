@@ -1,3 +1,3 @@
-export enum ArtusXInjectEnum {
-  Express = 'ARTUSX_EXPRESS'
+export enum InjectEnum {
+  Express = 'ARTUSX_EXPRESS',
 }

@@ -6,7 +6,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import ProxyClient, { ProxyConfig } from './client';
 
 @LifecycleHookUnit()
@@ -22,7 +22,7 @@ export default class ProxyLifecycle implements ApplicationLifecycle {
       return;
     }
 
-    const client = this.app.container.get(ArtusXInjectEnum.Proxy) as ProxyClient;
+    const client = this.app.container.get(InjectEnum.Proxy) as ProxyClient;
     await client.init(config);
   }
 }

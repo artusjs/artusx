@@ -1,8 +1,8 @@
-import { Inject, Injectable, ArtusInjectEnum, ArtusApplication } from '@artusx/core';
+import { Inject, Injectable, ArtusXInjectEnum, ArtusApplication } from '@artusx/core';
 
 @Injectable()
 export default class APIService {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
   async mockApi() {

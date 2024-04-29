@@ -1,10 +1,10 @@
-import { ArtusInjectEnum, Inject, ArtusXContext, ArtusXNext, Middleware } from '@artusx/core';
+import { ArtusXInjectEnum, Inject, ArtusXContext, ArtusXNext, Middleware } from '@artusx/core';
 
 @Middleware({
   enable: true,
 })
 export default class CheckAuthMiddleware {
-  @Inject(ArtusInjectEnum.Config)
+  @Inject(ArtusXInjectEnum.Config)
   config: Record<string, string | number>;
 
   async use(ctx: ArtusXContext, next: ArtusXNext): Promise<void> {

@@ -2,10 +2,10 @@ import log4js from 'log4js';
 import type { Log4js, Configuration as Log4jsConfiguration, Logger as Log4jsLogger } from 'log4js';
 
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 @Injectable({
-  id: ArtusXInjectEnum.Client,
+  id: InjectEnum.Client,
   scope: ScopeEnum.SINGLETON,
 })
 export default class Log4jsClient {

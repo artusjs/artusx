@@ -1,13 +1,13 @@
-import { ArtusInjectEnum, Inject, GET, Controller, ContentType, ArtusApplication } from '@artusx/core';
+import { ArtusXInjectEnum, Inject, GET, Controller, ContentType, ArtusApplication } from '@artusx/core';
 import type { ArtusXContext } from '@artusx/core';
 import APIService from './api.service';
 
 @Controller('/api')
 export default class APIController {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
-  @Inject(ArtusInjectEnum.Config)
+  @Inject(ArtusXInjectEnum.Config)
   config: Record<string, string | number>;
 
   @Inject(APIService)

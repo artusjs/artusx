@@ -1,3 +1,3 @@
-export enum ArtusXInjectEnum {
-  Redis = 'ARTUSX_REDIS'
+export enum InjectEnum {
+  Redis = 'ARTUSX_REDIS',
 }

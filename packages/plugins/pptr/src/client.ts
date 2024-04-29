@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -14,7 +14,7 @@ export type PPTRConfig = {
 export { KnownDevices } from 'puppeteer-core';
 
 @Injectable({
-  id: ArtusXInjectEnum.PPTR,
+  id: InjectEnum.PPTR,
   scope: ScopeEnum.SINGLETON,
 })
 export default class PPTRClient {

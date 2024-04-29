@@ -7,7 +7,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import ArtusXGrpcClient, { ArtusXGrpcConfig } from './client';
 import { GRPC_SERVICE_TAG, GRPC_SERVICE_METADATA, GRPC_METHOD_METADATA } from './decorator';
 import {
@@ -92,7 +92,7 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
     assert(config, 'grpc config is required');
     assert(config.dynamic || config.static, 'dynamic or static config is required');
 
-    const client = this.app.container.get(ArtusXInjectEnum.GRPC) as ArtusXGrpcClient;
+    const client = this.app.container.get(InjectEnum.GRPC) as ArtusXGrpcClient;
     await client.init(config);
 
     if (config.dynamic) {

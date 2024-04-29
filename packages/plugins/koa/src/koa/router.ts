@@ -1,11 +1,11 @@
 import Router from 'find-my-way';
 import { ArtusInjectEnum, Inject, Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from '../constants';
+import { InjectEnum } from '../constants';
 import { ArtusXConfig, KoaRouter } from '../types';
 import { getBooleanFromEnv } from '../util';
 
 @Injectable({
-  id: ArtusXInjectEnum.KoaRouter,
+  id: InjectEnum.KoaRouter,
   scope: ScopeEnum.SINGLETON,
 })
 export default class KoaRouterClient extends (Router as any as KoaRouter) {

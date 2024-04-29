@@ -1,3 +1,3 @@
-export enum ArtusXInjectEnum {
-  Sequelize = 'ARTUSX_SEQUELIZE'
+export enum InjectEnum {
+  Sequelize = 'ARTUSX_SEQUELIZE',
 }

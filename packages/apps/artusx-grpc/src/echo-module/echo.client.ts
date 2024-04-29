@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { credentials } from '@artusx/plugin-grpc/types';
 import { ArtusInjectEnum, Inject, Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from '@artusx/utils';
+import { PluginInjectEnum } from '@artusx/utils';
 import { ArtusXGrpcClient } from '@artusx/plugin-grpc';
 
 @Injectable({
@@ -12,7 +12,7 @@ export default class EchoClient {
 
   constructor(
     @Inject(ArtusInjectEnum.Config) public config: any,
-    @Inject(ArtusXInjectEnum.GRPC) public grpcClient: ArtusXGrpcClient
+    @Inject(PluginInjectEnum.GRPC) public grpcClient: ArtusXGrpcClient
   ) {
     const { addr } = config.grpc?.client || {};
     assert(addr, 'addr is required');

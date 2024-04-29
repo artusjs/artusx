@@ -1,5 +1,5 @@
 import { ApplicationLifecycle, ArtusApplication, Inject, ArtusInjectEnum, LifecycleHookUnit, LifecycleHook } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Client from './client';
 
 @LifecycleHookUnit()
@@ -9,7 +9,7 @@ export default class PluginLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const client = this.app.container.get(ArtusXInjectEnum.Client) as Client;
+    const client = this.app.container.get(InjectEnum.Client) as Client;
     await client.init(this.app.config.{{name}});
   }
 }

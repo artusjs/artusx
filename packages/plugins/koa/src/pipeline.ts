@@ -1,9 +1,9 @@
 import { Pipeline, Context, Next } from '@artus/pipeline';
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 @Injectable({
-  id: ArtusXInjectEnum.Pipeline,
+  id: InjectEnum.Pipeline,
   scope: ScopeEnum.SINGLETON,
 })
 export default class ArtusPipeline extends Pipeline {

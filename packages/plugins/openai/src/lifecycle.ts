@@ -6,7 +6,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import OpenAIClient, { OpenAIConfig } from './client';
 
 @LifecycleHookUnit()
@@ -22,7 +22,7 @@ export default class OpenAILifecycle implements ApplicationLifecycle {
       return;
     }
 
-    const client = this.app.container.get(ArtusXInjectEnum.OpenAI) as OpenAIClient;
+    const client = this.app.container.get(InjectEnum.OpenAI) as OpenAIClient;
     await client.init(config);
   }
 }

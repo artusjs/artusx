@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import nunjucks, {
   ConfigureOptions,
   Template as NunjucksTemplate,
@@ -8,7 +8,7 @@ import nunjucks, {
 } from 'nunjucks';
 
 @Injectable({
-  id: ArtusXInjectEnum.Nunjucks,
+  id: InjectEnum.Nunjucks,
   scope: ScopeEnum.SINGLETON,
 })
 export default class NunjucksClient {

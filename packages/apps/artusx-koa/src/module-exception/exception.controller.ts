@@ -1,6 +1,6 @@
 import {
   ArtusApplication,
-  ArtusInjectEnum,
+  ArtusXInjectEnum,
   Inject,
   GET,
   Controller,
@@ -12,7 +12,7 @@ import { ArtusXWrappedError, BizCustomError } from '../error';
 
 @Controller('/exception')
 export default class APIController {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
   @GET('/system_error')

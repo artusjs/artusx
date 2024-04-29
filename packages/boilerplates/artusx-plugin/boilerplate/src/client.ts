@@ -1,8 +1,8 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 @Injectable({
-  id: ArtusXInjectEnum.Client,
+  id: InjectEnum.Client,
   scope: ScopeEnum.SINGLETON,
 })
 export default class Client {

@@ -2,12 +2,12 @@ import Koa from 'koa';
 import type IKoa from 'koa';
 import { Injectable, ScopeEnum, Inject, ArtusInjectEnum } from '@artus/core';
 import { ArtusXConfig } from '../types';
-import { ArtusXInjectEnum } from '../constants';
+import { InjectEnum } from '../constants';
 
 interface IKoaApplication extends IKoa {}
 
 @Injectable({
-  id: ArtusXInjectEnum.Koa,
+  id: InjectEnum.Koa,
   scope: ScopeEnum.SINGLETON,
 })
 export default class KoaApplicationClient extends Koa implements IKoaApplication {

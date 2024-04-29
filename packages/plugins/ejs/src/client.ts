@@ -4,7 +4,7 @@ import ejs, { Options } from 'ejs';
 import LRU from 'ylru';
 
 import { ArtusApplication, ArtusInjectEnum, Inject, Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 const contentPattern = '&&<>&&';
 
@@ -72,7 +72,7 @@ export type EjsConfig = {
 };
 
 @Injectable({
-  id: ArtusXInjectEnum.EJS,
+  id: InjectEnum.EJS,
   scope: ScopeEnum.SINGLETON,
 })
 export default class EjsClient {

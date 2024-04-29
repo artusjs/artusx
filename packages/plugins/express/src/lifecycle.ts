@@ -6,7 +6,7 @@ import {
   LifecycleHook,
   LifecycleHookUnit,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Express, { ExpressConfig } from './client';
 
 @LifecycleHookUnit()
@@ -16,7 +16,7 @@ export default class ExpressLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const express = this.app.container.get(ArtusXInjectEnum.Express) as Express;
+    const express = this.app.container.get(InjectEnum.Express) as Express;
     const { port = 7001 } = this.app.config.express as ExpressConfig;
     const app = express.app;
 

@@ -8,14 +8,14 @@ import {
 } from '@artus/core';
 
 import IExpressClient from '@artusx/plugin-express/client';
-import { ArtusXInjectEnum } from '@artusx/utils';
+import { PluginInjectEnum } from '@artusx/utils';
 
 @LifecycleHookUnit()
 export default class ExpressLifecycle implements ApplicationLifecycle {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
 
-  @Inject(ArtusXInjectEnum.Express)
+  @Inject(PluginInjectEnum.Express)
   express: IExpressClient;
 
   @LifecycleHook()

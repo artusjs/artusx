@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 import { Api, TelegramClient as _TelegramClient } from 'telegram';
 import { StringSession } from 'telegram/sessions';
@@ -22,7 +22,7 @@ export interface TelegramConfig {
 }
 
 @Injectable({
-  id: ArtusXInjectEnum.Telegram,
+  id: InjectEnum.Telegram,
   scope: ScopeEnum.SINGLETON,
 })
 export default class TelegramClient {

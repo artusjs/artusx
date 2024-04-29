@@ -1,15 +1,15 @@
-import { ArtusXInjectEnum } from '@artusx/utils';
-import { ArtusInjectEnum, ArtusApplication, Inject, Controller, GET, ContentType } from '@artusx/core';
+import { PluginInjectEnum } from '@artusx/utils';
+import { ArtusXInjectEnum, ArtusApplication, Inject, Controller, GET, ContentType } from '@artusx/core';
 
 import type { ArtusXContext } from '@artusx/core';
 import { EjsClient } from '@artusx/plugin-ejs';
 
 @Controller('/ejs')
 export default class EjsController {
-  @Inject(ArtusInjectEnum.Application)
+  @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
-  @Inject(ArtusXInjectEnum.EJS)
+  @Inject(PluginInjectEnum.EJS)
   ejs: EjsClient;
 
   @GET('/')

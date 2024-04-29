@@ -1,4 +1,4 @@
-export enum ArtusXInjectEnum {
+export enum InjectEnum {
   Client = 'ARTUSX_LOG4JS',
 }
 

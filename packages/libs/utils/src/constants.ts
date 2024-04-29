@@ -1,4 +1,4 @@
-export enum ArtusXInjectEnum {
+export enum PluginInjectEnum {
   Pipeline = 'ARTUSX_PIPELINE',
   Schedule = 'ARTUSX_SCHEDULE',
 

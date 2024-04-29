@@ -6,7 +6,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import PPTRClient, { PPTRConfig } from './client';
 
 @LifecycleHookUnit()
@@ -22,7 +22,7 @@ export default class PPTRLifecycle implements ApplicationLifecycle {
       return;
     }
 
-    const client = this.app.container.get(ArtusXInjectEnum.PPTR) as PPTRClient;
+    const client = this.app.container.get(InjectEnum.PPTR) as PPTRClient;
     await client.init(config);
   }
 }

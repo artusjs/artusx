@@ -4,9 +4,9 @@ import {
   ApplicationLifecycle,
   Inject,
   LifecycleHook,
-  LifecycleHookUnit
+  LifecycleHookUnit,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Nest, { NestConfig } from './client';
 
 @LifecycleHookUnit()
@@ -16,11 +16,11 @@ export default class NestLifecycle implements ApplicationLifecycle {
 
   @LifecycleHook()
   async willReady() {
-    const nest = this.app.container.get(ArtusXInjectEnum.Nest) as Nest;
+    const nest = this.app.container.get(InjectEnum.Nest) as Nest;
     const { port = 7001, rootModule } = this.app.config.nest as NestConfig;
     await nest.init(
       rootModule.registerAsync({
-        container: this.app.container
+        container: this.app.container,
       })
     );
     const app = nest.app;

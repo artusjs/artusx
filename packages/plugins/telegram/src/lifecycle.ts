@@ -6,7 +6,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Client, { TelegramConfig } from './client';
 
 @LifecycleHookUnit()
@@ -21,7 +21,7 @@ export default class TelegramLifecycle implements ApplicationLifecycle {
       return;
     }
 
-    const client = this.app.container.get(ArtusXInjectEnum.Telegram) as Client;
+    const client = this.app.container.get(InjectEnum.Telegram) as Client;
     await client.init(config);
   }
 }

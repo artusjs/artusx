@@ -151,7 +151,7 @@ This script block will end up at the end of the HTML document.
 ## Contoller
 
 ```ts
-import { ArtusXInjectEnum } from '@artusx/utils';
+import { PluginInjectEnum } from '@artusx/utils';
 import {
   ArtusInjectEnum,
   ArtusApplication,
@@ -169,7 +169,7 @@ export default class EjsController {
   @Inject(ArtusInjectEnum.Application)
   app: ArtusApplication;
   
-  @Inject(ArtusXInjectEnum.EJS)
+  @Inject(PluginInjectEnum.EJS)
   ejs: EjsClient;
     
   @GET('/')  

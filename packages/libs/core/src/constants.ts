@@ -1,5 +1,27 @@
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+import { ArtusInjectEnum } from '@artus/core';
 
+enum InjectEnum {
+  // cotainers
+  Pipeline = 'ARTUSX_PIPELINE',
+
+  // nunjucks
+  Nunjucks = 'ARTUSX_NUNJUCKS',
+
+  // koa
+  Koa = 'ARTUSX_KOA',
+  KoaRouter = 'ARTUSX_KOA_ROUTER',
+
+  // log4js
+  Log4js = 'ARTUSX_LOG4JS',
+
+  // shedule
+  Schedule = 'ARTUSX_SCHEDULE',
+
+  // xtransit
+  XTransit = 'ARTUSX_XTRANSIT',
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 export enum HTTPErrorEnum {
   // Status_Code = 400
   HTTP_BAD_REQUEST = 'HTTP:BAD_REQUEST',
@@ -28,23 +50,9 @@ export enum ArtusXErrorEnum {
   ARTUSX_UNKNOWN_ERROR = 'ARTUSX:UNKNOWN_ERROR',
 }
 
-export enum ArtusXInjectEnum {
-  // cotainers
-  Pipeline = 'ARTUSX_PIPELINE',
+export const ArtusXInjectEnum = {
+  ...ArtusInjectEnum,
+  ...InjectEnum,
+};
 
-  // nunjucks
-  Nunjucks = 'ARTUSX_NUNJUCKS',
-
-  // koa
-  Koa = 'ARTUSX_KOA',
-  KoaRouter = 'ARTUSX_KOA_ROUTER',
-
-  // log4js
-  Log4js = 'ARTUSX_LOG4JS',
-
-  // shedule
-  Schedule = 'ARTUSX_SCHEDULE',
-
-  // xtransit
-  XTransit = 'ARTUSX_XTRANSIT',
-}
+export type ArtusXInjectEnum = ArtusInjectEnum | InjectEnum;

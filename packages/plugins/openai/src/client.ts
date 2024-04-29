@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import OpenAI, { ClientOptions } from 'openai';
 
 export type OpenAIConfig = ClientOptions & {
@@ -7,7 +7,7 @@ export type OpenAIConfig = ClientOptions & {
 };
 
 @Injectable({
-  id: ArtusXInjectEnum.OpenAI,
+  id: InjectEnum.OpenAI,
   scope: ScopeEnum.SINGLETON,
 })
 export default class OpenAIClient {

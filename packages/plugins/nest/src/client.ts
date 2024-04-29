@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import { NestFactory } from '@nestjs/core';
 import type { NestApplicationOptions, INestApplication } from '@nestjs/common';
 
@@ -9,7 +9,7 @@ export interface NestConfig extends NestApplicationOptions {
 }
 
 @Injectable({
-  id: ArtusXInjectEnum.Nest,
+  id: InjectEnum.Nest,
   scope: ScopeEnum.SINGLETON,
 })
 export default class NestClient {

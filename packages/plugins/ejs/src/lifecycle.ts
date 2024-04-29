@@ -7,7 +7,7 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 import Client, { EjsConfig } from './client';
 
 @LifecycleHookUnit()
@@ -25,7 +25,7 @@ export default class EjsLifecycle implements ApplicationLifecycle {
     assert(config && config.root, 'root dir is required');
 
     this.logger.info('[ejs] serving view at: %s', config.root);
-    const client = this.app.container.get(ArtusXInjectEnum.EJS) as Client;
+    const client = this.app.container.get(InjectEnum.EJS) as Client;
     await client.init(config);
   }
 }

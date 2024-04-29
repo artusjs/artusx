@@ -1,3 +1,3 @@
-export enum ArtusXInjectEnum {
-  Nest = 'ARTUSX_NEST'
+export enum InjectEnum {
+  Nest = 'ARTUSX_NEST',
 }

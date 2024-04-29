@@ -8,7 +8,7 @@ import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 
 import { Injectable, ScopeEnum } from '@artus/core';
-import { ArtusXInjectEnum } from './constants';
+import { InjectEnum } from './constants';
 
 import type { Server, GrpcObject } from '@grpc/grpc-js';
 import type { PackageDefinition } from '@grpc/proto-loader';
@@ -49,7 +49,7 @@ const getBinPath = (name: string) => {
 };
 
 @Injectable({
-  id: ArtusXInjectEnum.GRPC,
+  id: InjectEnum.GRPC,
   scope: ScopeEnum.SINGLETON,
 })
 export default class ArtusXGrpcClient {
