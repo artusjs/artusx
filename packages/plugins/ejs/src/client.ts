@@ -152,7 +152,7 @@ export default class EjsClient {
   }
 
   async render(template: string, context?: EjsContext) {
-    const layoutConfig = this.layoutConfig?.layout || {};
+    const layoutConfig = this.layoutConfig || {};
 
     let options: Record<string, any> = {
       layout: context?.layout,
