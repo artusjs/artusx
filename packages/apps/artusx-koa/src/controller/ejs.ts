@@ -33,4 +33,12 @@ export default class EjsController {
       layout: false,
     });
   }
+
+  @GET('/user-show')
+  async userShow(ctx: ArtusXContext) {
+    ctx.body = await this.ejs.render('user/show.ejs', {
+      name: 'hello world',
+      layout: false,
+    });
+  }
 }

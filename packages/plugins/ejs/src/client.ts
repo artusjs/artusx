@@ -67,6 +67,7 @@ export type EjsContext = Record<string, any>;
 
 export type EjsConfig = {
   root: string | string[];
+  views: string[];
   layout?: Record<string, any>;
   options?: Options;
 };
@@ -87,9 +88,9 @@ export default class EjsClient {
       return;
     }
 
-    const { root, layout, options } = config;
+    const { root, views: defaultViews = [], layout, options } = config;
 
-    let views: string[] = [];
+    let views: string[] = defaultViews;
 
     // root dirs
     if (typeof root === 'string') {
@@ -131,6 +132,7 @@ export default class EjsClient {
     this.layoutConfig = layout;
     this.viewOptions = {
       ...options,
+      root,
       views: Array.from(new Set(views)),
     };
   }
