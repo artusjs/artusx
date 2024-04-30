@@ -67,7 +67,6 @@ export type EjsContext = Record<string, any>;
 
 export type EjsConfig = {
   root: string | string[];
-  views: string[];
   layout?: Record<string, any>;
   options?: Options;
 };
@@ -88,9 +87,9 @@ export default class EjsClient {
       return;
     }
 
-    const { root, views: defaultViews = [], layout, options } = config;
+    const { root, layout, options } = config;
 
-    let views: string[] = defaultViews;
+    let views: string[] = [];
 
     // root dirs
     if (typeof root === 'string') {
