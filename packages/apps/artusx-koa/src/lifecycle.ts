@@ -13,12 +13,21 @@ export default class CustomLifecycle implements ApplicationLifecycle {
   private readonly koa: KoaApplication;
 
   @LifecycleHook()
-  async didLoad() {}
+  async didLoad() {
+    console.log('===didLoad');
+  }
 
   @LifecycleHook()
   public async willReady() {
+    console.log('===willReady');
+
     this.koa.on('error', (err) => {
       console.error('koa error', err);
     });
+  }
+
+  @LifecycleHook()
+  public async didReady() {
+    console.log('===didReady');
   }
 }

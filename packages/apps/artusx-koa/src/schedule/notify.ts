@@ -1,5 +1,8 @@
+import { Inject } from '@artusx/core';
 import { Schedule } from '@artusx/core';
 import type { ArtusXSchedule } from '@artusx/core';
+import { PluginInjectEnum } from '@artusx/utils';
+import { EjsClient } from '@artusx/plugin-ejs';
 
 @Schedule({
   enable: true,
@@ -7,7 +10,16 @@ import type { ArtusXSchedule } from '@artusx/core';
   runOnInit: true,
 })
 export default class NotifySchedule implements ArtusXSchedule {
+  @Inject(PluginInjectEnum.EJS)
+  ejs: EjsClient;
+
   async run() {
-    console.log('ScheduleTaskClass.run', Date.now());
+    const data = await this.ejs.render('people.ejs', {
+      people: ['geddy', 'neil', 'alex'],
+      name: 'hello world',
+      layout: false,
+    });
+
+    console.log('NotifySchedule.run', data);
   }
 }

@@ -18,6 +18,13 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
   app: ArtusApplication;
 
   jobs: Map<string, any>;
+  schedules: Map<
+    string,
+    {
+      metadata: ArtusXScheduleOptions;
+      handler: ArtusXScheduleHandler;
+    }
+  >;
 
   get container() {
     return this.app.container;
@@ -25,26 +32,43 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
 
   constructor() {
     this.jobs = new Map();
+    this.schedules = new Map();
   }
 
   private registerSchedule(id: string, metadata: ArtusXScheduleOptions, handler: ArtusXScheduleHandler) {
-    const { enable, cron, start = false, timeZone = 'Asia/Shanghai', runOnInit = false } = metadata;
-    if (!enable) {
-      return;
+    this.schedules.set(id, { metadata, handler });
+  }
+
+  private startSchedules() {
+    const ids = this.schedules.keys() || [];
+
+    for (const id of ids) {
+      const schedule = this.schedules.get(id);
+
+      if (!schedule) {
+        continue;
+      }
+
+      const { metadata, handler } = schedule;
+
+      const { enable, cron, start = false, timeZone = 'Asia/Shanghai', runOnInit = false } = metadata;
+      if (!enable) {
+        return;
+      }
+
+      const job = CronJob.from({
+        cronTime: cron,
+        start,
+        runOnInit,
+        timeZone,
+        onTick: async () => {
+          await handler();
+        },
+      });
+
+      this.jobs.set(id, job);
+      job.start();
     }
-
-    const job = CronJob.from({
-      cronTime: cron,
-      start,
-      runOnInit,
-      timeZone,
-      onTick: async () => {
-        await handler();
-      },
-    });
-
-    this.jobs.set(id, job);
-    job.start();
   }
 
   private loadSchedule() {
@@ -61,5 +85,10 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
   @LifecycleHook()
   async willReady() {
     this.loadSchedule();
+  }
+
+  @LifecycleHook()
+  async didReady() {
+    this.startSchedules();
   }
 }
