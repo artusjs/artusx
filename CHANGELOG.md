@@ -1,4 +1,270 @@
-# [](https://github.com/artusjs/artusx/compare/v1.1.0...v) (2024-03-29)
+# [](https://github.com/artusjs/artusx/compare/v1.1.5-rc.14...v) (2024-05-08)
+
+
+
+## [1.1.5-rc.14](https://github.com/artusjs/artusx/compare/v1.1.5-11...v1.1.5-rc.14) (2024-05-08)
+
+
+### Features
+
+* **@artusx/boilerplate-artusx-plugin:** support constructor ([5030dca](https://github.com/artusjs/artusx/commit/5030dca8e3d371324b706cd866764f78ede8d748))
+
+
+
+## [1.1.5-11](https://github.com/artusjs/artusx/compare/v1.1.5-10...v1.1.5-11) (2024-05-07)
+
+
+### Features
+
+* **@artusx/plugin-schedule:** start schedules when plugin didReady ([e898965](https://github.com/artusjs/artusx/commit/e898965bb290b8258498c632afb29b98b2313e97))
+
+
+
+## [1.1.5-10](https://github.com/artusjs/artusx/compare/v1.1.5-9...v1.1.5-10) (2024-04-30)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-ejs:** fix layout config ([1316c81](https://github.com/artusjs/artusx/commit/1316c81d01a11a7723593a27db8bb36558fb709e))
+
+
+
+## [1.1.5-9](https://github.com/artusjs/artusx/compare/v1.1.5-8...v1.1.5-9) (2024-04-30)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-ejs:** remove unused views ([3223ce4](https://github.com/artusjs/artusx/commit/3223ce408992303317888d5c3f7bcb61c644dc9f))
+
+
+
+## [1.1.5-8](https://github.com/artusjs/artusx/compare/v1.1.5-7...v1.1.5-8) (2024-04-30)
+
+
+### Features
+
+* **@artusx/plugin-ejs:** support pass views options ([39bb407](https://github.com/artusjs/artusx/commit/39bb4072c3fc875b8dda2404475d1e0b5f086ef7))
+
+
+
+## [1.1.5-7](https://github.com/artusjs/artusx/compare/v1.1.5-6...v1.1.5-7) (2024-04-29)
+
+
+### Bug Fixes
+
+* **@artusx/core:** fix export error ([6478c86](https://github.com/artusjs/artusx/commit/6478c865d5bfa06de7d5be437fa43da8075d84f6))
+
+
+
+## [1.1.5-6](https://github.com/artusjs/artusx/compare/v1.1.5-5...v1.1.5-6) (2024-04-29)
+
+
+### Features
+
+* **boilerplates:** update prompt for init ([e82877d](https://github.com/artusjs/artusx/commit/e82877ddfe8885443162b12f18308f9eecbe97ce))
+* rename artusxInjectEnum ([3e2daa5](https://github.com/artusjs/artusx/commit/3e2daa5753084c35860ad9187b52d9e08893a81b))
+
+
+
+## [1.1.5-5](https://github.com/artusjs/artusx/compare/v1.1.5-4...v1.1.5-5) (2024-04-19)
+
+
+### Features
+
+* **@artusx/core:** add plugins and decorators section ([f45dfc8](https://github.com/artusjs/artusx/commit/f45dfc813e50e1044ccb45bbf5c61c8ab1425def))
+* **@artusx/core:** export ArtusXInjectEnum ([e9f16e2](https://github.com/artusjs/artusx/commit/e9f16e2a739fb45d7eda6647ce5f2e8baf90945d))
+
+
+
+## [1.1.5-4](https://github.com/artusjs/artusx/compare/v1.1.5-3...v1.1.5-4) (2024-04-09)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-koa:** fix middleware exec order ([da1ec5e](https://github.com/artusjs/artusx/commit/da1ec5ed79440730e79a5c4921d6d3c8e75951d6))
+
+
+### Features
+
+* **@artusx/core:** move exception to core ([8b50e54](https://github.com/artusjs/artusx/commit/8b50e5414a38d544fdc0f9006849459503a9265f))
+
+
+
+## [1.1.5-3](https://github.com/artusjs/artusx/compare/v1.1.5-rc.13...v1.1.5-3) (2024-04-07)
+
+
+### Features
+
+* **@artusx/core:** update exception code list ([cff164b](https://github.com/artusjs/artusx/commit/cff164b06f7624c1cebafc458c943c8bb650ad20))
+
+
+
+## [1.1.5-rc.13](https://github.com/artusjs/artusx/compare/v1.1.5-2...v1.1.5-rc.13) (2024-04-04)
+
+
+### Bug Fixes
+
+* **@artusx/rush-utils:** remove comment ([6cfc1ad](https://github.com/artusjs/artusx/commit/6cfc1ad38ad904e06f08bbfd77dde7e37ff1e097))
+* **@artusx/rush-utils:** sort tags with semver ([88bdefb](https://github.com/artusjs/artusx/commit/88bdefbff3576b712488ac5192a6a143c479c1fc))
+
+
+### Features
+
+* **@artusx/init:** support short name for rush ([bfc6dc1](https://github.com/artusjs/artusx/commit/bfc6dc15f9f186baa063162d7938e5d6d17884f5))
+* **@artusx/rush-utils:** support release with git tag ([ab7f059](https://github.com/artusjs/artusx/commit/ab7f059d0ea1d3ee715c5f39d23877a9c73e2340))
+
+
+
+## [1.1.5-2](https://github.com/artusjs/artusx/compare/v1.1.5-1...v1.1.5-2) (2024-04-03)
+
+
+
+## [1.1.5-1](https://github.com/artusjs/artusx/compare/v1.1.5-0...v1.1.5-1) (2024-04-03)
+
+
+### Bug Fixes
+
+* **@artusx/rush-utils:** fix registry ([e9827c2](https://github.com/artusjs/artusx/commit/e9827c21a79d69fb207c52d738e218eae1d8506e))
+
+
+
+## [1.1.5-0](https://github.com/artusjs/artusx/compare/v1.1.5-rc.12...v1.1.5-0) (2024-04-03)
+
+
+### Features
+
+* **@artusx/plugin-log4js:** support silent start-info ([0d0b122](https://github.com/artusjs/artusx/commit/0d0b1221b4e9bc5408b39dc9917ddb810e9509d3))
+
+
+
+## [1.1.5-rc.12](https://github.com/artusjs/artusx/compare/v1.1.5-rc.11...v1.1.5-rc.12) (2024-04-03)
+
+
+
+## [1.1.5-rc.11](https://github.com/artusjs/artusx/compare/v1.1.5-rc.10...v1.1.5-rc.11) (2024-04-03)
+
+
+### Features
+
+* **@artusx/init:** import help plugin ([1053910](https://github.com/artusjs/artusx/commit/1053910ac429489cdf132e7e34bf6362c1140201))
+
+
+
+## [1.1.5-rc.10](https://github.com/artusjs/artusx/compare/v1.1.5-rc.9...v1.1.5-rc.10) (2024-04-03)
+
+
+### Features
+
+* **@artusx/init:** update exports ([789fbaf](https://github.com/artusjs/artusx/commit/789fbafcf24384104d860b6cbcf4e4c56c558264))
+
+
+
+## [1.1.5-rc.9](https://github.com/artusjs/artusx/compare/v1.1.5-rc.8...v1.1.5-rc.9) (2024-04-03)
+
+
+### Features
+
+* **@artusx/init:** support read registry config ([4d3cc59](https://github.com/artusjs/artusx/commit/4d3cc59e4bc8541ec81b7763726954517bcfa33e))
+
+
+
+## [1.1.5-rc.8](https://github.com/artusjs/artusx/compare/v1.1.5-rc.7...v1.1.5-rc.8) (2024-04-03)
+
+
+### Features
+
+* **@artusx/init:** add component and tool type ([c291021](https://github.com/artusjs/artusx/commit/c2910214e7870933988020ba8362eaa9858c35d3))
+
+
+
+## [1.1.5-rc.7](https://github.com/artusjs/artusx/compare/v1.1.5-rc.6...v1.1.5-rc.7) (2024-04-03)
+
+
+### Features
+
+* **@artusx/init:** import rush lib ([e62da60](https://github.com/artusjs/artusx/commit/e62da601e2f200c09a1382eae5c1695c55777aee))
+
+
+
+## [1.1.5-rc.6](https://github.com/artusjs/artusx/compare/v1.1.5-rc.5...v1.1.5-rc.6) (2024-04-03)
+
+
+### Features
+
+* **@artusx/rush-utils:** add dist_tag options ([17cc76b](https://github.com/artusjs/artusx/commit/17cc76b5f6fbd544d10d84b6fb8c8fb968b327e4))
+
+
+
+## [1.1.5-rc.5](https://github.com/artusjs/artusx/compare/v1.1.5-rc.4...v1.1.5-rc.5) (2024-04-03)
+
+
+### Features
+
+* **@artusx/rush-utils:** fix tag field ([056a171](https://github.com/artusjs/artusx/commit/056a1719845108a2884327b073aeea2c34c32f05))
+
+
+
+## [1.1.5-rc.4](https://github.com/artusjs/artusx/compare/v1.1.5-rc.3...v1.1.5-rc.4) (2024-04-02)
+
+
+### Features
+
+* **@artusx/rush-utils:** update publish config ([308fdb7](https://github.com/artusjs/artusx/commit/308fdb7021f23414084e4a903c7635d089b6433f))
+
+
+
+## [1.1.5-rc.3](https://github.com/artusjs/artusx/compare/v1.1.5-rc.2...v1.1.5-rc.3) (2024-04-02)
+
+
+
+## [1.1.5-rc.2](https://github.com/artusjs/artusx/compare/v1.1.4-rc.1...v1.1.5-rc.2) (2024-04-02)
+
+
+### Features
+
+* **@artusx/rush-utils:** add access options to util ([06453a7](https://github.com/artusjs/artusx/commit/06453a797ef2cf00528ddd52e5b58b933f79bbf5))
+
+
+
+## [1.1.4-rc.1](https://github.com/artusjs/artusx/compare/v1.1.4...v1.1.4-rc.1) (2024-04-02)
+
+
+### Features
+
+* **@artusx/rush-utils:** update logger info ([4e4fb39](https://github.com/artusjs/artusx/commit/4e4fb399300a2d9592086c2d1b208ef1a48f86eb))
+
+
+
+## [1.1.4](https://github.com/artusjs/artusx/compare/v1.1.3...v1.1.4) (2024-04-02)
+
+
+
+## [1.1.3](https://github.com/artusjs/artusx/compare/v1.1.2...v1.1.3) (2024-04-02)
+
+
+### Features
+
+* **@artusx/init:** fix rush config for project ([514794b](https://github.com/artusjs/artusx/commit/514794b6ad7348cc21038fe5edcd59f893768f57))
+* **@artusx/rush-utils:** support custom release / publish ([9ad706d](https://github.com/artusjs/artusx/commit/9ad706d9864dbd3c45db5deee97eed77e1229562))
+
+
+
+## [1.1.2](https://github.com/artusjs/artusx/compare/v1.1.1...v1.1.2) (2024-04-01)
+
+
+### Features
+
+* **artusx-koa:** update ejs demo ([3231124](https://github.com/artusjs/artusx/commit/32311246f9bf72b36e3d116a5d4a2c018459f86a))
+
+
+
+## [1.1.1](https://github.com/artusjs/artusx/compare/v1.1.0...v1.1.1) (2024-04-01)
+
+
+### Features
+
+* **@artusx/plugin-koa:** support ctx in ArtusXExceptionFilterType ([7f3c0c6](https://github.com/artusjs/artusx/commit/7f3c0c6405e3cf7bc17b384b0504ff217eef0da2))
+* **artusx-koa:** update exception api ([3504d58](https://github.com/artusjs/artusx/commit/3504d588ea7d97d38d1fdd7d2221450d5910621e))
 
 
 
