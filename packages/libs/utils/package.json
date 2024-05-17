@@ -26,8 +26,8 @@
       "default": "./lib/bootstrap.js"
     },
     "./utils": {
-      "types": "./lib/utils.d.ts",
-      "default": "./lib/utils.js"
+      "types": "./lib/utils/index.d.ts",
+      "default": "./lib/utils/index.js"
     },
     "./constants": {
       "types": "./lib/constants.d.ts",
