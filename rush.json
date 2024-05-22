@@ -113,6 +113,12 @@
       "versionPolicyName": "public"
     },
     {
+      "packageName": "@artusx/otl",
+      "projectFolder": "packages/libs/otl",
+      "tags": ["artusx-libs"],
+      "versionPolicyName": "public"
+    },
+    {
       "packageName": "@artusx/plugin-redis",
       "projectFolder": "packages/plugins/redis",
       "tags": ["artusx-plugins"],

@@ -1,0 +1,62 @@
+{
+  "name": "@artusx/otl",
+  "version": "0.0.0-dev.0",
+  "description": "opentelemetry for artusx",
+  "keywords": [
+    "artusx"
+  ],
+  "homepage": "https://github.com/artusjs/artusx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artusjs/artusx.git"
+  },
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "cov": "jest --coverage --detectOpenHandles --testTimeout=15000",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test": "jest --detectOpenHandles --testTimeout=15000",
+    "tsc": "rm -rf lib && tsc -p ./tsconfig.build.json"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "~1.8.0",
+    "@opentelemetry/exporter-jaeger": "latest",
+    "@opentelemetry/exporter-zipkin": "latest",
+    "@opentelemetry/instrumentation": "latest",
+    "@opentelemetry/instrumentation-http": "latest",
+    "@opentelemetry/instrumentation-koa": "~0.40.0",
+    "@opentelemetry/resources": "latest",
+    "@opentelemetry/sdk-trace-base": "latest",
+    "@opentelemetry/sdk-trace-node": "latest",
+    "@opentelemetry/semantic-conventions": "latest"
+  },
+  "devDependencies": {
+    "@artusx/eslint-config": "workspace:*",
+    "@artusx/tsconfig": "workspace:*",
+    "@types/jest": "~29.5.11",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "~6.19.1",
+    "eslint": "~8.56.0",
+    "eslint-plugin-import": "~2.29.1",
+    "jest": "~29.7.0",
+    "ts-jest": "~29.1.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
