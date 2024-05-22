@@ -5,7 +5,7 @@ import { PluginInjectEnum } from '@artusx/utils';
 import { EjsClient } from '@artusx/plugin-ejs';
 
 @Schedule({
-  enable: true,
+  enable: false,
   cron: '30 * * * * *',
   runOnInit: true,
 })

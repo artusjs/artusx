@@ -19,7 +19,7 @@ import type { SequelizeConfig } from '@artusx/plugin-sequelize';
 
 import { getEnv } from '@artusx/utils';
 
-import LimitRate from '../middleware/LimitRate';
+import limitRate from '../middleware/limitRate';
 import checkAuth from '../middleware/checkAuth';
 
 const tmpDir = os.tmpdir();
@@ -34,7 +34,7 @@ export default () => {
   const artusx: ArtusXConfig = {
     keys: 'artusx-koa',
     port: 7001,
-    middlewares: [LimitRate, checkAuth],
+    middlewares: [limitRate, checkAuth],
     static: {
       dirs: [
         {

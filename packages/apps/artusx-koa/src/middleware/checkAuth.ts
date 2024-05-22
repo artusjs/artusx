@@ -9,8 +9,9 @@ export default class CheckAuthMiddleware {
 
   async use(ctx: ArtusXContext, next: ArtusXNext): Promise<void> {
     const { data } = ctx.context.output;
+    ctx.context.input.params.authed = false;
     data.authed = false;
-    console.log('[middleware] - checkAuth', ctx.context);
+    // console.log('[middleware] - checkAuth', ctx.context);
     await next();
   }
 }

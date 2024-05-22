@@ -1,3 +1,9 @@
+.nav {
+  padding: 2em 4em;
+  display: flex;
+  gap: 1em;
+}
+
 .container {
   margin: 2em 4em;
 }

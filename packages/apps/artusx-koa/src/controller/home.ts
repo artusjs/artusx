@@ -11,8 +11,9 @@ import {
   StatusCode,
 } from '@artusx/core';
 
+import { addEvent } from '@artusx/otl';
 import type { ArtusXContext, Log4jsClient, NunjucksClient } from '@artusx/core';
-import traceTime from '../middleware/traceTime';
+import tracing from '../middleware/tracing';
 
 @Controller()
 export default class HomeController {
@@ -25,11 +26,13 @@ export default class HomeController {
   @Inject(ArtusXInjectEnum.Nunjucks)
   nunjucks: NunjucksClient;
 
-  @MW([traceTime])
+  @MW([tracing])
   @GET('/')
   async home(ctx: ArtusXContext) {
     const infoLogger = this.log4js.getLogger('default');
     infoLogger.info(`path: /, method: GET`);
+
+    addEvent('home', { key: 'home', value: 'home' });
     ctx.body = this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
   }
 
@@ -39,6 +42,7 @@ export default class HomeController {
     return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Post method' });
   }
 
+  @MW([tracing])
   @GET('/html')
   @Headers({
     'x-handler': 'home-controller-html: html',
