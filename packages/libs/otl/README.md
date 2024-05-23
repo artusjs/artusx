@@ -1,5 +1,7 @@
 # @artusx/otl
 
+> <https://opentelemetry.io/docs/languages/js/>
+
 Opentelemetry for ArtusX.
 
 ## Usage
