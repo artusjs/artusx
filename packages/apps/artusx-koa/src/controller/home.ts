@@ -11,9 +11,14 @@ import {
   StatusCode,
 } from '@artusx/core';
 
-import { addEvent } from '@artusx/otl';
+import { getMeter, getTracer, Span } from '@artusx/otl';
+
 import type { ArtusXContext, Log4jsClient, NunjucksClient } from '@artusx/core';
 import tracing from '../middleware/tracing';
+
+const meter = getMeter('artusx-koa', '1.0.0');
+const tracer = getTracer('artusx-koa', '1.0.0');
+const homeCounter = meter.createCounter('home.counter');
 
 @Controller()
 export default class HomeController {
@@ -32,8 +37,28 @@ export default class HomeController {
     const infoLogger = this.log4js.getLogger('default');
     infoLogger.info(`path: /, method: GET`);
 
-    addEvent('home', { key: 'home', value: 'home' });
-    ctx.body = this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Hello ArtusX!' });
+    // meter
+    console.log(homeCounter);
+    homeCounter.add(1);
+
+    // tracer
+    tracer.startActiveSpan('home', (span: Span) => {
+      span.addEvent('home', { key: 'home', value: Math.random() });
+
+      const spanId = span?.spanContext().spanId;
+      const traceId = span?.spanContext().traceId;
+
+      ctx.body = this.nunjucks.render('index.html', {
+        title: 'ArtusX',
+        message: 'Hello ArtusX!',
+        data: {
+          spanId,
+          traceId,
+          count: homeCounter,
+        },
+      });
+      span.end();
+    });
   }
 
   @POST('/post')
@@ -45,7 +70,7 @@ export default class HomeController {
   @MW([tracing])
   @GET('/html')
   @Headers({
-    'x-handler': 'home-controller-html: html',
+    'x-handler': 'Home-controller-html: html',
   })
   @StatusCode(200)
   async html(_ctx: ArtusXContext) {

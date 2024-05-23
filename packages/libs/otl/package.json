@@ -32,13 +32,13 @@
     "tsc": "rm -rf lib && tsc -p ./tsconfig.build.json"
   },
   "dependencies": {
-    "@opentelemetry/api": "~1.8.0",
-    "@opentelemetry/exporter-jaeger": "latest",
-    "@opentelemetry/exporter-zipkin": "latest",
-    "@opentelemetry/instrumentation": "latest",
+    "@opentelemetry/api": "latest",
+    "@opentelemetry/auto-instrumentations-node": "latest",
     "@opentelemetry/instrumentation-http": "latest",
-    "@opentelemetry/instrumentation-koa": "~0.40.0",
+    "@opentelemetry/instrumentation-koa": "latest",
     "@opentelemetry/resources": "latest",
+    "@opentelemetry/sdk-metrics": "latest",
+    "@opentelemetry/sdk-node": "latest",
     "@opentelemetry/sdk-trace-base": "latest",
     "@opentelemetry/sdk-trace-node": "latest",
     "@opentelemetry/semantic-conventions": "latest"

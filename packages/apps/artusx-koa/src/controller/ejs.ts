@@ -14,30 +14,32 @@ export default class EjsController {
 
   @GET('/')
   @ContentType('html')
-  async view(ctx: ArtusXContext) {
+  async home(ctx: ArtusXContext) {
     const locals = {
-      title: 'Example',
+      title: 'Ejs - Home',
       message: 'This is a message',
     };
-    ctx.body = await this.ejs.render('view.ejs', {
+    ctx.body = await this.ejs.render('home.ejs', {
       locals,
     });
   }
 
-  @GET('/people')
-  async people(ctx: ArtusXContext) {
+  @GET('/user-list')
+  async userList(ctx: ArtusXContext) {
     const people = ['geddy', 'neil', 'alex'];
-    ctx.body = await this.ejs.render('people.ejs', {
+    ctx.body = await this.ejs.render('users.ejs', {
+      title: 'Ejs - user list',
       people,
-      name: 'hello world',
+      name: 'user list',
       layout: false,
     });
   }
 
-  @GET('/user-show')
-  async userShow(ctx: ArtusXContext) {
-    ctx.body = await this.ejs.render('user/show.ejs', {
-      name: 'hello world',
+  @GET('/user-detail')
+  async userDetail(ctx: ArtusXContext) {
+    ctx.body = await this.ejs.render('user/detail.ejs', {
+      title: 'Ejs - user detail',
+      name: 'user detail',
       layout: false,
     });
   }

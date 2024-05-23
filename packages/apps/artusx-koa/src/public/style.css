@@ -1,7 +1,13 @@
-.nav {
+nav {
   padding: 2em 4em;
   display: flex;
   gap: 1em;
+}
+
+header,
+main,
+footer {
+  padding: 2em 4em;
 }
 
 .container {
