@@ -8,6 +8,12 @@ module.exports = {
       return `@artusx/plugin-${vars.name}`;
     },
   },
+  injectName: {
+    desc: 'inject enum name',
+    default(vars) {
+      return `ARTUSX_${vars.name}`.toLocaleUpperCase();
+    },
+  },
   description: {
     desc: 'package description',
     default(vars) {

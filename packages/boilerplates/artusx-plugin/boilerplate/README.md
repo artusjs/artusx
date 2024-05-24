@@ -1,1 +1,3 @@
 # {{packageName}}
+
+> <https://artusjs.org>
