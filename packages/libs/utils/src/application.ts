@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import path from 'path';
 import { existsSync } from 'fs';
 import { ArtusApplication, ArtusScanner } from '@artus/core';
+import { getEnv } from './utils';
+
 import type { Manifest } from '@artus/core';
 
 export interface ApplicationOptions {
@@ -24,7 +26,7 @@ export class Application extends ArtusApplication {
   ) {
     super();
     this.options = options;
-    this.env = process.env.ARTUS_SERVER_ENV ?? 'default';
+    this.env = getEnv('ARTUSX_SERVER_ENV') || getEnv('ARTUS_SERVER_ENV') || 'default';
   }
 
   public static async start(options?: ApplicationOptions) {

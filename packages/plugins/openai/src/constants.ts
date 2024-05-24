@@ -1,3 +1,3 @@
 export enum InjectEnum {
-  OpenAI = 'ARTUS_OPENAI',
+  OpenAI = 'ARTUSX_OPENAI',
 }

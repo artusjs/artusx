@@ -1,3 +1,3 @@
 export enum InjectEnum {
-  Telegram = 'ARTUS_TELEGRAM',
+  Telegram = 'ARTUSX_TELEGRAM',
 }
