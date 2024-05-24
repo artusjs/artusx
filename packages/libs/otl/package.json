@@ -1,6 +1,6 @@
 {
   "name": "@artusx/otl",
-  "version": "0.0.0-dev.0",
+  "version": "1.1.5-12",
   "description": "opentelemetry for artusx",
   "keywords": [
     "artusx"
