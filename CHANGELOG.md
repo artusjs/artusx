@@ -1,4 +1,16 @@
-# [](https://github.com/artusjs/artusx/compare/v1.1.5-rc.14...v) (2024-05-08)
+# [](https://github.com/artusjs/artusx/compare/v1.1.5-12...v) (2024-05-24)
+
+
+
+## [1.1.5-12](https://github.com/artusjs/artusx/compare/v1.1.5-rc.14...v1.1.5-12) (2024-05-24)
+
+
+### Features
+
+* **@artusx/boilerplate-artusx-plugin:** update inject enum name ([80f4bd7](https://github.com/artusjs/artusx/commit/80f4bd7619ee8e9a6d049f07836c61320b92a212))
+* **@artusx/otl:** init ([72c36d4](https://github.com/artusjs/artusx/commit/72c36d4120651867790129ededed689e84347712))
+* **@artusx/otl:** split to olt/tracer/meter, and update usages ([bc1c35e](https://github.com/artusjs/artusx/commit/bc1c35e448f25be4d39cbb11bd384aec37796109))
+* **artusx-koa:** import @artusx/otl ([5ebe5ea](https://github.com/artusjs/artusx/commit/5ebe5ea5f5d9c6da7e3c0edb9ba6b675ea9a0cb1))
 
 
 
