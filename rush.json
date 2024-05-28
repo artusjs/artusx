@@ -101,6 +101,12 @@
       "tags": ["artusx-apps"]
     },
     {
+      "packageName": "artusx-websocket",
+      "projectFolder": "packages/apps/artusx-websocket",
+      "tags": ["artusx-apps"],
+      "shouldPublish": false
+    },
+    {
       "packageName": "@artusx/core",
       "projectFolder": "packages/libs/core",
       "tags": ["artusx-libs"],
@@ -205,6 +211,12 @@
     {
       "packageName": "@artusx/plugin-ejs",
       "projectFolder": "packages/plugins/ejs",
+      "tags": ["artusx-plugins"],
+      "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-socketio",
+      "projectFolder": "packages/plugins/socketio",
       "tags": ["artusx-plugins"],
       "versionPolicyName": "public"
     }
