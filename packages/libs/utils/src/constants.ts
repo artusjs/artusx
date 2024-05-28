@@ -23,4 +23,5 @@ export enum PluginInjectEnum {
   OpenAI = 'ARTUSX_OPENAI',
   Telegram = 'ARTUSX_TELEGRAM',
   XTransit = 'ARTUSX_XTRANSIT',
+  SocketIO = 'ARTUSX_SOCKETIO',
 }
