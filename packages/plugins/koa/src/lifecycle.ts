@@ -1,5 +1,5 @@
 import path from 'path';
-import { Server } from 'http';
+import { Server, createServer } from 'http';
 
 import {
   Inject,
@@ -36,10 +36,12 @@ import type {
   ArtusXExceptionFilterType,
 } from './types';
 
+import { InjectEnum } from './constants';
+
 import { KoaRouterClient } from './koa/router';
 import { KoaApplicationClient } from './koa/application';
 
-export let server: Server;
+export let httpServer: Server;
 
 @LifecycleHookUnit()
 export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
@@ -63,6 +65,10 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
 
   get koa(): KoaApplicationClient {
     return this.app.container.get(KoaApplicationClient);
+  }
+
+  get io(): any {
+    return this.app.container.get(InjectEnum.SocketIO);
   }
 
   private async handleError(ctx: ArtusXContext, error: any) {
@@ -218,6 +224,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   private startHttpServer() {
     const { port = 7001 } = this.app.config.artusx;
 
+    // koa server
     const koa = this.koa;
     const router = this.router;
 
@@ -225,7 +232,17 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
       return router.lookup(ctx.req, ctx.res, { ctx, next });
     });
 
-    server = koa.listen(port, () => {
+    // http server
+    httpServer = createServer(koa.callback());
+
+    // socket.io server
+    if (this.io) {
+      this.io.attach(httpServer);
+      this.logger.info('[koa] socket.io attached');
+    }
+
+    // start server
+    httpServer.listen(port, () => {
       this.logger.info(`[koa] listening on: http://localhost:${port}`);
     });
   }
@@ -247,7 +264,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
   @LifecycleHook()
   beforeClose() {
     this.logger.info('[server] closing...');
-    server?.close();
+    httpServer?.close();
   }
 }
 

@@ -1,3 +1,9 @@
 {
-  "name": "koa"
+  "name": "koa",
+  "dependencies": [
+    {
+      "name": "socketio",
+      "optional": true
+    }
+  ]
 }
