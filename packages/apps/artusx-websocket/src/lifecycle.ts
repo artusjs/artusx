@@ -1,3 +1,5 @@
+import { PluginInjectEnum } from '@artusx/utils';
+
 import {
   ApplicationLifecycle,
   ArtusApplication,
@@ -6,8 +8,8 @@ import {
   LifecycleHookUnit,
   LifecycleHook,
 } from '@artusx/core';
-import { PluginInjectEnum } from '@artusx/utils';
-import Server from '@artusx/plugin-socketio/server';
+
+import { SocketIOServer } from '@artusx/plugin-socketio';
 
 @LifecycleHookUnit()
 export default class PluginLifecycle implements ApplicationLifecycle {
@@ -15,20 +17,13 @@ export default class PluginLifecycle implements ApplicationLifecycle {
   app: ArtusApplication;
 
   @Inject(PluginInjectEnum.SocketIO)
-  io: Server;
+  io: SocketIOServer;
 
   @LifecycleHook()
   async willReady() {
     const io = this.io;
     io.on('connection', (socket) => {
-      console.log('a user connected');
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
-
-      socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
-      });
+      console.log('lifecycle:io:connection', socket.id);
     });
   }
 }

@@ -21,13 +21,21 @@
       "types": "./lib/constants.d.ts",
       "default": "./lib/constants.js"
     },
-    "./server": {
-      "types": "./lib/server.d.ts",
-      "default": "./lib/server.js"
+    "./decorator": {
+      "types": "./lib/decorator.d.ts",
+      "default": "./lib/decorator.js"
     },
     "./lifecycle": {
       "types": "./lib/lifecycle.d.ts",
       "default": "./lib/lifecycle.js"
+    },
+    "./types": {
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./server": {
+      "types": "./lib/server.d.ts",
+      "default": "./lib/server.js"
     }
   },
   "main": "lib/index.js",

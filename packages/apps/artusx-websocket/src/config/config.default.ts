@@ -1,6 +1,6 @@
 import path from 'path';
 import { ArtusXConfig, NunjucksConfigureOptions } from '@artusx/core';
-import { SocketIOServerConfig } from '@artusx/plugin-socketio';
+import type { SocketIOServerConfig } from '@artusx/plugin-socketio';
 
 export default () => {
   const artusx: ArtusXConfig = {

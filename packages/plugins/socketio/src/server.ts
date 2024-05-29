@@ -1,9 +1,8 @@
 import { Injectable, Inject, ScopeEnum, ArtusInjectEnum } from '@artus/core';
 import { Server } from 'socket.io';
 import { InjectEnum } from './constants';
-import type { ServerOptions } from 'socket.io';
+import { SocketIOServerConfig } from './types';
 
-type SocketIOServerConfig = Partial<ServerOptions>;
 interface ISocketIOServer extends Server {}
 
 @Injectable({
@@ -17,4 +16,4 @@ export default class SocketIOServer extends Server implements ISocketIOServer {
   }
 }
 
-export { SocketIOServerConfig };
+export { SocketIOServer };
