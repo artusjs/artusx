@@ -76,6 +76,7 @@ common/autoinstallers/*/.npmrc
 
 # dist
 dist
+dev-dist
 
 # temp
 temp

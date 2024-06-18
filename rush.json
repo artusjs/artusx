@@ -76,8 +76,19 @@
       "versionPolicyName": "individual-utils"
     },
     {
+      "packageName": "@artusx/tsconfig-react",
+      "projectFolder": "toolchains/tsconfig-react",
+      "tags": ["artusx-tools"],
+      "versionPolicyName": "individual-utils"
+    },
+    {
       "packageName": "artusx-nest",
       "projectFolder": "packages/apps/artusx-nest",
+      "tags": ["artusx-apps"]
+    },
+    {
+      "packageName": "artusx-react",
+      "projectFolder": "packages/apps/artusx-react",
       "tags": ["artusx-apps"]
     },
     {

@@ -1,0 +1,5 @@
+{
+  "extends": "@artusx/tsconfig-react",
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@artusx/tsconfig-react",
+  "version": "1.0.45",
+  "description": "shared tsconfig for react",
+  "keywords": [
+    "artusx"
+  ],
+  "homepage": "https://github.com/artusjs/artusx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artusjs/artusx.git"
+  },
+  "license": "MIT",
+  "author": "Suyi <thonatos.yang@gmail.com>",
+  "main": "tsconfig.json",
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}
