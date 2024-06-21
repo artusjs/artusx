@@ -19,6 +19,7 @@
   "scripts": {
     "_build": "tsc && RELOAD_SW=true vite build",
     "build": "",
+    "cy:install": "cypress install",
     "cy:open": "cypress open",
     "dev": "SW_DEV=true vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

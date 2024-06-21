@@ -1,4 +1,4 @@
-import './ReloadPrompt.css';
+import './index.css';
 
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
@@ -13,8 +13,8 @@ function ReloadPrompt() {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegisteredSW(swUrl: any, r: any) {
-      console.log(`Service Worker at: ${swUrl}, buildDate: ${buildDate}`);
+    onRegisteredSW(swUrl: string, r: any) {
+      console.log(`Service Worker at: ${swUrl}, buildDate: ${buildDate}, reloadSW: ${reloadSW}`);
       // @ts-expect-error just ignore
       if (reloadSW === 'true') {
         r &&
@@ -24,13 +24,16 @@ function ReloadPrompt() {
           }, 20000 /* 20s for testing purposes */);
       } else {
         // eslint-disable-next-line prefer-template
-        console.log('SW Registered: ' + r);
+        console.log('SW Registered', r);
       }
     },
     onRegisterError(error: any) {
       console.log('SW registration error', error);
     },
   });
+
+  console.log('offlineReady', offlineReady);
+  console.log('needRefresh', needRefresh);
 
   const close = () => {
     setOfflineReady(false);
