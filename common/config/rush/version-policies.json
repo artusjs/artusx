@@ -12,7 +12,7 @@
   {
     "policyName": "public",
     "definitionName": "lockStepVersion",
-    "version": "1.1.5-12",
+    "version": "1.1.5-13",
     "nextBump": "prerelease"
   },
   {
