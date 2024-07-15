@@ -5,6 +5,11 @@ import replace from '@rollup/plugin-replace';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   plugins: [
     react(),
     VitePWA({

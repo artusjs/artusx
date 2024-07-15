@@ -66,3 +66,52 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* root layout */
+
+.layout {
+  width: 1366px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.side {
+}
+
+.nav {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.nav a {
+  text-decoration: none;
+  padding: 0 1em;
+}
+
+.nav .active {
+  color: #646cff;
+  background: #eee;
+}
+
+.nav .pending {
+  color: #646cff;
+  background: #888;
+}
+
+.main {
+  border-left: 1px solid #eee;
+  padding: 1em;
+}
+
+.card {
+  padding: 2em 4em;
+}

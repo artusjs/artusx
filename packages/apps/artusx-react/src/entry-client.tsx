@@ -1,19 +1,21 @@
 import React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
+import { useMeasure } from './hooks/useMeasure';
+import Rooter from './rooter';
+import './global.css';
 
 const container = document.getElementById('root');
 
-const FullApp = () => (
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const Root: React.FC<{}> = () => {
+  useMeasure('reactMeasure', 'html.render', 'react.root');
+  return <Rooter />;
+};
 
 if (import.meta.hot || !container?.innerText) {
+  performance.mark('react.createRoot');
   const root = createRoot(container!);
-  root.render(<FullApp />);
+  root.render(<Root />);
 } else {
-  hydrateRoot(container!, <FullApp />);
+  performance.mark('react.hydrateRoot');
+  hydrateRoot(container!, <Root />);
 }

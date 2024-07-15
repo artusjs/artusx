@@ -1,3 +1,4 @@
+import { clientsClaim } from 'workbox-core';
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching';
 import { NavigationRoute, registerRoute, Route } from 'workbox-routing';
@@ -10,11 +11,46 @@ self.addEventListener('install', (_event) => {
   self.skipWaiting();
 });
 
+self.addEventListener('activate', (event) => {
+  // Specify allowed cache keys
+  // const cacheAllowList = [''];
+
+  // Get all the currently active `Cache` instances.
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          return caches.delete(key);
+
+          // if (!cacheAllowList.includes(key)) {
+          // return caches.delete(key);
+          // }
+        })
+      );
+    })
+  );
+
+  // Reload all window
+  self.clients
+    .matchAll({
+      type: 'window',
+    })
+    .then((windowClients) => {
+      windowClients.forEach((windowClient) => {
+        windowClient.navigate(windowClient.url);
+      });
+    });
+});
+
 self.addEventListener('message', (event) => {
   console.log('SW Received Message: ', event);
   if (event?.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+self.addEventListener('statechange', (event) => {
+  console.log('statechange', event?.target);
 });
 
 self.addEventListener('fetch', (event) => {
@@ -25,6 +61,8 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(new StaleWhileRevalidate().handle({ event, request }));
   }
 });
+
+clientsClaim();
 
 // self.__WB_MANIFEST is default injection point
 precacheAndRoute([

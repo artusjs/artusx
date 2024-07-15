@@ -1,8 +1,12 @@
+import { useRegisterSW } from 'virtual:pwa-register/react';
+import { useMeasure } from '../../hooks/useMeasure';
 import './index.css';
 
-import { useRegisterSW } from 'virtual:pwa-register/react';
+const ReloadPrompt = () => {
+  const swStartTime = performance.now();
 
-function ReloadPrompt() {
+  useMeasure('reloadPromptMeasure', 'root.render', 'reloadPrompt.render');
+
   // replaced dynamically
   const buildDate = '__DATE__';
   // replaced dyanmicaly
@@ -26,6 +30,9 @@ function ReloadPrompt() {
         // eslint-disable-next-line prefer-template
         console.log('SW Registered', r);
       }
+
+      const swEndTime = performance.now();
+      console.log(`SW Registered time: ${swEndTime - swStartTime}`);
     },
     onRegisterError(error: any) {
       console.log('SW registration error', error);
@@ -64,6 +71,6 @@ function ReloadPrompt() {
       <div className="ReloadPrompt-date">{buildDate}</div>
     </div>
   );
-}
+};
 
 export default ReloadPrompt;
