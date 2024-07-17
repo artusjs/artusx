@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root';
 import Home from './pages/home';
 import Info from './pages/info';
+import List from './pages/list';
 
 const STRICT_MODE = false;
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/info',
         element: <Info />,
+      },
+      {
+        path: '/list',
+        element: <List />,
       },
     ],
   },

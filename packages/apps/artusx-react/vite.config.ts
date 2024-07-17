@@ -2,12 +2,18 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import react from '@vitejs/plugin-react';
 import replace from '@rollup/plugin-replace';
+import fixReactVirtualized from 'esbuild-plugin-react-virtualized';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+    },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [fixReactVirtualized],
     },
   },
   plugins: [

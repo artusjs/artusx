@@ -1,0 +1,16 @@
+.filter {
+  background: gray;
+}
+
+.filter.show {
+  height: auto;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.filter.hiden {
+  height: 0;
+  padding: 0;
+  margin-bottom: 0;
+  visibility: hidden;
+}

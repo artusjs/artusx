@@ -4,6 +4,21 @@ import viteLogo from '@/assets/vite.svg';
 import reactLogo from '@/assets/react.svg';
 import './index.css';
 
+const routes = [
+  {
+    to: '/',
+    label: 'Home',
+  },
+  {
+    to: '/info',
+    label: 'Info',
+  },
+  {
+    to: '/list',
+    label: 'List',
+  },
+];
+
 const Side: React.FC<{}> = () => {
   return (
     <>
@@ -20,18 +35,15 @@ const Side: React.FC<{}> = () => {
       </div>
 
       <nav className="nav">
-        <NavLink
-          to="/"
-          className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/info"
-          className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
-        >
-          Info
-        </NavLink>
+        {routes.map(({ to, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+          >
+            {label}
+          </NavLink>
+        ))}
       </nav>
     </>
   );

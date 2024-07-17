@@ -14,17 +14,18 @@ const Root: React.FC<React.PropsWithChildren<{}>> = () => {
   }, [navigation]);
 
   return (
-    <div className="layout">
-      <div className="side">
-        <Side />
-      </div>
+    <>
+      <div className="layout">
+        <div className="side">
+          <Side />
+        </div>
 
-      <div className="main">
-        <Outlet />
+        <div className="main">
+          <Outlet />
+        </div>
       </div>
-
       <ReloadPrompt />
-    </div>
+    </>
   );
 };
 
