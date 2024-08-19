@@ -18,4 +18,8 @@ export default {
     enable: false,
     package: '@artusx/plugin-sequelize',
   },
+  prometheus: {
+    enable: true,
+    package: '@artusx/plugin-prometheus',
+  },
 };

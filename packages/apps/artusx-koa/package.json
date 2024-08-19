@@ -18,6 +18,7 @@
     "@artusx/core": "workspace:*",
     "@artusx/otl": "workspace:*",
     "@artusx/plugin-ejs": "workspace:*",
+    "@artusx/plugin-prometheus": "workspace:*",
     "@artusx/plugin-redis": "workspace:*",
     "@artusx/plugin-sequelize": "workspace:*",
     "@artusx/utils": "workspace:*",

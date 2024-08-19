@@ -12,8 +12,9 @@ import {
 } from '@artusx/core';
 
 import { getMeter, getTracer, Span } from '@artusx/otl';
-
+import { PluginInjectEnum } from '@artusx/utils';
 import type { ArtusXContext, Log4jsClient, NunjucksClient } from '@artusx/core';
+import PrometheusClient from '@artusx/plugin-prometheus/client';
 import tracing from '../middleware/tracing';
 
 const meter = getMeter('artusx-koa', '1.0.0');
@@ -30,6 +31,9 @@ export default class HomeController {
 
   @Inject(ArtusXInjectEnum.Nunjucks)
   nunjucks: NunjucksClient;
+
+  @Inject(PluginInjectEnum.Prometheus)
+  prometheus: PrometheusClient;
 
   @MW([tracing])
   @GET('/')
@@ -59,6 +63,12 @@ export default class HomeController {
       });
       span.end();
     });
+  }
+
+  @GET('/metrics')
+  async metrics(ctx: ArtusXContext) {
+    const metrics = await this.prometheus.getMetrics();
+    ctx.body = metrics;
   }
 
   @POST('/post')

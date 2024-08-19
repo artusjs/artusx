@@ -230,6 +230,12 @@
       "projectFolder": "packages/plugins/socketio",
       "tags": ["artusx-plugins"],
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-prometheus",
+      "projectFolder": "packages/plugins/prometheus",
+      "tags": ["artusx-plugins"],
+      "versionPolicyName": "public"
     }
   ]
 }
