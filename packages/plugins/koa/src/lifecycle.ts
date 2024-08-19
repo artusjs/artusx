@@ -67,10 +67,6 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     return this.app.container.get(KoaApplicationClient);
   }
 
-  get io(): any {
-    return this.app.container.get(InjectEnum.SocketIO);
-  }
-
   private async handleError(ctx: ArtusXContext, error: any) {
     const { onError } = this.app.config.artusx;
     const filter = matchExceptionFilter(error, this.container) as ArtusXExceptionFilterType;
@@ -236,10 +232,13 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
     httpServer = createServer(koa.callback());
 
     // socket.io server
-    if (this.io) {
-      this.io.attach(httpServer);
-      this.logger.info('[koa] socket.io attached');
-    }
+    try {
+      const io: any = this.app.container.get(InjectEnum.SocketIO);
+      if (io) {
+        io.attach(httpServer);
+        this.logger.info('[koa] socket.io attached');
+      }
+    } catch (error) {}
 
     // start server
     httpServer.listen(port, () => {
