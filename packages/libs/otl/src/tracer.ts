@@ -20,7 +20,7 @@ export const getTraceId = () => {
     return '';
   }
 
-  console.log(currentSpan.spanContext());
+  // console.log(currentSpan.spanContext());
   return currentSpan.spanContext().traceId;
 };
 
