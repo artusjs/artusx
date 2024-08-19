@@ -1,4 +1,27 @@
-# [](https://github.com/artusjs/artusx/compare/v1.1.5-12...v) (2024-05-24)
+# [](https://github.com/artusjs/artusx/compare/v1.1.5-13...v) (2024-08-19)
+
+
+### Features
+
+* **artusx-react:** add list demo ([8739f24](https://github.com/artusjs/artusx/commit/8739f24a0199ad9e1bda93dbeca148ebed9e30f4))
+* **artusx-react:** support service worker ([6c1d6a4](https://github.com/artusjs/artusx/commit/6c1d6a4d306473fc79090c8648a9d44ed4e6b093))
+* **artusx-websocket:** update client ui ([86af21b](https://github.com/artusjs/artusx/commit/86af21b161ac50c397aa7b5ff113c3f469e39826))
+
+
+
+## [1.1.5-13](https://github.com/artusjs/artusx/compare/v1.1.5-12...v1.1.5-13) (2024-06-21)
+
+
+### Features
+
+* **@artusx/boilerplate-artusx-app:** update bootstrap logic ([ce3b396](https://github.com/artusjs/artusx/commit/ce3b396ca59c0fa911f86b94c8f508a1a64cf1b9))
+* **@artusx/plugin-koa:** split httpServer and support socketio ([796545a](https://github.com/artusjs/artusx/commit/796545aa0d16b62e7596548ae1013b5f43d0e580))
+* **@artusx/plugin-socketio:** init ([c3ec247](https://github.com/artusjs/artusx/commit/c3ec2477e277fe2edc002a2229a13b1a1408ae4f))
+* **@artusx/plugin-socketio:** support nsp and event decorator ([f6644df](https://github.com/artusjs/artusx/commit/f6644df7eda3021aff1d2b4e1b6d9bafdcd94cf8))
+* **@artusx/utils:** update plugin inject enum ([166f355](https://github.com/artusjs/artusx/commit/166f355ebe397d8141f90025a7edfd616f1e1a95))
+* **artusx-react:** add react app and support serviceWorker ([da2a912](https://github.com/artusjs/artusx/commit/da2a91223f966cef8e48799db4ac9e63e10377be))
+* **artusx-react:** update react app ([cbc6067](https://github.com/artusjs/artusx/commit/cbc6067e226e1b5b0856747c997963472090d4d0))
+* **artusx-websocket:** init ([6e8b96e](https://github.com/artusjs/artusx/commit/6e8b96e5b41a4ad3a78f585ca532e30ad17ba50a))
 
 
 
