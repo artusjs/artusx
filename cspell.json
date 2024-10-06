@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "ignorePaths": ["node_modules"],
+  "ignoreWords": ["artus", "artusx", "aliyuncs", "openai", "pptr", "ipptr", "socketio"]
+}
