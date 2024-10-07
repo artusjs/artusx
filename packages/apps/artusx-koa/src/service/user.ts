@@ -1,5 +1,5 @@
 import { Inject, Injectable, ArtusXInjectEnum, ArtusApplication } from '@artusx/core';
-import { Sequelize, Repository } from 'sequelize-typescript';
+import { Sequelize, Repository } from '@artusx/plugin-sequelize/types';
 import { PluginInjectEnum } from '@artusx/utils';
 
 import ISequelizeClient from '@artusx/plugin-sequelize/client';
