@@ -21,6 +21,10 @@
       "types": "./lib/constants.d.ts",
       "default": "./lib/constants.js"
     },
+    "./types": {
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
     "./client": {
       "types": "./lib/client.d.ts",
       "default": "./lib/client.js"
