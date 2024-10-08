@@ -236,6 +236,12 @@
       "projectFolder": "packages/plugins/prometheus",
       "tags": ["artusx-plugins"],
       "versionPolicyName": "public"
+    },
+    {
+      "packageName": "@artusx/plugin-clickhouse",
+      "projectFolder": "packages/plugins/clickhouse",
+      "tags": ["artusx-plugins"],
+      "versionPolicyName": "public"
     }
   ]
 }

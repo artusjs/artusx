@@ -37,6 +37,7 @@ Ecosystem based on Artus.js - [https://www.artusjs.org](https://www.artusjs.org)
 | @artusx/plugin-xtransit             | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-xtransit.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-xtransit)                   |
 | @artusx/plugin-sequelize            | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-sequelize.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-sequelize)                 |
 | @artusx/plugin-prometheus           | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-prometheus.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-prometheus)               |
+| @artusx/plugin-clickhouse           | [![NPM version](https://img.shields.io/npm/v/@artusx/plugin-clickhouse.svg?style=flat-square)](https://npmjs.org/package/@artusx/plugin-clickhouse)               |
 | boilerplates                        |                                                                                                                                                                   |
 | @artusx/boilerplate-artusx-app      | [![NPM version](https://img.shields.io/npm/v/@artusx/boilerplate-artusx-app?style=flat-square)](https://npmjs.org/package/@artusx/boilerplate-artusx-app)         |
 | @artusx/boilerplate-artusx-lib      | [![NPM version](https://img.shields.io/npm/v/@artusx/boilerplate-artusx-lib?style=flat-square)](https://npmjs.org/package/@artusx/boilerplate-artusx-lib)         |

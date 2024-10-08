@@ -16,6 +16,7 @@ export enum PluginInjectEnum {
   Redis = 'ARTUSX_REDIS',
   Sequelize = 'ARTUSX_SEQUELIZE',
   Prometheus = 'ARTUSX_PROMETHEUS',
+  Clickhouse = 'ARTUSX_CLICKHOUSE',
 
   GRPC = 'ARTUSX_GRPC',
   PPTR = 'ARTUSX_PPTR',
