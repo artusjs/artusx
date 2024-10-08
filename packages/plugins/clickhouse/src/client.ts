@@ -12,7 +12,7 @@ export type ClickHouseConfig = NodeClickHouseClientConfigOptions & {
   id: InjectEnum.Client,
   scope: ScopeEnum.SINGLETON,
 })
-export class ClickHouseClient {
+export default class ClickHouseClient {
   _config: any;
 
   private clickhouseClient: NodeClickHouseClient;
@@ -34,4 +34,4 @@ export class ClickHouseClient {
   }
 }
 
-export default ClickHouseClient;
+export { ClickHouseClient };

@@ -7,6 +7,7 @@ import {
   LifecycleHook,
 } from '@artus/core';
 import { ClickHouseConfig, ClickHouseClient } from './client';
+import { InjectEnum } from './constants';
 
 @LifecycleHookUnit()
 export default class PluginLifecycle implements ApplicationLifecycle {
@@ -26,7 +27,7 @@ export default class PluginLifecycle implements ApplicationLifecycle {
     }
 
     this.logger.info('[clickhouse] staring clickhouse with url: %s', config.url);
-    const clickhouse = this.app.container.get('ARTUSX_CLICKHOUSE') as ClickHouseClient;
+    const clickhouse = this.app.container.get(InjectEnum.Client) as ClickHouseClient;
     await clickhouse.init(config);
   }
 }
