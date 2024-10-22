@@ -1,3 +1,5 @@
+import { PassThrough } from 'stream';
+
 import {
   ArtusXErrorEnum,
   ArtusXInjectEnum,
@@ -10,10 +12,14 @@ import {
   StatusCode,
 } from '@artusx/core';
 
+import EventEmitterService, { EventMessage } from '../module-events/eventEmitter.service';
 import type { ArtusXContext, Log4jsClient, NunjucksClient } from '@artusx/core';
 
 @Controller()
 export default class HomeController {
+  @Inject(EventEmitterService)
+  eventEmitterService: EventEmitterService;
+
   @Inject(ArtusXInjectEnum.Application)
   app: ArtusApplication;
 
@@ -48,6 +54,35 @@ export default class HomeController {
   @StatusCode(200)
   async post(_ctx: ArtusXContext) {
     return this.nunjucks.render('index.html', { title: 'ArtusX', message: 'Post method' });
+  }
+
+  @GET('/stream')
+  async stream(ctx: ArtusXContext) {
+    ctx.set({
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    const stream = new PassThrough();
+
+    ctx.respond = false;
+    ctx.res.statusCode = 200;
+    stream.pipe(ctx.res);
+
+    const listener = (msg: EventMessage) => {
+      console.log('listener', msg);
+      stream.write(`data: ${msg.data}\n\n`);
+    };
+
+    // handle message
+    this.eventEmitterService.on('stream', listener);
+
+    // init message
+    this.eventEmitterService.emit('stream', {
+      data: '/stream: init',
+    });
   }
 
   @GET('/error')
