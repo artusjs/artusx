@@ -40,13 +40,13 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
   }
 
   private startSchedules() {
-    const ids = this.schedules.keys() || [];
+    const ids = Array.from(this.schedules.keys()) || [];
 
-    for (const id of ids) {
+    ids.map((id) => {
       const schedule = this.schedules.get(id);
 
       if (!schedule) {
-        continue;
+        return;
       }
 
       const { metadata, handler } = schedule;
@@ -68,7 +68,7 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
 
       this.jobs.set(id, job);
       job.start();
-    }
+    });
   }
 
   private loadSchedule() {
@@ -77,7 +77,6 @@ export default class ScheduleLifecycle implements ApplicationLifecycle {
     for (const scheduleClazz of scheduleClazzList) {
       const schedule: ArtusXSchedule = this.container.get(scheduleClazz) as any;
       const scheduleMetadata = Reflect.getMetadata(CLASS_SCHEDULE_METADATA, scheduleClazz);
-
       this.registerSchedule(scheduleClazz.name, scheduleMetadata, schedule.run.bind(schedule));
     }
   }
