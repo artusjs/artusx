@@ -1,4 +1,61 @@
-# [](https://github.com/artusjs/artusx/compare/v1.1.5-13...v) (2024-08-19)
+# [](https://github.com/artusjs/artusx/compare/v1.1.5-19...v) (2025-09-07)
+
+
+### Features
+
+* **artusx-core:** remove plugin-xtransit ([b41a5c0](https://github.com/artusjs/artusx/commit/b41a5c0de8af502016566025525aa22a073657fa))
+
+
+
+## [1.1.5-19](https://github.com/artusjs/artusx/compare/v1.1.5-18...v1.1.5-19) (2024-10-22)
+
+
+### Bug Fixes
+
+* **@artusx/plugin-schedule:** fix map function ([d6389f1](https://github.com/artusjs/artusx/commit/d6389f1acb6b3bbb73159083952293017081b152))
+
+
+### Features
+
+* **artusx-koa:** support server send events ([f37cf3e](https://github.com/artusjs/artusx/commit/f37cf3e01522840828aa6ca2591f87006328d5f6))
+
+
+
+## [1.1.5-18](https://github.com/artusjs/artusx/compare/v1.1.5-16...v1.1.5-18) (2024-10-08)
+
+
+### Features
+
+* **plugin-clickhouse:** update clickhouse types ([da811e7](https://github.com/artusjs/artusx/commit/da811e7b270bd9508d0d63d6ea86733498cce807))
+* **plugin-clickhouse:** update lifecycle ([f869f2b](https://github.com/artusjs/artusx/commit/f869f2b1808dbca88f7aa96920e0a6caec11b75a))
+
+
+
+## [1.1.5-16](https://github.com/artusjs/artusx/compare/v1.1.5-15...v1.1.5-16) (2024-10-08)
+
+
+### Bug Fixes
+
+* **artusx-koa:** fix error type for user service ([5a2446b](https://github.com/artusjs/artusx/commit/5a2446b7c2612239466d0ba083076b05c04bd0df))
+
+
+### Features
+
+* **artusx-koa:** split routes ([d19382d](https://github.com/artusjs/artusx/commit/d19382db0ce6e5e57a2ac520f16364584b92e524))
+* **plugin-clickhouse:** init plugin ([c3e2d64](https://github.com/artusjs/artusx/commit/c3e2d642c8ece173dab4e67971d67acc7cc118cf))
+
+
+
+## [1.1.5-15](https://github.com/artusjs/artusx/compare/v1.1.5-14...v1.1.5-15) (2024-08-19)
+
+
+### Features
+
+* **plugin-prometheus:** init plugin ([693be6b](https://github.com/artusjs/artusx/commit/693be6bbbd804639f68be580d51736a827931fdf))
+
+
+
+## [1.1.5-14](https://github.com/artusjs/artusx/compare/v1.1.5-13...v1.1.5-14) (2024-08-19)
 
 
 ### Features
