@@ -15,8 +15,8 @@ export default {
     enable: true,
     package: '@artusx/plugin-schedule',
   },
-  xtransit: {
-    enable: false,
-    package: '@artusx/plugin-xtransit',
-  },
+  // xtransit: {
+  //   enable: false,
+  //   package: '@artusx/plugin-xtransit',
+  // },
 };

@@ -18,7 +18,7 @@ export enum InjectEnum {
   Schedule = 'ARTUSX_SCHEDULE',
 
   // xtransit
-  XTransit = 'ARTUSX_XTRANSIT',
+  // XTransit = 'ARTUSX_XTRANSIT',
 }
 
 export const ArtusXInjectEnum = {
