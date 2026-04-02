@@ -12,8 +12,8 @@ interface IKoaApplication extends IKoa {}
 })
 export default class KoaApplicationClient extends Koa implements IKoaApplication {
   constructor(@Inject(ArtusInjectEnum.Config) public config: any) {
-    const conf = config.artusx as ArtusXConfig;
-    const keys = process.env.KOA_KEYS?.split(',') ?? conf.keys?.split(',') ?? ['artusx'];
+    const conf = config?.artusx as ArtusXConfig | undefined;
+    const keys = process.env.KOA_KEYS?.split(',') ?? conf?.keys?.split(',') ?? ['artusx'];
     super({
       keys,
     });
