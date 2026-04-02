@@ -4,10 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Superpowers Documentation
 
-All superpowers-related specification and planning documents are stored in the `prd/` directory:
-- **Specs**: `prd/YYYY-MM-DD-<topic>-design.md` - Design specifications for features and tasks
-- **Plans**: Implementation plans created by superpowers skills
-- **Reports**: Execution results and post-implementation reports
+All superpowers-related documentation is organized in the `prd/` directory:
+- **Specs**: `prd/spec/YYYY-MM-DD-<topic>-design.md` - Design specifications for features and tasks
+- **Plans**: `prd/plan/YYYY-MM-DD-<topic>-plan.md` - Implementation plans created by superpowers skills
+- **Reports**: `prd/report/YYYY-MM-DD-<topic>-report.md` - Execution results and post-implementation reports
 
 ## Available Skills
 
