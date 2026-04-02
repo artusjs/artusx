@@ -85,3 +85,16 @@ temp
 docs
 
 **/*/controller/bench*
+
+__pycache__
+
+# Skills temporary files
+skills/**/*-workspace/
+skills/**/*.workspace/
+skills/**/iteration-*/
+skills/**/grading.json
+skills/**/benchmark.json
+skills/**/eval_results*.json
+skills/**/optimization_report.json
+skills/**/validation_report.json
+skills/**/trigger_eval.json

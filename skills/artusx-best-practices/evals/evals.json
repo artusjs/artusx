@@ -1,0 +1,83 @@
+{
+  "evals": [
+    {
+      "id": 1,
+      "name": "create-mongodb-plugin",
+      "prompt": "Create a new ArtusX plugin for MongoDB integration. The plugin should:\n\n1. Follow the standard ArtusX plugin structure\n2. Include a client.ts with @Injectable decorator for MongoDB connection\n3. Define InjectEnum.MongoDB token in constants.ts\n4. Implement lifecycle.ts with willReady hook to initialize the connection\n5. Provide default configuration in config/config.default.ts\n6. Export all components in index.ts\n\nThe MongoDB client should:\n- Accept config with uri, dbName options\n- Provide getClient() method to expose the MongoClient instance\n- Use SINGLETON scope\n- Log connection status in lifecycle hook\n\nCreate the plugin at packages/plugins/mongodb/src/",
+      "expected_output": "A complete MongoDB plugin implementation with:\n- client.ts: Injectable MongoClient wrapper with SINGLETON scope\n- constants.ts: InjectEnum.MongoDB = 'ARTUSX_MONGODB'\n- lifecycle.ts: willReady hook that checks config, initializes client, logs status\n- types.ts: MongoDBConfig interface with uri and dbName\n- config/config.default.ts: Default config with localhost MongoDB\n- index.ts: Exporting client and lifecycle\n- All code follows ArtusX patterns from existing plugins",
+      "expectations": [
+        "Plugin structure follows standard pattern (src/client.ts, constants.ts, lifecycle.ts, index.ts)",
+        "Client class has @Injectable decorator with SINGLETON scope",
+        "InjectEnum.MongoDB properly defined",
+        "lifecycle.ts has @LifecycleHookUnit and @LifecycleHook decorators",
+        "willReady hook checks config existence before initialization",
+        "Logger used for connection status messages",
+        "Default config provided with MongoDB connection options"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "create-crud-controller",
+      "prompt": "Create a controller for managing products with CRUD routes. The controller should:\n\n1. Use @Controller('/api/products') decorator\n2. Implement GET / to list all products\n3. Implement GET /:id to get single product\n4. Implement POST / to create product with @StatusCode(201)\n5. Implement PUT /:id to update product\n6. Implement DELETE /:id to delete product with @StatusCode(204)\n7. Use @ContentType('application/json') for list route\n8. Inject ArtusApplication and Config\n9. Define Product interface with id, name, price, createdAt\n10. Use ArtusXContext type for ctx parameter\n\nThe controller should return appropriate responses and use proper HTTP status codes.",
+      "expected_output": "A complete ProductController implementation with:\n- @Controller('/api/products') class decorator\n- All CRUD routes (GET, GET/:id, POST, PUT/:id, DELETE/:id)\n- Proper HTTP decorators (@GET, @POST, @PUT, @DELETE)\n- @StatusCode decorators for create (201) and delete (204)\n- @ContentType for JSON responses\n- Inject decorators for Application and Config\n- Product interface definition\n- ArtusXContext type usage\n- Follows patterns from existing controllers like APIController",
+      "expectations": [
+        "Controller decorated with @Controller('/api/products')",
+        "Five routes implemented: list, get, create, update, delete",
+        "POST uses @StatusCode(201)",
+        "DELETE uses @StatusCode(204)",
+        "ContentType decorator applied",
+        "ArtusApplication and Config injected",
+        "Product interface defined",
+        "ArtusXContext type used",
+        "Code structure matches existing ArtusX controllers"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "create-timing-middleware",
+      "prompt": "Create an ArtusX middleware that tracks request timing. The middleware should:\n\n1. Use @Middleware({ enable: true }) decorator\n2. Inject Config using @Inject(ArtusInjectEnum.Config)\n3. Implement use(ctx: ArtusXContext, next: ArtusXNext) method\n4. Log request start time, method, and path\n5. Call await next() to continue processing\n6. Calculate and log duration after response\n7. Store timing data in ctx.context.output.data.timing\n8. Use console.log for output (simplified logging)\n\nThe middleware should:\n- Run for all requests\n- Track total request duration\n- Log request details before and after processing",
+      "expected_output": "A complete TimingMiddleware implementation with:\n- @Middleware({ enable: true }) decorator\n- @Inject(ArtusInjectEnum.Config) for configuration\n- use method with correct ArtusXContext, ArtusXNext signature\n- Request timing calculation (start to end)\n- Console logging of method, path, duration\n- await next() call to continue chain\n- Timing data stored in output data\n- Follows pattern from CheckAuthMiddleware example",
+      "expectations": [
+        "@Middleware decorator with enable: true",
+        "Config injected with @Inject",
+        "use method signature correct (ctx: ArtusXContext, next: ArtusXNext)",
+        "Timing calculation using Date.now()",
+        "await next() called correctly",
+        "Request details logged before and after",
+        "Timing data stored in context.output.data",
+        "Middleware follows ArtusX patterns"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "setup-plugin-tests",
+      "prompt": "Set up tests for a Redis plugin using ArtusScanner and test fixtures. The test setup should:\n\n1. Create test/utils/index.ts with createApp helper using ArtusScanner\n2. Import 'reflect-metadata' first (critical)\n3. Configure scanner with extensions: ['.ts'], configDir: 'config'\n4. Create test/fixtures/app/src/controller/home.ts with basic GET route\n5. Create test/fixtures/app/src/config/config.default.ts with Redis config\n6. Create test/fixtures/app/src/config/plugin.ts registering plugin-redis\n7. Write test/redis.test.ts with:\n   - beforeAll creating app from fixtures\n   - Test that container has Redis client\n   - Test that client has getClient method\n   - Test that config is loaded correctly\n\nFollow patterns from plugin-koa tests.",
+      "expected_output": "A complete test setup for Redis plugin with:\n- test/utils/index.ts: createApp helper with ArtusScanner\n- 'reflect-metadata' imported first\n- ArtusScanner configured for .ts files\n- test fixtures with controller, config, plugin.ts\n- Test file with beforeAll, container checks\n- Config validation test\n- Follows patterns from packages/plugins/koa/test/",
+      "expectations": [
+        "reflect-metadata imported before Artus imports",
+        "ArtusScanner configured with needWriteFile: false, extensions: ['.ts']",
+        "createApp returns loaded ArtusApplication",
+        "Test fixture structure matches plugin-koa pattern",
+        "Plugin registered in fixture plugin.ts",
+        "Tests verify container.get returns client",
+        "Tests check client methods exist",
+        "Tests verify config loaded"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "debug-lifecycle-issue",
+      "prompt": "A user reports that their custom plugin's lifecycle hook is not executing. The plugin is structured as:\n\n```typescript\n// packages/plugins/custom/src/lifecycle.ts\nimport { ApplicationLifecycle, ArtusApplication, Inject, ArtusInjectEnum } from '@artus/core';\n\nexport default class CustomLifecycle implements ApplicationLifecycle {\n  @Inject(ArtusInjectEnum.Application)\n  app: ArtusApplication;\n\n  async willReady() {\n    console.log('Custom plugin initializing...');\n    // Initialization code\n  }\n}\n```\n\nThe user says the console.log never appears. Diagnose the issue and provide the fix.",
+      "expected_output": "Diagnosis: The lifecycle hook is missing two critical decorators:\n1. @LifecycleHookUnit decorator on the class\n2. @LifecycleHook decorator on the willReady method\n\nWithout these decorators, ArtusX cannot identify the class as a lifecycle unit and the method as a hook.\n\nFix: Add the decorators:\n\n```typescript\nimport { LifecycleHookUnit, LifecycleHook, ApplicationLifecycle, ArtusApplication, Inject, ArtusInjectEnum } from '@artus/core';\n\n@LifecycleHookUnit()  // <-- Required decorator\nexport default class CustomLifecycle implements ApplicationLifecycle {\n  @Inject(ArtusInjectEnum.Application)\n  app: ArtusApplication;\n\n  @LifecycleHook()  // <-- Required decorator\n  async willReady() {\n    console.log('Custom plugin initializing...');\n  }\n}\n```\n\nAlso verify:\n1. lifecycle.ts is exported in index.ts\n2. Plugin is registered in config/plugin.ts",
+      "expectations": [
+        "Diagnosis identifies missing @LifecycleHookUnit decorator",
+        "Diagnosis identifies missing @LifecycleHook decorator",
+        "Solution provides corrected code with decorators",
+        "Explanation of why decorators are required",
+        "Additional verification steps mentioned (exports, plugin registration)",
+        "Solution imports LifecycleHookUnit and LifecycleHook from @artus/core",
+        "Code follows ArtusX lifecycle patterns"
+      ]
+    }
+  ]
+}
