@@ -8,14 +8,13 @@ import {
   LoggerLevel,
   Log4jsConfiguration,
   NunjucksConfigureOptions,
-  XprofilerConfig,
-  XtransitConfig,
 } from '@artusx/core';
 
 import type { ArtusXContext } from '@artusx/core';
 import type { EjsConfig } from '@artusx/plugin-ejs';
 import type { RedisConfig } from '@artusx/plugin-redis';
 import type { SequelizeConfig } from '@artusx/plugin-sequelize';
+// import type { XprofilerConfig, XtransitConfig } from '@artusx/plugin-xtransit';
 
 import { getEnv } from '@artusx/utils';
 
@@ -23,7 +22,7 @@ import limitRate from '../middleware/limitRate';
 import checkAuth from '../middleware/checkAuth';
 
 const tmpDir = os.tmpdir();
-const rootDir = path.resolve(__dirname, '../..');
+// const rootDir = path.resolve(__dirname, '../..');
 const logsDir = path.join(tmpDir, 'artusx/logs');
 const xprofilerLogDir = path.join(logsDir, 'xprofiler');
 
@@ -132,21 +131,21 @@ export default () => {
     },
   };
 
-  const xprofiler: XprofilerConfig = {
-    log_level: 0,
-    enable_http_profiling: true,
-  };
+  // const xprofiler: XprofilerConfig = {
+  //   log_level: 0,
+  //   enable_http_profiling: true,
+  // };
 
-  const xtransit: XtransitConfig = {
-    server: 'ws://127.0.0.1:9190',
-    appId: 1,
-    appSecret: '88115b3f0881348fe4a8935b103c0a74',
+  // const xtransit: XtransitConfig = {
+  //   server: 'ws://127.0.0.1:9190',
+  //   appId: 1,
+  //   appSecret: '88115b3f0881348fe4a8935b103c0a74',
 
-    logDir: xprofilerLogDir,
+  //   logDir: xprofilerLogDir,
 
-    errors: [`${logsDir}/info.log`, `${logsDir}/error.log`],
-    packages: [`${rootDir}/package.json`],
-  };
+  //   errors: [`${logsDir}/info.log`, `${logsDir}/error.log`],
+  //   packages: [`${rootDir}/package.json`],
+  // };
 
   return {
     // artusx
@@ -165,8 +164,8 @@ export default () => {
     nunjucks,
 
     // xtransit
-    xprofiler,
-    xtransit,
+    // xprofiler,
+    // xtransit,
 
     // redis
     redis,

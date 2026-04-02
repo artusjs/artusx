@@ -1,13 +1,17 @@
 import { api } from '@opentelemetry/sdk-node';
 
 import { BasicTracerProvider, BatchSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base';
+import { initResource } from './common';
 
-export const initTracer = () => {
-  const provider = new BasicTracerProvider();
+export const initTracer = (name?: string, version?: string) => {
+  const resource = initResource(name, version);
 
-  // Configure span processor to send spans to the exporter
-  provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-  provider.register();
+  const provider = new BasicTracerProvider({
+    resource,
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  });
+
+  api.trace.setGlobalTracerProvider(provider);
 };
 
 export const getTracer = (name: string, version?: string) => {

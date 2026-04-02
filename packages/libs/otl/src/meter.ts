@@ -17,7 +17,7 @@ export const initMeter = (name?: string, version?: string) => {
   });
 
   const meterProvider = new MeterProvider({
-    resource: resource,
+    resource,
     readers: [metricReader],
   });
 
