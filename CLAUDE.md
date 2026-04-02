@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Available Skills
+
+### artusx-best-practices
+
+A Claude Code skill is available at `skills/artusx-best-practices/` to assist with ArtusX application development. This skill provides:
+
+- **Plugin Development**: Complete patterns for creating ArtusX plugins with lifecycle hooks
+- **Decorators**: Usage examples for @Controller, @Middleware, @Inject, HTTP route decorators
+- **Testing**: Setup patterns with ArtusScanner, ArtusApplication, and Jest
+- **Common Tasks**: Step-by-step guides for controllers, middleware, database integration
+- **Troubleshooting**: Solutions for lifecycle issues, DI failures, configuration errors
+
+The skill automatically activates when working with:
+- Creating or modifying ArtusX plugins
+- Implementing controllers and middleware
+- Setting up tests for ArtusX packages
+- Debugging lifecycle hook issues
+- Configuring decorators and dependency injection
+
+For detailed reference, see the skill's reference files in `skills/artusx-best-practices/references/`.
+
 ## Project Overview
 
 ArtusX is an ecosystem based on Artus.js framework (https://www.artusjs.org), managed as a Rush.js monorepo. It provides a plugin-based architecture for building web applications with support for multiple frameworks (Koa, Express, Nest).

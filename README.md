@@ -65,6 +65,19 @@ pnpm i
 pnpm run dev
 ```
 
+## Skills
+
+### artusx-best-practices-skill
+
+A Claude Code skill is available to help with ArtusX development. The skill provides:
+
+- **Plugin Development**: Step-by-step guidance for creating ArtusX plugins
+- **Code Patterns**: Examples of controllers, middleware, decorators, and lifecycle hooks
+- **Testing Setup**: Complete testing patterns with ArtusScanner and Jest
+- **Troubleshooting**: Solutions to common issues and debugging techniques
+
+The skill is located at `skills/artusx-best-practices/` and automatically activates when working with ArtusX plugins, decorators, lifecycle hooks, or testing.
+
 ## Development
 
 ### prepare
