@@ -81,6 +81,9 @@ dev-dist
 # temp
 temp
 
+# worktrees
+.worktrees
+
 # typedocs
 docs
 
