@@ -46,7 +46,7 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "ejs": "~3.1.9",
+    "ejs": "~5.0.1",
     "ylru": "~1.4.0"
   },
   "devDependencies": {
