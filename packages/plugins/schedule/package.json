@@ -46,12 +46,11 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "cron": "~3.1.6"
+    "cron": "~4.4.0"
   },
   "devDependencies": {
     "@artusx/eslint-config": "workspace:*",
     "@artusx/tsconfig": "workspace:*",
-    "@types/cron": "~2.4.0",
     "@types/jest": "~29.5.11",
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "~6.19.1",
