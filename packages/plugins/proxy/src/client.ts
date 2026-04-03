@@ -1,5 +1,5 @@
 import { Injectable, ScopeEnum } from '@artus/core';
-import { InjectEnum } from './constants';
+import { InjectEnum } from './constants.js';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 
 export interface ProxyConfig {

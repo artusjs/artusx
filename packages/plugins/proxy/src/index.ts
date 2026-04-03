@@ -1,2 +1,2 @@
-export * from './client';
-export * from './lifecycle';
+export * from './client.js';
+export * from './lifecycle.js';
