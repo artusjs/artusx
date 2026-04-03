@@ -27,7 +27,7 @@
     "@artusx/plugin-grpc": "workspace:*",
     "@artusx/plugin-schedule": "workspace:*",
     "@artusx/utils": "workspace:*",
-    "@grpc/grpc-js": "~1.10.4",
+    "@grpc/grpc-js": "~1.14.3",
     "google-protobuf": "~3.21.2",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.5.0"

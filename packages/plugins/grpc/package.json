@@ -50,8 +50,8 @@
   "dependencies": {
     "@artus/core": "^2.x",
     "@artus/pipeline": "^0.2",
-    "@grpc/grpc-js": "~1.10.3",
-    "@grpc/proto-loader": "~0.7.10",
+    "@grpc/grpc-js": "~1.14.3",
+    "@grpc/proto-loader": "~0.7.13",
     "fs-extra": "~11.2.0",
     "google-protobuf": "~3.21.2",
     "grpc-tools": "~1.12.4",
