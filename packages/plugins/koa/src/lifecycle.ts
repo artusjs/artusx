@@ -75,7 +75,7 @@ export default class ApplicationHttpLifecycle implements ApplicationLifecycle {
       await filter?.catch(error, ctx);
     }
 
-    if (!!ctx.body) {
+    if (ctx.body) {
       return;
     }
 

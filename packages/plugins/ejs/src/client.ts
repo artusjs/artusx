@@ -32,7 +32,7 @@ function parseContents(locals: Locals) {
 }
 
 function parseScripts(locals: Locals) {
-  let str = locals.body,
+  const str = locals.body,
     regex = /\<script[\s\S]*?\>[\s\S]*?\<\/script\>/g;
 
   if (regex.test(str)) {
@@ -42,7 +42,7 @@ function parseScripts(locals: Locals) {
 }
 
 function parseStyles(locals: Locals) {
-  let str = locals.body,
+  const str = locals.body,
     regex = /(?:\<style[\s\S]*?\>[\s\S]*?\<\/style\>)|(?:\<link[\s\S]*?\>(?:\<\/link\>)?)/g;
 
   if (regex.test(str)) {
@@ -52,7 +52,7 @@ function parseStyles(locals: Locals) {
 }
 
 function parseMetas(locals: Locals) {
-  let str = locals.body,
+  const str = locals.body,
     regex = /\<meta[\s\S]*?\>/g;
 
   if (regex.test(str)) {
@@ -154,7 +154,7 @@ export default class EjsClient {
   async render(template: string, context?: EjsContext) {
     const layoutConfig = this.layoutConfig || {};
 
-    let options: Record<string, any> = {
+    const options: Record<string, any> = {
       layout: context?.layout,
     };
 
@@ -176,13 +176,13 @@ export default class EjsClient {
     };
 
     // render view
-    let str = await this.renderFile(template, {
+    const str = await this.renderFile(template, {
       ..._context,
       contentFor,
     });
 
     let l: any;
-    let locals = {
+    const locals = {
       ..._context,
       body: str,
       contentFor,

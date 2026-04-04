@@ -34,8 +34,8 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
   private async loadService() {
     const serviceClazzList = this.container.getInjectableByTag(GRPC_SERVICE_TAG);
 
-    let dynamicService: ArtusXGrpcServiceMap = {};
-    let staticService: ArtusXGrpcServiceList = [];
+    const dynamicService: ArtusXGrpcServiceMap = {};
+    const staticService: ArtusXGrpcServiceList = [];
 
     for (const serviceClazz of serviceClazzList) {
       const serviceMetadata: ArtusXGrpcServiceMetadata = Reflect.getMetadata(
@@ -56,7 +56,7 @@ export default class GRPCLifecycle implements ApplicationLifecycle {
         continue;
       }
 
-      let handlerMap: ArtusXGrpcMethodMap = {};
+      const handlerMap: ArtusXGrpcMethodMap = {};
       for (const key of Object.keys(serviceDescriptorList)) {
         const serviceDescriptor = serviceDescriptorList[key];
         if (!serviceDescriptor.value) {
