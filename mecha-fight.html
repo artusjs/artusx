@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>像素机甲对战</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    color: #e0e0e0;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: #ff6a00;
+    text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff4500;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  canvas {
+    border: 2px solid #333;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .controls {
+    display: flex;
+    gap: 60px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #aaa;
+  }
+  .controls div { text-align: center; }
+  .controls .label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .p1-label { color: #4af; }
+  .p2-label { color: #f44; }
+  kbd {
+    background: #222;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 10px;
+    color: #ddd;
+  }
+</style>
+</head>
+<body>
+<h1>MECHA FIGHT</h1>
+<div class="subtitle">像素机甲对战</div>
+<canvas id="game" width="800" height="450"></canvas>
+<div class="controls">
+  <div>
+    <div class="label p1-label">蓝方 P1</div>
+    <kbd>A</kbd><kbd>D</kbd> 移动 &nbsp;
+    <kbd>W</kbd> 跳跃 &nbsp;
+    <kbd>J</kbd> 攻击 &nbsp;
+    <kbd>K</kbd> 防御
+  </div>
+  <div>
+    <div class="label p2-label">红方 P2</div>
+    <kbd>←</kbd><kbd>→</kbd> 移动 &nbsp;
+    <kbd>↑</kbd> 跳跃 &nbsp;
+    <kbd>1</kbd> 攻击 &nbsp;
+    <kbd>2</kbd> 防御
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 像素机甲对战 - 核心游戏代码
+// ============================================================
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+// --- 常量 ---
+const GROUND_Y = H - 60;
+const GRAVITY = 0.6;
+const MOVE_SPEED = 3;
+const JUMP_FORCE = -10;
+const ATTACK_DAMAGE = 12;
+const DEFEND_REDUCTION = 0.25;
+const ATTACK_DURATION = 20; // frames
+const ATTACK_HIT_FRAME = 8;
+const DEFEND_ENERGY_MAX = 100;
+const DEFEND_DRAIN = 1.2;
+const DEFEND_RECOVER = 0.4;
+const HIT_STUN = 15;
+const ATTACK_COOLDOWN = 30;
+const ATTACK_RANGE = 55;
+const PIXEL = 3; // pixel scale for mecha drawing
+
+// --- 游戏状态 ---
+let gameState = 'title'; // title, fighting, ko
+let koTimer = 0;
+let winner = null;
+let frameCount = 0;
+let shakeX = 0, shakeY = 0;
+let particles = [];
+let flashes = [];
+
+// --- 输入 ---
+const keys = {};
+document.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; keys[e.code] = true; e.preventDefault(); });
+document.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; keys[e.code] = false; e.preventDefault(); });
+
+// --- 粒子系统 ---
+function spawnParticles(x, y, color, count, spread) {
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x, y,
+      vx: (Math.random() - 0.5) * spread,
+      vy: (Math.random() - 0.8) * spread,
+      life: 15 + Math.random() * 20,
+      maxLife: 35,
+      color,
+      size: 2 + Math.random() * 3
+    });
+  }
+}
+
+function spawnFlash(x, y, w, h) {
+  flashes.push({ x, y, w, h, life: 4 });
+}
+
+// --- 机甲定义 ---
+function createMecha(x, facing, colorScheme) {
+  return {
+    x, y: GROUND_Y,
+    vx: 0, vy: 0,
+    facing, // 1 = right, -1 = left
+    hp: 100, maxHp: 100,
+    energy: DEFEND_ENERGY_MAX,
+    state: 'idle', // idle, walk, jump, attack, defend, hit
+    stateTimer: 0,
+    attackCooldown: 0,
+    grounded: true,
+    color: colorScheme,
+    animFrame: 0,
+    hitApplied: false,
+    bobOffset: 0
+  };
+}
+
+let p1 = createMecha(180, 1, {
+  body: '#3399ff', dark: '#1a5c99', accent: '#66ccff',
+  visor: '#00ffff', weapon: '#ccddee', shield: '#4488ff', exhaust: '#ff8800'
+});
+let p2 = createMecha(620, -1, {
+  body: '#ff3333', dark: '#991a1a', accent: '#ff6666',
+  visor: '#ffff00', weapon: '#eeccdd', shield: '#ff4444', exhaust: '#ff8800'
+});
+
+// --- 绘制像素机甲 ---
+function drawMecha(m) {
+  ctx.save();
+  ctx.translate(m.x, m.y);
+  ctx.scale(m.facing, 1);
+
+  const P = PIXEL;
+  const bob = m.state === 'idle' ? Math.sin(frameCount * 0.08) * 2 : 0;
+  const walkBob = m.state === 'walk' ? Math.sin(frameCount * 0.25) * 1.5 : 0;
+  const by = -P * 14 + bob + walkBob;
+
+  // Hit flash effect
+  const isHit = m.state === 'hit' && m.stateTimer > HIT_STUN - 4;
+  if (isHit && Math.floor(frameCount / 2) % 2 === 0) {
+    ctx.globalAlpha = 0.5;
+  }
+
+  // --- Legs ---
+  const legSpread = m.state === 'walk' ? Math.sin(frameCount * 0.25) * 3 : 0;
+  // Left leg
+  ctx.fillStyle = m.color.dark;
+  fillPixels(ctx, -4*P + legSpread, -2*P, 3*P, 2*P, P);
+  fillPixels(ctx, -4*P + legSpread, 0, 2*P, 2*P, P);
+  ctx.fillStyle = '#555';
+  fillPixels(ctx, -4*P + legExpand(legSpread)*0, -0*P, 2*P, P, P);
+  // Right leg
+  ctx.fillStyle = m.color.dark;
+  fillPixels(ctx, 1*P - legSpread, -2*P, 3*P, 2*P, P);
+  fillPixels(ctx, 2*P - legSpread, 0, 2*P, 2*P, P);
+  ctx.fillStyle = '#555';
+  fillPixels(ctx, 2*P - legSpread, -0*P, 2*P, P, P);
+
+  // --- Body ---
+  ctx.fillStyle = m.color.body;
+  fillPixels(ctx, -3*P, by + -8*P, 6*P, 6*P, P);
+  // Chest detail
+  ctx.fillStyle = m.color.accent;
+  fillPixels(ctx, -2*P, by + -7*P, 4*P, 2*P, P);
+  // Core
+  ctx.fillStyle = m.color.visor;
+  fillPixels(ctx, -1*P, by + -6*P, 2*P, P, P);
+
+  // --- Shoulders ---
+  ctx.fillStyle = m.color.dark;
+  fillPixels(ctx, -5*P, by + -9*P, 2*P, 3*P, P);
+  fillPixels(ctx, 3*P, by + -9*P, 2*P, 3*P, P);
+  // Shoulder pads
+  ctx.fillStyle = m.color.accent;
+  fillPixels(ctx, -5*P, by + -9*P, 2*P, P, P);
+  fillPixels(ctx, 3*P, by + -9*P, 2*P, P, P);
+
+  // --- Head ---
+  ctx.fillStyle = m.color.dark;
+  fillPixels(ctx, -2*P, by + -12*P, 4*P, 4*P, P);
+  // Visor
+  ctx.fillStyle = m.color.visor;
+  fillPixels(ctx, -1*P, by + -11*P, 3*P, P, P);
+  // Antenna
+  ctx.fillStyle = m.color.accent;
+  fillPixels(ctx, 1*P, by + -13*P, P, P, P);
+  fillPixels(ctx, 2*P, by + -14*P, P, P, P);
+
+  // --- Arms ---
+  if (m.state === 'attack' && m.stateTimer > ATTACK_DURATION - ATTACK_HIT_FRAME - 2) {
+    // Attack pose - punch extended
+    ctx.fillStyle = m.color.dark;
+    fillPixels(ctx, 3*P, by + -8*P, 2*P, 2*P, P);
+    // Weapon arm extended
+    ctx.fillStyle = m.color.weapon;
+    fillPixels(ctx, 5*P, by + -9*P, 3*P, P, P);
+    fillPixels(ctx, 7*P, by + -9*P, P, 3*P, P);
+    fillPixels(ctx, 8*P, by + -10*P, 2*P, P, P);
+    // Exhaust flash
+    if (m.stateTimer > ATTACK_DURATION - ATTACK_HIT_FRAME) {
+      ctx.fillStyle = m.color.exhaust;
+      fillPixels(ctx, 10*P, by + -10*P, 2*P, 2*P, P);
+      fillPixels(ctx, 12*P, by + -9*P, P, P, P);
+    }
+  } else if (m.state === 'defend') {
+    // Defend pose - shield up
+    ctx.fillStyle = m.color.dark;
+    fillPixels(ctx, 3*P, by + -9*P, 2*P, 3*P, P);
+    // Shield
+    ctx.fillStyle = m.color.shield;
+    fillPixels(ctx, 5*P, by + -10*P, 2*P, 5*P, P);
+    ctx.fillStyle = m.color.accent;
+    fillPixels(ctx, 6*P, by + -9*P, P, 3*P, P);
+    // Shield glow
+    ctx.globalAlpha = 0.3 + Math.sin(frameCount * 0.2) * 0.15;
+    ctx.fillStyle = m.color.visor;
+    fillPixels(ctx, 5*P, by + -10*P, 2*P, 5*P, P);
+    ctx.globalAlpha = 1;
+  } else {
+    // Idle arms
+    const armBob = Math.sin(frameCount * 0.08 + 1) * 1;
+    ctx.fillStyle = m.color.dark;
+    fillPixels(ctx, 3*P, by + -8*P + armBob, 2*P, 3*P, P);
+    // Back arm
+    ctx.fillStyle = m.color.dark;
+    fillPixels(ctx, -5*P, by + -8*P + armBob, 2*P, 3*P, P);
+  }
+
+  // --- Exhaust on back ---
+  if (m.state === 'jump' || (m.state === 'attack' && m.stateTimer > ATTACK_DURATION - ATTACK_HIT_FRAME)) {
+    ctx.fillStyle = m.color.exhaust;
+    const exLen = 2 + Math.random() * 3;
+    fillPixels(ctx, -4*P, by + -5*P, P, exLen*P, P);
+    fillPixels(ctx, -3*P, by + -5*P, P, (exLen-1)*P, P);
+  }
+
+  ctx.restore();
+}
+
+function legExpand(v) { return v; }
+
+function fillPixels(ctx, x, y, w, h, p) {
+  ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h));
+}
+
+// --- 背景绘制 ---
+function drawBackground() {
+  // Sky gradient
+  const skyGrad = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
+  skyGrad.addColorStop(0, '#0a0a2e');
+  skyGrad.addColorStop(0.5, '#1a1a4e');
+  skyGrad.addColorStop(1, '#2a1a3e');
+  ctx.fillStyle = skyGrad;
+  ctx.fillRect(0, 0, W, GROUND_Y);
+
+  // Stars
+  ctx.fillStyle = '#ffffff';
+  for (let i = 0; i < 40; i++) {
+    const sx = (i * 137 + 23) % W;
+    const sy = (i * 89 + 17) % (GROUND_Y - 80);
+    const brightness = 0.3 + Math.sin(frameCount * 0.02 + i) * 0.3;
+    ctx.globalAlpha = brightness;
+    ctx.fillRect(sx, sy, 1, 1);
+  }
+  ctx.globalAlpha = 1;
+
+  // City silhouette
+  ctx.fillStyle = '#111122';
+  const buildings = [
+    [20, 180, 60, 200], [90, 140, 50, 240], [150, 160, 40, 220],
+    [200, 120, 55, 260], [265, 170, 35, 210], [310, 100, 60, 280],
+    [380, 150, 45, 230], [435, 130, 55, 250], [500, 160, 40, 220],
+    [550, 110, 50, 270], [610, 145, 55, 235], [675, 175, 45, 205],
+    [730, 125, 50, 255]
+  ];
+  for (const [bx, bh, bw, btop] of buildings) {
+    ctx.fillRect(bx, GROUND_Y - bh, bw, bh);
+    // Windows
+    ctx.fillStyle = '#332200';
+    for (let wy = GROUND_Y - bh + 10; wy < GROUND_Y - 10; wy += 20) {
+      for (let wx = bx + 6; wx < bx + bw - 6; wx += 12) {
+        if (Math.sin(wx * wy) > 0) {
+          ctx.fillStyle = ((wx * 7 + wy * 13) % 10 > 3) ? '#ffaa33' : '#221100';
+          ctx.globalAlpha = 0.6;
+          ctx.fillRect(wx, wy, 5, 8);
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#111122';
+  }
+
+  // Ground
+  ctx.fillStyle = '#1a1a2a';
+  ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+  // Ground line
+  ctx.fillStyle = '#444466';
+  ctx.fillRect(0, GROUND_Y, W, 2);
+  // Ground detail
+  ctx.fillStyle = '#222233';
+  for (let gx = 0; gx < W; gx += 30) {
+    ctx.fillRect(gx, GROUND_Y + 10 + (gx % 60 === 0 ? 5 : 0), 15, 2);
+  }
+}
+
+// --- HUD 绘制 ---
+function drawHUD() {
+  const barW = 280, barH = 18, barY = 20;
+
+  // P1 HP bar (left aligned)
+  ctx.fillStyle = '#222';
+  ctx.fillRect(30, barY, barW, barH);
+  const p1Ratio = Math.max(0, p1.hp / p1.maxHp);
+  const p1Color = p1Ratio > 0.5 ? '#3399ff' : p1Ratio > 0.25 ? '#ffaa00' : '#ff3333';
+  ctx.fillStyle = p1Color;
+  ctx.fillRect(30, barY, barW * p1Ratio, barH);
+  ctx.strokeStyle = '#666';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(30, barY, barW, barH);
+
+  // P1 Energy bar
+  ctx.fillStyle = '#111';
+  ctx.fillRect(30, barY + 22, barW, 6);
+  ctx.fillStyle = '#44aaff';
+  ctx.fillRect(30, barY + 22, barW * (p1.energy / DEFEND_ENERGY_MAX), 6);
+
+  // P1 Label
+  ctx.fillStyle = '#4af';
+  ctx.font = 'bold 12px "Courier New"';
+  ctx.textAlign = 'left';
+  ctx.fillText('BLUE', 30, barY - 4);
+
+  // P2 HP bar (right aligned)
+  ctx.fillStyle = '#222';
+  ctx.fillRect(W - 30 - barW, barY, barW, barH);
+  const p2Ratio = Math.max(0, p2.hp / p2.maxHp);
+  const p2Color = p2Ratio > 0.5 ? '#ff3333' : p2Ratio > 0.25 ? '#ffaa00' : '#ff3333';
+  ctx.fillStyle = p2Color;
+  ctx.fillRect(W - 30 - barW * p2Ratio, barY, barW * p2Ratio, barH);
+  ctx.strokeStyle = '#666';
+  ctx.strokeRect(W - 30 - barW, barY, barW, barH);
+
+  // P2 Energy bar
+  ctx.fillStyle = '#111';
+  ctx.fillRect(W - 30 - barW, barY + 22, barW, 6);
+  ctx.fillStyle = '#ff6644';
+  ctx.fillRect(W - 30 - barW * (p2.energy / DEFEND_ENERGY_MAX), barY + 22, barW * (p2.energy / DEFEND_ENERGY_MAX), 6);
+
+  // P2 Label
+  ctx.fillStyle = '#f44';
+  ctx.textAlign = 'right';
+  ctx.fillText('RED', W - 30, barY - 4);
+
+  // HP text
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 11px "Courier New"';
+  ctx.textAlign = 'center';
+  ctx.fillText(Math.ceil(p1.hp), 30 + barW / 2, barY + 14);
+  ctx.fillText(Math.ceil(p2.hp), W - 30 - barW / 2, barY + 14);
+
+  // VS
+  ctx.fillStyle = '#ff6a00';
+  ctx.font = 'bold 16px "Courier New"';
+  ctx.textAlign = 'center';
+  ctx.fillText('VS', W / 2, barY + 14);
+}
+
+// --- 标题画面 ---
+function drawTitle() {
+  drawBackground();
+
+  // Title
+  ctx.fillStyle = '#ff6a00';
+  ctx.font = 'bold 48px "Courier New"';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.shadowColor = '#ff4500';
+  ctx.shadowBlur = 20;
+  ctx.fillText('MECHA FIGHT', W / 2, H / 2 - 60);
+  ctx.shadowBlur = 0;
+
+  ctx.fillStyle = '#aaa';
+  ctx.font = '16px "Courier New"';
+  ctx.fillText('像 素 机 甲 对 战', W / 2, H / 2 - 20);
+
+  // Blinking prompt
+  if (Math.floor(frameCount / 30) % 2 === 0) {
+    ctx.fillStyle = '#ff6a00';
+    ctx.font = '14px "Courier New"';
+    ctx.fillText('按 SPACE 开始', W / 2, H / 2 + 40);
+  }
+
+  // Draw preview mechs
+  ctx.save();
+  ctx.translate(W / 2 - 100, H / 2 + 100);
+  ctx.scale(1, 1);
+  const previewP1 = { ...p1, x: 0, y: 0, state: 'idle', animFrame: 0, stateTimer: 0, facing: 1 };
+  // Simplified preview
+  drawMecha({ ...p1, x: W / 2 - 100, y: H / 2 + 100, state: 'idle', stateTimer: 0, facing: 1 });
+  drawMecha({ ...p2, x: W / 2 + 100, y: H / 2 + 100, state: 'idle', stateTimer: 0, facing: -1 });
+  ctx.restore();
+
+  ctx.textBaseline = 'alphabetic';
+}
+
+// --- KO 画面 ---
+function drawKO() {
+  drawBackground();
+  drawMecha(p1);
+  drawMecha(p2);
+  drawHUD();
+
+  // Overlay
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  ctx.fillStyle = '#ff0000';
+  ctx.font = 'bold 64px "Courier New"';
+  ctx.shadowColor = '#ff0000';
+  ctx.shadowBlur = 30;
+  ctx.fillText('K.O.!', W / 2, H / 2 - 40);
+  ctx.shadowBlur = 0;
+
+  const winColor = winner === p1 ? '#4af' : '#f44';
+  const winName = winner === p1 ? 'BLUE' : 'RED';
+  ctx.fillStyle = winColor;
+  ctx.font = 'bold 28px "Courier New"';
+  ctx.fillText(winName + ' WINS!', W / 2, H / 2 + 20);
+
+  if (koTimer > 60 && Math.floor(frameCount / 30) % 2 === 0) {
+    ctx.fillStyle = '#aaa';
+    ctx.font = '14px "Courier New"';
+    ctx.fillText('按 SPACE 重新开始', W / 2, H / 2 + 60);
+  }
+
+  ctx.textBaseline = 'alphabetic';
+}
+
+// --- 更新机甲 ---
+function updateMecha(m, opponent, moveLeft, moveRight, jumpKey, attackKey, defendKey) {
+  // State timer
+  if (m.stateTimer > 0) m.stateTimer--;
+
+  // Attack cooldown
+  if (m.attackCooldown > 0) m.attackCooldown--;
+
+  // Energy recovery
+  if (m.state !== 'defend') {
+    m.energy = Math.min(DEFEND_ENERGY_MAX, m.energy + DEFEND_RECOVER);
+  }
+
+  // State transitions
+  if (m.state === 'hit' && m.stateTimer <= 0) {
+    m.state = 'idle';
+  }
+
+  if (m.state === 'attack' && m.stateTimer <= 0) {
+    m.state = 'idle';
+    m.hitApplied = false;
+  }
+
+  const canAct = m.state === 'idle' || m.state === 'walk' || m.state === 'jump';
+
+  // Defend
+  if (defendKey && canAct && m.energy > 5) {
+    m.state = 'defend';
+    m.vx = 0;
+  }
+
+  if (m.state === 'defend') {
+    m.energy -= DEFEND_DRAIN;
+    if (!defendKey || m.energy <= 0) {
+      m.state = 'idle';
+    }
+  }
+
+  // Attack
+  if (attackKey && canAct && m.attackCooldown <= 0 && m.state !== 'defend') {
+    m.state = 'attack';
+    m.stateTimer = ATTACK_DURATION;
+    m.attackCooldown = ATTACK_COOLDOWN;
+    m.hitApplied = false;
+    m.vx = 0;
+  }
+
+  // Movement (only in idle/walk)
+  if (m.state === 'idle' || m.state === 'walk') {
+    if (moveLeft) {
+      m.vx = -MOVE_SPEED;
+      m.state = 'walk';
+    } else if (moveRight) {
+      m.vx = MOVE_SPEED;
+      m.state = 'walk';
+    } else {
+      m.vx = 0;
+      if (m.state === 'walk') m.state = 'idle';
+    }
+  }
+
+  // Jump
+  if (jumpKey && m.grounded && canAct) {
+    m.vy = JUMP_FORCE;
+    m.grounded = false;
+    m.state = 'jump';
+  }
+
+  // Face opponent
+  if (m.state !== 'attack' && m.state !== 'defend') {
+    m.facing = opponent.x > m.x ? 1 : -1;
+  }
+
+  // Apply physics
+  m.x += m.vx;
+  m.vy += GRAVITY;
+  m.y += m.vy;
+
+  // Ground collision
+  if (m.y >= GROUND_Y) {
+    m.y = GROUND_Y;
+    m.vy = 0;
+    if (!m.grounded) {
+      m.grounded = true;
+      if (m.state === 'jump') m.state = 'idle';
+    }
+  }
+
+  // Bounds
+  m.x = Math.max(30, Math.min(W - 30, m.x));
+
+  // Attack hit detection
+  if (m.state === 'attack' && !m.hitApplied) {
+    const hitFrame = ATTACK_DURATION - ATTACK_HIT_FRAME;
+    if (m.stateTimer <= hitFrame && m.stateTimer >= hitFrame - 3) {
+      const hitX = m.x + m.facing * ATTACK_RANGE;
+      const dist = Math.abs(hitX - opponent.x);
+      if (dist < 35 && Math.abs(m.y - opponent.y) < 50) {
+        m.hitApplied = true;
+        let dmg = ATTACK_DAMAGE;
+        if (opponent.state === 'defend') {
+          dmg = Math.floor(dmg * DEFEND_REDUCTION);
+          spawnParticles(opponent.x - opponent.facing * 15, opponent.y - 30, opponent.color.shield, 5, 4);
+          // Push back less
+          opponent.vx = m.facing * 2;
+        } else {
+          opponent.state = 'hit';
+          opponent.stateTimer = HIT_STUN;
+          opponent.vx = m.facing * 5;
+          // Screen shake
+          shakeX = (Math.random() - 0.5) * 8;
+          shakeY = (Math.random() - 0.5) * 6;
+          spawnParticles(opponent.x, opponent.y - 30, '#ffffff', 12, 8);
+          spawnParticles(opponent.x, opponent.y - 30, m.color.body, 8, 6);
+          spawnFlash(opponent.x - 20, opponent.y - 60, 40, 60);
+        }
+        opponent.hp -= dmg;
+        if (opponent.hp < 0) opponent.hp = 0;
+      }
+    }
+  }
+}
+
+// --- 更新粒子 ---
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.15;
+    p.life--;
+    if (p.life <= 0) particles.splice(i, 1);
+  }
+}
+
+function drawParticles() {
+  for (const p of particles) {
+    ctx.globalAlpha = p.life / p.maxLife;
+    ctx.fillStyle = p.color;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawFlashes() {
+  for (let i = flashes.length - 1; i >= 0; i--) {
+    const f = flashes[i];
+    ctx.globalAlpha = f.life * 0.2;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(f.x, f.y, f.w, f.h);
+    f.life--;
+    if (f.life <= 0) flashes.splice(i, 1);
+  }
+  ctx.globalAlpha = 1;
+}
+
+// --- 重置游戏 ---
+function resetGame() {
+  p1 = createMecha(180, 1, p1.color);
+  p2 = createMecha(620, -1, p2.color);
+  particles = [];
+  flashes = [];
+  gameState = 'fighting';
+  winner = null;
+  koTimer = 0;
+}
+
+// --- 主循环 ---
+function gameLoop() {
+  frameCount++;
+  ctx.save();
+
+  // Screen shake
+  if (Math.abs(shakeX) > 0.1 || Math.abs(shakeY) > 0.1) {
+    ctx.translate(shakeX, shakeY);
+    shakeX *= 0.8;
+    shakeY *= 0.8;
+  }
+
+  if (gameState === 'title') {
+    drawTitle();
+    if (keys[' ']) {
+      resetGame();
+    }
+  } else if (gameState === 'fighting') {
+    // Input
+    updateMecha(p1, p2,
+      keys['a'], keys['d'], keys['w'], keys['j'], keys['k']);
+    updateMecha(p2, p1,
+      keys['arrowleft'], keys['arrowright'], keys['arrowup'],
+      keys['1'], keys['2']);
+
+    // Check KO
+    if (p1.hp <= 0 || p2.hp <= 0) {
+      gameState = 'ko';
+      winner = p1.hp <= 0 ? p2 : p1;
+      koTimer = 0;
+      // Big explosion
+      const loser = p1.hp <= 0 ? p1 : p2;
+      spawnParticles(loser.x, loser.y - 25, '#ff6600', 30, 12);
+      spawnParticles(loser.x, loser.y - 25, '#ffff00', 20, 10);
+      spawnParticles(loser.x, loser.y - 25, '#ffffff', 10, 8);
+    }
+
+    // Draw
+    drawBackground();
+    drawMecha(p1);
+    drawMecha(p2);
+    drawFlashes();
+    drawParticles();
+    drawHUD();
+
+    updateParticles();
+
+  } else if (gameState === 'ko') {
+    koTimer++;
+    updateParticles();
+
+    drawKO();
+    drawParticles();
+
+    if (koTimer > 60 && keys[' ']) {
+      resetGame();
+    }
+  }
+
+  ctx.restore();
+  requestAnimationFrame(gameLoop);
+}
+
+// Start
+gameLoop();
+</script>
+</body>
+</html>
